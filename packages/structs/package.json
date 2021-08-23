@@ -1,0 +1,21 @@
+{
+  "name": "@swindle/structs",
+  "version": "1.0.0",
+  "description": "Implementations of common data structures.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Perivel/swindle",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@swindle/core": "^2.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "inspect:circular": "npx madge --circular --extensions ts ./",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+  }
+}

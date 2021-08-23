@@ -1,0 +1,10 @@
+{
+  "name": "@swindle/os",
+  "version": "1.0.0",
+  "description": "Operating System utilities.",
+  "main": "dist/index.js",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "repository": "https://github.com/Perivel/swindle",
+  "license": "MIT",
+  "private": false
+}

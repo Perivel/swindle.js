@@ -1,0 +1,32 @@
+{
+  "name": "@swindle/core",
+  "version": "2.0.0",
+  "description": "Utilitiy classes for data manipulation.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/Perivel/foundation",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/luxon": "^1.25.0",
+    "@types/uuid": "^8.3.0",
+    "awesome-phonenumber": "^2.55.0",
+    "bcrypt": "^5.0.1",
+    "i18n-iso-countries": "^6.0.0",
+    "luxon": "^1.25.0",
+    "typescript": "^4.3.5",
+    "uuid": "^8.3.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "inspect:circular": "npx madge --circular --extensions ts ./",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+  },
+  "devDependencies": {
+    
+  }
+}
