@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./src/common/common.module"), exports);
 __exportStar(require("./src/dates/dates.module"), exports);
 __exportStar(require("./src/geography/geography.module"), exports);
-__exportStar(require("./src/structures/structures.module"), exports);
+__exportStar(require("./src/formatters/formatters.module"), exports);
 __exportStar(require("./src/id/id.module"), exports);
 __exportStar(require("./src/email/email.module"), exports);
 __exportStar(require("./src/phone-number/phone-number.module"), exports);

@@ -1,5 +1,5 @@
 # Email
-The email class provides utilities to manipulate email addresses.
+The EmailAddress class provides utilities to manipulate email addresses.
 
 # Constructor
 ## constructor(value)
