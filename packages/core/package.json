@@ -7,6 +7,7 @@
   "repository": "https://github.com/Perivel/foundation",
   "author": "Patrick Luy <pluy@perivel.com>",
   "license": "MIT",
+  "private": false,
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/luxon": "^1.25.0",

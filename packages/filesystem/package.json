@@ -19,5 +19,8 @@
     "@swindle/core": "^2.0.0",
     "@types/node": "16.7.1",
     "promisify-child-process": "^4.1.1"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }
