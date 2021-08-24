@@ -1,10 +1,11 @@
 # Swindle
-A Standard Library for NodeJS and Typescript.
+A modular, consistent, and immutable Standard Library for NodeJS written in Typescript.
 
 # Why Swindle
 Using Swindle has a few notable benefits, including:
 - Modular: Swindle is completely modular. So, you can only add the specific functionalities you need.
 - Simple and Consistent: Swindle's API is simple and consistent, making it easy to get started with and a joy to use.
+- Immutable: Swindle is completely immutable.
 - Typescript: Swindle is written completely in Typescript.
 
 # Available Modules
