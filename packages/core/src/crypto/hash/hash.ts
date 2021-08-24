@@ -5,7 +5,7 @@ import { HashInterface } from "./hash.interface";
 
 /**
  * Hash
- * 
+ *
  * A Hash.
  */
 
@@ -19,7 +19,7 @@ export class Hash implements HashInterface, Equatable {
 
     /**
      * Create()
-     * 
+     *
      * creates a hash using the data and the salt
      * @param data the data to hash
      * @param salt the salt to use
@@ -32,11 +32,11 @@ export class Hash implements HashInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * compares the instance to the suspect, to determine if they are equal.
      * @param suspect the suspect to compare
      */
-    
+
     public equals(suspect: any): boolean {
         let isEqual = false;
 
@@ -50,13 +50,13 @@ export class Hash implements HashInterface, Equatable {
     public toString(): string {
         return this.value();
     }
- 
+
      /**
       * value()
-      * 
+      *
       * gets the value of the hash.
       */
- 
+
     public value(): string {
         return this._value;
     }

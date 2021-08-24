@@ -26,7 +26,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "inspect:circular": "npx madge --circular --extensions ts ./",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   },
   "devDependencies": {}
 }

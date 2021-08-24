@@ -1,12 +1,12 @@
 import { Id } from "./../id/id";
-import { v1, v3, v4, v5, NIL, validate as isValidUUID, version as uuidVersion } from 'uuid'; 
+import { v1, v3, v4, v5, NIL, validate as isValidUUID, version as uuidVersion } from 'uuid';
 import { UUIDInterface } from "./uuid.interface";
 import { UUIDException } from './../exceptions/exceptions.well';
 
 
 /**
  * UUID
- * 
+ *
  * UUID represents a UUID.
  */
 
@@ -30,7 +30,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * NIL()
-     * 
+     *
      * Creates the NIL UUID.
      * @returns a nil UUID (all zeros)
      */
@@ -41,7 +41,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * V1()
-     * 
+     *
      * Generates a Version 1 UUID (Timestamp).
      * @returns A version 1 UUID.
      */
@@ -52,7 +52,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * V3()
-     * 
+     *
      * Creates a Version 3 UUID (namespace with MD5).
      * @param name the name
      * @param namespace the namespace
@@ -65,7 +65,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * V4()
-     * 
+     *
      * V4() generates a V4 UUID (random)
      * @returns a Version 4 UUID.
      */
@@ -76,7 +76,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * V5()
-     * 
+     *
      * Creates a Version 5 UUID (namespace with SHA-1) UUID.
      * @param name the name
      * @param namespace the namespace
@@ -89,7 +89,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the suspect to the instance, to determine if they are equal.
      * @param suspect The suspect to be compared.
      */
@@ -104,10 +104,10 @@ export class UUID extends Id implements UUIDInterface{
 
         return isEqual;
     }
-    
+
     /**
      * id()
-     * 
+     *
      * id() gets the value of the id.
      */
 
@@ -117,7 +117,7 @@ export class UUID extends Id implements UUIDInterface{
 
     /**
      * version()
-     * 
+     *
      * gets teh version of the UUID.
      */
 

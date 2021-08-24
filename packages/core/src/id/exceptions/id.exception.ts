@@ -3,7 +3,7 @@ import { InvalidArgumentException } from './../../common/common.module';
 
 /**
  * IdException
- * 
+ *
  * Indicates an error with the ID.
  */
 

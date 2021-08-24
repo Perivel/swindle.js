@@ -2,7 +2,7 @@ import { BaseException } from './../../common/common.module';
 
 /**
  * DurationException
- * 
+ *
  * DurationException represents a generic duration error.
  */
 

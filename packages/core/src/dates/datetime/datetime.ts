@@ -7,7 +7,7 @@ import { Duration } from './../duration/duration';
 
 /**
  * DateTime
- * 
+ *
  * DateTime represents a specific date and time.
  */
 
@@ -22,8 +22,8 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     constructor(year: number, month: number, date: number, hours: number = 0, minutes: number = 0, seconds: number = 0, ms: number = 0, timezone: Timezone = Timezone.UTC()) {
         this.date = LuxonDateTime.fromObject({
-            year: year,
-            month: month,
+            year,
+            month,
             day: date,
             hour: hours,
             minute: minutes,
@@ -40,7 +40,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * FromDate()
-     * 
+     *
      * creates a Timestamp instance from a Date object.
      * @param dateVal The date to create a timestamp from
      * @throws DateException when the date is invalid.
@@ -60,7 +60,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * Now()
-     * 
+     *
      * Creates a DateTime for the current UTC date and time.
      */
 
@@ -70,7 +70,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * add()
-     * 
+     *
      * add() adds the duration to the datetime.
      * @param duration the duration to add.
      */
@@ -91,7 +91,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * day()
-     * 
+     *
      * day() gets the day of the month of the DateTime.
      * @returns a number between 1 and 31
      */
@@ -102,7 +102,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * isAfter()
-     * 
+     *
      * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
      * @param suspect The suspect to be compared.
      */
@@ -120,7 +120,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * isBefore()
-     * 
+     *
      * isBefore() compares the instance to the suspect, to determine if the instance is before the suspect.
      * @param suspect The suspect to be compared to.
      */
@@ -138,7 +138,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the Created instance to a suspect, to determine if they are equal.
      * @param suspect The Created object to be compared.
      */
@@ -156,7 +156,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * month()
-     * 
+     *
      * month() gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
      */
@@ -167,7 +167,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * subtract()
-     * 
+     *
      * subtract() subtracts a duration form the date time.
      * @param duration the duratin to subtract.
      */
@@ -188,7 +188,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * timezone()
-     * 
+     *
      * timezone() gets the timestamp timezone.
      */
 
@@ -202,7 +202,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * toUtc()
-     * 
+     *
      * toUtc() converts the timestamp to UTC time.
      */
 
@@ -212,7 +212,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * toTimeaone()
-     * 
+     *
      * toTimezone() converts the timestamp to the specified timezone.
      * @param timezone The timezone to convert to.
      */
@@ -223,7 +223,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * isoString()
-     * 
+     *
      * isoString() gets a UTC string for a DateTime.
      */
 
@@ -233,7 +233,7 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * value()
-     * 
+     *
      * value() gets the value of the DateTime
      */
 
@@ -243,9 +243,9 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     /**
      * year()
-     * 
+     *
      * year() gets the year portion of the DateTime.
-     * 
+     *
      * @returns number
      */
 

@@ -2,9 +2,9 @@ export interface PhoneNumberInterface {
 
     /**
      * canBeInternationallyDialed()
-     * 
+     *
      * canBeInternationallyDialed() determines if the phone number can be internationally dialed.
-     * 
+     *
      * @returns TRUE if the number can be internationally dialed. Otherwise, it returns FALSE.
      */
 
@@ -12,7 +12,7 @@ export interface PhoneNumberInterface {
 
     /**
      * countryCode()
-     * 
+     *
      * countryCode() gets the phone number's country code.
      */
 
@@ -20,7 +20,7 @@ export interface PhoneNumberInterface {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the phone number to the suspect, to determine if they are equal.
      * @param suspect the suspect being confirmed.
      */
@@ -29,7 +29,7 @@ export interface PhoneNumberInterface {
 
     /**
      * e164()
-     * 
+     *
      * e164() gets the e164 phone number format.
      */
 
@@ -37,7 +37,7 @@ export interface PhoneNumberInterface {
 
     /**
      * international()
-     * 
+     *
      * international() gets the international number.
      */
 
@@ -45,7 +45,7 @@ export interface PhoneNumberInterface {
 
     /**
      * isMobile()
-     * 
+     *
      * isMobile() determines if a phone number is mobile.
      */
 
@@ -53,7 +53,7 @@ export interface PhoneNumberInterface {
 
     /**
      * national()
-     * 
+     *
      * national() gets the national phone number.
      */
 
@@ -61,7 +61,7 @@ export interface PhoneNumberInterface {
 
     /**
      * rfc3966()
-     * 
+     *
      * rfc3966() gets the rfc3966 number.
      */
 
@@ -69,7 +69,7 @@ export interface PhoneNumberInterface {
 
     /**
      * regionCode()
-     * 
+     *
      * regionCode() gets the phone number's region code.
      */
 
@@ -77,15 +77,15 @@ export interface PhoneNumberInterface {
 
     /**
      * significant()
-     * 
+     *
      * significant() gets the significant number of the phone number.
      */
 
     significant(): string;
 
     /**
-     * value() 
-     * 
+     * value()
+     *
      * value() gets the raw phone number.
      */
     value(): string;

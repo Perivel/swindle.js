@@ -1,7 +1,7 @@
 
 /**
  * LocalityInterface
- * 
+ *
  * LocalityInterface represents the locality interface.
  */
 
@@ -9,7 +9,7 @@
 
     /**
      * name()
-     * 
+     *
      * name() gets the name of the locality.
      */
 

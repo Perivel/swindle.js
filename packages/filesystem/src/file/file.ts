@@ -223,4 +223,20 @@ export class File implements FileInterface {
             throw new FileException((e as Error).message);
         }
     }
+
+    /**
+     * sync()
+     * 
+     * request that all data for the open file descriptor is flushed to the storage device.
+     * @throws FileException();
+     */
+    
+    public async sync(): Promise<void> {
+        try {
+            await this._handle.sync();
+        }
+        catch(e) {
+            throw new FileException((e as Error).message);
+        }
+    }
 }

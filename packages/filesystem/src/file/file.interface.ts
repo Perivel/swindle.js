@@ -98,4 +98,12 @@ export interface FileInterface extends Equatable {
      */
 
     stats(bigInt: boolean): Promise<FileStats>;
+
+    /**
+     * sync()
+     * 
+     * request that all data for the open file descriptor is flushed to the storage device.
+     */
+    
+    sync(): Promise<void>;
 }

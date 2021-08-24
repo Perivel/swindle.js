@@ -6,7 +6,7 @@ import { StreetInterface } from "../street/street.interface";
 
 /**
  * StreetAddressInterface
- * 
+ *
  * StreetAddressInterface specifies the functionality of a street address.
  */
 
@@ -16,7 +16,7 @@ export interface StreetAddressInterface {
 
     /**
      * country()
-     * 
+     *
      * country() gets the address country.
      */
 
@@ -24,7 +24,7 @@ export interface StreetAddressInterface {
 
     /**
      * locality()
-     * 
+     *
      * locality() gets the address locality.
      */
 
@@ -32,7 +32,7 @@ export interface StreetAddressInterface {
 
     /**
      * postalCode()
-     * 
+     *
      * postalCode() gets the address postal code.
      */
 
@@ -40,7 +40,7 @@ export interface StreetAddressInterface {
 
     /**
      * region()
-     * 
+     *
      * region gets the address region.
      */
 
@@ -48,7 +48,7 @@ export interface StreetAddressInterface {
 
     /**
      * street()
-     * 
+     *
      * street() gets the street.
      */
 

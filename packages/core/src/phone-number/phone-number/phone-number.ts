@@ -5,7 +5,7 @@ import { PhoneNumberInterface } from "./phone-number.interface";
 
 /**
  * PhoneNumber
- * 
+ *
  * PhoneNumber represents a phone number.
  */
 
@@ -33,9 +33,9 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * canBeInternationallyDialed()
-     * 
+     *
      * canBeInternationallyDialed() determines if the phone number can be internationally dialed.
-     * 
+     *
      * @returns TRUE if the number can be internationally dialed. Otherwise, it returns FALSE.
      */
 
@@ -45,7 +45,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * countryCode()
-     * 
+     *
      * countryCode() gets the phone number's country code.
      */
 
@@ -55,7 +55,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the phone number to the suspect, to determine if they are equal.
      * @param suspect the suspect being confirmed.
      */
@@ -73,7 +73,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * e164()
-     * 
+     *
      * e164() gets the phone number in e164 format.
      */
 
@@ -83,7 +83,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * international()
-     * 
+     *
      * international() gets the international number.
      */
 
@@ -93,7 +93,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * isMobile()
-     * 
+     *
      * isMobile() determines if a phone number is mobile.
      */
 
@@ -103,7 +103,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * national()
-     * 
+     *
      * national() gets the national phone number.
      */
 
@@ -113,7 +113,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * rfc3966()
-     * 
+     *
      * rfc3966() gets the rfc3966 number.
      */
 
@@ -123,7 +123,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * regionCode()
-     * 
+     *
      * regionCode() gets the phone number's region code.
      */
 
@@ -133,7 +133,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * significant()
-     * 
+     *
      * significant() gets the significant number of the phone number.
      */
 
@@ -143,7 +143,7 @@ export class PhoneNumber implements PhoneNumberInterface, Equatable {
 
     /**
      * value()
-     * 
+     *
      * value() gets the phone number, in international format.
      */
 

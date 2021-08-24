@@ -4,7 +4,7 @@ import { IdException } from './../exceptions/id.exception';
 
 /**
  * Id
- * 
+ *
  * Id represents a generic ID.
  */
 
@@ -27,7 +27,7 @@ export abstract class Id implements IddentifierInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the suspect to the intance, to determine if they are equal.
      * @param suspect The suspect to compare.
      */
@@ -45,7 +45,7 @@ export abstract class Id implements IddentifierInterface, Equatable {
 
     /**
      * id()
-     * 
+     *
      * id() gets the value of the ID.
      */
 

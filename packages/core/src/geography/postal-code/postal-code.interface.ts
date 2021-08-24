@@ -1,7 +1,7 @@
 
 /**
  * PostalCodeInterface
- * 
+ *
  * PostalCodeInterface specifies the functiions for a postal code.
  */
 
@@ -9,7 +9,7 @@
 
     /**
      * value()
-     * 
+     *
      * value() gets the value.
      */
 

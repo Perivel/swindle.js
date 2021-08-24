@@ -7,7 +7,7 @@ export interface DateTimeInterface {
 
     /**
      * add()
-     * 
+     *
      * add() adds the duration to the datetime.
      * @param duration the duration to add.
      */
@@ -16,7 +16,7 @@ export interface DateTimeInterface {
 
     /**
      * day()
-     * 
+     *
      * day() gets the day of the month of the DateTime.
      * @returns a number between 1 and 31
      */
@@ -25,7 +25,7 @@ export interface DateTimeInterface {
 
     /**
      * isAfter()
-     * 
+     *
      * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
      * @param suspect The suspect to be compared.
      */
@@ -34,7 +34,7 @@ export interface DateTimeInterface {
 
     /**
      * isBefore()
-     * 
+     *
      * isBefore() compares the instance to the suspect, to determine if the instance is before the suspect.
      * @param suspect The suspect to be compared to.
      */
@@ -43,7 +43,7 @@ export interface DateTimeInterface {
 
     /**
      * month()
-     * 
+     *
      * month() gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
      */
@@ -52,7 +52,7 @@ export interface DateTimeInterface {
 
     /**
      * subtract()
-     * 
+     *
      * subtract() subtracts a duration form the date time.
      * @param duration the duratin to subtract.
      */
@@ -61,7 +61,7 @@ export interface DateTimeInterface {
 
     /**
      * timezone()
-     * 
+     *
      * timezone() gets the timezone of the DateTime.
      */
 
@@ -69,16 +69,16 @@ export interface DateTimeInterface {
 
     /**
      * toTimezone()
-     * 
+     *
      * toTimezone() converts a DateTime to the specified Timezone.
-     * @param timezone 
+     * @param timezone
      */
 
     toTimezone(timezone: Timezone): DateTimeInterface;
 
     /**
      * toUtc()
-     * 
+     *
      * toUtc() converts a DateTime to UTC.
      */
 
@@ -86,7 +86,7 @@ export interface DateTimeInterface {
 
     /**
      * isoString()
-     * 
+     *
      * isoString() gets a UTC string for a DateTime.
      */
 
@@ -94,7 +94,7 @@ export interface DateTimeInterface {
 
     /**
      * value()
-     * 
+     *
      * value() gets the value of the DateTime.
      */
 
@@ -102,9 +102,9 @@ export interface DateTimeInterface {
 
     /**
      * year()
-     * 
+     *
      * year() gets the year portion of the DateTime.
-     * 
+     *
      * @returns number
      */
 

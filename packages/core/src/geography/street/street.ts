@@ -4,7 +4,7 @@ import { StreetException } from './../exceptions/street.exception';
 
 /**
  * Street
- * 
+ *
  * Street represents an address street.
  */
 
@@ -48,7 +48,7 @@ export class Street implements StreetInterface, Serializable, Equatable {
 
     /**
      * line1()
-     * 
+     *
      * line1() gets the line1 value of the street address.
      */
 
@@ -58,7 +58,7 @@ export class Street implements StreetInterface, Serializable, Equatable {
 
     /**
      * line2()
-     * 
+     *
      * line2() gets the line2 value of the street.
      */
 

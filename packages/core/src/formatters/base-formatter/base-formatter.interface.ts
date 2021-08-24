@@ -1,6 +1,6 @@
 /**
  * BaseFormatterInterface
- * 
+ *
  * The interface for the base formatter.
  */
 

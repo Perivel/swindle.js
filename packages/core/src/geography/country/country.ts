@@ -5,7 +5,7 @@ import { Equatable } from '../../common/common.module';
 
 /**
  * Country
- * 
+ *
  * Country represents a Country in the world.
  */
 
@@ -34,7 +34,7 @@ export class Country implements CountryInterface, Equatable {
 
     /**
      * code()
-     * 
+     *
      * code() gets the country code.
      */
 
@@ -44,7 +44,7 @@ export class Country implements CountryInterface, Equatable {
 
     /**
      * name()
-     * 
+     *
      * name() gets the country's common name.
      */
 
@@ -54,7 +54,7 @@ export class Country implements CountryInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the Country to the suspect to determine if they are equal.
      * @param suspect The suspect to be compared.
      */

@@ -4,7 +4,7 @@ import { RegionException } from '../exceptions/region.exception';
 
 /**
  * Region
- * 
+ *
  * Region represents an Address Region (a state or province).
  */
 
@@ -30,7 +30,7 @@ import { RegionException } from '../exceptions/region.exception';
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the suspect and the instance to determine if they are equal.
      * @param suspect the suspect to be compared.
      */
@@ -48,7 +48,7 @@ import { RegionException } from '../exceptions/region.exception';
 
     /**
      * name()
-     * 
+     *
      * name() gets the name of the region.
      */
 

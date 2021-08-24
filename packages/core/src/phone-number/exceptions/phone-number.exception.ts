@@ -2,7 +2,7 @@ import { InvalidArgumentException } from './../../common/common.module';
 
 /**
  * PhoneNumberException
- * 
+ *
  * Indicates an error with a Phone Number.
  */
 

@@ -4,7 +4,7 @@ import { LocalityInterface } from './locality.interface';
 
 /**
  * Locality
- * 
+ *
  * Locality represents an Address Locality, or a City or Town.
  */
 
@@ -48,7 +48,7 @@ import { LocalityInterface } from './locality.interface';
 
     /**
      * name()
-     * 
+     *
      * name() gets the locality name.
      */
 

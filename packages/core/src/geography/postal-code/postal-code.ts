@@ -4,7 +4,7 @@ import { PostalCodeException } from './../exceptions/postal-code.exception';
 
 /**
  * PostalCode
- * 
+ *
  * PostalCode represents an address Postal Code (or Zip Code)
  */
 
@@ -18,7 +18,7 @@ import { PostalCodeException } from './../exceptions/postal-code.exception';
      */
 
     constructor(value: string) {
-        
+
         if (value) {
             this._value = value;
         }
@@ -31,7 +31,7 @@ import { PostalCodeException } from './../exceptions/postal-code.exception';
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the PostalCode object to the suspect to determine if they are equal.
      * @param suspect The value being compared.
      */
@@ -57,7 +57,7 @@ import { PostalCodeException } from './../exceptions/postal-code.exception';
 
     /**
      * value()
-     * 
+     *
      * value() gets the postal code value.
      */
 

@@ -5,7 +5,7 @@ import { TimezoneException } from "./../exceptions/timezone.exception";
 
 /**
  * Timezone
- * 
+ *
  * Timezone represents a Timezone
  */
 
@@ -26,7 +26,7 @@ export class Timezone implements TimezoneInterface, Equatable {
 
     /**
      * FromId()
-     * 
+     *
      * FromeId() creates a Timezone from an Id.
      * @param id The Id of the timezone.
      */
@@ -45,7 +45,7 @@ export class Timezone implements TimezoneInterface, Equatable {
 
     /**
      * UTC()
-     * 
+     *
      * UTC() sets the timezone to UTC.
      */
 
@@ -56,7 +56,7 @@ export class Timezone implements TimezoneInterface, Equatable {
 
     /**
      * abbreviation()
-     * 
+     *
      * abbreviation() gets the timezone abbreviation()
      */
 
@@ -67,7 +67,7 @@ export class Timezone implements TimezoneInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the instnace to the suspect to determine if they are equal.
      * @param suspect the suspect to be compared.
      */
@@ -90,7 +90,7 @@ export class Timezone implements TimezoneInterface, Equatable {
 
     /**
      * id()
-     * 
+     *
      * id() gets the Olson timezone id.
      */
 
@@ -100,7 +100,7 @@ export class Timezone implements TimezoneInterface, Equatable {
 
     /**
      * utcOffset()
-     * 
+     *
      * utcOffset() gets the UTC offset of the timezone.
      */
 

@@ -1,7 +1,7 @@
 
 /**
  * RegionInterface
- * 
+ *
  * RegionInterface defines the interface for an address region.
  */
 
@@ -9,7 +9,7 @@
 
     /**
      * name()
-     * 
+     *
      * name() gets the region name.
      */
 

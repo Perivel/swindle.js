@@ -8,7 +8,7 @@ export interface TimezoneInterface {
 
     /**
      * id()
-     * 
+     *
      * id() gets the timezone id.
      */
 
@@ -16,8 +16,8 @@ export interface TimezoneInterface {
 
     /**
      * utcOffset()
-     * 
-     * utcOffset() gets the UTC offset. 
+     *
+     * utcOffset() gets the UTC offset.
      */
 
     utcOffset(): number;

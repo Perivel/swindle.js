@@ -8,15 +8,15 @@ import { Locality } from '../locality/locality';
 import { PostalCode } from '../postal-code/postal-code';
 import { Region } from '../region/region';
 import { Street } from '../street/street';
-import { 
-    Equatable, 
-    Serializable 
+import {
+    Equatable,
+    Serializable
 } from './../../common/common.module';
 import { StreetAddressInterface } from "./street-address.interface";
 
 /**
  * StreetAddress
- * 
+ *
  * StreetAddress represents a a physical street address.
  */
 
@@ -35,13 +35,13 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
      * @param region Region
      * @param postal_code PostalCode
      * @param country Country
-     * 
+     *
      * @throws StreetException when the street is invalid.
      * @throws LocalityException when the locality is invalid.
      * @throws RegionException when the the region is invalid.
      * @throws PostalCodeException when the postal code is invalid.
      * @throws CountryException when the country is invalid.
-     * 
+     *
      */
 
     constructor(street: Street, locality: Locality, region: Region, postal_code: PostalCode, country: Country) {
@@ -81,7 +81,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
      * FromPrimitives()
-     * 
+     *
      * creates a street address based on primitive values.
      * @param street_line_1 the street address line 1 value
      * @param street_line_2 street address line 2 value (optional)
@@ -90,9 +90,9 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
      * @param postal_code the zip code or postal code.
      * @param country_code the country code.
      * @returns a StreetAddress instance.
-     * 
+     *
      * @throws StreetException when the street is invalid.
-     * @throws LocalityException when the 
+     * @throws LocalityException when the
      */
 
     public static FromPrimitives(
@@ -113,7 +113,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
      * country()
-     * 
+     *
      * country() gets the address country.
      */
 
@@ -123,7 +123,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the StreetAddress instance to the suspect to determine if they are equal.
      * @param suspect the suspect being compared.
      */
@@ -147,7 +147,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
      * locality()
-     * 
+     *
      * locality() gets the address locality.
      */
 
@@ -157,7 +157,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
      * postalCode()
-     * 
+     *
      * postalCode() gets the address postal code.
      */
 
@@ -167,7 +167,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
     * region()
-    * 
+    *
     * region() gets the address region.
     */
 
@@ -187,7 +187,7 @@ export class StreetAddress implements StreetAddressInterface, Equatable, Seriali
 
     /**
      * street()
-     * 
+     *
      * street() gets the address street.
      */
 

@@ -3,7 +3,7 @@ import { BaseException } from './../../common/common.module';
 
 /**
  * DateException
- * 
+ *
  * DateException represents a generic date error.
  */
 

@@ -1,7 +1,7 @@
 
 /**
  * CoordinatesInterface
- * 
+ *
  * Specifies the requirements to represent geographic coordinates.
  */
 
@@ -9,7 +9,7 @@ export interface CoordinatesInterface {
 
     /**
      * latitude()
-     * 
+     *
      * latitude() gets the latitude.
      */
 
@@ -17,7 +17,7 @@ export interface CoordinatesInterface {
 
     /**
      * longitude()
-     * 
+     *
      * longitude() gets teh longitude.
      */
 

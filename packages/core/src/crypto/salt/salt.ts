@@ -4,7 +4,7 @@ import { SaltInterface } from './salt.interface';
 
 /**
  * Salt
- * 
+ *
  * Represents a salt.
  */
 
@@ -17,7 +17,7 @@ export class Salt implements Equatable, SaltInterface {
 
     /**
      * Generate()
-     * 
+     *
      * generates a salt.
      * @param rounds the number of rounds to use.
      * @returns a generated hash
@@ -29,7 +29,7 @@ export class Salt implements Equatable, SaltInterface {
 
     /**
      * equals()
-     * 
+     *
      * compares the suspect to the instance to determine if they are equal.
      * @param suspect the suspect to compare
      * @returns true if the suspect and the instance are equal
@@ -47,10 +47,10 @@ export class Salt implements Equatable, SaltInterface {
 
     /**
      * value()
-     * 
+     *
      * gets the value of the salt.
      */
-    
+
     public value(): string {
         return this._value;
     }

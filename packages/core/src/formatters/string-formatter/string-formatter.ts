@@ -15,7 +15,7 @@ import { StringFormatterInterface } from './string-formatter.interface';
 
 /**
  * StringFormatter
- * 
+ *
  * A utility class to format strings.
  */
 
@@ -27,9 +27,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * camelCase()
-     * 
+     *
      * converts an input into camel case.
-     * 
+     *
      * if the input is not a string type, camelCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in camel case format.
@@ -41,9 +41,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * capitalCase()
-     * 
+     *
      * converts an input into capital case.
-     * 
+     *
      * if the input is not a string type, capitalCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in capital case format.
@@ -55,9 +55,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * constantCase()
-     * 
+     *
      * converts an input into constant case.
-     * 
+     *
      * if the input is not a string type, constantCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in camel constant format.
@@ -69,9 +69,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * dotCase()
-     * 
+     *
      * converts an input into dot case.
-     * 
+     *
      * if the input is not a string type, dotCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in dot case format.
@@ -83,9 +83,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * headerCase()
-     * 
+     *
      * converts an input into header case.
-     * 
+     *
      * if the input is not a string type, headerCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in header case format.
@@ -97,9 +97,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * noCase()
-     * 
+     *
      * converts an input into no case.
-     * 
+     *
      * if the input is not a string type, noCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in no case format.
@@ -111,9 +111,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * paramCase()
-     * 
+     *
      * converts an input into param case.
-     * 
+     *
      * if the input is not a string type, paramCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in param case format.
@@ -125,9 +125,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * pascalCase()
-     * 
+     *
      * converts an input into pascal case.
-     * 
+     *
      * if the input is not a string type, pascalCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in pascal case format.
@@ -139,9 +139,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * pathCase()
-     * 
+     *
      * converts an input into path case.
-     * 
+     *
      * if the input is not a string type, pathCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in path case format.
@@ -153,9 +153,9 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * snakeCase()
-     * 
+     *
      * converts an input into snake case.
-     * 
+     *
      * if the input is not a string type, snakeCase() will attempt to convert it to a string.
      * @param input the input.
      * @returns The input in snake case format.
@@ -171,7 +171,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
 
     /**
      * castToString()
-     * 
+     *
      * casts the input to a string
      * @param input the input to cast.
      */

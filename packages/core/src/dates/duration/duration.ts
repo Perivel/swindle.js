@@ -7,12 +7,12 @@ import { DurationPeriod } from './duration-period.interface';
 
 /**
  * Duration
- * 
+ *
  * Duration represents a duration. A duration is a period in time, such as "1 day", "2 weeks", or "5 months".
  */
 
 export class Duration implements DurationInterface, Equatable {
-    
+
     private readonly luxonDuration: LuxonDuration;
 
     /**
@@ -23,14 +23,14 @@ export class Duration implements DurationInterface, Equatable {
 
     constructor({years = 0, quarters = 0, months = 0, weeks = 0, days = 0, hours = 0, minutes = 0, seconds = 0, miliseconds = 0}: DurationPeriod) {
         this.luxonDuration = LuxonDuration.fromObject({
-            years: years,
-            quarters: quarters,
-            months: months,
-            weeks: weeks,
-            days: days,
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
+            years,
+            quarters,
+            months,
+            weeks,
+            days,
+            hours,
+            minutes,
+            seconds,
             milliseconds: miliseconds,
             conversionAccuracy: "longterm",
         });
@@ -43,17 +43,17 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * FromDateTimeDifference()
-     * 
+     *
      * Creates a duration given the difference between the DateTime instances.
      * @param a the first date time
      * @param b the second date time
      * @returns a duration containing the difference between DateTimes a and b.
      */
-    
+
     public static FromDateTimeDifference(a: DateTime, b: DateTime): Duration {
         const luxA = LuxonDateTime.fromISO(a.toString());
         const luxB = LuxonDateTime.fromISO(b.toString());
-        let duration = a.isAfter(b) ? luxA.diff(luxB) : luxB.diff(luxA);
+        const duration = a.isAfter(b) ? luxA.diff(luxB) : luxB.diff(luxA);
         return new Duration({
             years: duration.years,
             quarters: duration.quarters,
@@ -66,10 +66,10 @@ export class Duration implements DurationInterface, Equatable {
             miliseconds: duration.milliseconds,
         });
     }
-    
+
     /**
      * days()
-     * 
+     *
      * gets the number of days in the duration.
      */
 
@@ -79,7 +79,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the instance to the suspect, to determine if they are equal.
      * @param suspect the suspect to compare.
      */
@@ -97,7 +97,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * hours()
-     * 
+     *
      * hours() gets the number of hours in the duration.
      */
 
@@ -107,7 +107,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inDays()
-     * 
+     *
      * inDays() converts the duration to days.
      */
 
@@ -117,7 +117,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inHours()
-     * 
+     *
      * inHours() converts the duration to hours.
      */
 
@@ -127,7 +127,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inMiliseconds()
-     * 
+     *
      * converts the duration to miliseconds.
      */
 
@@ -137,7 +137,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inMinutes()
-     * 
+     *
      * inMinutes() converts the duration to minutes.
      */
 
@@ -147,7 +147,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inMonths()
-     * 
+     *
      * inMonths() converts the duration to months.
      */
 
@@ -157,7 +157,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inQuarters()
-     * 
+     *
      * inQuarters() converts the duration to quarters.
      */
 
@@ -167,17 +167,17 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inSeconds()
-     * 
+     *
      * inSeconds() converts a duration to a second.
      */
-    
+
     public inSeconds(): number {
         return this.luxonDuration.as('seconds');
     }
 
     /**
      * inWeeks()
-     * 
+     *
      * inWeeks() converts the duration to weeks.
      */
 
@@ -187,7 +187,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * inYears()
-     * 
+     *
      * inYears() converts the duration to years.
      */
 
@@ -197,7 +197,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * miliseconds()
-     * 
+     *
      * miliseconds() gets the miliseconds of the duration.
      */
 
@@ -207,7 +207,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * minutes()
-     * 
+     *
      * minutes() gets the minutes of the duration.
      */
 
@@ -217,7 +217,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * months()
-     * 
+     *
      * months() gets the months of the duration.
      */
 
@@ -227,7 +227,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * quarters()
-     * 
+     *
      * quarters() gets the quarters in the duration.
      */
 
@@ -237,7 +237,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * seconds()
-     * 
+     *
      * seconds() gets the seconds of the duration.
      */
 
@@ -247,7 +247,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * weeks()
-     * 
+     *
      * weeks() gets the weeks.
      */
 
@@ -257,7 +257,7 @@ export class Duration implements DurationInterface, Equatable {
 
     /**
      * years()
-     * 
+     *
      * years() gets the years in the duration.
      */
 

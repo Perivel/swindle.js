@@ -1,6 +1,6 @@
 /**
  * CountryInterface
- * 
+ *
  * CountryInterface specifies functionalities for a country.
  */
 
@@ -8,7 +8,7 @@ export interface CountryInterface {
 
     /**
      * code()
-     * 
+     *
      * code() gets the country code.
      */
 
@@ -16,9 +16,9 @@ export interface CountryInterface {
 
     /**
      * name()
-     * 
+     *
      * name() gets the country's common name.
      */
 
-    name(): string; 
+    name(): string;
 }

@@ -1,6 +1,6 @@
 /**
  * Equaatable
- * 
+ *
  * THe Equatable Interface determines equality.
  */
 

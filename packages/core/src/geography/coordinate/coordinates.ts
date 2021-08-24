@@ -3,7 +3,7 @@ import { Equatable } from "../../common/common.module";
 
 /**
  * Coordinates
- * 
+ *
  * Coordinates represents a geographic longitude/latitude pair.
  */
 
@@ -19,7 +19,7 @@ export class Coordinates implements CoordinatesInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the suspect to the instance, to determine if they are equals.
      * @param suspect The suspect to compare.
      */
@@ -38,7 +38,7 @@ export class Coordinates implements CoordinatesInterface, Equatable {
 
     /**
      * latitude()
-     * 
+     *
      * latitude() gets the latitude.
      */
 
@@ -48,7 +48,7 @@ export class Coordinates implements CoordinatesInterface, Equatable {
 
     /**
      * longitude()
-     * 
+     *
      * longitude() gets teh longitude.
      */
 

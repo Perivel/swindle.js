@@ -1,15 +1,15 @@
 
 /**
  * DurationInterface
- * 
- * DurationInterface 
+ *
+ * DurationInterface
  */
 
 export interface DurationInterface {
-    
+
     /**
      * days()
-     * 
+     *
      * gets the number of days in the duration.
      */
 
@@ -17,7 +17,7 @@ export interface DurationInterface {
 
     /**
      * hours()
-     * 
+     *
      * hours() gets the number of hours in the duration.
      */
 
@@ -25,7 +25,7 @@ export interface DurationInterface {
 
     /**
      * inDays()
-     * 
+     *
      * inDays() converts the duration to days.
      */
 
@@ -33,7 +33,7 @@ export interface DurationInterface {
 
     /**
      * inHours()
-     * 
+     *
      * inHours() converts the duration to hours.
      */
 
@@ -41,7 +41,7 @@ export interface DurationInterface {
 
     /**
      * inMiliseconds()
-     * 
+     *
      * converts the duration to miliseconds.
      */
 
@@ -49,7 +49,7 @@ export interface DurationInterface {
 
     /**
      * inMinutes()
-     * 
+     *
      * inMinutes() converts the duration to minutes.
      */
 
@@ -57,23 +57,23 @@ export interface DurationInterface {
 
     /**
      * inMonths()
-     * 
+     *
      * inMonths() converts the duration to months.
      */
-    
+
     inMonths(): number;
 
     /**
      * inQuarters()
-     * 
+     *
      * inQuarters() converts the duration to quarters.
      */
-    
+
     inQuarters(): number;
 
     /**
      * inSeconds()
-     * 
+     *
      * inSeconds() converts a duration to a second.
      */
 
@@ -81,14 +81,14 @@ export interface DurationInterface {
 
     /**
      * inWeeks()
-     * 
+     *
      * inWeeks() converts the duration to weeks.
      */
     inWeeks(): number;
 
     /**
      * inYears()
-     * 
+     *
      * inYears() converts the duration to years.
      */
 
@@ -96,7 +96,7 @@ export interface DurationInterface {
 
     /**
      * miliseconds()
-     * 
+     *
      * miliseconds() gets the miliseconds of the duration.
      */
 
@@ -104,7 +104,7 @@ export interface DurationInterface {
 
     /**
      * minutes()
-     * 
+     *
      * minutes() gets the minutes of the duration.
      */
 
@@ -112,7 +112,7 @@ export interface DurationInterface {
 
     /**
      * months()
-     * 
+     *
      * months() gets the months of the duration.
      */
 
@@ -120,7 +120,7 @@ export interface DurationInterface {
 
     /**
      * quarters()
-     * 
+     *
      * quarters() gets the quarters in the duration.
      */
 
@@ -128,14 +128,14 @@ export interface DurationInterface {
 
     /**
      * seconds()
-     * 
+     *
      * seconds() gets the seconds of the duration.
      */
     seconds(): number;
 
     /**
      * weeks()
-     * 
+     *
      * weeks() gets the weeks.
      */
 
@@ -143,7 +143,7 @@ export interface DurationInterface {
 
     /**
      * years()
-     * 
+     *
      * years() gets the years in the duration.
      */
     years(): number;

@@ -4,7 +4,7 @@ import { EmailAddressException } from "./email-address.exception";
 
 /**
  * EmailAddress
- * 
+ *
  * EmailAddress provides functionality for handling email addresses.
  */
 
@@ -30,7 +30,7 @@ export class EmailAddress implements EmailInterface, Equatable {
 
     /**
      * email()
-     * 
+     *
      * email() gets the value of the email address.
      */
 
@@ -40,7 +40,7 @@ export class EmailAddress implements EmailInterface, Equatable {
 
     /**
      * equals()
-     * 
+     *
      * equals() compares the instance to the suspect, to determine if they are equal.
      * @param suspect The suspect to be compared.
      */
