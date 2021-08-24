@@ -600,7 +600,7 @@
   resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-1.27.1.tgz#aceeb2d5be8fccf541237e184e37ecff5faa9096"
   integrity sha512-cPiXpOvPFDr2edMnOXlz3UBDApwUfR+cpizvxCy0n3vp9bz/qe8BWzHPIEFcy+ogUOyjKuCISgyq77ELZPmkkg==
 
-"@types/node@*", "@types/node@^16.7.1":
+"@types/node@*", "@types/node@16.7.1", "@types/node@^16.7.1":
   version "16.7.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.1.tgz#c6b9198178da504dfca1fd0be9b2e1002f1586f0"
   integrity sha512-ncRdc45SoYJ2H4eWU9ReDfp3vtFqDYhjOsKlFFUDEn8V1Bgr2RjYal8YT5byfadWIRluhPFU6JiDOl0H6Sl87A==
@@ -2405,6 +2405,11 @@ process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
+
+promisify-child-process@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/promisify-child-process/-/promisify-child-process-4.1.1.tgz#290659e079f9c7bd46708404d4488a1a6b802686"
+  integrity sha512-/sRjHZwoXf1rJ+8s4oWjYjGRVKNK1DUnqfRC1Zek18pl0cN6k3yJ1cCbqd0tWNe4h0Gr+SY4vR42N33+T82WkA==
 
 prompts@^2.0.1:
   version "2.4.1"
