@@ -42,7 +42,7 @@ export declare class FileSystem {
     /**
      * CopyFile()
      *
-     * copies src to dest. By default, dest is overwritten if it already exists.
+     * copies source to destination. By default, destination is overwritten if it already exists.
      * @param source the path of the file to copy.
      * @param destination the destination to copy to.
      * @param createDirIfNotExists if true, the destination file's directory will be created if it does not exist. Defaults to false.
