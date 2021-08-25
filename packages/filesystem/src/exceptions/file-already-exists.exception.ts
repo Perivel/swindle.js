@@ -7,7 +7,7 @@ import { FileSystemException } from "./file-system.exception";
  */
 
 export class FileAlreadyExistsException extends FileSystemException {
-    constructor(message: string = "File Not Found") {
+    constructor(message: string = "File already exists.") {
         super(message);
     }
 }

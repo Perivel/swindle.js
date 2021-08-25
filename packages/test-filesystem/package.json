@@ -1,0 +1,22 @@
+{
+  "name": "test-filesystem",
+  "version": "1.0.0",
+  "description": "Runs some tests for the file system module.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Perivel/swindle",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@swindle/filesystem": "^1.0.0",
+    "@types/node": "16.7.1"
+  },
+  "engines": {
+    "node": ">=14.14"
+  }
+}

@@ -62,6 +62,8 @@ export declare class FileSystem {
      *
      * creates a file.
      * @param path the path of the file.
+     * @throws FileAlreadyExistsException when the file being created already exists.
+     * @throws FileSystemException when there is an error completing the operation.
      */
     static CreateFile(path: Path): Promise<void>;
     /**

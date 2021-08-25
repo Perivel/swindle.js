@@ -8,7 +8,7 @@ const file_system_exception_1 = require("./file-system.exception");
  * An Error indicating a File already exists.
  */
 class FileAlreadyExistsException extends file_system_exception_1.FileSystemException {
-    constructor(message = "File Not Found") {
+    constructor(message = "File already exists.") {
         super(message);
     }
 }

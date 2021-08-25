@@ -123,11 +123,15 @@ class FileSystem {
      *
      * creates a file.
      * @param path the path of the file.
+     * @throws FileAlreadyExistsException when the file being created already exists.
+     * @throws FileSystemException when there is an error completing the operation.
      */
     static async CreateFile(path) {
+        if (await FileSystem.ContainsFile(path)) {
+            throw new exceptions_well_1.FileAlreadyExistsException();
+        }
         try {
-            const handle = await NodeFS.open(path.toString(), constants_well_1.FileOpenFlag.READ_APPEND_FAIL_IF_EXISTS, constants_well_1.FileOpenMode.READONLY);
-            await handle.close();
+            await NodeFS.writeFile(path.toString(), "");
         }
         catch (e) {
             throw new exceptions_well_1.FileAlreadyExistsException();
