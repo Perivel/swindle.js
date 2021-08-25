@@ -1,0 +1,64 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Core Module",
+            "type": "shell",
+            "command": "yarn build",
+            "options": {
+                "cwd": "packages/core"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "group": "build",
+            "detail": "Buils the Core module.",
+            "promptOnClose": true
+        },
+        {
+            "label": "Build Structs Module",
+            "type": "shell",
+            "command": "yarn build",
+            "options": {
+                "cwd": "packages/structs"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "group": "build",
+            "detail": "Buils the Structs module.",
+            "promptOnClose": true
+        },
+        {
+            "label": "Build Filesystem Module",
+            "type": "shell",
+            "command": "yarn build",
+            "options": {
+                "cwd": "packages/filesystem"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "group": "build",
+            "detail": "Buils the filesystem module.",
+            "promptOnClose": true
+        }
+    ]
+}
