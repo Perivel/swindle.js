@@ -7,6 +7,7 @@ import {
     SymbolicLinkType
 } from "../constants/constants.well";
 import {
+    DirectoryNotFoundException,
     FileAlreadyExistsException,
     FileNotFoundException,
     FileSystemException
@@ -65,14 +66,14 @@ export class FileSystem {
     }
 
     /**
-     * ContainsFile()
+     * Contains()
      *
-     * Determines if a file exists in the given path.
-     * @param path The path to the file.
+     * Determines if a file or directory exists in the given path.
+     * @param path The path to the file or directory.
      * @returns TRUE if the file exists. FALSE otherwise.
      */
 
-    public static async ContainsFile(path: Path): Promise<boolean> {
+    public static async Contains(path: Path): Promise<boolean> {
         try {
             await FileSystem.Access(path);
             return true;
@@ -88,11 +89,32 @@ export class FileSystem {
      * copies src to dest. By default, dest is overwritten if it already exists.
      * @param source the path of the file to copy.
      * @param destination the destination to copy to.
+     * @param createDirIfNotExists if true, the destination file's directory will be created if it does not exist. Defaults to false.
      * @param mode Optional modifiers that specify the behavior of the copy operation.
      * @throws FileSystemException when there is an error completing the operation.
+     * @throws FileNotFoundException if the source path does not exist.
      */
 
-    public static async CopyFile(source: Path, destination: Path, mode: FileCopyMode|null = null): Promise<void> {
+    public static async CopyFile(source: Path, destination: Path, createDirIfNotExists: boolean = false, mode: FileCopyMode|null = null): Promise<void> {
+        // make sure the file exists.
+        if (!await FileSystem.Contains(source)) {
+            throw new FileNotFoundException();
+        }
+
+        // check if the directory exists 
+        const destinationDirectory = destination.dirname();
+        const destinationDirExists = await FileSystem.Contains(destinationDirectory);
+
+        if (!destinationDirExists && createDirIfNotExists) {
+            // create te directory.
+            await FileSystem.CreateDirectory(destinationDirectory); 
+        }
+        else {
+            // throw an error.
+            throw new DirectoryNotFoundException("Destination Directory not found.");
+        }
+
+        // copy the file.
         try {
             const mod = mode !== null ? mode : 0;
             await NodeFS.copyFile(source.toString(), destination.toString(), mod);
@@ -103,7 +125,7 @@ export class FileSystem {
     }
 
     /**
-     * createDirectory()
+     * CreateDirectory()
      *
      * creates a directory.
      * @param path the path of the directory to create.
@@ -126,16 +148,32 @@ export class FileSystem {
      *
      * creates a file.
      * @param path the path of the file.
+     * @param createDirIfNotExists if true, the destination file's directory will be created if it does not exist. Defaults to false.
      * @throws FileAlreadyExistsException when the file being created already exists.
+     * @throws DirectoryNotFoundException when the file directory does not exist.
      * @throws FileSystemException when there is an error completing the operation.
      */
 
-    public static async CreateFile(path: Path): Promise<void> {
-
-        if (await FileSystem.ContainsFile(path)) {
+    public static async CreateFile(path: Path, createDirectoryIfNotExists: boolean = false): Promise<void> {
+        // make sure the path is available.
+        if (await FileSystem.Contains(path)) {
             throw new FileAlreadyExistsException();
         }
 
+        // make sure the directory exists.
+        const pathDir = path.dirname();
+        const directoryExists = await FileSystem.Contains(pathDir);
+
+        if (!directoryExists && createDirectoryIfNotExists) {
+            // create the path directory.
+            await FileSystem.CreateDirectory(pathDir);
+        }
+        else {
+            // throw an error.
+            throw new DirectoryNotFoundException();
+        }
+
+        // create the file.
         try {
             await NodeFS.writeFile(path.toString(), "");
         }
@@ -184,6 +222,29 @@ export class FileSystem {
     }
 
     /**
+     * Delete()
+     *
+     * Delete a file or directory specified by path.
+     * @param path the path to the file or directory to delete.
+     * @param force When true, exceptions will be ignored if path does not exist. Defaults to false.
+     * @param recursive If true, perform a recursive directory removal. In recursive mode, operations are retried on failure.
+     * Defaults to false.
+     * @throws FileSystemException when an error occurs completing the operation.
+     */
+
+    public static async Delete(path: Path, recursive: boolean = false, force: boolean = false): Promise<void> {
+        try {
+            await NodeFS.rm(path.toString(), {
+                force,
+                recursive,
+            });
+        }
+        catch (e) {
+            throw new FileSystemException((e as Error).message);
+        }
+    }
+
+    /**
      * Open()
      *
      * opens a file.
@@ -199,7 +260,7 @@ export class FileSystem {
 
     public static async Open(path: Path, flag: FileOpenFlag = FileOpenFlag.READ_WRITE, mode: FileOpenMode = FileOpenMode.READWRITE, encoding: BufferEncoding = "utf8"): Promise<File> {
 
-        if (!await FileSystem.ContainsFile(path)) {
+        if (!await FileSystem.Contains(path)) {
             throw new FileNotFoundException();
         }
 
@@ -225,29 +286,6 @@ export class FileSystem {
     public static async Rename(oldPath: Path, newPath: Path): Promise<void> {
         try {
             await NodeFS.rename(oldPath.toString(), newPath.toString());
-        }
-        catch(e) {
-            throw new FileSystemException((e as Error).message);
-        }
-    }
-
-    /**
-     * Remove()
-     *
-     * Removes files and directories
-     * @param path the path to the file or directory to delete.
-     * @param force When true, exceptions will be ignored if path does not exist. Defaults to false.
-     * @param recursive If true, perform a recursive directory removal. In recursive mode, operations are retried on failure.
-     * Defaults to false.
-     * @throws FileSystemException when an error occurs completing the operation.
-     */
-
-    public static async Remove(path: Path, recursive: boolean = false, force: boolean = false): Promise<void> {
-        try {
-            await NodeFS.rm(path.toString(), {
-                force,
-                recursive,
-            });
         }
         catch(e) {
             throw new FileSystemException((e as Error).message);

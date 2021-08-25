@@ -16,7 +16,7 @@ export class Path implements PathInterface {
         if (!value) {
             throw new InvalidArgumentException("Invalid Path");
         }
-        this._value = value.trim();
+        this._value = value.trim().replace(/\\|\//g, NodePath.sep);
     }
 
     /**
@@ -42,9 +42,10 @@ export class Path implements PathInterface {
      * @throws InvalidArgumentException when the segments are invalid.
      */
 
-    public static FromSegments(...segments: string[]): Path {
+    public static FromSegments(...segments: Array<string|Path>): Path {
         if (segments.length !== 0) {
-            return new Path(NodePath.resolve(...segments));
+            const sanitizedSegments = segments.map(seg => seg instanceof Path ? seg.toString() : seg);
+            return new Path(NodePath.resolve(...sanitizedSegments));
         }
         else {
             throw new InvalidArgumentException("Invalid Path segments.");

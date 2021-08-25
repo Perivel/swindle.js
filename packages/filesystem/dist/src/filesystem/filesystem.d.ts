@@ -32,25 +32,27 @@ export declare class FileSystem {
      */
     static ChangeSymbolicLinkOwner(path: Path, uid: number, gid: number): Promise<void>;
     /**
-     * ContainsFile()
+     * Contains()
      *
-     * Determines if a file exists in the given path.
-     * @param path The path to the file.
+     * Determines if a file or directory exists in the given path.
+     * @param path The path to the file or directory.
      * @returns TRUE if the file exists. FALSE otherwise.
      */
-    static ContainsFile(path: Path): Promise<boolean>;
+    static Contains(path: Path): Promise<boolean>;
     /**
      * CopyFile()
      *
      * copies src to dest. By default, dest is overwritten if it already exists.
      * @param source the path of the file to copy.
      * @param destination the destination to copy to.
+     * @param createDirIfNotExists if true, the destination file's directory will be created if it does not exist. Defaults to false.
      * @param mode Optional modifiers that specify the behavior of the copy operation.
      * @throws FileSystemException when there is an error completing the operation.
+     * @throws FileNotFoundException if the source path does not exist.
      */
-    static CopyFile(source: Path, destination: Path, mode?: FileCopyMode | null): Promise<void>;
+    static CopyFile(source: Path, destination: Path, createDirIfNotExists?: boolean, mode?: FileCopyMode | null): Promise<void>;
     /**
-     * createDirectory()
+     * CreateDirectory()
      *
      * creates a directory.
      * @param path the path of the directory to create.
@@ -62,10 +64,12 @@ export declare class FileSystem {
      *
      * creates a file.
      * @param path the path of the file.
+     * @param createDirIfNotExists if true, the destination file's directory will be created if it does not exist. Defaults to false.
      * @throws FileAlreadyExistsException when the file being created already exists.
+     * @throws DirectoryNotFoundException when the file directory does not exist.
      * @throws FileSystemException when there is an error completing the operation.
      */
-    static CreateFile(path: Path): Promise<void>;
+    static CreateFile(path: Path, createDirectoryIfNotExists?: boolean): Promise<void>;
     /**
      * CreateLink()
      *
@@ -89,6 +93,17 @@ export declare class FileSystem {
      */
     static CreateSymbolicLink(target: Path, path: Path, type?: SymbolicLinkType): Promise<void>;
     /**
+     * Delete()
+     *
+     * Delete a file or directory specified by path.
+     * @param path the path to the file or directory to delete.
+     * @param force When true, exceptions will be ignored if path does not exist. Defaults to false.
+     * @param recursive If true, perform a recursive directory removal. In recursive mode, operations are retried on failure.
+     * Defaults to false.
+     * @throws FileSystemException when an error occurs completing the operation.
+     */
+    static Delete(path: Path, recursive?: boolean, force?: boolean): Promise<void>;
+    /**
      * Open()
      *
      * opens a file.
@@ -111,17 +126,6 @@ export declare class FileSystem {
      * @throws FileSystemException when there is an error completing the operation.
      */
     static Rename(oldPath: Path, newPath: Path): Promise<void>;
-    /**
-     * Remove()
-     *
-     * Removes files and directories
-     * @param path the path to the file or directory to delete.
-     * @param force When true, exceptions will be ignored if path does not exist. Defaults to false.
-     * @param recursive If true, perform a recursive directory removal. In recursive mode, operations are retried on failure.
-     * Defaults to false.
-     * @throws FileSystemException when an error occurs completing the operation.
-     */
-    static Remove(path: Path, recursive?: boolean, force?: boolean): Promise<void>;
     /**
      * RemoveSymbolicLink()
      *

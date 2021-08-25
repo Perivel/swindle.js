@@ -32,7 +32,7 @@ class Path {
         if (!value) {
             throw new core_1.InvalidArgumentException("Invalid Path");
         }
-        this._value = value.trim();
+        this._value = value.trim().replace(/\\|\//g, NodePath.sep);
     }
     /**
      * Delimiter()
@@ -56,7 +56,8 @@ class Path {
      */
     static FromSegments(...segments) {
         if (segments.length !== 0) {
-            return new Path(NodePath.resolve(...segments));
+            const sanitizedSegments = segments.map(seg => seg instanceof Path ? seg.toString() : seg);
+            return new Path(NodePath.resolve(...sanitizedSegments));
         }
         else {
             throw new core_1.InvalidArgumentException("Invalid Path segments.");

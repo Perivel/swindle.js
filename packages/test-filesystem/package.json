@@ -10,11 +10,15 @@
   "scripts": {
     "build": "tsc",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'",
-    "start": "node dist/index.js"
+    "start": "yarn clean-output && node dist/index.js",
+    "clean-output": "rimraf my-files/" 
   },
   "dependencies": {
     "@swindle/filesystem": "^1.0.0",
     "@types/node": "16.7.1"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   },
   "engines": {
     "node": ">=14.14"

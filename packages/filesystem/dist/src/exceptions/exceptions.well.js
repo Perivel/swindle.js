@@ -15,4 +15,5 @@ __exportStar(require("./file-system.exception"), exports);
 __exportStar(require("./file.exception"), exports);
 __exportStar(require("./file-not-found.exception"), exports);
 __exportStar(require("./file-already-exists.exception"), exports);
+__exportStar(require("./directory-not-found.exception"), exports);
 //# sourceMappingURL=exceptions.well.js.map

@@ -25,7 +25,7 @@ export declare class Path implements PathInterface {
      * @returns the generated Path
      * @throws InvalidArgumentException when the segments are invalid.
      */
-    static FromSegments(...segments: string[]): Path;
+    static FromSegments(...segments: Array<string | Path>): Path;
     /**
      * Separator()
      *
