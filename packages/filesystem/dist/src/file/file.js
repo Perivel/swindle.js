@@ -185,7 +185,14 @@ class File {
                 atime: core_1.DateTime.FromDate(stats.atime, core_1.Timezone.UTC()),
                 mtime: core_1.DateTime.FromDate(stats.mtime, core_1.Timezone.UTC()),
                 ctime: core_1.DateTime.FromDate(stats.ctime, core_1.Timezone.UTC()),
-                birthtime: core_1.DateTime.FromDate(stats.birthtime, core_1.Timezone.UTC())
+                birthtime: core_1.DateTime.FromDate(stats.birthtime, core_1.Timezone.UTC()),
+                isBlockDevice: stats.isBlockDevice(),
+                isCharacterDevice: stats.isCharacterDevice(),
+                isDirectory: stats.isDirectory(),
+                isFIFO: stats.isFIFO(),
+                isFile: stats.isFile(),
+                isSocket: stats.isSocket(),
+                isSymbolicLink: stats.isSymbolicLink()
             };
         }
         catch (e) {

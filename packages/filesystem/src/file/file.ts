@@ -216,7 +216,14 @@ export class File implements FileInterface {
                 atime: DateTime.FromDate(stats.atime, Timezone.UTC()),
                 mtime: DateTime.FromDate(stats.mtime, Timezone.UTC()),
                 ctime: DateTime.FromDate(stats.ctime, Timezone.UTC()),
-                birthtime: DateTime.FromDate(stats.birthtime, Timezone.UTC())
+                birthtime: DateTime.FromDate(stats.birthtime, Timezone.UTC()),
+                isBlockDevice: stats.isBlockDevice(),
+                isCharacterDevice: stats.isCharacterDevice(),
+                isDirectory: stats.isDirectory(),
+                isFIFO: stats.isFIFO(),
+                isFile: stats.isFile(),
+                isSocket: stats.isSocket(),
+                isSymbolicLink: stats.isSymbolicLink()
             }
         }
         catch(e) {

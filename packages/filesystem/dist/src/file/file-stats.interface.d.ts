@@ -21,5 +21,12 @@ export interface FileStats {
     mtime: DateTime;
     ctime: DateTime;
     birthtime: DateTime;
+    isBlockDevice: boolean;
+    isCharacterDevice: boolean;
+    isDirectory: boolean;
+    isFIFO: boolean;
+    isFile: boolean;
+    isSocket: boolean;
+    isSymbolicLink: boolean;
 }
 //# sourceMappingURL=file-stats.interface.d.ts.map

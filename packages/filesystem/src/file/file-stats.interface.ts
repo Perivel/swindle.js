@@ -22,5 +22,12 @@ export interface FileStats {
     atime: DateTime,
     mtime: DateTime,
     ctime: DateTime,
-    birthtime: DateTime
+    birthtime: DateTime,
+    isBlockDevice: boolean,
+    isCharacterDevice: boolean,
+    isDirectory: boolean,
+    isFIFO: boolean,
+    isFile: boolean,
+    isSocket: boolean,
+    isSymbolicLink: boolean
 }
