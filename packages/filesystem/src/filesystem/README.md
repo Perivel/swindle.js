@@ -8,11 +8,12 @@ The FileSystem constructor is private, and instead exposes a variety of static m
 ## Arguments
 | **Name** | **Type** | **Required** | **Description** |
 | ----------- | ----------- | ----------- | ----------- |
+
 The `FileSystem` constructor does not take any arguments.
 
 # Static Methods
 | **Method** | **Arguments** | **Return Type** | **Description** | **Exceptions** |
-| ----------- | ----------- | ----------- | ----------- |
+| ----------- | ----------- | ----------- | ----------- | ----------- | 
 | Access() | ([Path](./../path/README.md)) path, ([FileAccessMode](../constants/FILEACCESSMODE.md)) mode | Promise (void) | Tests a user's permissions for the file or directory specified by path. The mode argument is an optional integer that specifies the accessibility checks to be performed. If the accessibility check is successful, the promise is resolved with no value. If any of the accessibility checks fail, a FileSystemException is thrown, | FileSystemException when you do not have permissions. |
 | ChangeSymbolicLinkOwner() | ([Path](./../path/README.md)) path, (number) uid, (number) gid | Promise (void) | Changes the ownership on a symbolic link. | FileSystemException when the operation fails. |
 | Contains() | ([Path](./../path/README.md)) path | Determines if a file or directory exists in the given path. | N/A |
@@ -24,4 +25,5 @@ The `FileSystem` constructor does not take any arguments.
 # Methodds
 | **Method** | **Arguments** | **Return Type** | **Description** |
 | ----------- | ----------- | ----------- | ----------- |
+
 None
