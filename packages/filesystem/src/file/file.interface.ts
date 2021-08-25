@@ -9,7 +9,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * append()
-     * 
+     *
      * writes data to a file, replacing the file if it already exists.
      * @param data The data to append.
      */
@@ -18,7 +18,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * chmod()
-     * 
+     *
      * Modifies the permissions on the file
      * @param mode the mode to set.
      */
@@ -27,7 +27,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * chown()
-     * 
+     *
      * changes the ownership of the file
      * @param uid The file's new user id.
      * @param gid the file's new group id.
@@ -37,7 +37,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * close()
-     * 
+     *
      * closes the file after waiting for any pending operations to complete.
      */
 
@@ -45,8 +45,8 @@ export interface FileInterface extends Equatable {
 
     /**
      * datasync()
-     * 
-     * forces all currently queued I/O operations associated with the file to the 
+     *
+     * forces all currently queued I/O operations associated with the file to the
      * operating system's synchronized I/O completion state.
      */
 
@@ -54,7 +54,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * decryptor()
-     * 
+     *
      * gets numeric file descriptor
      */
 
@@ -62,7 +62,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * encoding()
-     * 
+     *
      * gets the file encoding.
      * @returns the file encoding.
      */
@@ -71,11 +71,11 @@ export interface FileInterface extends Equatable {
 
     /**
      * read()
-     * 
+     *
      * Reads data from the file
-     * @param length The number of bytes to read. 
-     * @param position The location where to begin reading data from the file. If null, 
-     * data will be read from the current file position, and the position will be updated. 
+     * @param length The number of bytes to read.
+     * @param position The location where to begin reading data from the file. If null,
+     * data will be read from the current file position, and the position will be updated.
      * If position is an integer, the current file position will remain unchanged.
      * @returns the file contents.
      */
@@ -84,7 +84,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * readAll()
-     * 
+     *
      * reads the entire contents of a file
      */
 
@@ -92,7 +92,7 @@ export interface FileInterface extends Equatable {
 
     /**
      * stats()
-     * 
+     *
      * gets the stats for the file.
      * @param bigInt Whether the numeric values in the stat should use BigInt
      */
@@ -101,15 +101,15 @@ export interface FileInterface extends Equatable {
 
     /**
      * sync()
-     * 
+     *
      * request that all data for the open file descriptor is flushed to the storage device.
      */
-    
+
     sync(): Promise<void>;
 
     /**
      * utimes()
-     * 
+     *
      * change the file system timestamps
      */
 
@@ -117,22 +117,22 @@ export interface FileInterface extends Equatable {
 
     /**
      * writeBuffer()
-     * 
+     *
      * writes the bufer to the file.
      * @param buffer the data to write.
      * @param offset the start position from within buffer where the data to write begins
      * @param length the number of bytes from buffer to write
      * @param position the offset from the beginning of the file where the data from buffer should be written
      */
-    
+
     writeBuffer(buffer: Buffer, offset: number, length: number, position: number|null): Promise<void>;
 
     /**
      * writeString()
-     * 
+     *
      * writes the string data to a file.
      * @param datathe data to write.
-     * @param position  the offset from the beginning of the file where the data from string should 
+     * @param position  the offset from the beginning of the file where the data from string should
      * be written
      */
 

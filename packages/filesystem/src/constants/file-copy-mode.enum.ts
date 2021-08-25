@@ -12,11 +12,11 @@ export enum FileCopyMode {
     */
     EXCL = constants.COPYFILE_EXCL,
 
-    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying 
+    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying
     // platform does not support copy-on-write, then a fallback copy mechanism is used.
     FICLONE = constants.COPYFILE_FICLONE,
 
-    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform 
+    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform
     // does not support copy-on-write, then the operation will fail with an error.
     FICLONE_FORCE = constants.COPYFILE_FICLONE_FORCE,
 }

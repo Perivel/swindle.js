@@ -2,7 +2,7 @@ import { FileSystemException } from "./file-system.exception";
 
 /**
  * FileAlreadyExistsException
- * 
+ *
  * An Error indicating a File already exists.
  */
 

@@ -12,10 +12,10 @@ var FileCopyMode;
      * COPYFILE_EXCL = constants.COPYFILE_EXCL,
     */
     FileCopyMode[FileCopyMode["EXCL"] = fs_1.constants.COPYFILE_EXCL] = "EXCL";
-    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying 
+    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying
     // platform does not support copy-on-write, then a fallback copy mechanism is used.
     FileCopyMode[FileCopyMode["FICLONE"] = fs_1.constants.COPYFILE_FICLONE] = "FICLONE";
-    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform 
+    // If present, the copy operation will attempt to create a copy-on-write reflink. If the underlying platform
     // does not support copy-on-write, then the operation will fail with an error.
     FileCopyMode[FileCopyMode["FICLONE_FORCE"] = fs_1.constants.COPYFILE_FICLONE_FORCE] = "FICLONE_FORCE";
 })(FileCopyMode = exports.FileCopyMode || (exports.FileCopyMode = {}));

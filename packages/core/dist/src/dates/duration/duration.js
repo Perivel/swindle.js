@@ -16,14 +16,14 @@ class Duration {
      */
     constructor({ years = 0, quarters = 0, months = 0, weeks = 0, days = 0, hours = 0, minutes = 0, seconds = 0, miliseconds = 0 }) {
         this.luxonDuration = luxon_1.Duration.fromObject({
-            years: years,
-            quarters: quarters,
-            months: months,
-            weeks: weeks,
-            days: days,
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
+            years,
+            quarters,
+            months,
+            weeks,
+            days,
+            hours,
+            minutes,
+            seconds,
             milliseconds: miliseconds,
             conversionAccuracy: "longterm",
         });
@@ -43,7 +43,7 @@ class Duration {
     static FromDateTimeDifference(a, b) {
         const luxA = luxon_1.DateTime.fromISO(a.toString());
         const luxB = luxon_1.DateTime.fromISO(b.toString());
-        let duration = a.isAfter(b) ? luxA.diff(luxB) : luxB.diff(luxA);
+        const duration = a.isAfter(b) ? luxA.diff(luxB) : luxB.diff(luxA);
         return new Duration({
             years: duration.years,
             quarters: duration.quarters,

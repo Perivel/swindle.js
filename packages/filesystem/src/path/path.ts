@@ -4,7 +4,7 @@ import { PathInterface } from './path.interface';
 
 /**
  * Path
- * 
+ *
  * A utility class for working with file and directory paths
  */
 
@@ -21,11 +21,11 @@ export class Path implements PathInterface {
 
     /**
      * Delimiter()
-     * 
+     *
      * Provides the platform-specific path delimiter.
      * - Windows: ";"
      * -POSIX: ":"
-     * 
+     *
      * @returns the platform speciic path delimiter.
      */
 
@@ -35,7 +35,7 @@ export class Path implements PathInterface {
 
     /**
      * FromSegments()
-     * 
+     *
      * Creates a Path from one or more segments.
      * @param segments the segnents of the path to create.
      * @returns the generated Path
@@ -53,11 +53,11 @@ export class Path implements PathInterface {
 
     /**
      * Separator()
-     * 
+     *
      * gets he platform-specific path segment separator.
      * - Windows: \
      * - POSIX: /
-     * @returns 
+     * @returns
      */
 
     public static Separator(): string {
@@ -66,7 +66,7 @@ export class Path implements PathInterface {
 
     /**
      * basename()
-     * 
+     *
      * gets the last portion of the path.
      */
 
@@ -76,7 +76,7 @@ export class Path implements PathInterface {
 
     /**
      * dirname()
-     * 
+     *
      * gets the directory name of the path.
      */
 
@@ -97,43 +97,43 @@ export class Path implements PathInterface {
 
     /**
      * extension()
-     * 
+     *
      * gets the extension of the path.
      */
-    
+
     public extension(): string {
         return NodePath.extname(this.toString());
      }
 
      /**
      * isAbsolute()
-     * 
+     *
      * determines if path is an absolute path
      */
-    
+
     public isAbsolute(): boolean {
         return NodePath.isAbsolute(this.toString());
     }
 
     /**
      * normalize()
-     * 
+     *
      * normalizes the given path, resolving '..' and '.' segments.
      */
-    
+
     public normalize(): Path {
         return new Path(NodePath.normalize(this.toString()));
     }
 
     /**
      * toNamespacedPath()
-     * 
-     * gets an equivalent namespace-prefixed path. 
-     * 
-     * This method is meaningful only on Windows systems. On POSIX systems, 
+     *
+     * gets an equivalent namespace-prefixed path.
+     *
+     * This method is meaningful only on Windows systems. On POSIX systems,
      * the method is non-operational and always returns path without modifications.
      */
-    
+
     public toNamespacedPath(): Path {
         return new Path(NodePath.toNamespacedPath(this.toString()));
     }

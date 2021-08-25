@@ -99,7 +99,7 @@ class File {
         return this._handle.fd;
     }
     equals(suspect) {
-        let isEqual = false;
+        const isEqual = false;
         if (suspect instanceof File) {
             const other = suspect;
             this.decryptor() === other.decryptor();
@@ -129,8 +129,8 @@ class File {
     async read(length, position) {
         try {
             const contents = await this._handle.read({
-                length: length,
-                position: position
+                length,
+                position
             });
             return contents.buffer.toString(this.encoding());
         }

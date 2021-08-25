@@ -16,8 +16,8 @@ class DateTime {
      */
     constructor(year, month, date, hours = 0, minutes = 0, seconds = 0, ms = 0, timezone = geography_module_1.Timezone.UTC()) {
         this.date = luxon_1.DateTime.fromObject({
-            year: year,
-            month: month,
+            year,
+            month,
             day: date,
             hour: hours,
             minute: minutes,

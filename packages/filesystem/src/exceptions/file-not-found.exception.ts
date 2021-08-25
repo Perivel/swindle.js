@@ -2,7 +2,7 @@ import { FileSystemException } from "./file-system.exception";
 
 /**
  * FileNotFoundException
- * 
+ *
  * An Error indicating a File was not Found.
  */
 

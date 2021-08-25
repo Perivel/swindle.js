@@ -2,7 +2,7 @@ import { constants } from "fs";
 
 /**
  * FileType
- * 
+ *
  * Constants for determining file type.
  */
 

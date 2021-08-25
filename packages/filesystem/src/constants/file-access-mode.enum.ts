@@ -7,8 +7,8 @@ import { constants } from 'fs';
 export enum FileAccessMode {
 
     /**
-     * Flag indicating that the file is visible to the calling 
-     * process. This is useful for determining if a file exists, but 
+     * Flag indicating that the file is visible to the calling
+     * process. This is useful for determining if a file exists, but
      * says nothing about rwx permissions.
      */
 

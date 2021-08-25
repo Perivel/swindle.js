@@ -1,7 +1,7 @@
 
 /**
  * FileOpenFlag
- * 
+ *
  * Flag constants for opening files.
  */
 

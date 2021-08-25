@@ -1,22 +1,22 @@
 import * as NodeFS from "fs/promises";
-import { 
+import {
     FileAccessMode,
     FileCopyMode,
     FileOpenFlag,
     FileOpenMode,
     SymbolicLinkType
 } from "../constants/constants.well";
-import { 
+import {
     FileAlreadyExistsException,
-    FileNotFoundException, 
-    FileSystemException 
+    FileNotFoundException,
+    FileSystemException
 } from "../exceptions/exceptions.well";
 import { Path } from "./../path/path";
 import { File } from "./../file/file";
 
 /**
  * FileSystem
- * 
+ *
  * A class abstracting FileSystem operations.
  */
 
@@ -26,11 +26,11 @@ export class FileSystem {
 
     /**
      * Access()
-     * 
-     * Tests a user's permissions for the file or directory specified by path. The mode argument is an optional 
+     *
+     * Tests a user's permissions for the file or directory specified by path. The mode argument is an optional
      * integer that specifies the accessibility checks to be performed.
-     * 
-     * If the accessibility check is successful, the promise is resolved with no value. If any of the accessibility 
+     *
+     * If the accessibility check is successful, the promise is resolved with no value. If any of the accessibility
      * checks fail, a FileSystemException is thrown,
      * @param path The path to test.
      * @param mode the mode.
@@ -47,7 +47,7 @@ export class FileSystem {
 
     /**
      * ChangeSymbolicLinkOwner()
-     * 
+     *
      * Changes the ownership on a symbolic link.
      * @param path the path
      * @param uid the user id
@@ -66,7 +66,7 @@ export class FileSystem {
 
     /**
      * ContainsFile()
-     * 
+     *
      * Determines if a file exists in the given path.
      * @param path The path to the file.
      * @returns TRUE if the file exists. FALSE otherwise.
@@ -84,7 +84,7 @@ export class FileSystem {
 
     /**
      * CopyFile()
-     * 
+     *
      * copies src to dest. By default, dest is overwritten if it already exists.
      * @param source the path of the file to copy.
      * @param destination the destination to copy to.
@@ -104,7 +104,7 @@ export class FileSystem {
 
     /**
      * createDirectory()
-     * 
+     *
      * creates a directory.
      * @param path the path of the directory to create.
      * @throws FileSystemException when there is an error completing the operation
@@ -123,13 +123,13 @@ export class FileSystem {
 
     /**
      * CreateFile()
-     * 
+     *
      * creates a file.
      * @param path the path of the file.
      */
 
     public static async CreateFile(path: Path): Promise<void> {
-        
+
         try {
             const handle = await NodeFS.open(path.toString(), FileOpenFlag.READ_APPEND_FAIL_IF_EXISTS, FileOpenMode.READONLY);
             await handle.close();
@@ -141,7 +141,7 @@ export class FileSystem {
 
     /**
      * CreateLink()
-     * 
+     *
      * Creates a new (hard) link from the existingPath to the newPath.
      * @param existingPath the existing path from which to create the new link form.
      * @param newPath the new path.
@@ -159,10 +159,10 @@ export class FileSystem {
 
     /**
      * CreateSymbolicLink()
-     * 
-     * The type argument is only used on Windows platforms and can be one of 'dir', 'file', 
-     * or 'junction'. Windows junction points require the destination path to be absolute. 
-     * When using 'junction', the target argument will automatically be normalized to absolute 
+     *
+     * The type argument is only used on Windows platforms and can be one of 'dir', 'file',
+     * or 'junction'. Windows junction points require the destination path to be absolute.
+     * When using 'junction', the target argument will automatically be normalized to absolute
      * path.
      * @param target the target.
      * @param path the path of the symlink.
@@ -180,7 +180,7 @@ export class FileSystem {
 
     /**
      * Open()
-     * 
+     *
      * opens a file.
      * @note Do not forget to close the file with file.close() when you are finished working with it to prevent memory leaks
      * and other unexpected behaviors.
@@ -189,11 +189,11 @@ export class FileSystem {
      * @param mode the mode to use.
      * @param encoding the file encoding. Defualts to UTF8.
      * @returns The opened file.
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException
      */
 
     public static async Open(path: Path, flag: FileOpenFlag = FileOpenFlag.READ_WRITE, mode: FileOpenMode = FileOpenMode.READWRITE, encoding: BufferEncoding = "utf8"): Promise<File> {
-        
+
         if (!await FileSystem.ContainsFile(path)) {
             throw new FileNotFoundException();
         }
@@ -210,7 +210,7 @@ export class FileSystem {
 
     /**
      * Rename()
-     * 
+     *
      * Renames the oldPath to the newPath.
      * @param oldPath the original path
      * @param newPath the new path.
@@ -228,7 +228,7 @@ export class FileSystem {
 
     /**
      * Remove()
-     * 
+     *
      * Removes files and directories
      * @param path the path to the file or directory to delete.
      * @param force When true, exceptions will be ignored if path does not exist. Defaults to false.
@@ -240,8 +240,8 @@ export class FileSystem {
     public static async Remove(path: Path, recursive: boolean = false, force: boolean = false): Promise<void> {
         try {
             await NodeFS.rm(path.toString(), {
-                force: force,
-                recursive: recursive,
+                force,
+                recursive,
             });
         }
         catch(e) {
@@ -251,7 +251,7 @@ export class FileSystem {
 
     /**
      * RemoveSymbolicLink()
-     * 
+     *
      * removes a symbolic link without affecting the file or directory to which that link refer.
      * @param path the path to the symbolic link to remove.
      * @throws FileSystemException when there is an error completing the operation.

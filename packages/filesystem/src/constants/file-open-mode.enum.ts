@@ -2,7 +2,7 @@ import { constants } from "fs";
 
 /**
  * FileOpenMode
- * 
+ *
  * Constants meant for use with FileSystem.Open()
  */
 
@@ -13,7 +13,7 @@ export enum FileOpenMode {
      */
 
     READONLY = constants.O_RDONLY,
-    
+
     /**
      * Flag indicating to open a file for write-only access.
      */
@@ -33,22 +33,22 @@ export enum FileOpenMode {
     CREATE = constants.O_CREAT,
 
     /**
-     * Flag indicating that opening a file should fail if the O_CREAT flag 
+     * Flag indicating that opening a file should fail if the O_CREAT flag
      * is set and the file already exists.
      */
 
     EXCL = constants.O_EXCL,
 
     /**
-     * Flag indicating that if path identifies a terminal device, opening the path 
-     * shall not cause that terminal to become the controlling terminal for the process 
+     * Flag indicating that if path identifies a terminal device, opening the path
+     * shall not cause that terminal to become the controlling terminal for the process
      * (if the process does not already have one).
      */
 
     NOCTTY = constants.O_NOCTTY,
 
     /**
-     * Flag indicating that if the file exists and is a regular file, and the file is opened 
+     * Flag indicating that if the file exists and is a regular file, and the file is opened
      * successfully for write access, its length shall be truncated to zero.
      */
 
@@ -67,8 +67,8 @@ export enum FileOpenMode {
     DIRECTORY = constants.O_DIRECTORY,
 
     /**
-     * Flag indicating reading accesses to the file system will no longer result in 
-     * an update to the atime information associated with the file. This flag is 
+     * Flag indicating reading accesses to the file system will no longer result in
+     * an update to the atime information associated with the file. This flag is
      * available on Linux operating systems only.
      */
 
@@ -81,14 +81,14 @@ export enum FileOpenMode {
     NOFOLLOW = constants.O_NOFOLLOW,
 
     /**
-     * Flag indicating that the file is opened for synchronized I/O with write operations 
+     * Flag indicating that the file is opened for synchronized I/O with write operations
      * waiting for file integrity.
      */
 
     SYNC = constants.O_SYNC,
 
     /**
-     * Flag indicating that the file is opened for synchronized I/O with write operations waiting 
+     * Flag indicating that the file is opened for synchronized I/O with write operations waiting
      * for data integrity.
      */
 
@@ -113,10 +113,10 @@ export enum FileOpenMode {
     NONBLOCK = constants.O_NONBLOCK,
 
     /**
-     * When set, a memory file mapping is used to access the file. This flag is 
-     * available on Windows operating systems only. On other operating systems, 
+     * When set, a memory file mapping is used to access the file. This flag is
+     * available on Windows operating systems only. On other operating systems,
      * this flag is ignored.
      */
-    
+
     FILEMAP = constants.UV_FS_O_FILEMAP,
 }

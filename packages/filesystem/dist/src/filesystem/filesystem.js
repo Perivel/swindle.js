@@ -224,8 +224,8 @@ class FileSystem {
     static async Remove(path, recursive = false, force = false) {
         try {
             await NodeFS.rm(path.toString(), {
-                force: force,
-                recursive: recursive,
+                force,
+                recursive,
             });
         }
         catch (e) {

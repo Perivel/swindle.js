@@ -2,7 +2,7 @@ import { constants } from "fs";
 
 /**
  * FileAccessPermissions
- * 
+ *
  * Constants indicating file access permissions.
  */
 
@@ -36,7 +36,7 @@ export enum FileAccessPermissions {
      */
 
     READ_WRITE_EXECUTE_BY_GROUP = constants.S_IRWXG,
-    
+
     /**
      * File mode indicating readable by group.
      */

@@ -8,7 +8,7 @@ export interface PathInterface extends Equatable {
 
     /**
      * basename()
-     * 
+     *
      * gets the last portion of the path.
      */
 
@@ -16,7 +16,7 @@ export interface PathInterface extends Equatable {
 
     /**
      * dirname()
-     * 
+     *
      * The path.dirname() method returns the directory name.
      */
 
@@ -24,7 +24,7 @@ export interface PathInterface extends Equatable {
 
     /**
      * extension()
-     * 
+     *
      * gets the extension of the path.
      */
 
@@ -32,15 +32,15 @@ export interface PathInterface extends Equatable {
 
     /**
      * isAbsolute()
-     * 
+     *
      * determines if path is an absolute path
      */
-    
+
     isAbsolute(): boolean;
 
     /**
      * normalize()
-     * 
+     *
      * normalizes the given path, resolving '..' and '.' segments.
      */
 
@@ -48,12 +48,12 @@ export interface PathInterface extends Equatable {
 
     /**
      * toNamespacedPath()
-     * 
-     * gets an equivalent namespace-prefixed path. 
-     * 
-     * This method is meaningful only on Windows systems. On POSIX systems, 
+     *
+     * gets an equivalent namespace-prefixed path.
+     *
+     * This method is meaningful only on Windows systems. On POSIX systems,
      * the method is non-operational and always returns path without modifications.
      */
-    
+
     toNamespacedPath(): PathInterface;
 }

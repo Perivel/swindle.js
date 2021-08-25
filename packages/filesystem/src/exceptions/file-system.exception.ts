@@ -2,7 +2,7 @@ import { BaseException } from "@swindle/core";
 
 /**
  * FileSystemException
- * 
+ *
  * A generic file system error.
  */
 

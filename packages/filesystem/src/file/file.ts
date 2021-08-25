@@ -6,12 +6,12 @@ import { FileInterface } from "./file.interface";
 
 /**
  * File
- * 
+ *
  * A FileHandle.
  */
 
 export class File implements FileInterface {
-    
+
     private readonly _handle: NodeFS.FileHandle;
     private readonly _encoding: BufferEncoding;
 
@@ -22,7 +22,7 @@ export class File implements FileInterface {
 
     /**
      * append()
-     * 
+     *
      * writes data to a file, replacing the file if it already exists.
      * @param data The data to append.
      * @throws FileException when there is an error appending the file.
@@ -41,7 +41,7 @@ export class File implements FileInterface {
 
     /**
      * chmod()
-     * 
+     *
      * Modifies the permissions on the file
      * @param mode the mode to set.
      * @throws FileException when there is an error completing the operation.
@@ -58,7 +58,7 @@ export class File implements FileInterface {
 
     /**
      * chown()
-     * 
+     *
      * changes the ownership of the file
      * @param uid The file's new user id.
      * @param gid the file's new group id.
@@ -76,7 +76,7 @@ export class File implements FileInterface {
 
     /**
      * close()
-     * 
+     *
      * closes the file after waiting for any pending operations to complete.
      * @throws FileException when an error occurs completing the operation.
      */
@@ -92,8 +92,8 @@ export class File implements FileInterface {
 
     /**
      * datasync()
-     * 
-     * Forces all currently queued I/O operations associated with the file to the 
+     *
+     * Forces all currently queued I/O operations associated with the file to the
      * operating system's synchronized I/O completion state.
      * @throws FileException when an error occurs completing the operation.
      */
@@ -109,7 +109,7 @@ export class File implements FileInterface {
 
     /**
      * decryptor()
-     * 
+     *
      * gets numeric file descriptor
      */
 
@@ -118,12 +118,12 @@ export class File implements FileInterface {
     }
 
     public equals(suspect: any): boolean {
-        let isEqual = false;
+        const isEqual = false;
 
         if (suspect instanceof File) {
             const other = suspect as File;
             this.decryptor() === other.decryptor();
-            
+
         }
 
         return isEqual;
@@ -131,7 +131,7 @@ export class File implements FileInterface {
 
     /**
      * encoding()
-     * 
+     *
      * gets the file encoding.
      * @returns the file encoding.
      */
@@ -142,11 +142,11 @@ export class File implements FileInterface {
 
     /**
      * read()
-     * 
+     *
      * Reads data from the file
-     * @param length The number of bytes to read. 
-     * @param position The location where to begin reading data from the file. If null, 
-     * data will be read from the current file position, and the position will be updated. 
+     * @param length The number of bytes to read.
+     * @param position The location where to begin reading data from the file. If null,
+     * data will be read from the current file position, and the position will be updated.
      * If position is an integer, the current file position will remain unchanged.
      * @throws FileException when an error occurs completing the operation.
      * @returns the file contents.
@@ -155,8 +155,8 @@ export class File implements FileInterface {
     public async read(length: number|null, position: number | null): Promise<string> {
         try {
             const contents = await this._handle.read({
-                length: length,
-                position: position
+                length,
+                position
             });
             return contents.buffer.toString(this.encoding());
         }
@@ -167,7 +167,7 @@ export class File implements FileInterface {
 
     /**
      * readAll()
-     * 
+     *
      * reads the entire contents of a file
      * @throws FileException when an error occurs completing the operation.
      */
@@ -185,7 +185,7 @@ export class File implements FileInterface {
 
     /**
      * stats()
-     * 
+     *
      * gets the stats for the file.
      * @param bigInt Whether the numeric values in the stat should use BigInt
      * @throws FileException when an error occurs completing the operation.
@@ -197,8 +197,8 @@ export class File implements FileInterface {
                 bigint: bigInt,
                 throwIfNoEntry: true,
             });
-            
-            return <FileStats>{
+
+            return {
                 dev: stats.dev,
                 ino: stats.ino,
                 mode: stats.mode,
@@ -224,7 +224,7 @@ export class File implements FileInterface {
                 isFile: stats.isFile(),
                 isSocket: stats.isSocket(),
                 isSymbolicLink: stats.isSymbolicLink()
-            }
+            } as FileStats
         }
         catch(e) {
             throw new FileException((e as Error).message);
@@ -233,11 +233,11 @@ export class File implements FileInterface {
 
     /**
      * sync()
-     * 
+     *
      * request that all data for the open file descriptor is flushed to the storage device.
      * @throws FileException();
      */
-    
+
     public async sync(): Promise<void> {
         try {
             await this._handle.sync();
@@ -249,7 +249,7 @@ export class File implements FileInterface {
 
     /**
      * utimes()
-     * 
+     *
      * change the file system timestamps
      * @throws FileException when an error occurs completing the operation.
      */
@@ -265,7 +265,7 @@ export class File implements FileInterface {
 
     /**
      * writeBuffer()
-     * 
+     *
      * writes the bufer to the file.
      * @param buffer the data to write.
      * @param offset the start position from within buffer where the data to write begins
@@ -273,7 +273,7 @@ export class File implements FileInterface {
      * @param position the offset from the beginning of the file where the data from buffer should be written
      * @throws FileException when an error occurs completing the operation.
      */
-    
+
     public async writeBuffer(buffer: Buffer, offset: number = 0, length: number = buffer.byteLength, position: number|null = null): Promise<void> {
         try {
             await this._handle.write(buffer, offset, length, position);
@@ -285,14 +285,14 @@ export class File implements FileInterface {
 
      /**
       * writeString()
-      * 
+      *
       * writes the string data to a file.
       * @param datathe data to write.
-      * @param position  the offset from the beginning of the file where the data from string should 
+      * @param position  the offset from the beginning of the file where the data from string should
       * be written
       * @throws FileException when an error occurs completing the operation.
       */
- 
+
     public async writeString(str: string|object, position: number|null = null): Promise<void> {
         try {
             await this._handle.write(str.toString(), position, this.encoding());
