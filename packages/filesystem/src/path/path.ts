@@ -10,13 +10,26 @@ import { PathInterface } from './path.interface';
 
 export class Path implements PathInterface {
 
+    private static RESTRICTED = /[\[\]#%&{}<>*?\s\b\0$!'"@|‘“+^`]/g;
+    private static POSIX_RESTRICTED = /[\\:]/g;
+    private static WINDOWS_RESTRICTED = /[\/]/g;
+
     private readonly _value: string;
 
+    /**
+     * Creates a Path instance.
+     * @param value the value of the path.
+     * @throws InvalidArgumentException when the path is invalid.
+     */
+    
     constructor(value: string) {
-        if (!value) {
-            throw new InvalidArgumentException("Invalid Path");
+        const pathVal = value.trim();
+        if (this.isValidPath(pathVal)) {
+            this._value = pathVal.replace(/\\|\//g, NodePath.sep);
         }
-        this._value = value.trim().replace(/\\|\//g, NodePath.sep);
+        else {
+            throw new InvalidArgumentException("Invalid Path: " + pathVal);
+        }
     }
 
     /**
@@ -24,7 +37,7 @@ export class Path implements PathInterface {
      *
      * Provides the platform-specific path delimiter.
      * - Windows: ";"
-     * -POSIX: ":"
+     * - POSIX: ":"
      *
      * @returns the platform speciic path delimiter.
      */
@@ -127,6 +140,16 @@ export class Path implements PathInterface {
     }
 
     /**
+     * segments()
+     * 
+     * returns an array consisting of the file segments.
+     */
+
+    public segments(): string[] {
+        return this.toString().split(Path.Separator());
+    }
+
+    /**
      * toNamespacedPath()
      *
      * gets an equivalent namespace-prefixed path.
@@ -141,5 +164,24 @@ export class Path implements PathInterface {
 
     public toString(): string {
         return this._value;
+    }
+
+    // =======================================================================
+    // helpers
+    // =======================================================================
+
+    /**
+     * isValidPath()
+     * 
+     * determines if a path is valid.
+     * @param suspect the string to test.
+     * @returns TRUE if the path is valid. FALSE otherwise.
+     */
+    private isValidPath(suspect: string): boolean {
+        const containsRestrictedCharacters = Path.RESTRICTED.test(suspect) || process.platform == "win32" ? Path.WINDOWS_RESTRICTED.test(suspect) : Path.POSIX_RESTRICTED.test(suspect);
+        const absoluteBeginning = /^([a-zA-Z]:\\|\/|\~\/)/;
+        const relativeBeginning = /^(?:\.\\|\.\/|\.\.\\|\.\.\/)/;
+        const validBeginning = NodePath.isAbsolute(suspect) ? absoluteBeginning.test(suspect) : relativeBeginning.test(suspect);
+        return !containsRestrictedCharacters && validBeginning;
     }
 }

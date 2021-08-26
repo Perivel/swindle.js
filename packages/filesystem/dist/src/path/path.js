@@ -28,18 +28,26 @@ const core_1 = require("@swindle/core");
  * A utility class for working with file and directory paths
  */
 class Path {
+    /**
+     * Creates a Path instance.
+     * @param value the value of the path.
+     * @throws InvalidArgumentException when the path is invalid.
+     */
     constructor(value) {
-        if (!value) {
-            throw new core_1.InvalidArgumentException("Invalid Path");
+        const pathVal = value.trim();
+        if (this.isValidPath(pathVal)) {
+            this._value = pathVal.replace(/\\|\//g, NodePath.sep);
         }
-        this._value = value.trim().replace(/\\|\//g, NodePath.sep);
+        else {
+            throw new core_1.InvalidArgumentException("Invalid Path: " + pathVal);
+        }
     }
     /**
      * Delimiter()
      *
      * Provides the platform-specific path delimiter.
      * - Windows: ";"
-     * -POSIX: ":"
+     * - POSIX: ":"
      *
      * @returns the platform speciic path delimiter.
      */
@@ -123,6 +131,14 @@ class Path {
         return new Path(NodePath.normalize(this.toString()));
     }
     /**
+     * segments()
+     *
+     * returns an array consisting of the file segments.
+     */
+    segments() {
+        return this.toString().split(Path.Separator());
+    }
+    /**
      * toNamespacedPath()
      *
      * gets an equivalent namespace-prefixed path.
@@ -136,6 +152,26 @@ class Path {
     toString() {
         return this._value;
     }
+    // =======================================================================
+    // helpers
+    // =======================================================================
+    /**
+     * isValidPath()
+     *
+     * determines if a path is valid.
+     * @param suspect the string to test.
+     * @returns TRUE if the path is valid. FALSE otherwise.
+     */
+    isValidPath(suspect) {
+        const containsRestrictedCharacters = Path.RESTRICTED.test(suspect) || process.platform == "win32" ? Path.WINDOWS_RESTRICTED.test(suspect) : Path.POSIX_RESTRICTED.test(suspect);
+        const absoluteBeginning = /^([a-zA-Z]:\\|\/|\~\/)/;
+        const relativeBeginning = /^(?:\.\\|\.\/|\.\.\\|\.\.\/)/;
+        const validBeginning = NodePath.isAbsolute(suspect) ? absoluteBeginning.test(suspect) : relativeBeginning.test(suspect);
+        return !containsRestrictedCharacters && validBeginning;
+    }
 }
 exports.Path = Path;
+Path.RESTRICTED = /[\[\]#%&{}<>*?\s\b\0$!'"@|‘“+^`]/g;
+Path.POSIX_RESTRICTED = /[\\:]/g;
+Path.WINDOWS_RESTRICTED = /[\/]/g;
 //# sourceMappingURL=path.js.map

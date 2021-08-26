@@ -5,14 +5,22 @@ import { PathInterface } from './path.interface';
  * A utility class for working with file and directory paths
  */
 export declare class Path implements PathInterface {
+    private static RESTRICTED;
+    private static POSIX_RESTRICTED;
+    private static WINDOWS_RESTRICTED;
     private readonly _value;
+    /**
+     * Creates a Path instance.
+     * @param value the value of the path.
+     * @throws InvalidArgumentException when the path is invalid.
+     */
     constructor(value: string);
     /**
      * Delimiter()
      *
      * Provides the platform-specific path delimiter.
      * - Windows: ";"
-     * -POSIX: ":"
+     * - POSIX: ":"
      *
      * @returns the platform speciic path delimiter.
      */
@@ -67,6 +75,12 @@ export declare class Path implements PathInterface {
      */
     normalize(): Path;
     /**
+     * segments()
+     *
+     * returns an array consisting of the file segments.
+     */
+    segments(): string[];
+    /**
      * toNamespacedPath()
      *
      * gets an equivalent namespace-prefixed path.
@@ -76,5 +90,13 @@ export declare class Path implements PathInterface {
      */
     toNamespacedPath(): Path;
     toString(): string;
+    /**
+     * isValidPath()
+     *
+     * determines if a path is valid.
+     * @param suspect the string to test.
+     * @returns TRUE if the path is valid. FALSE otherwise.
+     */
+    private isValidPath;
 }
 //# sourceMappingURL=path.d.ts.map

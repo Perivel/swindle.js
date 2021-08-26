@@ -34,6 +34,12 @@ export interface PathInterface extends Equatable {
      */
     normalize(): PathInterface;
     /**
+     * segments()
+     *
+     * returns an array consisting of the file segments.
+     */
+    segments(): string[];
+    /**
      * toNamespacedPath()
      *
      * gets an equivalent namespace-prefixed path.
