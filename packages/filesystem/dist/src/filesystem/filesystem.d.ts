@@ -82,9 +82,11 @@ export declare class FileSystem {
     /**
      * CreateSymbolicLink()
      *
-     * The type argument is only used on Windows platforms and can be one of 'dir', 'file',
-     * or 'junction'. Windows junction points require the destination path to be absolute.
-     * When using 'junction', the target argument will automatically be normalized to absolute
+     * Creates a symbolic link.
+     *
+     * The type argument is only used on Windows platforms and can be one of symbolicLinkType.DIRECTORY, SymbolicLinkType.FILE,
+     * or SymbolicLinkType.JUNCTION. Windows junction points require the destination path to be absolute.
+     * When using SymbolicLinkType.JUNCTION, the target argument will automatically be normalized to absolute
      * path.
      * @param target the target.
      * @param path the path of the symlink.

@@ -102,7 +102,7 @@ const main = async () => {
     // delete the copied file with FileSystem.Delete()
     console.log("deleting file in " + copyFilePath.toString());
     try {
-        await filesystem_1.FileSystem.Delete(copyFilePath);
+        await filesystem_1.FileSystem.Delete(testDest2, true, true);
     }
     catch (e) {
         console.log(e.message);

@@ -21,6 +21,7 @@ The `FileSystem` constructor does not take any arguments.
 | CreateDirectory() | ([Path](./../path/README.md)) path | Promise (void) | creates a directory. | FileSystemException when there is an error completing the operation |
 | CreateFile() | ([Path](./../path/README.md)) path, (boolean) createDirIfNotExists | Promise (void) | creates a file. | FileAlreadyExistsException when the file being created already exists, DirectoryNotFoundException when the file directory does not exist, FileSystemException when there is an error completing the operation. |
 | CreateLink() | ([Path](./../path/README.md)) existingPath, [Path](./../path/README.md)) newPath | Promise (void) | Creates a new (hard) link from the existingPath to the newPath. | FileSystemException when there is an error completing the operation. |
+| CreateSymbolicLink() | ([Path](./../path/README.md)) target, [Path](./../path/README.md)) path, (SymbolicLinkType) type | Promise (void) | Creates a symbolic link. The type argument is only used on Windows platforms and can be one of symbolicLinkType.DIRECTORY, SymbolicLinkType.FILE, or SymbolicLinkType.JUNCTION. Windows junction points require the destination path to be absolute. When using SymbolicLinkType.JUNCTION, the target argument will automatically be normalized to absolute path. | FileSystemException when there is an error completing the operation. |
 
 # Methodds
 | **Method** | **Arguments** | **Return Type** | **Description** |

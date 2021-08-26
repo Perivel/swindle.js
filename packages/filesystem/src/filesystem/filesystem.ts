@@ -202,16 +202,19 @@ export class FileSystem {
 
     /**
      * CreateSymbolicLink()
+     * 
+     * Creates a symbolic link.
      *
-     * The type argument is only used on Windows platforms and can be one of 'dir', 'file',
-     * or 'junction'. Windows junction points require the destination path to be absolute.
-     * When using 'junction', the target argument will automatically be normalized to absolute
+     * The type argument is only used on Windows platforms and can be one of symbolicLinkType.DIRECTORY, SymbolicLinkType.FILE,
+     * or SymbolicLinkType.JUNCTION. Windows junction points require the destination path to be absolute.
+     * When using SymbolicLinkType.JUNCTION, the target argument will automatically be normalized to absolute
      * path.
      * @param target the target.
      * @param path the path of the symlink.
      * @param type the symlink type. Defaults to SymbolicLinkType.FILE
      * @throws FileSystemException whe nthere is an error completing the operation.
      */
+
     public static async CreateSymbolicLink(target: Path, path: Path, type: SymbolicLinkType = SymbolicLinkType.FILE): Promise<void> {
         try {
             await NodeFS.symlink(target.toString(), path.toString(), type.toString());
@@ -235,8 +238,8 @@ export class FileSystem {
     public static async Delete(path: Path, recursive: boolean = false, force: boolean = false): Promise<void> {
         try {
             await NodeFS.rm(path.toString(), {
-                force,
-                recursive,
+                force: force,
+                recursive: recursive,
             });
         }
         catch (e) {

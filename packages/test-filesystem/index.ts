@@ -117,7 +117,7 @@ const main = async (): Promise<void> => {
     // delete the copied file with FileSystem.Delete()
     console.log("deleting file in " + copyFilePath.toString());
     try {
-        await FileSystem.Delete(copyFilePath);
+        await FileSystem.Delete(testDest2, true, true);
     }
     catch (e) {
         console.log((e as Error).message);
