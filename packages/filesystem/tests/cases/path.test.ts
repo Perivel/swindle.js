@@ -13,10 +13,13 @@ test("Creating an invalid path should throw an error", () => {
     expect(() => new Path("This is an invalid path")).toThrow(InvalidArgumentException);
 });
 
-test("Create a path frm segments", () => {
-
+test("Create a path from segments", () => {
+    const path = Path.FromSegments("first", "second");
+    expect(path.toString()).toEqual("first/second");
 });
 
 test("Testing getting the path segments", () => {
-
+    const segments = ["first", "second", "third"];
+    const path = Path.FromSegments(...segments);
+    expect(path.toString()).toEqual(segments.join(Path.Separator()));
 });

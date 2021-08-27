@@ -176,12 +176,16 @@ export class Path implements PathInterface {
      * determines if a path is valid.
      * @param suspect the string to test.
      * @returns TRUE if the path is valid. FALSE otherwise.
+     * @note This method does not work correctly yet. We need some algorithm to validate paths for any operating system.
+     * Current solution produces incorrect responses. For now, we will just make this function always return
+     * TRUE. And then modify it at a later version.
      */
     private isValidPath(suspect: string): boolean {
-        const containsRestrictedCharacters = Path.RESTRICTED.test(suspect) || process.platform == "win32" ? Path.WINDOWS_RESTRICTED.test(suspect) : Path.POSIX_RESTRICTED.test(suspect);
-        const absoluteBeginning = /^([a-zA-Z]:\\|\/|\~\/)/;
-        const relativeBeginning = /^(?:\.\\|\.\/|\.\.\\|\.\.\/)/;
-        const validBeginning = NodePath.isAbsolute(suspect) ? absoluteBeginning.test(suspect) : relativeBeginning.test(suspect);
-        return !containsRestrictedCharacters && validBeginning;
+        // const containsRestrictedCharacters = Path.RESTRICTED.test(suspect) || process.platform == "win32" ? Path.WINDOWS_RESTRICTED.test(suspect) : Path.POSIX_RESTRICTED.test(suspect);
+        // const absoluteBeginning = /^([a-zA-Z]:\\|\/|\~\/)/;
+        // const relativeBeginning = /^(?:\.\\|\.\/|\.\.\\|\.\.\/)/;
+        // const validBeginning = NodePath.isAbsolute(suspect) ? absoluteBeginning.test(suspect) : relativeBeginning.test(suspect);
+        // return !containsRestrictedCharacters && validBeginning;
+        return true;
     }
 }
