@@ -1,5 +1,8 @@
 import process from "process";
-import { ExecOptions, ExecFileOptions } from "child_process";
+import { 
+    ExecOptions, 
+    ExecFileOptions 
+} from "child_process";
 import { Path } from "@swindle/filesystem";
 import { ProcessException } from "../exceptions/exceptions.well";
 import { 
@@ -7,9 +10,11 @@ import {
     spawn, 
     execFile, 
     fork, 
-    PromisifyForkOptions,
-    PromisifySpawnOptions
 } from "promisify-child-process";
+import { 
+    ForkOptions, 
+    SpawnOptions 
+} from "./../types/types.well";
 
 /**
  * Process
@@ -207,7 +212,7 @@ export class Process {
      * @returns the output of the process
      */
 
-    public static async Fork(modulePath: Path, args: string[], options: PromisifyForkOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
+    public static async Fork(modulePath: Path, args: string[], options: ForkOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
         try {
             const { stdout } = await fork(modulePath.toString(), args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
@@ -277,29 +282,78 @@ export class Process {
         process.on("message", handler);
     }
 
+    /**
+     * OnMultipleResolves()
+     *
+     * adds a listener to the process' "multipleResolves" event.
+     * @param handler the handler to execute.
+     */
+
     public static OnMultipleResolves(handler: NodeJS.MultipleResolveListener): void {
         process.on("multipleResolves", handler);
     }
+
+    /**
+     * OnRejectionHandled()
+     *
+     * adds a listener to the process' "regectionHandled" event.
+     * @param handler the handler to execute.
+     */
 
     public static OnRejectionHandled(handler: NodeJS.RejectionHandledListener): void {
         process.on("rejectionHandled", handler);
     }
 
+    /**
+     * OnUncaughtException()
+     *
+     * adds a listener to the process' "uncaughtException" event.
+     * @param handler the handler to execute.
+     */
+
     public static OnUncaughtException(handler: NodeJS.UncaughtExceptionListener): void {
         process.on("uncaughtException", handler);
     }
+
+    /**
+     * OnUncaughtExceptionMonitor()
+     *
+     * adds a listener to the process' "uncaughtExceptionMonitor" event.
+     * @param handler the handler to execute.
+     */
 
     public static OnUncaughtExceptionMonitor(handler: NodeJS.BeforeExitListener): void {
         process.on("uncaughtExceptionMonitor", handler);
     }
 
+    /**
+     * OnUnhandledRejection()
+     *
+     * adds a listener to the process' "unhandledRejection" event.
+     * @param handler the handler to execute.
+     */
+
     public static OnUnhandledRejection(handler: NodeJS.UnhandledRejectionListener): void {
         process.on("unhandledRejection", handler);
     }
 
+    /**
+     * OnWarning()
+     *
+     * adds a listener to the process' "warning" event.
+     * @param handler the handler to execute.
+     */
+
     public static OnWarning(handler: NodeJS.WarningListener): void {
         process.on("warning", handler);
     }
+
+    /**
+     * OnWorkerCreated()
+     *
+     * adds a listener to the process' "worker" event.
+     * @param handler the handler to execute.
+     */
 
     public static OnWorkerCreated(handler: NodeJS.WorkerListener): void {
         process.on("worker", handler);
@@ -319,7 +373,7 @@ export class Process {
      * @returns the output of the command.
      */
 
-    public static async Spawn(command: string, args: string[], options: PromisifySpawnOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
+    public static async Spawn(command: string, args: string[], options: SpawnOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
 
         try {
             const { stdout } = await spawn(command, args, {
