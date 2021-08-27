@@ -1,7 +1,15 @@
 import process from "process";
+import { ExecOptions, ExecFileOptions } from "child_process";
 import { Path } from "@swindle/filesystem";
 import { ProcessException } from "../exceptions/exceptions.well";
-import { exec, spawn, execFile, fork } from "promisify-child-process";
+import { 
+    exec, 
+    spawn, 
+    execFile, 
+    fork, 
+    PromisifyForkOptions,
+    PromisifySpawnOptions
+} from "promisify-child-process";
 
 /**
  * Process
@@ -108,8 +116,70 @@ export class Process {
         process.emitWarning(warning, options);
     }
 
-    public static async Exec(): ChildProcessPromise {
-        
+    /**
+     * Exec()
+     * 
+     * Spawns a shell then executes the command within that shell, buffering any generated output. The command string passed to the exec 
+     * function is processed directly by the shell and special characters (vary based on shell) need to be dealt with accordingly.
+     * 
+     * Never pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command 
+     * execution.
+     * @param command the command to run.
+     * @param options the options.
+     * @returns the output of the command.
+     */
+
+    public static async Exec(command: string, options: ExecOptions|null = null): Promise<string|Buffer|null|undefined> {
+        try {
+            const { stdout } = await exec(command, {
+                cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
+                env: options && options.env ? options.env : Process.env,
+                gid: options?.gid,
+                killSignal: options?.killSignal,
+                maxBuffer: options?.maxBuffer,
+                shell: options?.shell,
+                timeout: options?.timeout,
+                uid: options?.uid,
+                windowsHide: options?.windowsHide,
+            });
+            return stdout;
+        }
+        catch(e) {
+            throw new ProcessException((e as Error).message);
+        }
+    }
+
+    /**
+     * ExecFile()
+     * 
+     * The Process.execFile() function is similar to Process.exec() except that it does not spawn a shell by default. Rather, the specified executable 
+     * file is spawned directly as a new process making it slightly more efficient than Process.exec().
+     * @param file the path to the file to run.
+     * @param args list of string arguments.
+     * @param options options.
+     * @returns the output of the operation.
+     */
+
+    public static async ExecFile(file: Path, args: string[], options: ExecFileOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
+        try {
+            const { stdout } = await execFile(file.toString(), args, {
+                cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
+                env: options && options.env ? options.env : Process.env,
+                gid: options?.gid,
+                killSignal: options?.killSignal,
+                maxBuffer: options?.maxBuffer,
+                shell: options?.shell,
+                timeout: options?.timeout,
+                uid: options?.uid,
+                windowsHide: options?.windowsHide,
+                signal: options?.signal,
+                windowsVerbatimArguments: options?.windowsVerbatimArguments,
+            });
+            return stdout;
+        }
+        catch(e) {
+            throw new ProcessException((e as Error).message);
+        }
     }
 
     /**
@@ -123,6 +193,45 @@ export class Process {
 
     public static Exit(code: number = 0): void {
         process.exit(code);
+    }
+
+    /**
+     * Fork()
+     * 
+     * The Process.fork() method is a special case of child_process.spawn() used specifically to spawn new Node.js processes. Like Process.spawn(), a 
+     * ChildProcess object is returned. The returned ChildProcess will have an additional communication channel built-in that allows messages to be 
+     * passed back and forth between the parent and child. See subprocess.send() for details.
+     * @param modulePath the module to run.
+     * @param args list of string arguments.
+     * @param options options
+     * @returns the output of the process
+     */
+
+    public static async Fork(modulePath: Path, args: string[], options: PromisifyForkOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
+        try {
+            const { stdout } = await fork(modulePath.toString(), args, {
+                cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
+                detached: options?.detached,
+                encoding: options?.encoding,
+                env: options && options.env ? options.env : Process.env,
+                execArgv: options?.execArgv,
+                execPath: options?.execPath,
+                gid: options?.gid,
+                killSignal: options?.killSignal,
+                maxBuffer: options?.maxBuffer,
+                serialization: options?.serialization,
+                timeout: options?.timeout,
+                uid: options?.uid,
+                silent: options?.silent,
+                signal: options?.signal,
+                windowsVerbatimArguments: options?.windowsVerbatimArguments,
+                stdio: options?.stdio,
+            });
+            return stdout;
+        }
+        catch(e) {
+            throw new ProcessException((e as Error).message);
+        }
     }
 
     /**
@@ -194,5 +303,47 @@ export class Process {
 
     public static OnWorkerCreated(handler: NodeJS.WorkerListener): void {
         process.on("worker", handler);
+    }
+
+    /**
+     * Spawn()
+     * 
+     * The Process.spawn() method spawns a new process using the given command, with command-line arguments in args. If omitted, args defaults to an empty array.
+     * 
+     * If the shell option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.
+     * 
+     * A third argument may be used to specify additional options, with these defaults
+     * @param command the command to run
+     * @param args list of arguments
+     * @param options options
+     * @returns the output of the command.
+     */
+
+    public static async Spawn(command: string, args: string[], options: PromisifySpawnOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
+
+        try {
+            const { stdout } = await spawn(command, args, {
+                cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
+                detached: options?.detached,
+                encoding: options?.encoding,
+                env: options && options.env ? options.env : Process.env,
+                gid: options?.gid,
+                killSignal: options?.killSignal,
+                maxBuffer: options?.maxBuffer,
+                serialization: options?.serialization,
+                timeout: options?.timeout,
+                uid: options?.uid,
+                signal: options?.signal,
+                windowsVerbatimArguments: options?.windowsVerbatimArguments,
+                stdio: options?.stdio,
+                argv0: options?.argv0,
+                shell: options?.shell,
+                windowsHide: options?.windowsHide,
+            });
+            return stdout;
+        }
+        catch(e) {
+            throw new ProcessException((e as Error).message);
+        }
     }
 }
