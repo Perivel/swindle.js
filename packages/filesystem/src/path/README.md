@@ -3,7 +3,7 @@ The `Path` class provides utilities for working with paths.
 
 # Constructor
 ## constructor(value)
-Creates an instance of Path.
+Creates an instance of a `Path`.
 
 ## Arguments
 | **Name** | **Type** | **Required** | **Description** |

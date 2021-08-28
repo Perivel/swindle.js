@@ -97,7 +97,7 @@ export declare class File implements FileInterface {
      * sync()
      *
      * request that all data for the open file descriptor is flushed to the storage device.
-     * @throws FileException();
+     * @throws FileException when the operation fails.
      */
     sync(): Promise<void>;
     /**

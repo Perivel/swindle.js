@@ -12,3 +12,4 @@ Using Swindle has a few notable benefits, including:
 Below are the available Modules you can install and use. We are continuing to build modules. So, this list will expand as new modules are released.
 - [Core](packages/core/README.md): Utility classes for common data manipulation.
 - [Structs](packages/structs/README.md): Implementations of common data structures.
+- [FileSystem](packages/filesystem/README.md): Utilities for working with the file system.
