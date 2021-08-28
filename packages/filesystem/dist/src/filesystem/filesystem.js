@@ -240,7 +240,8 @@ class FileSystem {
      * @param mode the mode to use.
      * @param encoding the file encoding. Defualts to UTF8.
      * @returns The opened file.
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException when the file cannot be found.
+     * @throws FileSystemException when there is an error completing the operation.
      */
     static async Open(path, flag = constants_well_1.FileOpenFlag.READ_WRITE, mode = constants_well_1.FileOpenMode.READWRITE, encoding = "utf8") {
         if (!await FileSystem.Contains(path)) {

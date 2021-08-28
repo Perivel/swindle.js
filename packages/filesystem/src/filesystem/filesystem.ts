@@ -258,7 +258,8 @@ export class FileSystem {
      * @param mode the mode to use.
      * @param encoding the file encoding. Defualts to UTF8.
      * @returns The opened file.
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException when the file cannot be found.
+     * @throws FileSystemException when there is an error completing the operation.
      */
 
     public static async Open(path: Path, flag: FileOpenFlag = FileOpenFlag.READ_WRITE, mode: FileOpenMode = FileOpenMode.READWRITE, encoding: BufferEncoding = "utf8"): Promise<File> {

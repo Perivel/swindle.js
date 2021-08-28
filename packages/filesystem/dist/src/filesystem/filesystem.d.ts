@@ -116,7 +116,8 @@ export declare class FileSystem {
      * @param mode the mode to use.
      * @param encoding the file encoding. Defualts to UTF8.
      * @returns The opened file.
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException when the file cannot be found.
+     * @throws FileSystemException when there is an error completing the operation.
      */
     static Open(path: Path, flag?: FileOpenFlag, mode?: FileOpenMode, encoding?: BufferEncoding): Promise<File>;
     /**
