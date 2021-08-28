@@ -170,6 +170,7 @@ class Process {
      * @param modulePath the module to run.
      * @param args list of string arguments.
      * @param options options
+     * @throws ProcessException when the operation fails.
      * @returns the output of the process
      */
     static async Fork(modulePath, args, options = undefined) {
