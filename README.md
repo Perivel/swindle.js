@@ -13,3 +13,4 @@ Below are the available Modules you can install and use. We are continuing to bu
 - [Core](packages/core/README.md): Utility classes for common data manipulation.
 - [Structs](packages/structs/README.md): Implementations of common data structures.
 - [FileSystem](packages/filesystem/README.md): Utilities for working with the file system.
+- [OS](packages/os/README.md): Utilities for interfacing with the current process.
