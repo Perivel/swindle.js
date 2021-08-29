@@ -67,6 +67,19 @@ const main = async () => {
     if (file) {
         await file.close();
     }
+    // append the file.
+    console.log("Opening file for appending.");
+    try {
+        file = await filesystem_1.FileSystem.Open(originFilePath, filesystem_1.FileOpenFlag.APPEND, filesystem_1.FileOpenMode.APPEND);
+        await file.append("This is a second line.");
+    }
+    catch (e) {
+        console.log(e.message);
+        return;
+    }
+    finally {
+        await file.close();
+    }
     // copy file from testdir1 to testDir2 with FileSystem.CreateFile()
     console.log("Copying file");
     try {
