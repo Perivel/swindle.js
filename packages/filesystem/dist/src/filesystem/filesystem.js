@@ -160,7 +160,7 @@ class FileSystem {
         }
         else {
             // throw an error.
-            throw new exceptions_well_1.DirectoryNotFoundException();
+            throw new exceptions_well_1.DirectoryNotFoundException(`Directory ${pathDir.toString()} not found`);
         }
         // create the file.
         try {

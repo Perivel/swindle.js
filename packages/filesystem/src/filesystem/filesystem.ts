@@ -170,7 +170,7 @@ export class FileSystem {
         }
         else {
             // throw an error.
-            throw new DirectoryNotFoundException();
+            throw new DirectoryNotFoundException(`Directory ${pathDir.toString()} not found`);
         }
 
         // create the file.
