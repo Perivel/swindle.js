@@ -1,7 +1,7 @@
 {
-  "name": "test-filesystem",
+  "name": "test-os",
   "version": "1.0.0",
-  "description": "Runs some tests for the file system module.",
+  "description": "Runs some tests for the os module.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
   "author": "Patrick Luy <pluy@perivel.com>",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@swindle/filesystem": "^1.0.4",
+    "@swindle/os": "^1.0.7",
     "@types/node": "16.7.1"
   },
   "devDependencies": {

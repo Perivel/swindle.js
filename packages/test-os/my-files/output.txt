@@ -1,0 +1,8 @@
+ANOTHER-DIR
+dist
+index.ts
+jest.config.cjs
+node_modules
+package.json
+tsconfig.json
+tslint.json

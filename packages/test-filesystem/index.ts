@@ -37,6 +37,30 @@ const main = async (): Promise<void> => {
         console.log(`Directory ${testDir.toString()} does not exists.`);
     }
 
+    console.log("Checking again if the directory exists, for consistency,");
+    if (await FileSystem.Contains(testDir)) {
+        console.log(`Directory ${testDir.toString()} exists.`);
+    }
+    else {
+        console.log(`Directory ${testDir.toString()} does not exists.`);
+    }
+
+    console.log("Checking again if the directory exists, for consistency,");
+    if (await FileSystem.Contains(testDir)) {
+        console.log(`Directory ${testDir.toString()} exists.`);
+    }
+    else {
+        console.log(`Directory ${testDir.toString()} does not exists.`);
+    }
+
+    console.log("Checking one last time if the directory exists, for consistency,");
+    if (await FileSystem.Contains(testDir)) {
+        console.log(`Directory ${testDir.toString()} exists.`);
+    }
+    else {
+        console.log(`Directory ${testDir.toString()} does not exists.`);
+    }
+
     // create a file in testDest1 with FileSystem.CreateFile
     console.log("Creating a file in " + testDest1.toString());
     try {
