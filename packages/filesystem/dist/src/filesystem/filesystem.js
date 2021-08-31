@@ -154,13 +154,15 @@ class FileSystem {
         // make sure the directory exists.
         const pathDir = path.dirname();
         const directoryExists = await FileSystem.Contains(pathDir);
-        if (!directoryExists && createDirectoryIfNotExists) {
-            // create the path directory.
-            await FileSystem.CreateDirectory(pathDir);
-        }
-        else {
-            // throw an error.
-            throw new exceptions_well_1.DirectoryNotFoundException(`Directory ${pathDir.toString()} not found`);
+        if (!directoryExists) {
+            if (createDirectoryIfNotExists) {
+                // create the path directory
+                await FileSystem.CreateDirectory(pathDir);
+            }
+            else {
+                // throw an error.
+                throw new exceptions_well_1.DirectoryNotFoundException(`Directory ${pathDir.toString()} not found`);
+            }
         }
         // create the file.
         try {
