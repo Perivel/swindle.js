@@ -1,6 +1,6 @@
 {
   "name": "@swindle/os",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Utilities for working with the operating system.",
   "main": "dist/index.js",
   "author": "Patrick Luy <pluy@perivel.com>",
