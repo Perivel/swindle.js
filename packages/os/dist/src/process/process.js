@@ -102,7 +102,7 @@ class Process {
      */
     static async Exec(command, options = null) {
         try {
-            const { stdout } = await promisify_child_process_1.exec(command, {
+            const { stdout, stderr, code } = await promisify_child_process_1.exec(command, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 env: options && options.env ? options.env : Process.env,
                 gid: options === null || options === void 0 ? void 0 : options.gid,
@@ -113,6 +113,9 @@ class Process {
                 uid: options === null || options === void 0 ? void 0 : options.uid,
                 windowsHide: options === null || options === void 0 ? void 0 : options.windowsHide,
             });
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
             return stdout;
         }
         catch (e) {
@@ -131,7 +134,7 @@ class Process {
      */
     static async ExecFile(file, args, options = undefined) {
         try {
-            const { stdout } = await promisify_child_process_1.execFile(file.toString(), args, {
+            const { stdout, stderr, code } = await promisify_child_process_1.execFile(file.toString(), args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 env: options && options.env ? options.env : Process.env,
                 gid: options === null || options === void 0 ? void 0 : options.gid,
@@ -144,6 +147,9 @@ class Process {
                 signal: options === null || options === void 0 ? void 0 : options.signal,
                 windowsVerbatimArguments: options === null || options === void 0 ? void 0 : options.windowsVerbatimArguments,
             });
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
             return stdout;
         }
         catch (e) {
@@ -175,7 +181,7 @@ class Process {
      */
     static async Fork(modulePath, args, options = undefined) {
         try {
-            const { stdout } = await promisify_child_process_1.fork(modulePath.toString(), args, {
+            const { stdout, stderr, code } = await promisify_child_process_1.fork(modulePath.toString(), args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 detached: options === null || options === void 0 ? void 0 : options.detached,
                 encoding: options === null || options === void 0 ? void 0 : options.encoding,
@@ -193,6 +199,9 @@ class Process {
                 windowsVerbatimArguments: options === null || options === void 0 ? void 0 : options.windowsVerbatimArguments,
                 stdio: options === null || options === void 0 ? void 0 : options.stdio,
             });
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
             return stdout;
         }
         catch (e) {
@@ -313,7 +322,7 @@ class Process {
      */
     static async Spawn(command, args, options = undefined) {
         try {
-            const { stdout } = await promisify_child_process_1.spawn(command, args, {
+            const { stdout, stderr, code } = await promisify_child_process_1.spawn(command, args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 detached: options === null || options === void 0 ? void 0 : options.detached,
                 encoding: options === null || options === void 0 ? void 0 : options.encoding,
@@ -331,6 +340,9 @@ class Process {
                 shell: options === null || options === void 0 ? void 0 : options.shell,
                 windowsHide: options === null || options === void 0 ? void 0 : options.windowsHide,
             });
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
             return stdout;
         }
         catch (e) {

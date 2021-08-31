@@ -75,7 +75,7 @@ export class FileSystem {
 
     public static async Contains(path: Path): Promise<boolean> {
         try {
-            await FileSystem.Access(path);
+            await NodeFS.access(path.toString());
             return true;
         }
         catch(e) {

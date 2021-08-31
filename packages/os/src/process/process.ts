@@ -136,7 +136,7 @@ export class Process {
 
     public static async Exec(command: string, options: ExecOptions|null = null): Promise<string|Buffer|null|undefined> {
         try {
-            const { stdout } = await exec(command, {
+            const { stdout, stderr, code } = await exec(command, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 env: options && options.env ? options.env : Process.env,
                 gid: options?.gid,
@@ -147,6 +147,11 @@ export class Process {
                 uid: options?.uid,
                 windowsHide: options?.windowsHide,
             });
+
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
+
             return stdout;
         }
         catch(e) {
@@ -167,7 +172,7 @@ export class Process {
 
     public static async ExecFile(file: Path, args: string[], options: ExecFileOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
         try {
-            const { stdout } = await execFile(file.toString(), args, {
+            const { stdout, stderr, code } = await execFile(file.toString(), args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 env: options && options.env ? options.env : Process.env,
                 gid: options?.gid,
@@ -180,6 +185,11 @@ export class Process {
                 signal: options?.signal,
                 windowsVerbatimArguments: options?.windowsVerbatimArguments,
             });
+
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
+
             return stdout;
         }
         catch(e) {
@@ -215,7 +225,7 @@ export class Process {
 
     public static async Fork(modulePath: Path, args: string[], options: ForkOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
         try {
-            const { stdout } = await fork(modulePath.toString(), args, {
+            const { stdout, stderr, code } = await fork(modulePath.toString(), args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 detached: options?.detached,
                 encoding: options?.encoding,
@@ -233,6 +243,11 @@ export class Process {
                 windowsVerbatimArguments: options?.windowsVerbatimArguments,
                 stdio: options?.stdio,
             });
+
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
+
             return stdout;
         }
         catch(e) {
@@ -377,7 +392,7 @@ export class Process {
     public static async Spawn(command: string, args: string[], options: SpawnOptions|undefined = undefined): Promise<string|Buffer|null|undefined> {
 
         try {
-            const { stdout } = await spawn(command, args, {
+            const { stdout, stderr, code } = await spawn(command, args, {
                 cwd: options && options.cwd ? options.cwd : Process.Cwd().toString(),
                 detached: options?.detached,
                 encoding: options?.encoding,
@@ -395,6 +410,11 @@ export class Process {
                 shell: options?.shell,
                 windowsHide: options?.windowsHide,
             });
+
+            if ((code != 0) && stderr) {
+                throw new Error(stderr.toString());
+            }
+
             return stdout;
         }
         catch(e) {
