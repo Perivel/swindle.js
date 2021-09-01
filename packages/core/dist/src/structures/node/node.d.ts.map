@@ -1,1 +1,0 @@
-{"version":3,"file":"node.d.ts","sourceRoot":"","sources":["../../../../src/structures/node/node.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,kBAAkB,CAAC;AAEjD;;;;GAIG;AAEH,qBAAa,IAAI,CAAC,CAAC,CAAE,YAAW,aAAa,CAAC,CAAC,CAAC;IAE5C,OAAO,CAAC,QAAQ,CAAC,MAAM,CAAI;gBAEf,KAAK,EAAE,CAAC;IAIpB;;;;OAIG;IAEI,KAAK,IAAI,CAAC;CAGpB"}

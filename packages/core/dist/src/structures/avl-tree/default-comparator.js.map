@@ -1,1 +1,0 @@
-{"version":3,"file":"default-comparator.js","sourceRoot":"","sources":["../../../../src/structures/avl-tree/default-comparator.ts"],"names":[],"mappings":";;;AAEO,MAAM,iBAAiB,GAAG,CAAI,CAAI,EAAE,CAAI,EAAU,EAAE;IACvD,IAAI,CAAC,GAAG,CAAC;QAAE,OAAO,CAAC,CAAC;IACpB,IAAI,CAAC,GAAG,CAAC;QAAE,OAAO,CAAC,CAAC,CAAC;IACrB,OAAO,CAAC,CAAC;AACb,CAAC,CAAA;AAJY,QAAA,iBAAiB,qBAI7B"}

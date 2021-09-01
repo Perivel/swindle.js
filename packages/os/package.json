@@ -1,6 +1,6 @@
 {
   "name": "@swindle/os",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Utilities for working with the operating system.",
   "main": "dist/index.js",
   "author": "Patrick Luy <pluy@perivel.com>",
@@ -8,16 +8,20 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@swindle/core": "^2.0.0",
-    "@swindle/filesystem": "^1.0.4",
+    "@swindle/core": "^2.0.1",
+    "@swindle/filesystem": "^1.0.5",
     "promisify-child-process": "^4.1.1"
   },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "yarn clean && tsc",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "inspect:circular": "npx madge --circular --extensions ts ./",
+    "clean": "rimraf ./dist",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   }
 }
