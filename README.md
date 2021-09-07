@@ -16,3 +16,6 @@ Below are the available Modules you can install and use. We are continuing to bu
 - [OS](packages/os/README.md): Utilities for interfacing with the current process.
 - [Specification](packages/specification/README.md): An implementation of the specification pattern.
 - [Container](packages/container/README.md): A Dependency Injection Container for Typescript.
+
+# License
+Swindle is provided under the MIT License.
