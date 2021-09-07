@@ -15,3 +15,4 @@ Below are the available Modules you can install and use. We are continuing to bu
 - [FileSystem](packages/filesystem/README.md): Utilities for working with the file system.
 - [OS](packages/os/README.md): Utilities for interfacing with the current process.
 - [Specification](packages/specification/README.md): An implementation of the specification pattern.
+- [Container](packages/container/README.md): A Dependency Injection Container for Typescript.

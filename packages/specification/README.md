@@ -1,5 +1,5 @@
 # Swindle Specification
-Swindle Specification provides an implementation of the [Specification](https://en.wikipedia.org/wiki/Specification_pattern)_ Design Pattern. 
+Swindle Specification provides an implementation of the [Specification](https://en.wikipedia.org/wiki/Specification_pattern) Design Pattern. 
 
 # Installation
 To install Swindle FileSystem with NPM,
