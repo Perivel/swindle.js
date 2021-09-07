@@ -1,0 +1,29 @@
+{
+  "name": "@swindle/specification",
+  "version": "1.0.1",
+  "description": "An implementation of the specification pattern.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Perivel/swindle",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "inspect:circular": "npx madge --circular --extensions ts ./",
+    "clean": "rimraf ./dist",
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "keywords": [
+    "design pattern",
+    "specification",
+    "spec",
+    "specification pattern"
+  ]
+}
