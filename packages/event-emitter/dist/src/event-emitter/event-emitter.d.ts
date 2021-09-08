@@ -38,6 +38,12 @@ export declare class EventEmitter implements EventEmitterInterface {
      */
     removeSubscriber(suspect: Subscriber): void;
     /**
+     * subscribers()
+     *
+     * gets the list of event subscribers.
+     */
+    subscriberList(): Subscriber[];
+    /**
      * getSubscribersForEvent()
      *
      * gets the relevant subscribers for the specified event.

@@ -35,4 +35,12 @@ export interface EventEmitterInterface {
 
     removeSubscriber(subscriber: SubscriberInterface): void;
 
+    /**
+     * subscribersList()
+     * 
+     * gets the list of event subscribers.
+     */
+
+    subscriberList(): SubscriberInterface[];
+
 }

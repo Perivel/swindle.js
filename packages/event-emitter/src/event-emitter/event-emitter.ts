@@ -79,6 +79,16 @@ export class EventEmitter implements EventEmitterInterface{
         this.subscribers = this.subscribers.filter(subscriber => !subscriber.equals(suspect));
     }
 
+    /**
+     * subscribers()
+     * 
+     * gets the list of event subscribers.
+     */
+
+    public subscriberList(): Subscriber[] {
+        return this.subscribers;
+    }
+
 
     // ===================================
     // helpers

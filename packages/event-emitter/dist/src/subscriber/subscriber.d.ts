@@ -20,7 +20,10 @@ export declare class Subscriber implements SubscriberInterface, Equatable {
      * Creates an EventSubscription instance.
      * @param id The id of the subscription.
      * @param eventName the name of the event to subscribe to.
+     * @param priority The numeric priority of the subscriber. The lower the priority, the earlier the subscriber will be run.
+     * @param label a string label for the subscriber. This is mainly for referencial purposes only.
      * @param handler the event handler.
+     * @param stopPropogationOnError A flag indicating whether event propogation shou.d stop if this subscriber handler encounters an error.
      */
     constructor(id: SubscriberId, eventName: string, priority: number, label: string, handler: EventHandler, stopPropogationOnError?: boolean);
     /**

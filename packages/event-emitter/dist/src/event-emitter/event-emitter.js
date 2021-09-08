@@ -51,6 +51,14 @@ class EventEmitter {
     removeSubscriber(suspect) {
         this.subscribers = this.subscribers.filter(subscriber => !subscriber.equals(suspect));
     }
+    /**
+     * subscribers()
+     *
+     * gets the list of event subscribers.
+     */
+    subscriberList() {
+        return this.subscribers;
+    }
     // ===================================
     // helpers
     // ===================================

@@ -1,4 +1,4 @@
-import { Id } from "@swindle/core";
+import { Id, UUID } from "@swindle/core";
 import { SubscriberIdInterface } from "./subscriber-id.interface";
 
 /**
@@ -11,6 +11,17 @@ export class SubscriberId extends Id implements SubscriberIdInterface {
 
     constructor(value: string) {
         super(value);
+    }
+
+    /**
+     * Generate()
+     * 
+     * Generates a Subscriber Id.
+     * @returns the generated Subscriber ID.
+     */
+
+    public static Generate(): SubscriberId {
+        return new SubscriberId(UUID.V4().id());
     }
 
     /**

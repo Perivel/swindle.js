@@ -26,5 +26,11 @@ export interface EventEmitterInterface {
      * removeListener() removes a listener.
      */
     removeSubscriber(subscriber: SubscriberInterface): void;
+    /**
+     * subscribersList()
+     *
+     * gets the list of event subscribers.
+     */
+    subscriberList(): SubscriberInterface[];
 }
 //# sourceMappingURL=event-emitter.interface.d.ts.map

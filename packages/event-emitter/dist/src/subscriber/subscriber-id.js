@@ -12,6 +12,15 @@ class SubscriberId extends core_1.Id {
         super(value);
     }
     /**
+     * Generate()
+     *
+     * Generates a Subscriber Id.
+     * @returns the generated Subscriber ID.
+     */
+    static Generate() {
+        return new SubscriberId(core_1.UUID.V4().id());
+    }
+    /**
      * equals()
      *
      * equals() compares the instance to the suspect, to determine if they are equal.

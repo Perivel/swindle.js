@@ -42,6 +42,25 @@
             "promptOnClose": true
         },
         {
+            "label": "Run Structs Unit Tests",
+            "type": "shell",
+            "command": "yarn test",
+            "options": {
+                "cwd": "packages/structs"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "group": "test",
+            "detail": "Runs the Filesystem module unit tests",
+            "promptOnClose": true
+        },
+        {
             "label": "Build Filesystem Module",
             "type": "shell",
             "command": "yarn build",
@@ -234,9 +253,9 @@
         {
             "label": "Run Event Emitter Tests",
             "type": "shell",
-            "command": "yarn test",
+            "command": "yarn build && yarn start",
             "options": {
-                "cwd": "packages/specification"
+                "cwd": "packages/test-event-emitter"
             },
             "presentation": {
                 "echo": true,

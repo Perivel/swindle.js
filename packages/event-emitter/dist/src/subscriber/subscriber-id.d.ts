@@ -8,6 +8,13 @@ import { SubscriberIdInterface } from "./subscriber-id.interface";
 export declare class SubscriberId extends Id implements SubscriberIdInterface {
     constructor(value: string);
     /**
+     * Generate()
+     *
+     * Generates a Subscriber Id.
+     * @returns the generated Subscriber ID.
+     */
+    static Generate(): SubscriberId;
+    /**
      * equals()
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
