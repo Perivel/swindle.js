@@ -1,6 +1,6 @@
 {
   "name": "@swindle/structs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Implementations of common data structures.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
