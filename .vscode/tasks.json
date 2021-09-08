@@ -198,6 +198,44 @@
             "type": "shell",
             "command": "yarn test",
             "options": {
+                "cwd": "packages/container"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "group": "test",
+            "detail": "Runs the Container module unit tests",
+            "promptOnClose": true
+        },
+        {
+            "label": "Build Event Emitter Module",
+            "type": "shell",
+            "command": "yarn build",
+            "options": {
+                "cwd": "packages/event-emitter"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "group": "build",
+            "detail": "Buils the Event Emitter module.",
+            "promptOnClose": true
+        },
+        {
+            "label": "Run Event Emitter Tests",
+            "type": "shell",
+            "command": "yarn test",
+            "options": {
                 "cwd": "packages/specification"
             },
             "presentation": {
@@ -212,6 +250,5 @@
             "detail": "Runs the Container module unit tests",
             "promptOnClose": true
         }
-        
     ]
 }

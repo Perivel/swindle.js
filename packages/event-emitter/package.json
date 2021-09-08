@@ -1,0 +1,29 @@
+{
+  "name": "@swindle/event-emitter",
+  "version": "1.0.0",
+  "description": "An event emitter implementation for typescript.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Perivel/swindle",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "inspect:circular": "npx madge --circular --extensions ts ./",
+    "clean": "rimraf ./dist",
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
+  },
+  "dependencies": {
+    "typescript": "^4.3.5",
+    "@swindle/core": "2.0.1"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "keywords": [
+    
+  ]
+}
