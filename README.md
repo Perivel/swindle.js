@@ -10,12 +10,13 @@ Using Swindle has a few notable benefits, including:
 
 # Available Modules
 Below are the available Modules you can install and use. We are continuing to build modules. So, this list will expand as new modules are released.
+- [Container](packages/container/README.md): A Dependency Injection Container for Typescript.
 - [Core](packages/core/README.md): Utility classes for common data manipulation.
-- [Structs](packages/structs/README.md): Implementations of common data structures.
+- [Event Emitter](packages/event-emitter/README.md): An Event Emitter written in typescript.
 - [FileSystem](packages/filesystem/README.md): Utilities for working with the file system.
 - [OS](packages/os/README.md): Utilities for interfacing with the current process.
 - [Specification](packages/specification/README.md): An implementation of the specification pattern.
-- [Container](packages/container/README.md): A Dependency Injection Container for Typescript.
+- [Structs](packages/structs/README.md): Implementations of common data structures.
 
 # License
 Swindle is provided under the MIT License.
