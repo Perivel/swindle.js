@@ -18,13 +18,25 @@ class MessageSent extends event_emitter_1.CompositeEvent {
     }
 }
 const main = async () => {
-    const emitter = new event_emitter_1.EventEmitter([], async (event, emitter) => console.log("This is before the handlers are executed."), async (event, emitter) => console.log("This is after the handlers are executed."), async (event, sub, emitter) => console.log("There was an error..."));
+    const emitter = new event_emitter_1.EventEmitter([], async (event, emitter) => console.log("This is before the handlers are executed."), async (event, emitter) => console.log("This is after the handlers are executed."), async (event, error, sub, emitter) => console.log(error.message));
     emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 1, "print-message", async (event) => {
         const messageSentEvent = event;
         console.log("message: " + messageSentEvent.message());
     }, false));
     emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 2, "print-response", async (event) => {
         console.log("THis is the response.");
+    }, false));
+    emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 3, "throw-error", async (event) => {
+        throw new Error("Something went wrong.");
+    }, false));
+    emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 4, "extra-processing", async (event) => {
+        console.log("Some more extra processing.");
+    }, false));
+    emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 5, "throw-error", async (event) => {
+        throw new Error("Another error");
+    }, true));
+    emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 6, "extra-processing", async (event) => {
+        console.log("This should not execute.");
     }, false));
     console.log(emitter.subscriberList());
     await emitter.emit(new MessageSent("This is my message."));

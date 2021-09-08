@@ -6,7 +6,7 @@ const structs_1 = require("@swindle/structs");
  * EventEmitter
  */
 class EventEmitter {
-    constructor(subscribers = [], onBeforeHandlersExecute = async (event, emitter) => { }, onAfterHandlersExecute = async (event, emitter) => { }, onHandlerError = async (event, sub, emitter) => { }) {
+    constructor(subscribers = [], onBeforeHandlersExecute = async (event, emitter) => { }, onAfterHandlersExecute = async (event, emitter) => { }, onHandlerError = async (event, error, sub, emitter) => { }) {
         this.subscribers = subscribers;
         this._onBeforeHandlerExecution = onBeforeHandlersExecute;
         this._onAfterHandlersExecute = onAfterHandlersExecute;
@@ -111,7 +111,7 @@ class EventEmitter {
                 // The handler failed.
                 sub.incrementFailedHandleAttempts();
                 // emit the event handler failed event.
-                await this._onHandlerError(event, sub, this);
+                await this._onHandlerError(event, error, sub, this);
                 if (sub.shouldStopPropogationOnError()) {
                     return false;
                 }

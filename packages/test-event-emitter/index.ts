@@ -28,7 +28,7 @@ const main = async (): Promise<void> => {
         [],
         async (event, emitter): Promise<void> => console.log("This is before the handlers are executed."),
         async (event, emitter): Promise<void> => console.log("This is after the handlers are executed."),
-        async (event, sub, emitter): Promise<void> => console.log("There was an error...")
+        async (event, error, sub, emitter): Promise<void> => console.log(error.message)
     );
     emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 1, "print-message", async (event) => {
         const messageSentEvent = event as MessageSent;
@@ -37,6 +37,22 @@ const main = async (): Promise<void> => {
 
     emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 2, "print-response", async (event) => {
         console.log("THis is the response.");
+    }, false));
+
+    emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 3, "throw-error", async (event) => {
+        throw new Error("Something went wrong.")
+    }, false));
+
+    emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 4, "extra-processing", async (event) => {
+        console.log("Some more extra processing.");
+    }, false));
+
+    emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 5, "throw-error", async (event) => {
+        throw new Error("Another error")
+    }, true));
+
+    emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 6, "extra-processing", async (event) => {
+        console.log("This should not execute.");
     }, false));
 
     console.log(emitter.subscriberList());

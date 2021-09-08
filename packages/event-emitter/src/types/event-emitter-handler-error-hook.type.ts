@@ -8,4 +8,4 @@ import { Subscriber } from "../subscriber/subscriber";
  * A type representing a hook function for handling when an event handler encounters an error.
  */
 
-export type EventEmitterHandlerErrorHook = (event: CompositeEvent, handler: Subscriber, emitter: EventEmitter) => Promise<void>;
+export type EventEmitterHandlerErrorHook = (event: CompositeEvent, error: Error, handler: Subscriber, emitter: EventEmitter) => Promise<void>;

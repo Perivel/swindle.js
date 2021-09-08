@@ -23,7 +23,7 @@ export class EventEmitter implements EventEmitterInterface{
         subscribers: Subscriber[] = [],
         onBeforeHandlersExecute: EventEmitterHook = async (event, emitter): Promise<void> => { },
         onAfterHandlersExecute: EventEmitterHook = async (event, emitter): Promise<void> => { },
-        onHandlerError: EventEmitterHandlerErrorHook = async (event, sub, emitter): Promise<void> => { },
+        onHandlerError: EventEmitterHandlerErrorHook = async (event, error, sub, emitter): Promise<void> => { },
     ) {
         this.subscribers = subscribers;
         this._onBeforeHandlerExecution = onBeforeHandlersExecute;
@@ -151,7 +151,7 @@ export class EventEmitter implements EventEmitterInterface{
                 sub.incrementFailedHandleAttempts();
 
                 // emit the event handler failed event.
-                await this._onHandlerError(event, sub, this);
+                await this._onHandlerError(event, error as Error, sub, this);
                 
                 if (sub.shouldStopPropogationOnError()) {
                     return false;

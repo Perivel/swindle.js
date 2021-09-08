@@ -19,7 +19,7 @@
   "dependencies": {
     "typescript": "^4.3.5",
     "@swindle/core": "2.0.1",
-    "@swindle/structs": "1.0.2"
+    "@swindle/structs": "1.0.3"
   },
   "devDependencies": {
     "rimraf": "^3.0.2"
