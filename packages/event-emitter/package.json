@@ -1,6 +1,6 @@
 {
   "name": "@swindle/event-emitter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An event emitter implementation for typescript.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
@@ -17,8 +17,8 @@
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
-    "@swindle/core": "2.0.1",
-    "@swindle/structs": "1.0.3",
+    "@swindle/core": "2.1.0",
+    "@swindle/structs": "1.0.4",
     "typescript": "^4.3.5"
   },
   "devDependencies": {
