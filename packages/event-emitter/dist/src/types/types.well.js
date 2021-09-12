@@ -10,9 +10,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// event emitter
-__exportStar(require("./src/event/event.well"), exports);
-__exportStar(require("./src/subscriber/subscribers.well"), exports);
-__exportStar(require("./src/event-emitter/event-emitter.well"), exports);
-__exportStar(require("./src/types/types.well"), exports);
-//# sourceMappingURL=index.js.map
+// types well
+__exportStar(require("./event-emitter-handler-error-hook.type"), exports);
+__exportStar(require("./event-emitter-hook.type"), exports);
+//# sourceMappingURL=types.well.js.map
