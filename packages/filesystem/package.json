@@ -1,6 +1,6 @@
 {
   "name": "@swindle/filesystem",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Filesystem utilities.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
@@ -17,7 +17,7 @@
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
-    "@swindle/core": "^2.0.1",
+    "@swindle/core": "^2.1.0",
     "@types/node": "16.7.1"
   },
   "devDependencies": {
