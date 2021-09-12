@@ -1,6 +1,6 @@
 {
   "name": "@swindle/structs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Implementations of common data structures.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@swindle/core": "^2.0.1"
+    "@swindle/core": "^2.1.0"
   },
   "scripts": {
     "build": "tsc",
