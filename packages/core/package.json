@@ -1,6 +1,6 @@
 {
   "name": "@swindle/core",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Utilitiy classes for data manipulation.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
