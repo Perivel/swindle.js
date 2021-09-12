@@ -1,6 +1,6 @@
 {
   "name": "@swindle/event-emitter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An event emitter implementation for typescript.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
