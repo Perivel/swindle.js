@@ -3,6 +3,7 @@ Swindle provides some other convenient utilities to help improve the experience.
 
 ## Types
 **Comparator**: A custom type for a comparison function.
+**Type**: A utility for designating a type.
 
 ## Interfaces
 Swindle provides a few helpful interfaces.

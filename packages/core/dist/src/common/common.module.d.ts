@@ -7,4 +7,5 @@ export { MethodUndefinedException } from './exceptions/method-undefined.exceptio
 export { OutOfBoundsException } from './exceptions/out-of-bounds.exception';
 export { NetworkException } from './exceptions/network.exception';
 export * from './types/comparator.type';
+export * from './types/type.type';
 //# sourceMappingURL=common.module.d.ts.map

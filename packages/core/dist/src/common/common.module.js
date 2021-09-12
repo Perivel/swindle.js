@@ -24,4 +24,5 @@ var network_exception_1 = require("./exceptions/network.exception");
 Object.defineProperty(exports, "NetworkException", { enumerable: true, get: function () { return network_exception_1.NetworkException; } });
 // types
 __exportStar(require("./types/comparator.type"), exports);
+__exportStar(require("./types/type.type"), exports);
 //# sourceMappingURL=common.module.js.map

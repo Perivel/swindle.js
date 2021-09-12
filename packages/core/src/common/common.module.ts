@@ -12,3 +12,4 @@ export { NetworkException } from './exceptions/network.exception';
 
 // types
 export * from './types/comparator.type';
+export * from './types/type.type';
