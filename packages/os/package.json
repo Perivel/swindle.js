@@ -1,6 +1,6 @@
 {
   "name": "@swindle/os",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Utilities for working with the operating system.",
   "main": "dist/index.js",
   "author": "Patrick Luy <pluy@perivel.com>",
@@ -8,8 +8,8 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@swindle/core": "^2.0.1",
-    "@swindle/filesystem": "^1.0.5",
+    "@swindle/core": "^2.1.0",
+    "@swindle/filesystem": "^1.0.6",
     "promisify-child-process": "^4.1.1"
   },
   "devDependencies": {
