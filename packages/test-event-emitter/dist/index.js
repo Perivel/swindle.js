@@ -21,7 +21,9 @@ const main = async () => {
     const emitter = new event_emitter_1.EventEmitter([], async (event, emitter) => console.log("This is before the handlers are executed."), async (event, emitter) => console.log("This is after the handlers are executed."), async (event, error, sub, emitter) => console.log(error.message));
     emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 1, "print-message", async (event) => {
         const messageSentEvent = event;
-        console.log("message: " + messageSentEvent.message());
+        setTimeout(() => {
+            console.log("message: " + messageSentEvent.message());
+        }, 3000);
     }, false));
     emitter.addSubscriber(new event_emitter_1.Subscriber(event_emitter_1.SubscriberId.Generate(), MessageSent.EventName(), 2, "print-response", async (event) => {
         console.log("THis is the response.");

@@ -14,7 +14,7 @@
     "clean-output": "rimraf my-files/" 
   },
   "dependencies": {
-    "@swindle/event-emitter": "^1.0.0"
+    "@swindle/event-emitter": "^1.0.3"
   },
   "devDependencies": {
     "rimraf": "^3.0.2"

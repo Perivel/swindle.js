@@ -32,7 +32,11 @@ const main = async (): Promise<void> => {
     );
     emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 1, "print-message", async (event) => {
         const messageSentEvent = event as MessageSent;
-        console.log("message: " + messageSentEvent.message());
+        
+        setTimeout(() => {
+            console.log("message: " + messageSentEvent.message());
+        }, 3000);
+
     }, false));
 
     emitter.addSubscriber(new Subscriber(SubscriberId.Generate(), MessageSent.EventName(), 2, "print-response", async (event) => {
