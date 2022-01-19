@@ -1,8 +1,6 @@
 # Swindle FileSystem
 Swindle FileSystem provides filesystem access utilities. 
 
-NOTE: Swindle FileSystem is still experimental, meaning it may contain bugs and is subject to breaking changes.
-
 # Installation
 To install Swindle FileSystem with NPM,
 ```

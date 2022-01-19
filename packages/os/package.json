@@ -1,6 +1,6 @@
 {
   "name": "@swindle/os",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Utilities for working with the operating system.",
   "main": "dist/index.js",
   "author": "Patrick Luy <pluy@perivel.com>",
@@ -8,13 +8,21 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@swindle/core": "^2.1.0",
-    "@swindle/filesystem": "^1.0.6",
+    "@swindle/core": "^2.1.1",
+    "@swindle/filesystem": "^1.0.7",
     "promisify-child-process": "^4.1.1"
   },
   "devDependencies": {
     "rimraf": "^3.0.2"
   },
+  "keywords": [
+    "process",
+    "os",
+    "operating system utilities",
+    "operating system",
+    "utilities",
+    "utils"
+  ],
   "scripts": {
     "build": "yarn clean && tsc",
     "test": "jest",

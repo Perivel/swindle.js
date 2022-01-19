@@ -14,7 +14,7 @@
     "clean-output": "rimraf my-files/" 
   },
   "dependencies": {
-    "@swindle/filesystem": "^1.0.4",
+    "@swindle/filesystem": "^1.0.7",
     "@types/node": "16.7.1"
   },
   "devDependencies": {
