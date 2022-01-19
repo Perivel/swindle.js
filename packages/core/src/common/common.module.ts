@@ -13,3 +13,7 @@ export { NetworkException } from './exceptions/network.exception';
 // types
 export * from './types/comparator.type';
 export * from './types/type.type';
+export * from './types/fns/async-fn';
+export * from './types/fns/sync-fn.type';
+export * from './types/fns/void-async-fn.type';
+export * from './types/fns/void-sync-fn.type';
