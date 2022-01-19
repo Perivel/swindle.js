@@ -8,6 +8,19 @@
   "author": "Patrick Luy <pluy@perivel.com>",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "core",
+    "core library",
+    "date",
+    "date manipulation",
+    "hashing",
+    "hash",
+    "address",
+    "email",
+    "email validation",
+    "phone",
+    "phone number"
+  ],
   "dependencies": {
     "awesome-phonenumber": "^2.55.0",
     "bcryptjs": "^2.4.3",

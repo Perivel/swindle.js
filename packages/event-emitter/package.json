@@ -1,6 +1,6 @@
 {
   "name": "@swindle/event-emitter",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "An event emitter implementation for typescript.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@swindle/core": "2.1.1",
-    "@swindle/structs": "1.0.4",
+    "@swindle/structs": "1.0.5",
     "typescript": "^4.3.5"
   },
   "devDependencies": {

@@ -1,12 +1,19 @@
 {
   "name": "@swindle/filesystem",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Filesystem utilities.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
   "author": "Patrick Luy <pluy@perivel.com>",
   "license": "MIT",
   "private": false,
+  "keywords": [
+    "filesystem",
+    "core",
+    "core library",
+    "fs",
+    "swindle"
+  ],
   "scripts": {
     "build": "yarn clean && tsc",
     "test": "jest",
