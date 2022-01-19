@@ -20,7 +20,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Hash = void 0;
-const Bcrypt = __importStar(require("bcrypt"));
+const Bcrypt = __importStar(require("bcryptjs"));
 /**
  * Hash
  *
@@ -39,7 +39,17 @@ class Hash {
      * @returns a hashed version of the data
      */
     static async Create(data, salt) {
-        return new Hash(await Bcrypt.hash(data, salt.value()));
+        //return new Hash(await Bcrypt.hash(data, salt.value()));
+        return new Promise((resolve, reject) => {
+            Bcrypt.hash(data.toString(), salt.value(), (error, hash) => {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(new Hash(hash));
+                }
+            });
+        });
     }
     /**
      * equals()

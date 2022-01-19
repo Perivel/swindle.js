@@ -25,4 +25,8 @@ Object.defineProperty(exports, "NetworkException", { enumerable: true, get: func
 // types
 __exportStar(require("./types/comparator.type"), exports);
 __exportStar(require("./types/type.type"), exports);
+__exportStar(require("./types/fns/async-fn"), exports);
+__exportStar(require("./types/fns/sync-fn.type"), exports);
+__exportStar(require("./types/fns/void-async-fn.type"), exports);
+__exportStar(require("./types/fns/void-sync-fn.type"), exports);
 //# sourceMappingURL=common.module.js.map

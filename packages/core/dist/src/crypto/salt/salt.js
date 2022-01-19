@@ -20,7 +20,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Salt = void 0;
-const Bcrypt = __importStar(require("bcrypt"));
+const Bcrypt = __importStar(require("bcryptjs"));
 /**
  * Salt
  *

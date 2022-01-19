@@ -1,4 +1,4 @@
-import * as Bcrypt from 'bcrypt';
+import * as Bcrypt from 'bcryptjs';
 import { Equatable } from '../../common/common.module';
 import { SaltInterface } from './salt.interface';
 

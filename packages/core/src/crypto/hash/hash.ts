@@ -1,4 +1,4 @@
-import * as Bcrypt from 'bcrypt';
+import * as Bcrypt from 'bcryptjs';
 import { Equatable } from "../../common/common.module";
 import { Salt } from "../salt/salt";
 import { HashInterface } from "./hash.interface";
@@ -27,7 +27,17 @@ export class Hash implements HashInterface, Equatable {
      */
 
     public static async Create(data: string|Buffer, salt: Salt): Promise<Hash> {
-        return new Hash(await Bcrypt.hash(data, salt.value()));
+        //return new Hash(await Bcrypt.hash(data, salt.value()));
+        return new Promise((resolve, reject) => {
+            Bcrypt.hash(data.toString(), salt.value(), (error, hash) => {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(new Hash(hash));
+                }
+            });
+        });
     }
 
     /**
