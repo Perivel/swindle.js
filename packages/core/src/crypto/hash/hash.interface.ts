@@ -1,4 +1,3 @@
-import { SaltInterface } from "../salt/salt.interface";
 
 
 export interface HashInterface {
