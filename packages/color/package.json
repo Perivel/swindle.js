@@ -1,0 +1,21 @@
+{
+  "name": "@swindle/color",
+  "version": "1.0.0",
+  "description": "Represent and manipulate color codes in different formats.",
+  "main": "dist/index.js",
+  "author": "Patrick Luy <pluy@perivel.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@swindle/core": "^2.1.1"
+  },
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "inspect:circular": "npx madge --circular --extensions ts ./",
+    "clean": "rimraf ./dist",
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
+  }
+}
