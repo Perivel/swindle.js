@@ -1,6 +1,9 @@
 # Path
 The `Path` class provides utilities for working with paths.
 
+> **Note**: We are still unable to perform proper path validation wihout explicitly checking for existance. For now, we just assume all paths are valid
+> unless the path is an empty string. If you want to perform your own manual path validation by checking for file existance, you can use the [OS Module](./../../../os/README.md)
+
 # Constructor
 ## constructor(value)
 Creates an instance of a `Path`.

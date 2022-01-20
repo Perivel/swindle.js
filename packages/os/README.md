@@ -1,8 +1,6 @@
 # Swindle OS
 Utilities for working with the operating system and runtime.
 
-Note: This package is still experimental and still subject to breaking changes.
-
 # Installation
 To install Swindle OS with NPM,
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@swindle/filesystem",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Filesystem utilities.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
