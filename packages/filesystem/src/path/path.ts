@@ -1,4 +1,5 @@
 import * as NodePath from 'path';
+import * as NodeProcess from 'process';
 import { InvalidArgumentException } from "@swindle/core";
 import { PathInterface } from './path.interface';
 
@@ -178,7 +179,7 @@ export class Path implements PathInterface {
      * @returns TRUE if the path is valid. FALSE otherwise.
      * @note This method does not work correctly yet. We need some algorithm to validate paths for any operating system.
      * Current solution produces incorrect responses. For now, we will just make this function always return
-     * TRUE. And then modify it at a later version.
+     * TRUE when the path is not empty.. And then modify it at a later version.
      */
     private isValidPath(suspect: string): boolean {
         // const containsRestrictedCharacters = Path.RESTRICTED.test(suspect) || process.platform == "win32" ? Path.WINDOWS_RESTRICTED.test(suspect) : Path.POSIX_RESTRICTED.test(suspect);
@@ -186,6 +187,8 @@ export class Path implements PathInterface {
         // const relativeBeginning = /^(?:\.\\|\.\/|\.\.\\|\.\.\/)/;
         // const validBeginning = NodePath.isAbsolute(suspect) ? absoluteBeginning.test(suspect) : relativeBeginning.test(suspect);
         // return !containsRestrictedCharacters && validBeginning;
-        return true;
+        //return true;
+
+        return suspect.trim().length > 0;
     }
 }

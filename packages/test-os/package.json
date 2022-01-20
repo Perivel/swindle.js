@@ -1,6 +1,6 @@
 {
   "name": "test-os",
-  "version": "1.0.0",
+  "version": "1.0.11",
   "description": "Runs some tests for the os module.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
@@ -14,8 +14,8 @@
     "clean-output": "rimraf my-files/" 
   },
   "dependencies": {
-    "@swindle/filesystem": "^1.0.4",
-    "@swindle/os": "^1.0.10",
+    "@swindle/filesystem": "^1.0.8",
+    "@swindle/os": "^1.0.11",
     "@types/node": "16.7.1"
   },
   "devDependencies": {
