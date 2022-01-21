@@ -1,0 +1,29 @@
+{
+  "name": "@swindle/<your-module-name>",
+  "version": "1.0.0",
+  "description": "My SwindleJS module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/Perivel/swindle",
+  "author": "YOUR NAME <email>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    
+  ],
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "inspect:circular": "npx madge --circular --extensions ts ./",
+    "clean": "rimraf ./dist",
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
+  }
+}
