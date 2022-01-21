@@ -19,5 +19,8 @@ Below are the available Modules you can install and use. We are continuing to bu
 - [Specification](packages/specification/README.md): An implementation of the specification pattern.
 - [Structs](packages/structs/README.md): Implementations of common data structures.
 
+# Contributing
+See the [Contribution Guidelines](.github/CONTRIBUTING.md) for information about contributing to SwindleJS.
+
 # License
 Swindle is provided under the MIT License.
