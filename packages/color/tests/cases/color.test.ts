@@ -21,7 +21,15 @@ test('Test Color class', () => {
     // check hex values.
     const redHex = new Hex('#FF0000');
     expect(red.hex().equals(redHex)).toBeTruthy();
-    expect(red.hex().serialize()).toEqual('#FF0000');
+    expect(red.hex().value()).toEqual('#FF0000');
+    expect(red.hex().equals(blue.hex())).toBeFalsy();
+
+    // check RGBA values.
     const redRgba = new RGBA(255,0,0);
     expect(red.rgba().equals(redRgba)).toBeTruthy();
+
+    // check equality.
+    const customRed = new Color(redHex);
+    expect(red.equals(customRed));
+
 });

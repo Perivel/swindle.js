@@ -4,7 +4,7 @@
   "description": "Utilitiy classes for data manipulation.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/Perivel/foundation",
+  "repository": "https://github.com/Perivel/swindle",
   "author": "Patrick Luy <pluy@perivel.com>",
   "license": "MIT",
   "private": false,

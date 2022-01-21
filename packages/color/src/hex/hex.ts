@@ -19,7 +19,7 @@ export class Hex implements HexInterface, Equatable, Serializable {
      * @throws HexException when the hex value is invalid.
      */
     constructor(value: string) {
-
+        value = value.toUpperCase();
         if (isHex(value)) {
             this._value = value;
         }
