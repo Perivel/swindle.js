@@ -10,6 +10,7 @@ Using Swindle has a few notable benefits, including:
 
 # Available Modules
 Below are the available Modules you can install and use. We are continuing to build modules. So, this list will expand as new modules are released.
+- [Color](packages/color/README.md): Manipulate and represent colors in different formats.
 - [Container](packages/container/README.md): A Dependency Injection Container for Typescript.
 - [Core](packages/core/README.md): Utility classes for common data manipulation.
 - [Event Emitter](packages/event-emitter/README.md): An Event Emitter written in typescript.

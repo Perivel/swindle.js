@@ -5,9 +5,20 @@
   "main": "dist/index.js",
   "author": "Patrick Luy <pluy@perivel.com>",
   "license": "MIT",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Perivel/swindle"
+  },
   "private": false,
+  "keywords": [
+    "color",
+    "color formats",
+    "colors"
+  ],
   "dependencies": {
-    "@swindle/core": "^2.1.1"
+    "@swindle/core": "^2.1.1",
+    "colors-convert": "^1.4.1"
   },
   "scripts": {
     "build": "yarn clean && tsc",
@@ -17,5 +28,8 @@
     "inspect:circular": "npx madge --circular --extensions ts ./",
     "clean": "rimraf ./dist",
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
