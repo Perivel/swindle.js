@@ -44,6 +44,22 @@ export class Timezone implements TimezoneInterface, Equatable {
     }
 
     /**
+     * Local()
+     * 
+     * Creates a Timezone instance representing the local timezone (based on the machine)
+     * @returns A Timezone instance representing local time.
+     */
+
+    public static Local(): Timezone {
+        const local = DateTime.local();
+        return new Timezone(
+            local.zone.name, 
+            local.toFormat('ZZZZ'), 
+            local.offset
+        );
+    }
+
+    /**
      * UTC()
      *
      * UTC() sets the timezone to UTC.

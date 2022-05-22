@@ -32,7 +32,8 @@ export class Duration implements DurationInterface, Equatable {
             minutes,
             seconds,
             milliseconds: miliseconds,
-            conversionAccuracy: "longterm",
+        }, {
+            conversionAccuracy: "longterm"
         });
 
         if (!this.luxonDuration.isValid) {

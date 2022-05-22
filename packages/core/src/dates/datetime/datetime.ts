@@ -4,6 +4,7 @@ import { Equatable } from "./../../common/common.module";
 import { Timezone } from "./../../geography/geography.module";
 import { DateException } from '../exceptions/date.exception';
 import { Duration } from './../duration/duration';
+import { HighlightSpanKind } from 'typescript';
 
 /**
  * DateTime
@@ -29,6 +30,7 @@ export class DateTime implements DateTimeInterface, Equatable {
             minute: minutes,
             second: seconds,
             millisecond: ms,
+        }, {
             zone: 'utc'
         });
 
@@ -45,6 +47,7 @@ export class DateTime implements DateTimeInterface, Equatable {
      * @param dateVal The date to create a timestamp from
      * @throws DateException when the date is invalid.
      */
+
     public static FromDate(dateVal: Date, timezone: Timezone): DateTime {
         const date = LuxonDateTime.fromJSDate(dateVal).toUTC();
         return new DateTime(date.year,
@@ -56,6 +59,17 @@ export class DateTime implements DateTimeInterface, Equatable {
             date.millisecond,
             timezone
         );
+    }
+
+    /**
+     * Local()
+     * 
+     * creates a DateTime instance where the timezone is set to the local timezone.
+     * @returns A DateTime object where the timezone is set to the local timezone.
+     */
+
+    public static Local(): DateTime {
+        return DateTime.FromDate(LuxonDateTime.local().toJSDate(), Timezone.Local());
     }
 
     /**
@@ -98,6 +112,17 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     public day(): number {
         return this.date.day;
+    }
+
+    /**
+     * hour()
+     * 
+     * gets the hour.
+     * @note hours are zero-based (0-23)
+     */
+
+    public hour(): number {
+        return this.date.hour;
     }
 
     /**
@@ -155,6 +180,27 @@ export class DateTime implements DateTimeInterface, Equatable {
     }
 
     /**
+     * milisecond()
+     * 
+     * gets the milisecond (0-999)
+     */
+
+    public milisecond(): number {
+        return this.date.millisecond;
+    }
+
+    /**
+     * minute()
+     * 
+     * gets the minute.
+     * @note minutes are zero-based (0-59)
+     */
+
+    public minute(): number {
+        return this.date.minute;
+    }
+
+    /**
      * month()
      *
      * month() gets the month part of the DateTime.
@@ -163,6 +209,17 @@ export class DateTime implements DateTimeInterface, Equatable {
 
     public month(): number {
         return this.date.month;
+    }
+
+    /**
+     * second()
+     * 
+     * gets the second
+     * @note seconds are zero-based (0-59)
+     */
+    
+    public second(): number {
+        return this.date.second;
     }
 
     /**
