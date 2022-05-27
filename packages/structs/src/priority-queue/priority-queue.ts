@@ -1,5 +1,6 @@
 import { PriorityQueueNode } from "./priority-queue-node";
 import { PriorityQueueInterface } from "./priority-queue.interface";
+import { PriorityQueueOrder } from './priority-queue-order.enum';
 
 /**
  * PriorityQueue
@@ -10,9 +11,11 @@ import { PriorityQueueInterface } from "./priority-queue.interface";
 export class PriorityQueue<T> implements PriorityQueueInterface<T> {
 
     private _values: Array<PriorityQueueNode<T>>;
+    private readonly _order: PriorityQueueOrder;
 
-    constructor() {
+    constructor(order: PriorityQueueOrder = PriorityQueueOrder.Ascending) {
         this._values = new Array<PriorityQueueNode<T>>();
+        this._order = order;
     }
 
     /**
@@ -51,12 +54,54 @@ export class PriorityQueue<T> implements PriorityQueueInterface<T> {
 
     public enqueue(value: T, priority: number): void {
         const node = new PriorityQueueNode<T>(value, priority);
+        
+        if (this._order === PriorityQueueOrder.Ascending) {
+            this.insertAscending(node);
+        }
+        else {
+            this.insertDescending(node);
+        }
+    }
+
+    /**
+     * insertAscending()
+     * 
+     * inserts the node in ascending order by priority.
+     * @param node the node to insert.
+     */
+
+    private insertAscending(node: PriorityQueueNode<T>): void {
         const size = this.size();
         let contains = false;
         
         let i = 0;
         for (i = 0; i < size; i++) {
             if (this._values[i].priority() > node.priority()) {
+                this._values.splice(i, 0, node);
+                contains = true;
+                break;
+            }
+        }
+
+        if (!contains) {
+            this._values.push(node);
+        }
+    }
+
+    /**
+     * insertDescending()
+     * 
+     * inserts the node in Descending order by priority.
+     * @param node the node to insert.
+     */
+
+     private insertDescending(node: PriorityQueueNode<T>): void {
+        const size = this.size();
+        let contains = false;
+        
+        let i = 0;
+        for (i = 0; i < size; i++) {
+            if (this._values[i].priority() < node.priority()) {
                 this._values.splice(i, 0, node);
                 contains = true;
                 break;
