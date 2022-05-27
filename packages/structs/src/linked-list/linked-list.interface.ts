@@ -1,3 +1,4 @@
+import { LinkedListNodeInterface } from "./linked-list-node.interface";
 
 
 
@@ -19,6 +20,16 @@ export interface LinkedListInterface<T> {
      */
 
     contains(value: T): boolean;
+
+    /**
+     * get()
+     * 
+     * gets the first node with the associated value, if it exists.
+     * @param value the value of the node to get.
+     * @returns the first node with the specified value, or null if not found.
+     */
+
+    get(value: T): LinkedListNodeInterface<T>|null;
 
     /**
      * insert()

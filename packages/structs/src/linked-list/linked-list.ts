@@ -51,6 +51,18 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     /**
+     * get()
+     * 
+     * gets the first node with the associated value, if it exists.
+     * @param value the value of the node to get.
+     * @returns the first node with the specified value, or null if not found.
+     */
+
+    public get(value: T): LinkedListNode<T>|null {
+        return this.getNodeForValue(value, this._head!);
+    }
+
+    /**
      * insert()
      * 
      * inserts the value in the list.
@@ -169,6 +181,27 @@ export class LinkedList<T> implements LinkedListInterface<T> {
         }
         else {
             return false;
+        }
+    }
+
+    /**
+     * getNodeForValue()
+     * 
+     * gets the first node containing the specified value.
+     * @param value the value to search for.
+     * @param node The node to check.
+     * @returns The first node containing the value or null if it is not found.
+     */
+
+    private getNodeForValue(value: T, node: LinkedListNode<T>): LinkedListNode<T> | null {
+        if (this.compare(node.value(), value) === 0) {
+            return node;
+        }
+        else if (node.next() != null) {
+            return this.getNodeForValue(value, node.next()!);
+        }
+        else {
+            return null;
         }
     }
 

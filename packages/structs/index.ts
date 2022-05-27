@@ -1,19 +1,21 @@
 // node
-export { Node } from './src/node/node';
+export * from './src/node/node.module';
 
 // stacks
-export { Stack } from './src/stack/stack';
+export * from './src/stack/stack.module';
 
 // queues
-export { Queue } from './src/queue/queue';
+export * from './src/queue/queue.module';
 
 // priority queue
-export { PriorityQueue } from './src/priority-queue/priority-queue';
+export * from './src/priority-queue/priority-queue.module';
 
 // Linked List
-export { LinkedList } from './src/linked-list/linked-list';
+export * from './src/linked-list/linked-list.module';
 
 // trees
-export { Tree } from './src/tree/tree';
-export { TreeNode } from './src/tree-node/tree-node';
-// export { AvlTree } from './avl-tree/avl-tree';
+export * from './src/tree/tree.module';
+export * from './src/tree-node/tree-node.module';
+
+// graphs
+export * from './src/graph/graph.module';
