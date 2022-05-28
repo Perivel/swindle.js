@@ -8,7 +8,7 @@ import { Node } from './../node/node';
 
 export class PriorityQueueNode<T> extends Node<T> implements PriorityQueueNodeInterface<T> {
 
-    private readonly _priority: number;
+    private _priority: number;
     private readonly _next: PriorityQueueNode<T>|null;
 
     constructor(value: T, priority: number = 1, next: PriorityQueueNode<T>|null = null) {
@@ -35,5 +35,16 @@ export class PriorityQueueNode<T> extends Node<T> implements PriorityQueueNodeIn
 
     public priority(): number {
         return this._priority;
+    }
+
+    /**
+     * setPriority()
+     * 
+     * sets the priority of the node.
+     * @param newPriority 
+     */
+    
+    public setPriority(newPriority: number): void {
+        this._priority = newPriority;
     }
 }

@@ -1,6 +1,5 @@
 import { LinkedListNodeInterface } from "./linked-list-node.interface";
-
-
+import { LinkedListTraversalFn } from './linked-list-traversal-fn.type';
 
 export interface LinkedListInterface<T> {
 
@@ -20,6 +19,15 @@ export interface LinkedListInterface<T> {
      */
 
     contains(value: T): boolean;
+
+    /**
+     * forEach()
+     * 
+     * traverses the LinkedList executing the predicate function for each value.
+     * @param predicate 
+     */
+
+    forEach(predicate: LinkedListTraversalFn<T>): void;
 
     /**
      * get()

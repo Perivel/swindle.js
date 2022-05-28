@@ -110,4 +110,7 @@ export interface GraphInterface<T> {
     toArray(): Array<VertexInterface<T>>;
 }
 
-export type VertexPath<T> = Array<T>;
+export interface VertexPath<T> {
+    path: T[];
+    weight: number;
+}

@@ -23,4 +23,13 @@ export interface PriorityQueueNodeInterface<T> extends NodeInterface<T>  {
      */
 
     priority(): number;
+
+    /**
+     * setPriority()
+     * 
+     * sets the priority of the node.
+     * @param newPriority 
+     */
+    
+    setPriority(newPriority: number): void;
 }

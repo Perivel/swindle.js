@@ -1,12 +1,13 @@
 import { Comparator } from "@swindle/core";
 import { LinkedListNode } from "./linked-list-node";
+import { LinkedListTraversalFn } from "./linked-list-traversal-fn.type";
 import { LinkedListInterface } from "./linked-list.interface";
 
 
 export class LinkedList<T> implements LinkedListInterface<T> {
 
     private _head: LinkedListNode<T> | null;
-    private _end: LinkedListNode<T>|null;
+    private _end: LinkedListNode<T> | null;
     private _size: number;
     private readonly compare: Comparator<T>
 
@@ -37,7 +38,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
      */
 
     public contains(value: T): boolean {
-        
+
         let isEqual = false;
 
         if (!this.isEmpty()) {
@@ -51,6 +52,17 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     /**
+     * forEach()
+     * 
+     * traverses the LinkedList executing the predicate function for each value.
+     * @param predicate 
+     */
+
+    public forEach(predicate: LinkedListTraversalFn<T>): void {
+        this.traverse(predicate, this._head);
+    }
+
+    /**
      * get()
      * 
      * gets the first node with the associated value, if it exists.
@@ -58,7 +70,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
      * @returns the first node with the specified value, or null if not found.
      */
 
-    public get(value: T): LinkedListNode<T>|null {
+    public get(value: T): LinkedListNode<T> | null {
         return this.getNodeForValue(value, this._head!);
     }
 
@@ -70,7 +82,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
      */
 
     public insert(value: T): void {
-        
+
         const newNode = new LinkedListNode<T>(value);
 
         if (this.isEmpty()) {
@@ -160,7 +172,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
             return this.populateArray(node.next()!, array);
         }
     }
-    
+
     /**
      * containsValue()
      * 
@@ -213,7 +225,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
      * @param value the value to delete.
      * @param previousNode the previous node, if available.
      */
-    private removeNodeContainingValue(currentNode: LinkedListNode<T>, value: T, previousNode: LinkedListNode<T>|null = null): void {
+    private removeNodeContainingValue(currentNode: LinkedListNode<T>, value: T, previousNode: LinkedListNode<T> | null = null): void {
 
         if (this.compare(currentNode.value(), value) === 0) {
             const next = currentNode.next();
@@ -231,6 +243,29 @@ export class LinkedList<T> implements LinkedListInterface<T> {
         else {
             // this is the last node.
             this._end = currentNode;
+        }
+    }
+
+    /**
+     * traverse()
+     * 
+     * traverses the linked list starting from the current node.
+     * @param predicate the predicate to execute.
+     * @param current The current node to process.
+     * @param previous The previous node.
+     */
+
+    private traverse(predicate: LinkedListTraversalFn<T>, current: LinkedListNode<T>|null, previous: LinkedListNode<T>|null = null): void {
+        if (current) {
+            predicate(
+                current.value(),
+                current.next() ? current.next()!.value() : null,
+                previous ? previous!.value() : null
+            );
+            this.traverse(predicate, current.next(), current);
+        }
+        else {
+            return;
         }
     }
 }
