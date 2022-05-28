@@ -2,6 +2,7 @@
 export { Equatable } from './interfaces/equatable.interface';
 export { Serializable } from './interfaces/serializable.interface';
 export { TimestampedResource } from './interfaces/timestamped-resource.interface';
+export { TraverseFn, Traversible } from './interfaces/traversible.interface';
 
 // exceptions
 export { BaseException } from './exceptions/base.exception';

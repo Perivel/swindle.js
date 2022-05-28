@@ -17,7 +17,7 @@
     "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
-    "@swindle/core": "2.1.1",
+    "@swindle/core": "^2.2.0",
     "@swindle/structs": "1.0.5",
     "typescript": "^4.3.5"
   },

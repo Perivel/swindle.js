@@ -17,7 +17,7 @@
     "colors"
   ],
   "dependencies": {
-    "@swindle/core": "^2.1.1",
+    "@swindle/core": "^2.2.0",
     "colors-convert": "^1.4.1"
   },
   "scripts": {

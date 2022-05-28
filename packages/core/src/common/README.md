@@ -11,6 +11,7 @@ Swindle provides a few helpful interfaces.
 **Equatable**: An interface for determining object equality.
 **Serializable**: An interface to define standard serialization functions.
 **TimestampedResource**: An interface for associating timestamps with an object.
+**Traversible** An interface for enabling an object to be traversed.
 
 ## Exceptions
 Swindle provides a few basic exception types you can extend.
