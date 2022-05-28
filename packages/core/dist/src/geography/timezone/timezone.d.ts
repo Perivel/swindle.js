@@ -18,6 +18,13 @@ export declare class Timezone implements TimezoneInterface, Equatable {
      */
     static FromId(id: string): Timezone;
     /**
+     * Local()
+     *
+     * Creates a Timezone instance representing the local timezone (based on the machine)
+     * @returns A Timezone instance representing local time.
+     */
+    static Local(): Timezone;
+    /**
      * UTC()
      *
      * UTC() sets the timezone to UTC.

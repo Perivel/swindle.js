@@ -16,6 +16,13 @@ export interface DateTimeInterface {
      */
     day(): number;
     /**
+     * hour()
+     *
+     * gets the hour.
+     * @note hours are zero-based (0-23)
+     */
+    hour(): number;
+    /**
      * isAfter()
      *
      * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
@@ -30,12 +37,32 @@ export interface DateTimeInterface {
      */
     isBefore(suspect: any): boolean;
     /**
+     * milisecond()
+     *
+     * gets the milisecond (0-999)
+     */
+    milisecond(): number;
+    /**
+     * minute()
+     *
+     * gets the minute.
+     * @note minutes are zero-based (0-59)
+     */
+    minute(): number;
+    /**
      * month()
      *
      * month() gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
      */
     month(): number;
+    /**
+     * second()
+     *
+     * gets the second
+     * @note seconds are zero-based (0-59)
+     */
+    second(): number;
     /**
      * subtract()
      *

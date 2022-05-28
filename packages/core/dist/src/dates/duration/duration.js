@@ -25,7 +25,8 @@ class Duration {
             minutes,
             seconds,
             milliseconds: miliseconds,
-            conversionAccuracy: "longterm",
+        }, {
+            conversionAccuracy: "longterm"
         });
         if (!this.luxonDuration.isValid) {
             // not valid.

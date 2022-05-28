@@ -1,4 +1,5 @@
-import { Comparator } from "@swindle/core";
+import { Comparator, TraverseFn } from "@swindle/core";
+import { LinkedListNode } from "./linked-list-node";
 import { LinkedListInterface } from "./linked-list.interface";
 export declare class LinkedList<T> implements LinkedListInterface<T> {
     private _head;
@@ -19,6 +20,21 @@ export declare class LinkedList<T> implements LinkedListInterface<T> {
      * @param value the value to search for.
      */
     contains(value: T): boolean;
+    /**
+     * traverse()
+     *
+     * traverses the LinkedList executing the predicate function for each value.
+     * @param predicate
+     */
+    traverse(predicate: TraverseFn<T>): void;
+    /**
+     * get()
+     *
+     * gets the first node with the associated value, if it exists.
+     * @param value the value of the node to get.
+     * @returns the first node with the specified value, or null if not found.
+     */
+    get(value: T): LinkedListNode<T> | null;
     /**
      * insert()
      *
@@ -70,6 +86,15 @@ export declare class LinkedList<T> implements LinkedListInterface<T> {
      */
     private containsValue;
     /**
+     * getNodeForValue()
+     *
+     * gets the first node containing the specified value.
+     * @param value the value to search for.
+     * @param node The node to check.
+     * @returns The first node containing the value or null if it is not found.
+     */
+    private getNodeForValue;
+    /**
      * removeNodeContainingValue()
      *
      * removes the node containding the value.
@@ -78,5 +103,14 @@ export declare class LinkedList<T> implements LinkedListInterface<T> {
      * @param previousNode the previous node, if available.
      */
     private removeNodeContainingValue;
+    /**
+     * traverseList()
+     *
+     * traverses the linked list starting from the current node.
+     * @param predicate the predicate to execute.
+     * @param current The current node to process.
+     * @param previous The previous node.
+     */
+    private traverseList;
 }
 //# sourceMappingURL=linked-list.d.ts.map

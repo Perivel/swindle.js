@@ -1,6 +1,7 @@
 export { Equatable } from './interfaces/equatable.interface';
 export { Serializable } from './interfaces/serializable.interface';
 export { TimestampedResource } from './interfaces/timestamped-resource.interface';
+export { TraverseFn, Traversable } from './interfaces/traversable.interface';
 export { BaseException } from './exceptions/base.exception';
 export { InvalidArgumentException } from './exceptions/invalid-argument.exception';
 export { MethodUndefinedException } from './exceptions/method-undefined.exception';

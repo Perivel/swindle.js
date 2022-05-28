@@ -48,5 +48,13 @@ export interface PriorityQueueInterface<T> {
      * toArray() converts the queue to an array.
      */
     toArray(): Array<T>;
+    /**
+     * updatePriority()
+     *
+     * updates the priority of the first occurance of the specified value.
+     * @param target The value who's priority must be updated.
+     * @param newPriority The new priority to set for the target value.
+     */
+    updatePriority(target: T, newPriority: number): void;
 }
 //# sourceMappingURL=priority-queue.interface.d.ts.map

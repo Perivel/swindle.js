@@ -8,12 +8,12 @@
 export type TraverseFn<T> = (current: T, next: T|null, previous: T|null) => void;
 
 /**
- * The Traversible Interface.
+ * The Traversable Interface.
  * 
- * The Traversible interface indicates an object can be traversed.
+ * The Traversable interface indicates an object can be traversed.
  */
 
-export interface Traversible<T> {
+export interface Traversable<T> {
 
     /**
      * traverse()

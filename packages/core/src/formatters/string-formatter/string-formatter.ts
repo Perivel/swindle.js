@@ -1,15 +1,4 @@
-import {
-    camelCase,
-    capitalCase,
-    constantCase,
-    dotCase,
-    headerCase,
-    noCase,
-    paramCase,
-    pascalCase,
-    pathCase,
-    snakeCase,
-} from "change-case";
+import Case from 'change-case';
 import { BaseFormatter } from './../base-formatter/base-formatter';
 import { StringFormatterInterface } from './string-formatter.interface';
 
@@ -36,7 +25,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public camelCase(input: any): string {
-        return camelCase(this.castToString(input));
+        return Case.camelCase(this.castToString(input));
     }
 
     /**
@@ -50,7 +39,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public capitalCase(input: any): string {
-        return capitalCase(this.castToString(input));
+        return Case.capitalCase(this.castToString(input));
     }
 
     /**
@@ -64,7 +53,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public constantCase(input: any): string {
-        return constantCase(this.castToString(input));
+        return Case.constantCase(this.castToString(input));
     }
 
     /**
@@ -78,7 +67,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public dotCase(input: any): string {
-        return dotCase(this.castToString(input));
+        return Case.dotCase(this.castToString(input));
     }
 
     /**
@@ -92,7 +81,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public headerCase(input: any): string {
-        return headerCase(this.castToString(input));
+        return Case.headerCase(this.castToString(input));
     }
 
     /**
@@ -106,7 +95,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public noCase(input: any): string {
-        return noCase(this.castToString(input));
+        return Case.noCase(this.castToString(input));
     }
 
     /**
@@ -120,7 +109,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public paramCase(input: any): string {
-        return paramCase(this.castToString(input));
+        return Case.paramCase(this.castToString(input));
     }
 
     /**
@@ -134,7 +123,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public pascalCase(input: any): string {
-        return pascalCase(this.castToString(input));
+        return Case.pascalCase(this.castToString(input));
     }
 
     /**
@@ -148,7 +137,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public pathCase(input: any): string {
-        return pathCase(this.castToString(input));
+        return Case.pathCase(this.castToString(input));
     }
 
     /**
@@ -162,7 +151,7 @@ export class StringFormatter extends BaseFormatter implements StringFormatterInt
      */
 
     public snakeCase(input: any): string {
-        return snakeCase(this.castToString(input));
+        return Case.snakeCase(this.castToString(input));
     }
 
     // =============================

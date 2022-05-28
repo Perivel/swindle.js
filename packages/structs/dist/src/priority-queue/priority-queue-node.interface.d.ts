@@ -17,5 +17,12 @@ export interface PriorityQueueNodeInterface<T> extends NodeInterface<T> {
      * priority() gets the priority of the node.
      */
     priority(): number;
+    /**
+     * setPriority()
+     *
+     * sets the priority of the node.
+     * @param newPriority
+     */
+    setPriority(newPriority: number): void;
 }
 //# sourceMappingURL=priority-queue-node.interface.d.ts.map

@@ -1,25 +1,28 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeNode = exports.Tree = exports.LinkedList = exports.PriorityQueue = exports.Queue = exports.Stack = exports.Node = void 0;
 // node
-var node_1 = require("./src/node/node");
-Object.defineProperty(exports, "Node", { enumerable: true, get: function () { return node_1.Node; } });
+__exportStar(require("./src/node/node.module"), exports);
 // stacks
-var stack_1 = require("./src/stack/stack");
-Object.defineProperty(exports, "Stack", { enumerable: true, get: function () { return stack_1.Stack; } });
+__exportStar(require("./src/stack/stack.module"), exports);
 // queues
-var queue_1 = require("./src/queue/queue");
-Object.defineProperty(exports, "Queue", { enumerable: true, get: function () { return queue_1.Queue; } });
+__exportStar(require("./src/queue/queue.module"), exports);
 // priority queue
-var priority_queue_1 = require("./src/priority-queue/priority-queue");
-Object.defineProperty(exports, "PriorityQueue", { enumerable: true, get: function () { return priority_queue_1.PriorityQueue; } });
+__exportStar(require("./src/priority-queue/priority-queue.module"), exports);
 // Linked List
-var linked_list_1 = require("./src/linked-list/linked-list");
-Object.defineProperty(exports, "LinkedList", { enumerable: true, get: function () { return linked_list_1.LinkedList; } });
+__exportStar(require("./src/linked-list/linked-list.module"), exports);
 // trees
-var tree_1 = require("./src/tree/tree");
-Object.defineProperty(exports, "Tree", { enumerable: true, get: function () { return tree_1.Tree; } });
-var tree_node_1 = require("./src/tree-node/tree-node");
-Object.defineProperty(exports, "TreeNode", { enumerable: true, get: function () { return tree_node_1.TreeNode; } });
-// export { AvlTree } from './avl-tree/avl-tree';
+__exportStar(require("./src/tree/tree.module"), exports);
+__exportStar(require("./src/tree-node/tree-node.module"), exports);
+// graphs
+__exportStar(require("./src/graph/graph.module"), exports);
 //# sourceMappingURL=index.js.map

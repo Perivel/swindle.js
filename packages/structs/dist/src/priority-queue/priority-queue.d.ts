@@ -1,4 +1,5 @@
 import { PriorityQueueInterface } from "./priority-queue.interface";
+import { PriorityQueueOrder } from './priority-queue-order.enum';
 /**
  * PriorityQueue
  *
@@ -6,7 +7,8 @@ import { PriorityQueueInterface } from "./priority-queue.interface";
  */
 export declare class PriorityQueue<T> implements PriorityQueueInterface<T> {
     private _values;
-    constructor();
+    private readonly _order;
+    constructor(order?: PriorityQueueOrder);
     /**
      * clear()
      *
@@ -28,6 +30,20 @@ export declare class PriorityQueue<T> implements PriorityQueueInterface<T> {
      */
     enqueue(value: T, priority: number): void;
     /**
+     * insertAscending()
+     *
+     * inserts the node in ascending order by priority.
+     * @param node the node to insert.
+     */
+    private insertAscending;
+    /**
+     * insertDescending()
+     *
+     * inserts the node in Descending order by priority.
+     * @param node the node to insert.
+     */
+    private insertDescending;
+    /**
      * isEmpty()
      *
      * isEmpty() determines if the queue is empty.
@@ -46,10 +62,30 @@ export declare class PriorityQueue<T> implements PriorityQueueInterface<T> {
      */
     size(): number;
     /**
+     * sortAscending()
+     *
+     * sorts the items in the queue in ascending order by priority.
+     */
+    private sortAscending;
+    /**
+     * sortDescending()
+     *
+     * sorts the items in the queue in descending order by priority.
+     */
+    private sortDescending;
+    /**
      * toArray()
      *
      * toArray() converts the queue to an array.
      */
     toArray(): Array<T>;
+    /**
+     * updatePriority()
+     *
+     * updates the priority of the first occurance of the specified value.
+     * @param target The value who's priority must be updated.
+     * @param newPriority The new priority to set for the target value.
+     */
+    updatePriority(target: T, newPriority: number): void;
 }
 //# sourceMappingURL=priority-queue.d.ts.map

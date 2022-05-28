@@ -24,6 +24,13 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      */
     static FromDate(dateVal: Date, timezone: Timezone): DateTime;
     /**
+     * Local()
+     *
+     * creates a DateTime instance where the timezone is set to the local timezone.
+     * @returns A DateTime object where the timezone is set to the local timezone.
+     */
+    static Local(): DateTime;
+    /**
      * Now()
      *
      * Creates a DateTime for the current UTC date and time.
@@ -43,6 +50,13 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      * @returns a number between 1 and 31
      */
     day(): number;
+    /**
+     * hour()
+     *
+     * gets the hour.
+     * @note hours are zero-based (0-23)
+     */
+    hour(): number;
     /**
      * isAfter()
      *
@@ -65,12 +79,32 @@ export declare class DateTime implements DateTimeInterface, Equatable {
      */
     equals(suspect: any): boolean;
     /**
+     * milisecond()
+     *
+     * gets the milisecond (0-999)
+     */
+    milisecond(): number;
+    /**
+     * minute()
+     *
+     * gets the minute.
+     * @note minutes are zero-based (0-59)
+     */
+    minute(): number;
+    /**
      * month()
      *
      * month() gets the month part of the DateTime.
      * @returns A numeric value (Jan = 1, Dec = 12) representing the month of the year.
      */
     month(): number;
+    /**
+     * second()
+     *
+     * gets the second
+     * @note seconds are zero-based (0-59)
+     */
+    second(): number;
     /**
      * subtract()
      *

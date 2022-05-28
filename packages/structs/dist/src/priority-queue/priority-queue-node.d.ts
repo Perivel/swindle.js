@@ -6,7 +6,7 @@ import { Node } from './../node/node';
  * PriorityQueueNode is a single node in a priority queue.
  */
 export declare class PriorityQueueNode<T> extends Node<T> implements PriorityQueueNodeInterface<T> {
-    private readonly _priority;
+    private _priority;
     private readonly _next;
     constructor(value: T, priority?: number, next?: PriorityQueueNode<T> | null);
     /**
@@ -21,5 +21,12 @@ export declare class PriorityQueueNode<T> extends Node<T> implements PriorityQue
      * priority() gets the priority of the node.
      */
     priority(): number;
+    /**
+     * setPriority()
+     *
+     * sets the priority of the node.
+     * @param newPriority
+     */
+    setPriority(newPriority: number): void;
 }
 //# sourceMappingURL=priority-queue-node.d.ts.map

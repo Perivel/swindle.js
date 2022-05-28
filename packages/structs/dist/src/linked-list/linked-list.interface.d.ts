@@ -1,4 +1,6 @@
-export interface LinkedListInterface<T> {
+import { Traversable } from '@swindle/core';
+import { LinkedListNodeInterface } from "./linked-list-node.interface";
+export interface LinkedListInterface<T> extends Traversable<T> {
     /**
      * clear()
      *
@@ -12,6 +14,14 @@ export interface LinkedListInterface<T> {
      * @param value the value to search for.
      */
     contains(value: T): boolean;
+    /**
+     * get()
+     *
+     * gets the first node with the associated value, if it exists.
+     * @param value the value of the node to get.
+     * @returns the first node with the specified value, or null if not found.
+     */
+    get(value: T): LinkedListNodeInterface<T> | null;
     /**
      * insert()
      *

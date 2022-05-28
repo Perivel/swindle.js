@@ -47,4 +47,4 @@ export declare abstract class Tree<K, V> implements TreeInterface<K, V> {
      */
     abstract size(): number;
 }
-//# sourceMappingURL=tree.d.ts.map
+//# sourceMappingURL=Tree.d.ts.map

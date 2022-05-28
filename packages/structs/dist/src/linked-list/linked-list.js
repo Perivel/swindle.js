@@ -36,6 +36,25 @@ class LinkedList {
         return isEqual;
     }
     /**
+     * traverse()
+     *
+     * traverses the LinkedList executing the predicate function for each value.
+     * @param predicate
+     */
+    traverse(predicate) {
+        this.traverseList(predicate, this._head);
+    }
+    /**
+     * get()
+     *
+     * gets the first node with the associated value, if it exists.
+     * @param value the value of the node to get.
+     * @returns the first node with the specified value, or null if not found.
+     */
+    get(value) {
+        return this.getNodeForValue(value, this._head);
+    }
+    /**
      * insert()
      *
      * inserts the value in the list.
@@ -137,6 +156,25 @@ class LinkedList {
         }
     }
     /**
+     * getNodeForValue()
+     *
+     * gets the first node containing the specified value.
+     * @param value the value to search for.
+     * @param node The node to check.
+     * @returns The first node containing the value or null if it is not found.
+     */
+    getNodeForValue(value, node) {
+        if (this.compare(node.value(), value) === 0) {
+            return node;
+        }
+        else if (node.next() != null) {
+            return this.getNodeForValue(value, node.next());
+        }
+        else {
+            return null;
+        }
+    }
+    /**
      * removeNodeContainingValue()
      *
      * removes the node containding the value.
@@ -159,6 +197,23 @@ class LinkedList {
         else {
             // this is the last node.
             this._end = currentNode;
+        }
+    }
+    /**
+     * traverseList()
+     *
+     * traverses the linked list starting from the current node.
+     * @param predicate the predicate to execute.
+     * @param current The current node to process.
+     * @param previous The previous node.
+     */
+    traverseList(predicate, current, previous = null) {
+        if (current) {
+            predicate(current.value(), current.next() ? current.next().value() : null, previous ? previous.value() : null);
+            this.traverseList(predicate, current.next(), current);
+        }
+        else {
+            return;
         }
     }
 }

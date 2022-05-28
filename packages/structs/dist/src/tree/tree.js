@@ -17,4 +17,4 @@ class Tree {
     }
 }
 exports.Tree = Tree;
-//# sourceMappingURL=tree.js.map
+//# sourceMappingURL=Tree.js.map

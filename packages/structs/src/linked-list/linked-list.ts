@@ -1,6 +1,5 @@
-import { Comparator } from "@swindle/core";
+import { Comparator, TraverseFn } from "@swindle/core";
 import { LinkedListNode } from "./linked-list-node";
-import { LinkedListTraversalFn } from "./linked-list-traversal-fn.type";
 import { LinkedListInterface } from "./linked-list.interface";
 
 
@@ -52,14 +51,14 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     /**
-     * forEach()
+     * traverse()
      * 
      * traverses the LinkedList executing the predicate function for each value.
      * @param predicate 
      */
 
-    public forEach(predicate: LinkedListTraversalFn<T>): void {
-        this.traverse(predicate, this._head);
+    public traverse(predicate: TraverseFn<T>): void {
+        this.traverseList(predicate, this._head);
     }
 
     /**
@@ -247,7 +246,7 @@ export class LinkedList<T> implements LinkedListInterface<T> {
     }
 
     /**
-     * traverse()
+     * traverseList()
      * 
      * traverses the linked list starting from the current node.
      * @param predicate the predicate to execute.
@@ -255,14 +254,14 @@ export class LinkedList<T> implements LinkedListInterface<T> {
      * @param previous The previous node.
      */
 
-    private traverse(predicate: LinkedListTraversalFn<T>, current: LinkedListNode<T>|null, previous: LinkedListNode<T>|null = null): void {
+    private traverseList(predicate: TraverseFn<T>, current: LinkedListNode<T>|null, previous: LinkedListNode<T>|null = null): void {
         if (current) {
             predicate(
                 current.value(),
                 current.next() ? current.next()!.value() : null,
                 previous ? previous!.value() : null
             );
-            this.traverse(predicate, current.next(), current);
+            this.traverseList(predicate, current.next(), current);
         }
         else {
             return;

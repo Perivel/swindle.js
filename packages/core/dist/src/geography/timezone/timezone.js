@@ -31,6 +31,16 @@ class Timezone {
         return new Timezone(zone.name, dt.toFormat("ZZZZ"), dt.offset);
     }
     /**
+     * Local()
+     *
+     * Creates a Timezone instance representing the local timezone (based on the machine)
+     * @returns A Timezone instance representing local time.
+     */
+    static Local() {
+        const local = luxon_1.DateTime.local();
+        return new Timezone(local.zone.name, local.toFormat('ZZZZ'), local.offset);
+    }
+    /**
      * UTC()
      *
      * UTC() sets the timezone to UTC.

@@ -167,7 +167,7 @@ export class Graph<T> implements GraphInterface<T> {
         while (!queue.isEmpty()) {
             const smallestVertex = queue.dequeue()!;
 
-            smallestVertex.edges().forEach(currentNeighbor => {
+            smallestVertex.edges().traverse((currentNeighbor) => {
                 const alt = distances.get(smallestVertex)! + currentNeighbor.weight();
                 const neighborValue = currentNeighbor.value() as Vertex<T>;
 

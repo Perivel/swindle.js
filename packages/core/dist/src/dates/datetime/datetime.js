@@ -23,6 +23,7 @@ class DateTime {
             minute: minutes,
             second: seconds,
             millisecond: ms,
+        }, {
             zone: 'utc'
         });
         if (!this.date.isValid) {
@@ -40,6 +41,15 @@ class DateTime {
     static FromDate(dateVal, timezone) {
         const date = luxon_1.DateTime.fromJSDate(dateVal).toUTC();
         return new DateTime(date.year, date.month, date.day, date.hour, date.minute, date.second, date.millisecond, timezone);
+    }
+    /**
+     * Local()
+     *
+     * creates a DateTime instance where the timezone is set to the local timezone.
+     * @returns A DateTime object where the timezone is set to the local timezone.
+     */
+    static Local() {
+        return DateTime.FromDate(luxon_1.DateTime.local().toJSDate(), geography_module_1.Timezone.Local());
     }
     /**
      * Now()
@@ -76,6 +86,15 @@ class DateTime {
      */
     day() {
         return this.date.day;
+    }
+    /**
+     * hour()
+     *
+     * gets the hour.
+     * @note hours are zero-based (0-23)
+     */
+    hour() {
+        return this.date.hour;
     }
     /**
      * isAfter()
@@ -120,6 +139,23 @@ class DateTime {
         return isEqual;
     }
     /**
+     * milisecond()
+     *
+     * gets the milisecond (0-999)
+     */
+    milisecond() {
+        return this.date.millisecond;
+    }
+    /**
+     * minute()
+     *
+     * gets the minute.
+     * @note minutes are zero-based (0-59)
+     */
+    minute() {
+        return this.date.minute;
+    }
+    /**
      * month()
      *
      * month() gets the month part of the DateTime.
@@ -127,6 +163,15 @@ class DateTime {
      */
     month() {
         return this.date.month;
+    }
+    /**
+     * second()
+     *
+     * gets the second
+     * @note seconds are zero-based (0-59)
+     */
+    second() {
+        return this.date.second;
     }
     /**
      * subtract()

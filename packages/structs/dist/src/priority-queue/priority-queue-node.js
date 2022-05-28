@@ -29,6 +29,15 @@ class PriorityQueueNode extends node_1.Node {
     priority() {
         return this._priority;
     }
+    /**
+     * setPriority()
+     *
+     * sets the priority of the node.
+     * @param newPriority
+     */
+    setPriority(newPriority) {
+        this._priority = newPriority;
+    }
 }
 exports.PriorityQueueNode = PriorityQueueNode;
 //# sourceMappingURL=priority-queue-node.js.map
