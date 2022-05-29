@@ -25,6 +25,7 @@
     "awesome-phonenumber": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "change-case": "^4.1.2",
+    "color-convert": "^2.0.1",
     "i18n-iso-countries": "^7.4.0",
     "luxon": "^2.4.0",
     "ramda": "^0.28.0",
