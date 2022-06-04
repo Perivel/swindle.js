@@ -28,6 +28,7 @@ test('Adding and subtracting days', () => {
         minute: 35,
         second: 0,
         millisecond: 0,
+    }, {
         zone: 'utc'
     });
     const initialDate = luxonDate.toJSDate();
@@ -61,6 +62,7 @@ test("Get the components of the timestamp.", () => {
         minute: 30,
         second: 0,
         millisecond: 0,
+    }, {
         zone: 'utc'
     });
     const date = luxonDate.toJSDate();
@@ -80,6 +82,7 @@ test("Adding and subtracting months", () => {
         minute: 30,
         second: 0,
         millisecond: 0,
+    }, {
         zone: 'utc'
     });
     const initialDate = luxonDate.toJSDate();
@@ -95,6 +98,7 @@ test("Adding and subtracting months", () => {
         minute: 30,
         second: 0,
         millisecond: 0,
+    }, {
         zone: 'utc'
     }).toUTC().toJSDate();
     expect(datetime.subtract(new Duration({months: 3})).value()).toEqual(pastDate);
@@ -109,6 +113,7 @@ test("Add and subtract years.", () => {
         minute: 30,
         second: 0,
         millisecond: 0,
+    }, {
         zone: 'utc'
     });
     const date = luxonDate.toJSDate();

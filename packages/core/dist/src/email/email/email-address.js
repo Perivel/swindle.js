@@ -17,11 +17,22 @@ class EmailAddress {
         const VALID_EMAIL_REGEX = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
         if (VALID_EMAIL_REGEX.test(value)) {
             this._value = value;
+            const separatorIndex = value.indexOf('@');
+            this._username = value.substring(0, separatorIndex);
+            this._domain = value.substring(separatorIndex + 1);
         }
         else {
             // email is invalid.
             throw new email_address_exception_1.EmailAddressException();
         }
+    }
+    /**
+     * domainName()
+     *
+     * domainName() gets the domain of the email address.
+     */
+    domainName() {
+        return this._domain;
     }
     /**
      * email()
@@ -44,6 +55,14 @@ class EmailAddress {
             isEqual = this.email() === other.email();
         }
         return isEqual;
+    }
+    /**
+     * username()
+     *
+     * username() gets the username of the email address.
+     */
+    username() {
+        return this._username;
     }
     toString() {
         return this.email();

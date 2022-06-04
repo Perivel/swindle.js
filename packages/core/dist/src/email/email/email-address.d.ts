@@ -7,12 +7,20 @@ import { Equatable } from "../../common/common.module";
  */
 export declare class EmailAddress implements EmailInterface, Equatable {
     private readonly _value;
+    private readonly _domain;
+    private readonly _username;
     /**
      * Creates an instance of an email address.
      * @param value The value of the email address.
      * @throws EmailAddressException when the email address value is invalid.
      */
     constructor(value: string);
+    /**
+     * domainName()
+     *
+     * domainName() gets the domain of the email address.
+     */
+    domainName(): string;
     /**
      * email()
      *
@@ -26,6 +34,12 @@ export declare class EmailAddress implements EmailInterface, Equatable {
      * @param suspect The suspect to be compared.
      */
     equals(suspect: any): boolean;
+    /**
+     * username()
+     *
+     * username() gets the username of the email address.
+     */
+    username(): string;
     toString(): string;
 }
 //# sourceMappingURL=email-address.d.ts.map

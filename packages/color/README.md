@@ -3,6 +3,8 @@ Manipulate and represent colors in different formats.
 
 Currently, Color only suppoerts Hex and RGBA color codes.
 
+> **Note** The Color module has now been merged with the Core module.
+
 # Usage
 ```ts
 import { Color, Hex, RGBA } from '@swindle/color';
