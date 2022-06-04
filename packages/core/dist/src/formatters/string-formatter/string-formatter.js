@@ -1,10 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StringFormatter = void 0;
-const change_case_1 = __importDefault(require("change-case"));
+const change_case_1 = require("change-case");
 const base_formatter_1 = require("./../base-formatter/base-formatter");
 /**
  * StringFormatter
@@ -25,7 +22,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in camel case format.
      */
     camelCase(input) {
-        return change_case_1.default.camelCase(this.castToString(input));
+        return change_case_1.camelCase(this.castToString(input), {});
     }
     /**
      * capitalCase()
@@ -37,7 +34,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in capital case format.
      */
     capitalCase(input) {
-        return change_case_1.default.capitalCase(this.castToString(input));
+        return change_case_1.capitalCase(this.castToString(input));
     }
     /**
      * constantCase()
@@ -49,7 +46,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in camel constant format.
      */
     constantCase(input) {
-        return change_case_1.default.constantCase(this.castToString(input));
+        return change_case_1.constantCase(this.castToString(input));
     }
     /**
      * dotCase()
@@ -61,7 +58,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in dot case format.
      */
     dotCase(input) {
-        return change_case_1.default.dotCase(this.castToString(input));
+        return change_case_1.dotCase(this.castToString(input));
     }
     /**
      * headerCase()
@@ -73,7 +70,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in header case format.
      */
     headerCase(input) {
-        return change_case_1.default.headerCase(this.castToString(input));
+        return change_case_1.headerCase(this.castToString(input));
     }
     /**
      * noCase()
@@ -85,7 +82,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in no case format.
      */
     noCase(input) {
-        return change_case_1.default.noCase(this.castToString(input));
+        return change_case_1.noCase(this.castToString(input));
     }
     /**
      * paramCase()
@@ -97,7 +94,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in param case format.
      */
     paramCase(input) {
-        return change_case_1.default.paramCase(this.castToString(input));
+        return change_case_1.paramCase(this.castToString(input));
     }
     /**
      * pascalCase()
@@ -109,7 +106,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in pascal case format.
      */
     pascalCase(input) {
-        return change_case_1.default.pascalCase(this.castToString(input));
+        return change_case_1.pascalCase(this.castToString(input));
     }
     /**
      * pathCase()
@@ -121,7 +118,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in path case format.
      */
     pathCase(input) {
-        return change_case_1.default.pathCase(this.castToString(input));
+        return change_case_1.pathCase(this.castToString(input));
     }
     /**
      * snakeCase()
@@ -133,7 +130,7 @@ class StringFormatter extends base_formatter_1.BaseFormatter {
      * @returns The input in snake case format.
      */
     snakeCase(input) {
-        return change_case_1.default.snakeCase(this.castToString(input));
+        return change_case_1.snakeCase(this.castToString(input));
     }
     // =============================
     // Helpers
