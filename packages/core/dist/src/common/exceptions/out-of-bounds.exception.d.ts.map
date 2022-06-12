@@ -1,1 +1,0 @@
-{"version":3,"file":"out-of-bounds.exception.d.ts","sourceRoot":"","sources":["../../../../src/common/exceptions/out-of-bounds.exception.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,wBAAwB,EAAE,MAAM,8BAA8B,CAAC;AAGxE,qBAAa,oBAAqB,SAAQ,wBAAwB;gBAClD,OAAO,GAAE,MAAkC;CAG1D"}
