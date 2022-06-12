@@ -13,7 +13,7 @@ test("Create a DateTime from an existing date.", () => {
     expect(dt.value()).toEqual(utcDate);
 });
 
-test('Generate a timestamp.', () => {
+test('Generate a DateTime object.', () => {
     const dt = DateTime.Now();
     expect(dt).toBeDefined();
 });
@@ -70,6 +70,10 @@ test("Get the components of the timestamp.", () => {
     expect(dt.month()).toEqual(6);
     expect(dt.day()).toEqual(10);
     expect(dt.year()).toEqual(2020);
+    expect(dt.hour()).toEqual(5);
+    expect(dt.minute()).toEqual(30);
+    expect(dt.second()).toEqual(0);
+    expect(dt.milisecond()).toEqual(0);
 });
 
 test("Adding and subtracting months", () => {

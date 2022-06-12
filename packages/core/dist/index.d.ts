@@ -8,4 +8,5 @@ export * from './src/phone-number/phone-number.module';
 export * from './src/crypto/crypto.module';
 export * from './src/charset/charset.module';
 export * from './src/color/color.module';
+export * from './src/iso-language/iso-language.module';
 //# sourceMappingURL=index.d.ts.map

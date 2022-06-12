@@ -21,4 +21,5 @@ __exportStar(require("./src/phone-number/phone-number.module"), exports);
 __exportStar(require("./src/crypto/crypto.module"), exports);
 __exportStar(require("./src/charset/charset.module"), exports);
 __exportStar(require("./src/color/color.module"), exports);
+__exportStar(require("./src/iso-language/iso-language.module"), exports);
 //# sourceMappingURL=index.js.map
