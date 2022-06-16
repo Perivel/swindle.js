@@ -13,6 +13,7 @@ yarn add @swindle/structs
 
 # Usage
 Swindle/Structs provide the following data structures.
+- [Graph](src/graph/README.md) provides a generic graph implementation.
 - [LinkList](src/linked-list/README.md) provides an implementation of a LinkList.
 - [PriorityQueue](src/priority-queue/README.md) provides an implementation of a priority queue.
 - [Queue](src/queue/README.md) provides an implementation of a queue.

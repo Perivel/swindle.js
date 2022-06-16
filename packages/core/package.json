@@ -3,11 +3,32 @@
   "version": "2.2.0",
   "description": "Utilitiy classes for data manipulation.",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "browser": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "node": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "https://github.com/Perivel/swindle",
   "author": "Patrick Luy <pluy@perivel.com>",
   "license": "MIT",
   "private": false,
+  "bugs": {
+    "url": "https://github.com/Perivel/swindle/issues"
+  },
   "keywords": [
     "core",
     "core library",
