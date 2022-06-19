@@ -1,1 +1,0 @@
-{"version":3,"file":"stack-node.js","sourceRoot":"","sources":["../../../src/stack/stack-node.ts"],"names":[],"mappings":";;;AACA,yCAAsC;AAGtC,MAAa,SAAa,SAAQ,WAAO;IAGrC,YAAY,KAAQ,EAAE,OAA4B,IAAI;QAClD,KAAK,CAAC,KAAK,CAAC,CAAC;QACb,IAAI,CAAC,KAAK,GAAG,IAAI,CAAC;IACtB,CAAC;IAED;;;;OAIG;IAEI,IAAI;QACP,OAAO,IAAI,CAAC,KAAK,CAAC;IACtB,CAAC;CACJ;AAjBD,8BAiBC"}

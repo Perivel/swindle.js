@@ -1,6 +1,6 @@
 {
   "name": "@swindle/structs",
-  "version": "1.0.5",
+  "version": "2.2.0",
   "description": "Implementations of common data structures.",
   "main": "dist/index.js",
   "repository": "https://github.com/Perivel/swindle",
@@ -10,8 +10,27 @@
   "dependencies": {
     "@swindle/core": "^2.2.0"
   },
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "browser": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "node": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.js"
+      },
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
