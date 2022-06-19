@@ -38,6 +38,24 @@ export interface GraphInterface<T> {
     contains(value: T): boolean;
 
     /**
+     * containsEdge()
+     * 
+     * Determines if the graph contains the edge between from and to.
+     * @param from the value of the start of the edge.
+     * @param to the value of the end of the edge.
+     */
+    
+    containsEdge(from: T, to: T): boolean;
+
+    /**
+     * clear()
+     * 
+     * clears the graph.
+     */
+    
+    clear(): void;
+
+    /**
      * find()
      * 
      * gets the vertex with the specified value.

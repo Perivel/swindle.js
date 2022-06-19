@@ -15,6 +15,11 @@ export class Graph<T> implements GraphInterface<T> {
     private readonly _isDirected: boolean;
     private readonly _calculatedPathsForSourceVerticies: Map<Vertex<T>, DijkstraPathInfo<T>>;
 
+    /**
+     * Creates a new Graph instance.
+     * @param directed indicates whether or not the graph should be directed. By default, it is set to FALSE.
+     */
+    
     constructor(directed: boolean = false) {
         this._vertices = new Array<Vertex<T>>();
         this._isDirected = directed;
@@ -39,6 +44,17 @@ export class Graph<T> implements GraphInterface<T> {
             // duplicate entry.
             throw new GraphException('Duplicate value error.');
         }
+    }
+
+    /**
+     * clear()
+     * 
+     * clears the graph.
+     */
+    
+    public clear(): void {
+        this._vertices = [];
+        this._calculatedPathsForSourceVerticies.clear();
     }
 
     /**
@@ -81,6 +97,26 @@ export class Graph<T> implements GraphInterface<T> {
     public contains(value: T): boolean {
         const index = this.indexOf(value);
         return index >= -1;
+    }
+
+    /**
+     * containsEdge()
+     * 
+     * Determines if the graph contains the edge between from and to.
+     * @param from the value of the start of the edge.
+     * @param to the value of the end of the edge.
+     */
+    
+    public containsEdge(from: T, to: T): boolean {
+        const start = this.find(from);
+        const end = this.find(to);
+        let containsEdge = false;
+        
+        if (start && end) {
+            containsEdge = start.edges().toArray().some(edge => (edge.value() as Vertex<T>).equals(end));
+        }
+
+        return containsEdge;
     }
 
     /**
