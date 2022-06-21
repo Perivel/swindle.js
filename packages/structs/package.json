@@ -31,9 +31,9 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --config jest.config.cjs",
+    "test:watch": "yarn node --experimental-vm-modules $(yarn bin jest) --watch --config jest.config.cjs",
+    "test:coverage": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage --config jest.config.cjs",
     "inspect:circular": "npx madge --circular --extensions ts ./",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
