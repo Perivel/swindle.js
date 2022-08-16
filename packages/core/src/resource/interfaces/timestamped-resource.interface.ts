@@ -1,5 +1,5 @@
 
-import { DateTime } from './../../dates/dates.module';
+import { DateTime } from '../../dates/dates.module';
 
 /**
  * TimestampedResource

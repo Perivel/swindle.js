@@ -1,35 +1,35 @@
-import{IANAZone as n,DateTime as a,Duration as l}from"luxon";import*as t from"i18n-iso-countries";import{camelCase as r,capitalCase as e,constantCase as i,dotCase as u,headerCase as h,noCase as o,paramCase as s,pascalCase as c,pathCase as p,snakeCase as f}from"change-case";import{validate as g,NIL as b,v1 as d,v3 as v,v4 as m,v5 as _,version as E}from"uuid";import F from"awesome-phonenumber";import*as y from"bcryptjs";
+import{IANAZone as n,DateTime as a,Duration as l}from"luxon";import*as t from"i18n-iso-countries";import{camelCase as r,capitalCase as e,constantCase as i,dotCase as u,headerCase as h,noCase as o,paramCase as s,pascalCase as c,pathCase as p,snakeCase as f}from"change-case";import{validate as g,NIL as b,v1 as d,v3 as v,v4 as m,v5 as _,version as E}from"uuid";import F from"awesome-phonenumber";import*as y from"bcryptjs";import w from"sanitize-html";
 /**
  * BaseException
  *
  * DomainException represents a generic domain exception.
- */class w extends Error{constructor(n="A domain error occured."){super(n)}}
+ */class k extends Error{constructor(n="A domain error occured."){super(n)}}
 /**
  * InvlaidArguentException
  *
  * InvalidArgumentException indicates an argument is invalid.
- */class k extends w{constructor(n="Invalid Argument"){super(n)}}
+ */class x extends k{constructor(n="Invalid Argument"){super(n)}}
 /**
  * MethodUndefinedException
  *
  * MethodUndefinedException is an error indicating that a method
  * that was called is undefined.
- */class x extends w{constructor(n="Method undefined."){super(n)}}class S extends k{constructor(n="Argument out of bounds."){super(n)}}
+ */class S extends k{constructor(n="Method undefined."){super(n)}}class z extends x{constructor(n="Argument out of bounds."){super(n)}}
 /**
  * NetworkException
  *
  * NetworkException indicates a network exception has occured.
- */class z extends w{constructor(n="Network Error"){super(n)}}
+ */class A extends k{constructor(n="Network Error"){super(n)}}
 /**
  * TimezoneException
  *
  * TimezoneException represents a generic timezone error.
- */class A extends w{constructor(n="Timezone error."){super(n)}}
+ */class j extends k{constructor(n="Timezone error."){super(n)}}
 /**
  * Timezone
  *
  * Timezone represents a Timezone
- */class j{constructor(n,a,l){this._id=n,this._abbreviation=a,this._offset=l}
+ */class C{constructor(n,a,l){this._id=n,this._abbreviation=a,this._offset=l}
 /**
      * FromId()
      *
@@ -37,20 +37,20 @@ import{IANAZone as n,DateTime as a,Duration as l}from"luxon";import*as t from"i1
      * @param id The Id of the timezone.
      */static FromId(l){if(!n.isValidZone(l))
 // invalid timezone.
-throw new A;
+throw new j;
 // timezone exists.
-const t=n.create(l),r=a.fromJSDate(new Date).setZone(t);return new j(t.name,r.toFormat("ZZZZ"),r.offset)}
+const t=n.create(l),r=a.fromJSDate(new Date).setZone(t);return new C(t.name,r.toFormat("ZZZZ"),r.offset)}
 /**
      * Local()
      *
      * Creates a Timezone instance representing the local timezone (based on the machine)
      * @returns A Timezone instance representing local time.
-     */static Local(){const n=a.local();return new j(n.zone.name,n.toFormat("ZZZZ"),n.offset)}
+     */static Local(){const n=a.local();return new C(n.zone.name,n.toFormat("ZZZZ"),n.offset)}
 /**
      * UTC()
      *
      * UTC() sets the timezone to UTC.
-     */static UTC(){const n=a.fromJSDate(new Date).setZone("utc");return new j(n.zone.name,n.toFormat("ZZZZ"),n.offset)}
+     */static UTC(){const n=a.fromJSDate(new Date).setZone("utc");return new C(n.zone.name,n.toFormat("ZZZZ"),n.offset)}
 /**
      * abbreviation()
      *
@@ -61,7 +61,7 @@ const t=n.create(l),r=a.fromJSDate(new Date).setZone(t);return new j(t.name,r.to
      *
      * equals() compares the instnace to the suspect to determine if they are equal.
      * @param suspect the suspect to be compared.
-     */equals(n){let a=!1;if(n instanceof j){const l=n;a=this.id()===l.id()&&this.abbreviation()===l.abbreviation()&&this.utcOffset()===l.utcOffset()}return a}
+     */equals(n){let a=!1;if(n instanceof C){const l=n;a=this.id()===l.id()&&this.abbreviation()===l.abbreviation()&&this.utcOffset()===l.utcOffset()}return a}
 /**
      * id()
      *
@@ -76,13 +76,13 @@ const t=n.create(l),r=a.fromJSDate(new Date).setZone(t);return new j(t.name,r.to
  * Coordinates
  *
  * Coordinates represents a geographic longitude/latitude pair.
- */class C{constructor(n,a){this._long=n,this._lat=a}
+ */class I{constructor(n,a){this._long=n,this._lat=a}
 /**
      * equals()
      *
      * equals() compares the suspect to the instance, to determine if they are equals.
      * @param suspect The suspect to compare.
-     */equals(n){let a=!1;if(n instanceof C){const l=n;a=this.longitude()===l.longitude()&&this.latitude()===l.latitude()}return a}
+     */equals(n){let a=!1;if(n instanceof I){const l=n;a=this.longitude()===l.longitude()&&this.latitude()===l.latitude()}return a}
 /**
      * latitude()
      *
@@ -92,12 +92,12 @@ const t=n.create(l),r=a.fromJSDate(new Date).setZone(t);return new j(t.name,r.to
      * longitude()
      *
      * longitude() gets teh longitude.
-     */longitude(){return this._long}toString(){return`${this.latitude()}, ${this.longitude()}`}}class I extends w{constructor(n="Country Error"){super(n)}}
+     */longitude(){return this._long}toString(){return`${this.latitude()}, ${this.longitude()}`}}class q extends k{constructor(n="Country Error"){super(n)}}
 /**
  * Country
  *
  * Country represents a Country in the world.
- */class q{
+ */class O{
 /**
      * Creates a Country instance
      * @param code The country code.
@@ -105,7 +105,7 @@ const t=n.create(l),r=a.fromJSDate(new Date).setZone(t);return new j(t.name,r.to
      */
 constructor(n){const a=n.toUpperCase(),l=t.getName(a,"en");if(!l)
 // invalid country
-throw new I;this._code=a,this._name=l}
+throw new q;this._code=a,this._name=l}
 /**
      * code()
      *
@@ -121,23 +121,23 @@ throw new I;this._code=a,this._name=l}
      *
      * equals() compares the Country to the suspect to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(n){let a=!1;if(n instanceof q){const l=n;a=this.code()===l.code()}return a}toString(){return this.name()}}class O extends k{constructor(n="Street Address Error"){super(n)}}class T extends O{constructor(n="Invalid Street"){super(n)}}
+     */equals(n){let a=!1;if(n instanceof O){const l=n;a=this.code()===l.code()}return a}toString(){return this.name()}}class T extends x{constructor(n="Street Address Error"){super(n)}}class D extends T{constructor(n="Invalid Street"){super(n)}}
 /**
  * Street
  *
  * Street represents an address street.
- */class D{
+ */class B{
 /**
      * Creates a Street Instance.
      * @param line1 String
      * @param line2 Strirg
      * @throws StreetException when the street in invalid.
      */
-constructor(n,a=""){if(!n){throw new T}this._line1=n,this._line2=a}
+constructor(n,a=""){if(!n){throw new D}this._line1=n,this._line2=a}
 /**
      * Determines if two streets are equal.
      * @param suspect The value being compared.
-     */equals(n){let a=!1;if(n instanceof D){const l=n;a=this.line1()===l.line1()&&this.line2()==this.line2()}return a}
+     */equals(n){let a=!1;if(n instanceof B){const l=n;a=this.line1()===l.line1()&&this.line2()==this.line2()}return a}
 /**
      * line1()
      *
@@ -147,66 +147,66 @@ constructor(n,a=""){if(!n){throw new T}this._line1=n,this._line2=a}
      * line2()
      *
      * line2() gets the line2 value of the street.
-     */line2(){return this._line2}serialize(){return JSON.stringify({line_1:this.line1(),line2:this.line2()})}toString(){return this.serialize()}}class B extends O{constructor(n="Invalid Locality"){super(n)}}
+     */line2(){return this._line2}serialize(){return JSON.stringify({line_1:this.line1(),line2:this.line2()})}toString(){return this.serialize()}}class M extends T{constructor(n="Invalid Locality"){super(n)}}
 /**
  * Locality
  *
  * Locality represents an Address Locality, or a City or Town.
- */class M{
+ */class L{
 /**
      * Creates a Locality instance.
      * @param name The name of the locality.
      * @throws LocalityException when the locality is invalid.
      */
-constructor(n){if(!n){throw new B}this._name=n}
+constructor(n){if(!n){throw new M}this._name=n}
 /**
      * Compares the instance to the suspect to determine if they are equal.
      * @param suspect The suspect to compare.
-     */equals(n){let a=!1;if(n instanceof M){const l=n;a=this.name()===l.name()}return a}
+     */equals(n){let a=!1;if(n instanceof L){const l=n;a=this.name()===l.name()}return a}
 /**
      * name()
      *
      * name() gets the locality name.
-     */name(){return this._name}serialize(){return this.name()}toString(){return this.serialize()}}class L extends O{constructor(n="Invalid Region"){super(n)}}
+     */name(){return this._name}serialize(){return this.name()}toString(){return this.serialize()}}class N extends T{constructor(n="Invalid Region"){super(n)}}
 /**
  * Region
  *
  * Region represents an Address Region (a state or province).
- */class N{
+ */class R{
 /**
      * Creates a Region instnace
      * @param name The nsme of the region
      * @throws RegionException when the region is invalid.
      */
-constructor(n){if(!n){throw new L}this._name=n}
+constructor(n){if(!n){throw new N}this._name=n}
 /**
      * equals()
      *
      * equals() compares the suspect and the instance to determine if they are equal.
      * @param suspect the suspect to be compared.
-     */equals(n){let a=!1;if(n instanceof N){const l=n;a=this.name()===l.name()}return a}
+     */equals(n){let a=!1;if(n instanceof R){const l=n;a=this.name()===l.name()}return a}
 /**
      * name()
      *
      * name() gets the name of the region.
-     */name(){return this._name}serialize(){return this.name()}toString(){return this.serialize()}}class R extends O{constructor(n="Invalid Postal Code"){super(n)}}
+     */name(){return this._name}serialize(){return this.name()}toString(){return this.serialize()}}class P extends T{constructor(n="Invalid Postal Code"){super(n)}}
 /**
  * PostalCode
  *
  * PostalCode represents an address Postal Code (or Zip Code)
- */class P{
+ */class U{
 /**
      * Creates a Postal Code instance.
      * @param value string
      * @throws InvalidPostalCodeException when the postal code is invalid.
      */
-constructor(n){if(!n){throw new R}this._value=n}
+constructor(n){if(!n){throw new P}this._value=n}
 /**
      * equals()
      *
      * equals() compares the PostalCode object to the suspect to determine if they are equal.
      * @param suspect The value being compared.
-     */equals(n){let a=!1;if(n instanceof P){const l=n;a=this.value()===l.value()}return a}serialize(){return this.value()}toString(){return this.serialize()}
+     */equals(n){let a=!1;if(n instanceof U){const l=n;a=this.value()===l.value()}return a}serialize(){return this.value()}toString(){return this.serialize()}
 /**
      * value()
      *
@@ -216,7 +216,7 @@ constructor(n){if(!n){throw new R}this._value=n}
  * StreetAddress
  *
  * StreetAddress represents a a physical street address.
- */class U{
+ */class K{
 /**
      * Creates a new StreetAddress Instance.
      * @param street Street
@@ -232,7 +232,7 @@ constructor(n){if(!n){throw new R}this._value=n}
      * @throws CountryException when the country is invalid.
      *
      */
-constructor(n,a,l,t,r){let e=null;if(!n)throw e=new T,e;if(!a)throw e=new B,e;if(!l)throw e=new L,e;if(!t)throw e=new R,e;if(!r)throw e=new I,e;this._street=n,this._locality=a,this._region=l,this._postal=t,this._country=r}
+constructor(n,a,l,t,r){let e=null;if(!n)throw e=new D,e;if(!a)throw e=new M,e;if(!l)throw e=new N,e;if(!t)throw e=new P,e;if(!r)throw e=new q,e;this._street=n,this._locality=a,this._region=l,this._postal=t,this._country=r}
 /**
      * FromPrimitives()
      *
@@ -247,7 +247,7 @@ constructor(n,a,l,t,r){let e=null;if(!n)throw e=new T,e;if(!a)throw e=new B,e;if
      *
      * @throws StreetException when the street is invalid.
      * @throws LocalityException when the
-     */static FromPrimitives(n,a="",l,t,r,e){const i=new D(n,a),u=new M(l),h=new N(t),o=new P(r),s=new q(e);return new U(i,u,h,o,s)}
+     */static FromPrimitives(n,a="",l,t,r,e){const i=new B(n,a),u=new L(l),h=new R(t),o=new U(r),s=new O(e);return new K(i,u,h,o,s)}
 /**
      * country()
      *
@@ -258,7 +258,7 @@ constructor(n,a,l,t,r){let e=null;if(!n)throw e=new T,e;if(!a)throw e=new B,e;if
      *
      * equals() compares the StreetAddress instance to the suspect to determine if they are equal.
      * @param suspect the suspect being compared.
-     */equals(n){let a=!1;if(n instanceof U){const l=n;a=this.street().equals(l.street())&&this.locality().equals(l.locality())&&this.region().equals(l.region())&&this.postalCode().equals(l.postalCode())&&this.country().equals(l.country())}return a}
+     */equals(n){let a=!1;if(n instanceof K){const l=n;a=this.street().equals(l.street())&&this.locality().equals(l.locality())&&this.region().equals(l.region())&&this.postalCode().equals(l.postalCode())&&this.country().equals(l.country())}return a}
 /**
      * locality()
      *
@@ -283,41 +283,41 @@ constructor(n,a,l,t,r){let e=null;if(!n)throw e=new T,e;if(!a)throw e=new B,e;if
  * DateException
  *
  * DateException represents a generic date error.
- */class K extends w{constructor(n="Date error."){super(n)}}
+ */class W extends k{constructor(n="Date error."){super(n)}}
 /**
  * DateTime
  *
  * DateTime represents a specific date and time.
- */class W{
+ */class G{
 /**
      * Creates a DateTime object.
      * @param value Date
      */
-constructor(n,l,t,r=0,e=0,i=0,u=0,h=j.UTC()){if(this.date=a.fromObject({year:n,month:l,day:t,hour:r,minute:e,second:i,millisecond:u},{zone:"utc"}),!this.date.isValid)throw new K;this.tz=h}
+constructor(n,l,t,r=0,e=0,i=0,u=0,h=C.UTC()){if(this.date=a.fromObject({year:n,month:l,day:t,hour:r,minute:e,second:i,millisecond:u},{zone:"utc"}),!this.date.isValid)throw new W;this.tz=h}
 /**
      * FromDate()
      *
      * creates a Timestamp instance from a Date object.
      * @param dateVal The date to create a timestamp from
      * @throws DateException when the date is invalid.
-     */static FromDate(n,l){const t=a.fromJSDate(n).toUTC();return new W(t.year,t.month,t.day,t.hour,t.minute,t.second,t.millisecond,l)}
+     */static FromDate(n,l){const t=a.fromJSDate(n).toUTC();return new G(t.year,t.month,t.day,t.hour,t.minute,t.second,t.millisecond,l)}
 /**
      * Local()
      *
      * creates a DateTime instance where the timezone is set to the local timezone.
      * @returns A DateTime object where the timezone is set to the local timezone.
-     */static Local(){return W.FromDate(a.local().toJSDate(),j.Local())}
+     */static Local(){return G.FromDate(a.local().toJSDate(),C.Local())}
 /**
      * Now()
      *
      * Creates a DateTime for the current UTC date and time.
-     */static Now(n=j.UTC()){return W.FromDate(a.utc().toJSDate(),n)}
+     */static Now(n=C.UTC()){return G.FromDate(a.utc().toJSDate(),n)}
 /**
      * add()
      *
      * add() adds the duration to the datetime.
      * @param duration the duration to add.
-     */add(n){return W.FromDate(this.date.plus(l.fromObject({years:n.years(),quarters:n.quarters(),months:n.months(),weeks:n.weeks(),days:n.days(),hours:n.hours(),minutes:n.minutes(),seconds:n.seconds(),milliseconds:n.miliseconds()})).toJSDate(),this.timezone())}
+     */add(n){return G.FromDate(this.date.plus(l.fromObject({years:n.years(),quarters:n.quarters(),months:n.months(),weeks:n.weeks(),days:n.days(),hours:n.hours(),minutes:n.minutes(),seconds:n.seconds(),milliseconds:n.miliseconds()})).toJSDate(),this.timezone())}
 /**
      * day()
      *
@@ -335,19 +335,19 @@ constructor(n,l,t,r=0,e=0,i=0,u=0,h=j.UTC()){if(this.date=a.fromObject({year:n,m
      *
      * isAfter() compares the Created instance to the suspect, to determine if the suspect is after the instance.
      * @param suspect The suspect to be compared.
-     */isAfter(n){let a=!1;if(n instanceof W){const l=n;a=this.date>l.date}return a}
+     */isAfter(n){let a=!1;if(n instanceof G){const l=n;a=this.date>l.date}return a}
 /**
      * isBefore()
      *
      * isBefore() compares the instance to the suspect, to determine if the instance is before the suspect.
      * @param suspect The suspect to be compared to.
-     */isBefore(n){let a=!1;if(n instanceof W){const l=n;a=this.date<l.date}return a}
+     */isBefore(n){let a=!1;if(n instanceof G){const l=n;a=this.date<l.date}return a}
 /**
      * equals()
      *
      * equals() compares the Created instance to a suspect, to determine if they are equal.
      * @param suspect The Created object to be compared.
-     */equals(n){let a=!1;if(n instanceof W){const l=n;a=this.date.equals(l.date)}return a}
+     */equals(n){let a=!1;if(n instanceof G){const l=n;a=this.date.equals(l.date)}return a}
 /**
      * milisecond()
      *
@@ -376,7 +376,7 @@ constructor(n,l,t,r=0,e=0,i=0,u=0,h=j.UTC()){if(this.date=a.fromObject({year:n,m
      *
      * subtract() subtracts a duration form the date time.
      * @param duration the duratin to subtract.
-     */subtract(n){return W.FromDate(this.date.minus(l.fromObject({years:n.years(),quarters:n.quarters(),months:n.months(),weeks:n.weeks(),days:n.days(),hours:n.hours(),minutes:n.minutes(),seconds:n.seconds(),milliseconds:n.miliseconds()})).toJSDate(),this.timezone())}
+     */subtract(n){return G.FromDate(this.date.minus(l.fromObject({years:n.years(),quarters:n.quarters(),months:n.months(),weeks:n.weeks(),days:n.days(),hours:n.hours(),minutes:n.minutes(),seconds:n.seconds(),milliseconds:n.miliseconds()})).toJSDate(),this.timezone())}
 /**
      * timezone()
      *
@@ -386,13 +386,13 @@ constructor(n,l,t,r=0,e=0,i=0,u=0,h=j.UTC()){if(this.date=a.fromObject({year:n,m
      * toUtc()
      *
      * toUtc() converts the timestamp to UTC time.
-     */toUtc(){return W.FromDate(this.value(),j.UTC())}
+     */toUtc(){return G.FromDate(this.value(),C.UTC())}
 /**
      * toTimeaone()
      *
      * toTimezone() converts the timestamp to the specified timezone.
      * @param timezone The timezone to convert to.
-     */toTimezone(n){return W.FromDate(this.value(),n)}
+     */toTimezone(n){return G.FromDate(this.value(),n)}
 /**
      * isoString()
      *
@@ -414,12 +414,12 @@ constructor(n,l,t,r=0,e=0,i=0,u=0,h=j.UTC()){if(this.date=a.fromObject({year:n,m
  * DurationException
  *
  * DurationException represents a generic duration error.
- */class G extends w{constructor(n="Duration error."){super(n)}}
+ */class Z extends k{constructor(n="Duration error."){super(n)}}
 /**
  * Duration
  *
  * Duration represents a duration. A duration is a period in time, such as "1 day", "2 weeks", or "5 months".
- */class Z{
+ */class ${
 /**
      * creates a Duration object.
      * @param an object specifying information about the Duration.
@@ -427,7 +427,7 @@ constructor(n,l,t,r=0,e=0,i=0,u=0,h=j.UTC()){if(this.date=a.fromObject({year:n,m
      */
 constructor({years:n=0,quarters:a=0,months:t=0,weeks:r=0,days:e=0,hours:i=0,minutes:u=0,seconds:h=0,miliseconds:o=0}){if(this.luxonDuration=l.fromObject({years:n,quarters:a,months:t,weeks:r,days:e,hours:i,minutes:u,seconds:h,milliseconds:o},{conversionAccuracy:"longterm"}),!this.luxonDuration.isValid)
 // not valid.
-throw new G(this.luxonDuration.invalidReason)}
+throw new Z(this.luxonDuration.invalidReason)}
 /**
      * FromDateTimeDifference()
      *
@@ -435,7 +435,7 @@ throw new G(this.luxonDuration.invalidReason)}
      * @param a the first date time
      * @param b the second date time
      * @returns a duration containing the difference between DateTimes a and b.
-     */static FromDateTimeDifference(n,l){const t=a.fromISO(n.toString()),r=a.fromISO(l.toString()),e=n.isAfter(l)?t.diff(r):r.diff(t);return new Z({years:e.years,quarters:e.quarters,months:e.months,weeks:e.weeks,days:e.days,hours:e.hours,minutes:e.minutes,seconds:e.seconds,miliseconds:e.milliseconds})}
+     */static FromDateTimeDifference(n,l){const t=a.fromISO(n.toString()),r=a.fromISO(l.toString()),e=n.isAfter(l)?t.diff(r):r.diff(t);return new $({years:e.years,quarters:e.quarters,months:e.months,weeks:e.weeks,days:e.days,hours:e.hours,minutes:e.minutes,seconds:e.seconds,miliseconds:e.milliseconds})}
 /**
      * days()
      *
@@ -446,7 +446,7 @@ throw new G(this.luxonDuration.invalidReason)}
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
      * @param suspect the suspect to compare.
-     */equals(n){let a=!1;if(n instanceof Z){const l=n;a=this.luxonDuration.equals(l.luxonDuration)}return a}
+     */equals(n){let a=!1;if(n instanceof $){const l=n;a=this.luxonDuration.equals(l.luxonDuration)}return a}
 /**
      * hours()
      *
@@ -540,12 +540,12 @@ toString(){return this.luxonDuration.toISO()}}
  * The BaseFormatter class
  *
  * The base formatter class is the base class for Formatter classes.
- */class ${constructor(){}}
+ */class H{constructor(){}}
 /**
  * StringFormatter
  *
  * A utility class to format strings.
- */class H extends ${constructor(){super()}
+ */class J extends H{constructor(){super()}
 /**
      * camelCase()
      *
@@ -650,24 +650,24 @@ castToString(n){return null==n?"":"string"===typeof n?n:n.toString()}}
  * IdException
  *
  * Indicates an error with the ID.
- */class J extends k{constructor(n="Invalid ID"){super(n)}}
+ */class V extends x{constructor(n="Invalid ID"){super(n)}}
 /**
  * Id
  *
  * Id represents a generic ID.
- */class V{
+ */class Y{
 /**
      * Creates a new Id instance.
      * @param value The value of the id.
      * @throws IdException when the value is invalid.
      */
-constructor(n){if(!n)throw new J;this._val=n}
+constructor(n){if(!n)throw new V;this._val=n}
 /**
      * equals()
      *
      * equals() compares the suspect to the intance, to determine if they are equal.
      * @param suspect The suspect to compare.
-     */equals(n){let a=!1;if(n instanceof V){const l=n;a=this.id()===l.id()}return a}
+     */equals(n){let a=!1;if(n instanceof Y){const l=n;a=this.id()===l.id()}return a}
 /**
      * id()
      *
@@ -677,30 +677,30 @@ constructor(n){if(!n)throw new J;this._val=n}
  * UUIDException
  *
  * Indicates an error with the UUID.
- */class Y extends J{constructor(n="UUID Error"){super(n)}}
+ */class Q extends V{constructor(n="UUID Error"){super(n)}}
 /**
  * UUID
  *
  * UUID represents a UUID.
- */class Q extends V{
+ */class X extends Y{
 /**
      * Creates a UUID instance.
      * @param value The value of the UUID.
      * @throws UUIDException if the value is invalid.
      */
-constructor(n){if(!g(n))throw new Y;super(n)}
+constructor(n){if(!g(n))throw new Q;super(n)}
 /**
      * NIL()
      *
      * Creates the NIL UUID.
      * @returns a nil UUID (all zeros)
-     */static NIL(){return new Q(b)}
+     */static NIL(){return new X(b)}
 /**
      * V1()
      *
      * Generates a Version 1 UUID (Timestamp).
      * @returns A version 1 UUID.
-     */static V1(){return new Q(d())}
+     */static V1(){return new X(d())}
 /**
      * V3()
      *
@@ -708,13 +708,13 @@ constructor(n){if(!g(n))throw new Y;super(n)}
      * @param name the name
      * @param namespace the namespace
      * @returns a Version 3 UUID.
-     */static V3(n,a){return new Q(v(n,a))}
+     */static V3(n,a){return new X(v(n,a))}
 /**
      * V4()
      *
      * V4() generates a V4 UUID (random)
      * @returns a Version 4 UUID.
-     */static V4(){return new Q(m())}
+     */static V4(){return new X(m())}
 /**
      * V5()
      *
@@ -722,13 +722,13 @@ constructor(n){if(!g(n))throw new Y;super(n)}
      * @param name the name
      * @param namespace the namespace
      * @returns a Version 5 UUID.
-     */static V5(n,a){return new Q(_(n,a))}
+     */static V5(n,a){return new X(_(n,a))}
 /**
      * equals()
      *
      * equals() compares the suspect to the instance, to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(n){let a=!1;if(n instanceof Q){const l=n;a=this.id()===l.id()}return a}
+     */equals(n){let a=!1;if(n instanceof X){const l=n;a=this.id()===l.id()}return a}
 /**
      * id()
      *
@@ -738,12 +738,12 @@ constructor(n){if(!g(n))throw new Y;super(n)}
      * version()
      *
      * gets teh version of the UUID.
-     */version(){return E(this.id())}}class X extends k{constructor(n="Invalid Email Address"){super(n)}}
+     */version(){return E(this.id())}}class nn extends x{constructor(n="Invalid Email Address"){super(n)}}
 /**
  * EmailAddress
  *
  * EmailAddress provides functionality for handling email addresses.
- */class nn{
+ */class an{
 /**
      * Creates an instance of an email address.
      * @param value The value of the email address.
@@ -751,7 +751,7 @@ constructor(n){if(!g(n))throw new Y;super(n)}
      */
 constructor(n){if(!new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").test(n))
 // email is invalid.
-throw new X;{this._value=n;const a=n.indexOf("@");this._username=n.substring(0,a),this._domain=n.substring(a+1)}}
+throw new nn;{this._value=n;const a=n.indexOf("@");this._username=n.substring(0,a),this._domain=n.substring(a+1)}}
 /**
      * domainName()
      *
@@ -767,7 +767,7 @@ throw new X;{this._value=n;const a=n.indexOf("@");this._username=n.substring(0,a
      *
      * equals() compares the instance to the suspect, to determine if they are equal.
      * @param suspect The suspect to be compared.
-     */equals(n){let a=!1;if(n instanceof nn){const l=n;a=this.email()===l.email()}return a}
+     */equals(n){let a=!1;if(n instanceof an){const l=n;a=this.email()===l.email()}return a}
 /**
      * username()
      *
@@ -777,12 +777,12 @@ throw new X;{this._value=n;const a=n.indexOf("@");this._username=n.substring(0,a
  * PhoneNumberException
  *
  * Indicates an error with a Phone Number.
- */class an extends k{constructor(n="Phone Number Error"){super(n)}}
+ */class ln extends x{constructor(n="Phone Number Error"){super(n)}}
 /**
  * PhoneNumber
  *
  * PhoneNumber represents a phone number.
- */class ln{
+ */class tn{
 /**
      * Creates a Phone Number instance.
      * @param value The phone number value.
@@ -791,7 +791,7 @@ throw new X;{this._value=n;const a=n.indexOf("@");this._username=n.substring(0,a
      */
 constructor(n,a){if(!n||!a)
 // invlaid phone number.
-throw new an;if(this._phoneParser=new F(n,a),!this._phoneParser.isValid())throw new an}
+throw new ln;if(this._phoneParser=new F(n,a),!this._phoneParser.isValid())throw new ln}
 /**
      * canBeInternationallyDialed()
      *
@@ -809,7 +809,7 @@ throw new an;if(this._phoneParser=new F(n,a),!this._phoneParser.isValid())throw 
      *
      * equals() compares the phone number to the suspect, to determine if they are equal.
      * @param suspect the suspect being confirmed.
-     */equals(n){let a=!1;if(n instanceof ln){const l=n;a=this.value()===l.value()}return a}
+     */equals(n){let a=!1;if(n instanceof tn){const l=n;a=this.value()===l.value()}return a}
 /**
      * e164()
      *
@@ -854,21 +854,21 @@ throw new an;if(this._phoneParser=new F(n,a),!this._phoneParser.isValid())throw 
  * Salt
  *
  * Represents a salt.
- */class tn{constructor(n){this._value=n}
+ */class rn{constructor(n){this._value=n}
 /**
      * Generate()
      *
      * generates a salt.
      * @param rounds the number of rounds to use.
      * @returns a generated hash
-     */static async Generate(n=10){return new tn(await y.genSalt(n))}
+     */static async Generate(n=10){return new rn(await y.genSalt(n))}
 /**
      * equals()
      *
      * compares the suspect to the instance to determine if they are equal.
      * @param suspect the suspect to compare
      * @returns true if the suspect and the instance are equal
-     */equals(n){let a=!1;return n instanceof tn&&(a=n.value()===this.value()),a}
+     */equals(n){let a=!1;return n instanceof rn&&(a=n.value()===this.value()),a}
 /**
      * value()
      *
@@ -878,7 +878,7 @@ throw new an;if(this._phoneParser=new F(n,a),!this._phoneParser.isValid())throw 
  * Hash
  *
  * A Hash.
- */class rn{constructor(n){this._value=n}
+ */class en{constructor(n){this._value=n}
 /**
      * Create()
      *
@@ -888,13 +888,13 @@ throw new an;if(this._phoneParser=new F(n,a),!this._phoneParser.isValid())throw 
      * @returns a hashed version of the data
      */static async Create(n,a){
 //return new Hash(await Bcrypt.hash(data, salt.value()));
-return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new rn(a))}))}))}
+return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new en(a))}))}))}
 /**
      * equals()
      *
      * compares the instance to the suspect, to determine if they are equal.
      * @param suspect the suspect to compare
-     */equals(n){let a=!1;return n instanceof rn&&(a=this.value()===n.value()),a}toString(){return this.value()}
+     */equals(n){let a=!1;return n instanceof en&&(a=this.value()===n.value()),a}toString(){return this.value()}
 /**
      * value()
      *
@@ -904,26 +904,26 @@ return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new 
  * CharacterSet
  *
  * A CharacterSet.
- */class en{constructor(n){this._value=n}
+ */class un{constructor(n){this._value=n}
 /**
      * ASCII()
      *
      * Creates a CharacterSet instance set to ASCII.
      * @returns A CharacterSet instance set to ASCII.
-     */static ASCII(){return new en("ASCII")}
+     */static ASCII(){return new un("ASCII")}
 /**
      * UTF8()
      *
      * Creates a CharacterSet instance set to UTF8.
      * @returns A CharacterSet set to UTF-8.
-     */static UTF8(){return new en("UTF-8")}
+     */static UTF8(){return new un("UTF-8")}
 /**
      * equals()
      *
      * determines if the instance and the suspect are equal.
      * @param suspect the suspect to compare.
      * @returns TRUE if the instance and the suspect are equal. FALSE otherwise.
-     */equals(n){let a=!1;if(n instanceof en){const l=n;a=this.value()===l.value()}return a}
+     */equals(n){let a=!1;if(n instanceof un){const l=n;a=this.value()===l.value()}return a}
 /**
      * value()
      *
@@ -933,12 +933,12 @@ return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new 
  * ColorException
  *
  * A generic color error.
- */class un extends w{constructor(n="Color Error"){super(n)}}
+ */class hn extends k{constructor(n="Color Error"){super(n)}}
 /**
  * HexException
  *
  * A Hex value error.
- */class hn extends un{constructor(n="Hex Error"){super(n)}}
+ */class on extends hn{constructor(n="Hex Error"){super(n)}}
 /**
  * Compine regex expressions.
  * Example:
@@ -949,7 +949,7 @@ return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new 
  * @param regexes regex expressions to combine
  * @param flag regex flag
  * @private
- */function on(n,a){return void 0===a&&(a="i"),new RegExp(n.map((function(n){return n.source})).join("|"),a)}
+ */function sn(n,a){return void 0===a&&(a="i"),new RegExp(n.map((function(n){return n.source})).join("|"),a)}
 // TODO: test
 /////////////////////////////////////////////////////////////////////
 // Hex
@@ -959,7 +959,7 @@ return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new 
  *
  * ✓ 0, ff, FFAAAAAAAAAA, F0, 0.1, AAAA.F1
  * ✗ #FFF, k, .A, AF4.Z
- */var sn=/^#(?:([0-9a-f]{3}))$/i,cn=/^#(?:([0-9a-f]{3})([0-9a-f]{1}))$/i,pn=on([sn,cn]),fn=/^#(?:([0-9a-f]{6}))$/i,gn=/^#(?:([0-9a-f]{6})([0-9a-f]{2}))$/i,bn=on([fn,gn]),dn={generic:/^(([0-9a-f])+([.]([0-9a-f])+)?)$/i,shortWithoutAlpha:sn,shortWithAlpha:cn,short:pn,longWithoutAlpha:fn,longWithAlpha:gn,long:bn,color:on([pn,bn]),alpha:/[0-9a-f]{2}$/i};
+ */var cn=/^#(?:([0-9a-f]{3}))$/i,pn=/^#(?:([0-9a-f]{3})([0-9a-f]{1}))$/i,fn=sn([cn,pn]),gn=/^#(?:([0-9a-f]{6}))$/i,bn=/^#(?:([0-9a-f]{6})([0-9a-f]{2}))$/i,dn=sn([gn,bn]),vn={generic:/^(([0-9a-f])+([.]([0-9a-f])+)?)$/i,shortWithoutAlpha:cn,shortWithAlpha:pn,short:fn,longWithoutAlpha:gn,longWithAlpha:bn,long:dn,color:sn([fn,dn]),alpha:/[0-9a-f]{2}$/i};
 /**
  * Match strings that respect CSS hexadecimal short notation without opacity:
  * #RGB (3-digit, short form) where R, G, B are in [0-9a-fA-F].
@@ -975,7 +975,7 @@ return new Promise(((l,t)=>{y.hash(n.toString(),a.value(),((n,a)=>{n?t(n):l(new 
  * @returns true if range[0] <= value <= range[1] or range[1] <= value <= range[0], false otherwise
  * @private
  */
-function vn(n,a){var l=Math.min.apply(Math,a),t=Math.max.apply(Math,a);return n>=l&&n<=t}
+function mn(n,a){var l=Math.min.apply(Math,a),t=Math.max.apply(Math,a);return n>=l&&n<=t}
 /**
  * Convert a hexadecimal value to a number (also float) in base 10.
  * @param hexadecimal hexadecimal value to convert in base 10
@@ -989,7 +989,7 @@ function vn(n,a){var l=Math.min.apply(Math,a),t=Math.max.apply(Math,a);return n>
  * @returns true if two arrays have the same content, false otherwise
  * @private
  */
-function mn(n,a){return n.sort().toString()===a.sort().toString()}
+function _n(n,a){return n.sort().toString()===a.sort().toString()}
 /**
  * Accept:
  *  - #rrggbb[aa] (6/8-digit, long form)
@@ -997,7 +997,7 @@ function mn(n,a){return n.sort().toString()===a.sort().toString()}
  * with r, g, b, a in [0-9a-fA-F].
  * @param color color to check if it is in the right hex format
  * @returns true if color is in the right hex format, false otherwise
- */function _n(n){return dn.color.test(n)}
+ */function En(n){return vn.color.test(n)}
 /**
  * Accept an object like this {r, g, b} with r, b, g numeric values in [0, 255].
  * @param color color to check if it is in the right rgb format
@@ -1005,7 +1005,7 @@ function mn(n,a){return n.sort().toString()===a.sort().toString()}
  */
 // TODO: support values in [0, 1]
 // TODO: support values in [0%, 100%]
-function En(n){var a=Object.keys(n);if(3!==a.length)return!1;if(!mn(a,["r","g","b"]))return!1;var l=function(n){return"number"==typeof n&&vn(n,[0,255])},t=l(n.r),r=l(n.g),e=l(n.b);return t&&r&&e}
+function Fn(n){var a=Object.keys(n);if(3!==a.length)return!1;if(!_n(a,["r","g","b"]))return!1;var l=function(n){return"number"==typeof n&&mn(n,[0,255])},t=l(n.r),r=l(n.g),e=l(n.b);return t&&r&&e}
 /**
  * Accept an object like this {r, g, b, a} with r, g, b numeric values in [0, 255] and a in [0, 1].
  * @param color color to check if it is in the right rgba format
@@ -1013,11 +1013,11 @@ function En(n){var a=Object.keys(n);if(3!==a.length)return!1;if(!mn(a,["r","g","
  */
 // TODO: support values r,g,b in [0, 1]
 // TODO: support values r,g,b,a in [0%, 100%]
-var Fn,yn,wn="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{},kn={exports:{}};
+var yn,wn,kn="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{},xn={exports:{}};
 ////////////////////////////////////////////////////////
 // hex
 ////////////////////////////////////////////////////////
-function xn(n,a){return n+": "+a+" is not a valid hex color."}
+function Sn(n,a){return n+": "+a+" is not a valid hex color."}
 ////////////////////////////////////////////////////////
 // rgb
 ////////////////////////////////////////////////////////
@@ -1028,16 +1028,16 @@ function xn(n,a){return n+": "+a+" is not a valid hex color."}
  * @returns value number in range [0, 1]
  * @private
  */
-function Sn(n,a){if(void 0===a&&(a=2),!dn.alpha.test(n))throw new Error(n+" is not a valid hex color.");if(2!==n.length)throw new Error(n+" lenght is not 2.");var l=function(n){if(!dn.generic.test(n))throw new Error(n+" is not a valid hexadecimal string.");
+function zn(n,a){if(void 0===a&&(a=2),!vn.alpha.test(n))throw new Error(n+" is not a valid hex color.");if(2!==n.length)throw new Error(n+" lenght is not 2.");var l=function(n){if(!vn.generic.test(n))throw new Error(n+" is not a valid hexadecimal string.");
 // parse the digits separately, dividing the hexadecimal string in two (integer and decimal parts)
 // and treating both parts as integers when converting and then adding them back together
-var a=n.split("."),l=a[0],t=a[1];return t?parseInt(l,16)+parseInt(t,16)/Math.pow(16,t.length):parseInt(l,16)}(n)/255;return kn.exports.round(l,a)}
+var a=n.split("."),l=a[0],t=a[1];return t?parseInt(l,16)+parseInt(t,16)/Math.pow(16,t.length):parseInt(l,16)}(n)/255;return xn.exports.round(l,a)}
 /**
  * Convert a 2-digit hexadecimal string to a number in range [0, 255].
  * @param hexAlpha hexadecimal value of lenght 2
  * @returns value number in range [0, 255]
  * @private
- */function zn(n){return Math.round(255*Sn(n))}
+ */function An(n){return Math.round(255*zn(n))}
 /**
  * Convert a number in [0, 255] to a hexadecimal string of lenght 2.
  * @param value number in [0, 255]
@@ -1052,14 +1052,14 @@ var a=n.split("."),l=a[0],t=a[1];return t?parseInt(l,16)+parseInt(t,16)/Math.pow
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-Fn=kn,yn=kn.exports,function(){
+yn=xn,wn=xn.exports,function(){
 /** Used as a safe reference for `undefined` in pre-ES5 environments. */
-var n,a="Expected a function",l="__lodash_hash_undefined__",t="__lodash_placeholder__",r=16,e=32,i=64,u=128,h=256,o=1/0,s=9007199254740991,c=NaN,p=4294967295,f=[["ary",u],["bind",1],["bindKey",2],["curry",8],["curryRight",r],["flip",512],["partial",e],["partialRight",i],["rearg",h]],g="[object Arguments]",b="[object Array]",d="[object Boolean]",v="[object Date]",m="[object Error]",_="[object Function]",E="[object GeneratorFunction]",F="[object Map]",y="[object Number]",w="[object Object]",k="[object Promise]",x="[object RegExp]",S="[object Set]",z="[object String]",A="[object Symbol]",j="[object WeakMap]",C="[object ArrayBuffer]",I="[object DataView]",q="[object Float32Array]",O="[object Float64Array]",T="[object Int8Array]",D="[object Int16Array]",B="[object Int32Array]",M="[object Uint8Array]",L="[object Uint8ClampedArray]",N="[object Uint16Array]",R="[object Uint32Array]",P=/\b__p \+= '';/g,U=/\b(__p \+=) '' \+/g,K=/(__e\(.*?\)|\b__t\)) \+\n'';/g,W=/&(?:amp|lt|gt|quot|#39);/g,G=/[&<>"']/g,Z=RegExp(W.source),$=RegExp(G.source),H=/<%-([\s\S]+?)%>/g,J=/<%([\s\S]+?)%>/g,V=/<%=([\s\S]+?)%>/g,Y=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,Q=/^\w*$/,X=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,nn=/[\\^$.*+?()[\]{}|]/g,an=RegExp(nn.source),ln=/^\s+/,tn=/\s/,rn=/\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,en=/\{\n\/\* \[wrapped with (.+)\] \*/,un=/,? & /,hn=/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,on=/[()=,{}\[\]\/\s]/,sn=/\\(\\)?/g,cn=/\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,pn=/\w*$/,fn=/^[-+]0x[0-9a-f]+$/i,gn=/^0b[01]+$/i,bn=/^\[object .+?Constructor\]$/,dn=/^0o[0-7]+$/i,vn=/^(?:0|[1-9]\d*)$/,mn=/[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g,_n=/($^)/,En=/['\n\r\u2028\u2029\\]/g,kn="\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff",xn="\\u2700-\\u27bf",Sn="a-z\\xdf-\\xf6\\xf8-\\xff",zn="A-Z\\xc0-\\xd6\\xd8-\\xde",An="\\ufe0e\\ufe0f",jn="\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",Cn="['’]",In="[\\ud800-\\udfff]",qn="["+jn+"]",On="["+kn+"]",Tn="\\d+",Dn="[\\u2700-\\u27bf]",Bn="["+Sn+"]",Mn="[^\\ud800-\\udfff"+jn+Tn+xn+Sn+zn+"]",Ln="\\ud83c[\\udffb-\\udfff]",Nn="[^\\ud800-\\udfff]",Rn="(?:\\ud83c[\\udde6-\\uddff]){2}",Pn="[\\ud800-\\udbff][\\udc00-\\udfff]",Un="["+zn+"]",Kn="(?:"+Bn+"|"+Mn+")",Wn="(?:"+Un+"|"+Mn+")",Gn="(?:['’](?:d|ll|m|re|s|t|ve))?",Zn="(?:['’](?:D|LL|M|RE|S|T|VE))?",$n="(?:"+On+"|"+Ln+")?",Hn="[\\ufe0e\\ufe0f]?",Jn=Hn+$n+"(?:\\u200d(?:"+[Nn,Rn,Pn].join("|")+")"+Hn+$n+")*",Vn="(?:"+[Dn,Rn,Pn].join("|")+")"+Jn,Yn="(?:"+[Nn+On+"?",On,Rn,Pn,In].join("|")+")",Qn=RegExp(Cn,"g"),Xn=RegExp(On,"g"),na=RegExp(Ln+"(?="+Ln+")|"+Yn+Jn,"g"),aa=RegExp([Un+"?"+Bn+"+"+Gn+"(?="+[qn,Un,"$"].join("|")+")",Wn+"+"+Zn+"(?="+[qn,Un+Kn,"$"].join("|")+")",Un+"?"+Kn+"+"+Gn,Un+"+"+Zn,"\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])","\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])",Tn,Vn].join("|"),"g"),la=RegExp("[\\u200d\\ud800-\\udfff"+kn+An+"]"),ta=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,ra=["Array","Buffer","DataView","Date","Error","Float32Array","Float64Array","Function","Int8Array","Int16Array","Int32Array","Map","Math","Object","Promise","RegExp","Set","String","Symbol","TypeError","Uint8Array","Uint8ClampedArray","Uint16Array","Uint32Array","WeakMap","_","clearTimeout","isFinite","parseInt","setTimeout"],ea=-1,ia={};
+var n,a="Expected a function",l="__lodash_hash_undefined__",t="__lodash_placeholder__",r=16,e=32,i=64,u=128,h=256,o=1/0,s=9007199254740991,c=NaN,p=4294967295,f=[["ary",u],["bind",1],["bindKey",2],["curry",8],["curryRight",r],["flip",512],["partial",e],["partialRight",i],["rearg",h]],g="[object Arguments]",b="[object Array]",d="[object Boolean]",v="[object Date]",m="[object Error]",_="[object Function]",E="[object GeneratorFunction]",F="[object Map]",y="[object Number]",w="[object Object]",k="[object Promise]",x="[object RegExp]",S="[object Set]",z="[object String]",A="[object Symbol]",j="[object WeakMap]",C="[object ArrayBuffer]",I="[object DataView]",q="[object Float32Array]",O="[object Float64Array]",T="[object Int8Array]",D="[object Int16Array]",B="[object Int32Array]",M="[object Uint8Array]",L="[object Uint8ClampedArray]",N="[object Uint16Array]",R="[object Uint32Array]",P=/\b__p \+= '';/g,U=/\b(__p \+=) '' \+/g,K=/(__e\(.*?\)|\b__t\)) \+\n'';/g,W=/&(?:amp|lt|gt|quot|#39);/g,G=/[&<>"']/g,Z=RegExp(W.source),$=RegExp(G.source),H=/<%-([\s\S]+?)%>/g,J=/<%([\s\S]+?)%>/g,V=/<%=([\s\S]+?)%>/g,Y=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,Q=/^\w*$/,X=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,nn=/[\\^$.*+?()[\]{}|]/g,an=RegExp(nn.source),ln=/^\s+/,tn=/\s/,rn=/\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,en=/\{\n\/\* \[wrapped with (.+)\] \*/,un=/,? & /,hn=/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,on=/[()=,{}\[\]\/\s]/,sn=/\\(\\)?/g,cn=/\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,pn=/\w*$/,fn=/^[-+]0x[0-9a-f]+$/i,gn=/^0b[01]+$/i,bn=/^\[object .+?Constructor\]$/,dn=/^0o[0-7]+$/i,vn=/^(?:0|[1-9]\d*)$/,mn=/[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g,_n=/($^)/,En=/['\n\r\u2028\u2029\\]/g,Fn="\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff",xn="\\u2700-\\u27bf",Sn="a-z\\xdf-\\xf6\\xf8-\\xff",zn="A-Z\\xc0-\\xd6\\xd8-\\xde",An="\\ufe0e\\ufe0f",jn="\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",Cn="['’]",In="[\\ud800-\\udfff]",qn="["+jn+"]",On="["+Fn+"]",Tn="\\d+",Dn="[\\u2700-\\u27bf]",Bn="["+Sn+"]",Mn="[^\\ud800-\\udfff"+jn+Tn+xn+Sn+zn+"]",Ln="\\ud83c[\\udffb-\\udfff]",Nn="[^\\ud800-\\udfff]",Rn="(?:\\ud83c[\\udde6-\\uddff]){2}",Pn="[\\ud800-\\udbff][\\udc00-\\udfff]",Un="["+zn+"]",Kn="(?:"+Bn+"|"+Mn+")",Wn="(?:"+Un+"|"+Mn+")",Gn="(?:['’](?:d|ll|m|re|s|t|ve))?",Zn="(?:['’](?:D|LL|M|RE|S|T|VE))?",$n="(?:"+On+"|"+Ln+")?",Hn="[\\ufe0e\\ufe0f]?",Jn=Hn+$n+"(?:\\u200d(?:"+[Nn,Rn,Pn].join("|")+")"+Hn+$n+")*",Vn="(?:"+[Dn,Rn,Pn].join("|")+")"+Jn,Yn="(?:"+[Nn+On+"?",On,Rn,Pn,In].join("|")+")",Qn=RegExp(Cn,"g"),Xn=RegExp(On,"g"),na=RegExp(Ln+"(?="+Ln+")|"+Yn+Jn,"g"),aa=RegExp([Un+"?"+Bn+"+"+Gn+"(?="+[qn,Un,"$"].join("|")+")",Wn+"+"+Zn+"(?="+[qn,Un+Kn,"$"].join("|")+")",Un+"?"+Kn+"+"+Gn,Un+"+"+Zn,"\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])","\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])",Tn,Vn].join("|"),"g"),la=RegExp("[\\u200d\\ud800-\\udfff"+Fn+An+"]"),ta=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,ra=["Array","Buffer","DataView","Date","Error","Float32Array","Float64Array","Function","Int8Array","Int16Array","Int32Array","Map","Math","Object","Promise","RegExp","Set","String","Symbol","TypeError","Uint8Array","Uint8ClampedArray","Uint16Array","Uint32Array","WeakMap","_","clearTimeout","isFinite","parseInt","setTimeout"],ea=-1,ia={};
 /** Used as the semantic version number. */ia[q]=ia[O]=ia[T]=ia[D]=ia[B]=ia[M]=ia[L]=ia[N]=ia[R]=!0,ia[g]=ia[b]=ia[C]=ia[d]=ia[I]=ia[v]=ia[m]=ia[_]=ia[F]=ia[y]=ia[w]=ia[x]=ia[S]=ia[z]=ia[j]=!1;
 /** Used to identify `toStringTag` values supported by `_.clone`. */
 var ua={};ua[g]=ua[b]=ua[C]=ua[I]=ua[d]=ua[v]=ua[q]=ua[O]=ua[T]=ua[D]=ua[B]=ua[F]=ua[y]=ua[w]=ua[x]=ua[S]=ua[z]=ua[A]=ua[M]=ua[L]=ua[N]=ua[R]=!0,ua[m]=ua[_]=ua[j]=!1;
 /** Used to map Latin Unicode letters to basic Latin letters. */
-var ha={"\\":"\\","'":"'","\n":"n","\r":"r","\u2028":"u2028","\u2029":"u2029"},oa=parseFloat,sa=parseInt,ca="object"==typeof wn&&wn&&wn.Object===Object&&wn,pa="object"==typeof self&&self&&self.Object===Object&&self,fa=ca||pa||Function("return this")(),ga=yn&&!yn.nodeType&&yn,ba=ga&&Fn&&!Fn.nodeType&&Fn,da=ba&&ba.exports===ga,va=da&&ca.process,ma=function(){try{
+var ha={"\\":"\\","'":"'","\n":"n","\r":"r","\u2028":"u2028","\u2029":"u2029"},oa=parseFloat,sa=parseInt,ca="object"==typeof kn&&kn&&kn.Object===Object&&kn,pa="object"==typeof self&&self&&self.Object===Object&&self,fa=ca||pa||Function("return this")(),ga=wn&&!wn.nodeType&&wn,ba=ga&&yn&&!yn.nodeType&&yn,da=ba&&ba.exports===ga,va=da&&ca.process,ma=function(){try{
 // Use `util.types` for Node.js 10+.
 var n=ba&&ba.require&&ba.require("util").types;return n||va&&va.binding&&va.binding("util");
 // Legacy `process.binding('util')` for Node.js < 10.
@@ -10747,13 +10747,13 @@ ba?(
 // Export for CommonJS support.
 ga._=dl):
 // Export to the global object.
-fa._=dl}.call(wn);
+fa._=dl}.call(kn);
 /**
  * Convert a rgba color object to a hex color.
  * @param rgba color to convert to hex
  * @returns hex color
  */
-function An(n){if(!function(n){var a=Object.keys(n);if(4!==a.length)return!1;if(!mn(a,["r","g","b","a"]))return!1;var l=En({r:n.r,g:n.g,b:n.b}),t="number"==typeof n.a&&vn(n.a,[0,1]);return l&&t}(n))throw new Error(
+function jn(n){if(!function(n){var a=Object.keys(n);if(4!==a.length)return!1;if(!_n(a,["r","g","b","a"]))return!1;var l=Fn({r:n.r,g:n.g,b:n.b}),t="number"==typeof n.a&&mn(n.a,[0,1]);return l&&t}(n))throw new Error(
 ////////////////////////////////////////////////////////
 // rgba
 ////////////////////////////////////////////////////////
@@ -10767,7 +10767,7 @@ function(n,a){return n+": "+JSON.stringify(a)+" is not a valid rgba color object
  * @param rgb color object to convert to hex
  * @returns hex color
  */
-function(n){if(!En(n))throw new Error(function(n,a){return n+": "+JSON.stringify(a)+" is not a valid rgb color object."}("rgbToHex",n));return"#"+Object.values(n).map((function(n){return function(n){if(!vn(n,[0,255]))throw new Error(n+" must be in [0, 255].");return Math.round(n).toString(16).padStart(2,"0").toUpperCase()}(n)})).join("")}
+function(n){if(!Fn(n))throw new Error(function(n,a){return n+": "+JSON.stringify(a)+" is not a valid rgb color object."}("rgbToHex",n));return"#"+Object.values(n).map((function(n){return function(n){if(!mn(n,[0,255]))throw new Error(n+" must be in [0, 255].");return Math.round(n).toString(16).padStart(2,"0").toUpperCase()}(n)})).join("")}
 /**
  * Hex
  *
@@ -10782,7 +10782,7 @@ function(n){if(!En(n))throw new Error(function(n,a){return n+": "+JSON.stringify
  * @returns hexadecimal value
  * @private
  */
-function(n){if(!vn(n,[0,1]))throw new Error(n+" is not in the range [0, 1].");
+function(n){if(!mn(n,[0,1]))throw new Error(n+" is not in the range [0, 1].");
 // A 2-digit hex value can express at most 16^2 = 256 = [0, 255] values
 // convert the percent value ([0, 1]) to the nearest integer value in [0, 255]
 // padding it with 0s at the start and make it in upper case
@@ -10794,13 +10794,13 @@ return Math.round(255*n).toString(16).padStart(2,"0").toUpperCase()}(r)}
  *   - { r: 255, g: 255, b: 255, a: 0.851 }
  *   - { r: 255, g: 255, b: 255, a: 0.8549 }
  *   - { r: 255, g: 255, b: 255, a: 0.8588 }
- */var jn=function(){return jn=Object.assign||function(n){for(var a,l=1,t=arguments.length;l<t;l++)for(var r in a=arguments[l])Object.prototype.hasOwnProperty.call(a,r)&&(n[r]=a[r]);return n},jn.apply(this,arguments)};
+ */var Cn=function(){return Cn=Object.assign||function(n){for(var a,l=1,t=arguments.length;l<t;l++)for(var r in a=arguments[l])Object.prototype.hasOwnProperty.call(a,r)&&(n[r]=a[r]);return n},Cn.apply(this,arguments)};
 /**
  * Convert a hex to a rgb or rgba color (depends on hex format).
  * @param hex color to convert to rgb or rgba
  * @returns rgb or rgba object
  */
-function Cn(n){if(!_n(n))throw new Error(xn("hexToRgbOrRgba",n));var a,l=
+function In(n){if(!En(n))throw new Error(Sn("hexToRgbOrRgba",n));var a,l=
 /**
  * Expand the 3-digit hexadecimal form to the 6-digit form doubling each digit.
  * For example #09C becomes #0099CC and #09CA becomes #0099CCAA.
@@ -10808,19 +10808,19 @@ function Cn(n){if(!_n(n))throw new Error(xn("hexToRgbOrRgba",n));var a,l=
  * @param hex in the short form
  * @returns hex in the long form
  */
-function(n){if(!_n(n))throw new Error(xn("shortToLongHex",n));if(!dn.short.test(n))return n;var a=Array.from(n),l=a[0],t=a[1],r=a[2],e=a[3],i=a[4];return i?""+l+t+t+r+r+e+e+i+i:""+l+t+t+r+r+e+e}(n).substring(1),t=(a=2,l.match(new RegExp(".{1,"+a+"}","g"))),r=t[0],e=t[1],i=t[2],u=t[3],h={r:zn(r),g:zn(e),b:zn(i)};return u?jn(jn({},h),{a:Sn(u,4)}):h}
+function(n){if(!En(n))throw new Error(Sn("shortToLongHex",n));if(!vn.short.test(n))return n;var a=Array.from(n),l=a[0],t=a[1],r=a[2],e=a[3],i=a[4];return i?""+l+t+t+r+r+e+e+i+i:""+l+t+t+r+r+e+e}(n).substring(1),t=(a=2,l.match(new RegExp(".{1,"+a+"}","g"))),r=t[0],e=t[1],i=t[2],u=t[3],h={r:An(r),g:An(e),b:An(i)};return u?Cn(Cn({},h),{a:zn(u,4)}):h}
 /**
  * Convert a hex to a rgba object, by default alpha is 1.
  * @param hex color to convert to rgba
  * @param alpha opacity value in range [0, 1]
  * @returns rbga color
- */class In{
+ */class qn{
 /**
      * Creates a Hex instance.
      * @param value the hex value.
      * @throws HexException when the hex value is invalid.
      */
-constructor(n){if(!_n(n=n.toUpperCase()))throw new hn;this._value=n}equals(n){let a=!1;if(n instanceof In){const l=n;a=this.value()===l.value()}return a}serialize(){return this.value()}toString(){return this.serialize()}
+constructor(n){if(!En(n=n.toUpperCase()))throw new on;this._value=n}equals(n){let a=!1;if(n instanceof qn){const l=n;a=this.value()===l.value()}return a}serialize(){return this.value()}toString(){return this.serialize()}
 /**
      * value()
      *
@@ -10830,12 +10830,12 @@ constructor(n){if(!_n(n=n.toUpperCase()))throw new hn;this._value=n}equals(n){le
  * RGBAException
  *
  * An RGBA value error.
- */class qn extends un{constructor(n="RGBA Error"){super(n)}}
+ */class On extends hn{constructor(n="RGBA Error"){super(n)}}
 /**
  * RGBA
  *
  * An RGBA color representation.
- */class On{
+ */class Tn{
 /**
      * Creates an RGBA value.
      * @param r the r value.
@@ -10846,7 +10846,7 @@ constructor(n){if(!_n(n=n.toUpperCase()))throw new hn;this._value=n}equals(n){le
      */
 constructor(n,a,l,t=1){if(n=Math.floor(n),a=Math.floor(a),l=Math.floor(l),!(n>=0&&n<=255&&a>=0&&a<=255&&l>=0&&l<=255&&t>=0&&t<=1))
 // invalid.
-throw new qn;
+throw new On;
 // valid RGBA.
 this._a=t,this._b=l,this._g=a,this._r=n}
 /**
@@ -10858,7 +10858,7 @@ this._a=t,this._b=l,this._g=a,this._r=n}
      * b()
      *
      * gets the blue value.
-     */b(){return this._b}equals(n){let a=!1;if(n instanceof On){const l=n;a=this.r()===l.r()&&this.g()===l.g()&&this.b()===l.b()&&this.a()===l.a()}return a}
+     */b(){return this._b}equals(n){let a=!1;if(n instanceof Tn){const l=n;a=this.r()===l.r()&&this.g()===l.g()&&this.b()===l.b()&&this.a()===l.a()}return a}
 /**
      * g()
      *
@@ -10875,38 +10875,38 @@ this._a=t,this._b=l,this._g=a,this._r=n}
      * sets the alpha value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setA(n){return new On(this.r(),this.g(),this.b(),n)}
+     */setA(n){return new Tn(this.r(),this.g(),this.b(),n)}
 /**
      * setB()
      *
      * sets the b value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setB(n){return new On(this.r(),this.g(),n,this.a())}
+     */setB(n){return new Tn(this.r(),this.g(),n,this.a())}
 /**
      * setG()
      *
      * sets the g value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setG(n){return new On(this.r(),n,this.b(),this.a())}
+     */setG(n){return new Tn(this.r(),n,this.b(),this.a())}
 /**
      * setR()
      *
      * sets the r value.
      * @param x the value to set.
      * @throws RGBAException when x is invalid.
-     */setR(n){return new On(n,this.g(),this.b(),this.a())}toString(){return this.serialize()}}
+     */setR(n){return new Tn(n,this.g(),this.b(),this.a())}toString(){return this.serialize()}}
 /**
  * Color
  *
  * A Color value.
- */class Tn{
+ */class Dn{
 /**
      * Creates a Color value.
      * @param value the value of the color.
      */
-constructor(n){if(n instanceof On)this._rgba=n,this._hex=new In(An({r:this._rgba.r(),g:this._rgba.g(),b:this._rgba.b(),a:this._rgba.a()}));else{this._hex=n;const a=function(n,a){if(void 0===a&&(a=1),!_n(n))throw new Error(xn("hex2rgba",n));if(!vn(a,[0,1]))throw new Error(function(n,a){return"hex2rgba"+": "+a+" is not in range [0, 1]."}
+constructor(n){if(n instanceof Tn)this._rgba=n,this._hex=new qn(jn({r:this._rgba.r(),g:this._rgba.g(),b:this._rgba.b(),a:this._rgba.a()}));else{this._hex=n;const a=function(n,a){if(void 0===a&&(a=1),!En(n))throw new Error(Sn("hex2rgba",n));if(!mn(a,[0,1]))throw new Error(function(n,a){return"hex2rgba"+": "+a+" is not in range [0, 1]."}
 /**
  * Given a string, a position and another string toAdd, it returns a new string with toAdd in the given position.
  * @param str string to add toAdd
@@ -10921,21 +10921,21 @@ constructor(n){if(n instanceof On)this._rgba=n,this._hex=new In(An({r:this._rgba
  * @param  size is the size you of the cuts
  * @return an rray with the strings
  * @private
- */(0,a));var l=Cn(n);return En(l)?jn(jn({},l),{a:a}):l}(this._hex.value());this._rgba=new On(a.r,a.g,a.b,a.a)}}
+ */(0,a));var l=In(n);return Fn(l)?Cn(Cn({},l),{a:a}):l}(this._hex.value());this._rgba=new Tn(a.r,a.g,a.b,a.a)}}
 /**
      * Black()
      *
      * creates a Black color.
      * @param a the alpha value, defaults to 1.0
      * @returns a color instance representing the Black color.
-     */static Black(n=1){return Tn.FromRGBA(0,0,0,n)}
+     */static Black(n=1){return Dn.FromRGBA(0,0,0,n)}
 /**
      * Blue()
      *
      * creates a Color instance set to blue.
      * @param a the alpha value, defaults to 1.0
      * @returns a color value set to blue.
-     */static Blue(n=1){return Tn.FromRGBA(0,0,255,n)}
+     */static Blue(n=1){return Dn.FromRGBA(0,0,255,n)}
 /**
      * FromHex()
      *
@@ -10943,7 +10943,7 @@ constructor(n){if(n instanceof On)this._rgba=n,this._hex=new In(An({r:this._rgba
      * @param v the hex value.
      * @returns a Color representing the Hex value provided.
      * @throws HexException when the Hex value is invalid.
-     */static FromHex(n){const a=new In(n);return new Tn(a)}
+     */static FromHex(n){const a=new qn(n);return new Dn(a)}
 /**
      * FromRGBA()
      *
@@ -10953,28 +10953,28 @@ constructor(n){if(n instanceof On)this._rgba=n,this._hex=new In(An({r:this._rgba
      * @param b the b value.
      * @param a the a value.
      * @returns a Color instance set to the RGBA value provided.
-     */static FromRGBA(n,a,l,t=1){const r=new On(n,a,l,t);return new Tn(r)}
+     */static FromRGBA(n,a,l,t=1){const r=new Tn(n,a,l,t);return new Dn(r)}
 /**
      * Green()
      *
      * creates a Color instance set to green.
      * @param a the alpha value, defaults to 1.0
      * @returns a color value set to green.
-     */static Green(n=1){return Tn.FromRGBA(0,255,0,n)}
+     */static Green(n=1){return Dn.FromRGBA(0,255,0,n)}
 /**
      * Red()
      *
      * creates a Color instance set to red.
      * @param a the alpha value, defaults to 1.0
      * @returns a color value set to red.
-     */static Red(n=1){return Tn.FromRGBA(255,0,0,n)}
+     */static Red(n=1){return Dn.FromRGBA(255,0,0,n)}
 /**
      * White()
      *
      * creates a Color instance set to white.
      * @param a the alpha value, defaults to 1.0
      * @returns a color value set to White.
-     */static White(n=1){return Tn.FromRGBA(255,255,255,n)}equals(n){let a=!1;if(n instanceof Tn){const l=n;a=this.rgba().equals(l.rgba())&&this.hex().equals(l.hex())}return a}
+     */static White(n=1){return Dn.FromRGBA(255,255,255,n)}equals(n){let a=!1;if(n instanceof Dn){const l=n;a=this.rgba().equals(l.rgba())&&this.hex().equals(l.hex())}return a}
 /**
      * hex()
      *
@@ -10989,19 +10989,19 @@ constructor(n){if(n instanceof On)this._rgba=n,this._hex=new In(An({r:this._rgba
  * IsoLanguageException
  *
  * An IsoLanguage Error
- */class Dn extends w{constructor(n="Language Error"){super(n)}}var Bn=[{English:"Afar",French:"afar",alpha2:"aa","alpha3-b":"aar","alpha3-t":null},{English:"Abkhazian",French:"abkhaze",alpha2:"ab","alpha3-b":"abk","alpha3-t":null},{English:"Achinese",French:"aceh",alpha2:null,"alpha3-b":"ace","alpha3-t":null},{English:"Acoli",French:"acoli",alpha2:null,"alpha3-b":"ach","alpha3-t":null},{English:"Adangme",French:"adangme",alpha2:null,"alpha3-b":"ada","alpha3-t":null},{English:"Adyghe; Adygei",French:"adyghé",alpha2:null,"alpha3-b":"ady","alpha3-t":null},{English:"Afro-Asiatic languages",French:"afro-asiatiques, langues",alpha2:null,"alpha3-b":"afa","alpha3-t":null},{English:"Afrihili",French:"afrihili",alpha2:null,"alpha3-b":"afh","alpha3-t":null},{English:"Afrikaans",French:"afrikaans",alpha2:"af","alpha3-b":"afr","alpha3-t":null},{English:"Ainu",French:"aïnou",alpha2:null,"alpha3-b":"ain","alpha3-t":null},{English:"Akan",French:"akan",alpha2:"ak","alpha3-b":"aka","alpha3-t":null},{English:"Akkadian",French:"akkadien",alpha2:null,"alpha3-b":"akk","alpha3-t":null},{English:"Albanian",French:"albanais",alpha2:"sq","alpha3-b":"alb","alpha3-t":"sqi"},{English:"Aleut",French:"aléoute",alpha2:null,"alpha3-b":"ale","alpha3-t":null},{English:"Algonquian languages",French:"algonquines, langues",alpha2:null,"alpha3-b":"alg","alpha3-t":null},{English:"Southern Altai",French:"altai du Sud",alpha2:null,"alpha3-b":"alt","alpha3-t":null},{English:"Amharic",French:"amharique",alpha2:"am","alpha3-b":"amh","alpha3-t":null},{English:"English, Old (ca.450-1100)",French:"anglo-saxon (ca.450-1100)",alpha2:null,"alpha3-b":"ang","alpha3-t":null},{English:"Angika",French:"angika",alpha2:null,"alpha3-b":"anp","alpha3-t":null},{English:"Apache languages",French:"apaches, langues",alpha2:null,"alpha3-b":"apa","alpha3-t":null},{English:"Arabic",French:"arabe",alpha2:"ar","alpha3-b":"ara","alpha3-t":null},{English:"Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)",French:"araméen d'empire (700-300 BCE)",alpha2:null,"alpha3-b":"arc","alpha3-t":null},{English:"Aragonese",French:"aragonais",alpha2:"an","alpha3-b":"arg","alpha3-t":null},{English:"Armenian",French:"arménien",alpha2:"hy","alpha3-b":"arm","alpha3-t":"hye"},{English:"Mapudungun; Mapuche",French:"mapudungun; mapuche; mapuce",alpha2:null,"alpha3-b":"arn","alpha3-t":null},{English:"Arapaho",French:"arapaho",alpha2:null,"alpha3-b":"arp","alpha3-t":null},{English:"Artificial languages",French:"artificielles, langues",alpha2:null,"alpha3-b":"art","alpha3-t":null},{English:"Arawak",French:"arawak",alpha2:null,"alpha3-b":"arw","alpha3-t":null},{English:"Assamese",French:"assamais",alpha2:"as","alpha3-b":"asm","alpha3-t":null},{English:"Asturian; Bable; Leonese; Asturleonese",French:"asturien; bable; léonais; asturoléonais",alpha2:null,"alpha3-b":"ast","alpha3-t":null},{English:"Athapascan languages",French:"athapascanes, langues",alpha2:null,"alpha3-b":"ath","alpha3-t":null},{English:"Australian languages",French:"australiennes, langues",alpha2:null,"alpha3-b":"aus","alpha3-t":null},{English:"Avaric",French:"avar",alpha2:"av","alpha3-b":"ava","alpha3-t":null},{English:"Avestan",French:"avestique",alpha2:"ae","alpha3-b":"ave","alpha3-t":null},{English:"Awadhi",French:"awadhi",alpha2:null,"alpha3-b":"awa","alpha3-t":null},{English:"Aymara",French:"aymara",alpha2:"ay","alpha3-b":"aym","alpha3-t":null},{English:"Azerbaijani",French:"azéri",alpha2:"az","alpha3-b":"aze","alpha3-t":null},{English:"Banda languages",French:"banda, langues",alpha2:null,"alpha3-b":"bad","alpha3-t":null},{English:"Bamileke languages",French:"bamiléké, langues",alpha2:null,"alpha3-b":"bai","alpha3-t":null},{English:"Bashkir",French:"bachkir",alpha2:"ba","alpha3-b":"bak","alpha3-t":null},{English:"Baluchi",French:"baloutchi",alpha2:null,"alpha3-b":"bal","alpha3-t":null},{English:"Bambara",French:"bambara",alpha2:"bm","alpha3-b":"bam","alpha3-t":null},{English:"Balinese",French:"balinais",alpha2:null,"alpha3-b":"ban","alpha3-t":null},{English:"Basque",French:"basque",alpha2:"eu","alpha3-b":"baq","alpha3-t":"eus"},{English:"Basa",French:"basa",alpha2:null,"alpha3-b":"bas","alpha3-t":null},{English:"Baltic languages",French:"baltes, langues",alpha2:null,"alpha3-b":"bat","alpha3-t":null},{English:"Beja; Bedawiyet",French:"bedja",alpha2:null,"alpha3-b":"bej","alpha3-t":null},{English:"Belarusian",French:"biélorusse",alpha2:"be","alpha3-b":"bel","alpha3-t":null},{English:"Bemba",French:"bemba",alpha2:null,"alpha3-b":"bem","alpha3-t":null},{English:"Bengali",French:"bengali",alpha2:"bn","alpha3-b":"ben","alpha3-t":null},{English:"Berber languages",French:"berbères, langues",alpha2:null,"alpha3-b":"ber","alpha3-t":null},{English:"Bhojpuri",French:"bhojpuri",alpha2:null,"alpha3-b":"bho","alpha3-t":null},{English:"Bihari languages",French:"langues biharis",alpha2:"bh","alpha3-b":"bih","alpha3-t":null},{English:"Bikol",French:"bikol",alpha2:null,"alpha3-b":"bik","alpha3-t":null},{English:"Bini; Edo",French:"bini; edo",alpha2:null,"alpha3-b":"bin","alpha3-t":null},{English:"Bislama",French:"bichlamar",alpha2:"bi","alpha3-b":"bis","alpha3-t":null},{English:"Siksika",French:"blackfoot",alpha2:null,"alpha3-b":"bla","alpha3-t":null},{English:"Bantu languages",French:"bantou, langues",alpha2:null,"alpha3-b":"bnt","alpha3-t":null},{English:"Bosnian",French:"bosniaque",alpha2:"bs","alpha3-b":"bos","alpha3-t":null},{English:"Braj",French:"braj",alpha2:null,"alpha3-b":"bra","alpha3-t":null},{English:"Breton",French:"breton",alpha2:"br","alpha3-b":"bre","alpha3-t":null},{English:"Batak languages",French:"batak, langues",alpha2:null,"alpha3-b":"btk","alpha3-t":null},{English:"Buriat",French:"bouriate",alpha2:null,"alpha3-b":"bua","alpha3-t":null},{English:"Buginese",French:"bugi",alpha2:null,"alpha3-b":"bug","alpha3-t":null},{English:"Bulgarian",French:"bulgare",alpha2:"bg","alpha3-b":"bul","alpha3-t":null},{English:"Burmese",French:"birman",alpha2:"my","alpha3-b":"bur","alpha3-t":"mya"},{English:"Blin; Bilin",French:"blin; bilen",alpha2:null,"alpha3-b":"byn","alpha3-t":null},{English:"Caddo",French:"caddo",alpha2:null,"alpha3-b":"cad","alpha3-t":null},{English:"Central American Indian languages",French:"amérindiennes de L'Amérique centrale, langues",alpha2:null,"alpha3-b":"cai","alpha3-t":null},{English:"Galibi Carib",French:"karib; galibi; carib",alpha2:null,"alpha3-b":"car","alpha3-t":null},{English:"Catalan; Valencian",French:"catalan; valencien",alpha2:"ca","alpha3-b":"cat","alpha3-t":null},{English:"Caucasian languages",French:"caucasiennes, langues",alpha2:null,"alpha3-b":"cau","alpha3-t":null},{English:"Cebuano",French:"cebuano",alpha2:null,"alpha3-b":"ceb","alpha3-t":null},{English:"Celtic languages",French:"celtiques, langues; celtes, langues",alpha2:null,"alpha3-b":"cel","alpha3-t":null},{English:"Chamorro",French:"chamorro",alpha2:"ch","alpha3-b":"cha","alpha3-t":null},{English:"Chibcha",French:"chibcha",alpha2:null,"alpha3-b":"chb","alpha3-t":null},{English:"Chechen",French:"tchétchène",alpha2:"ce","alpha3-b":"che","alpha3-t":null},{English:"Chagatai",French:"djaghataï",alpha2:null,"alpha3-b":"chg","alpha3-t":null},{English:"Chinese",French:"chinois",alpha2:"zh","alpha3-b":"chi","alpha3-t":"zho"},{English:"Chuukese",French:"chuuk",alpha2:null,"alpha3-b":"chk","alpha3-t":null},{English:"Mari",French:"mari",alpha2:null,"alpha3-b":"chm","alpha3-t":null},{English:"Chinook jargon",French:"chinook, jargon",alpha2:null,"alpha3-b":"chn","alpha3-t":null},{English:"Choctaw",French:"choctaw",alpha2:null,"alpha3-b":"cho","alpha3-t":null},{English:"Chipewyan; Dene Suline",French:"chipewyan",alpha2:null,"alpha3-b":"chp","alpha3-t":null},{English:"Cherokee",French:"cherokee",alpha2:null,"alpha3-b":"chr","alpha3-t":null},{English:"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",French:"slavon d'église; vieux slave; slavon liturgique; vieux bulgare",alpha2:"cu","alpha3-b":"chu","alpha3-t":null},{English:"Chuvash",French:"tchouvache",alpha2:"cv","alpha3-b":"chv","alpha3-t":null},{English:"Cheyenne",French:"cheyenne",alpha2:null,"alpha3-b":"chy","alpha3-t":null},{English:"Chamic languages",French:"chames, langues",alpha2:null,"alpha3-b":"cmc","alpha3-t":null},{English:"Montenegrin",French:"monténégrin",alpha2:null,"alpha3-b":"cnr","alpha3-t":null},{English:"Coptic",French:"copte",alpha2:null,"alpha3-b":"cop","alpha3-t":null},{English:"Cornish",French:"cornique",alpha2:"kw","alpha3-b":"cor","alpha3-t":null},{English:"Corsican",French:"corse",alpha2:"co","alpha3-b":"cos","alpha3-t":null},{English:"Creoles and pidgins, English based",French:"créoles et pidgins basés sur l'anglais",alpha2:null,"alpha3-b":"cpe","alpha3-t":null},{English:"Creoles and pidgins, French-based",French:"créoles et pidgins basés sur le français",alpha2:null,"alpha3-b":"cpf","alpha3-t":null},{English:"Creoles and pidgins, Portuguese-based",French:"créoles et pidgins basés sur le portugais",alpha2:null,"alpha3-b":"cpp","alpha3-t":null},{English:"Cree",French:"cree",alpha2:"cr","alpha3-b":"cre","alpha3-t":null},{English:"Crimean Tatar; Crimean Turkish",French:"tatar de Crimé",alpha2:null,"alpha3-b":"crh","alpha3-t":null},{English:"Creoles and pidgins",French:"créoles et pidgins",alpha2:null,"alpha3-b":"crp","alpha3-t":null},{English:"Kashubian",French:"kachoube",alpha2:null,"alpha3-b":"csb","alpha3-t":null},{English:"Cushitic languages",French:"couchitiques, langues",alpha2:null,"alpha3-b":"cus","alpha3-t":null},{English:"Czech",French:"tchèque",alpha2:"cs","alpha3-b":"cze","alpha3-t":"ces"},{English:"Dakota",French:"dakota",alpha2:null,"alpha3-b":"dak","alpha3-t":null},{English:"Danish",French:"danois",alpha2:"da","alpha3-b":"dan","alpha3-t":null},{English:"Dargwa",French:"dargwa",alpha2:null,"alpha3-b":"dar","alpha3-t":null},{English:"Land Dayak languages",French:"dayak, langues",alpha2:null,"alpha3-b":"day","alpha3-t":null},{English:"Delaware",French:"delaware",alpha2:null,"alpha3-b":"del","alpha3-t":null},{English:"Slave (Athapascan)",French:"esclave (athapascan)",alpha2:null,"alpha3-b":"den","alpha3-t":null},{English:"Dogrib",French:"dogrib",alpha2:null,"alpha3-b":"dgr","alpha3-t":null},{English:"Dinka",French:"dinka",alpha2:null,"alpha3-b":"din","alpha3-t":null},{English:"Divehi; Dhivehi; Maldivian",French:"maldivien",alpha2:"dv","alpha3-b":"div","alpha3-t":null},{English:"Dogri",French:"dogri",alpha2:null,"alpha3-b":"doi","alpha3-t":null},{English:"Dravidian languages",French:"dravidiennes, langues",alpha2:null,"alpha3-b":"dra","alpha3-t":null},{English:"Lower Sorbian",French:"bas-sorabe",alpha2:null,"alpha3-b":"dsb","alpha3-t":null},{English:"Duala",French:"douala",alpha2:null,"alpha3-b":"dua","alpha3-t":null},{English:"Dutch, Middle (ca.1050-1350)",French:"néerlandais moyen (ca. 1050-1350)",alpha2:null,"alpha3-b":"dum","alpha3-t":null},{English:"Dutch; Flemish",French:"néerlandais; flamand",alpha2:"nl","alpha3-b":"dut","alpha3-t":"nld"},{English:"Dyula",French:"dioula",alpha2:null,"alpha3-b":"dyu","alpha3-t":null},{English:"Dzongkha",French:"dzongkha",alpha2:"dz","alpha3-b":"dzo","alpha3-t":null},{English:"Efik",French:"efik",alpha2:null,"alpha3-b":"efi","alpha3-t":null},{English:"Egyptian (Ancient)",French:"égyptien",alpha2:null,"alpha3-b":"egy","alpha3-t":null},{English:"Ekajuk",French:"ekajuk",alpha2:null,"alpha3-b":"eka","alpha3-t":null},{English:"Elamite",French:"élamite",alpha2:null,"alpha3-b":"elx","alpha3-t":null},{English:"English",French:"anglais",alpha2:"en","alpha3-b":"eng","alpha3-t":null},{English:"English, Middle (1100-1500)",French:"anglais moyen (1100-1500)",alpha2:null,"alpha3-b":"enm","alpha3-t":null},{English:"Esperanto",French:"espéranto",alpha2:"eo","alpha3-b":"epo","alpha3-t":null},{English:"Estonian",French:"estonien",alpha2:"et","alpha3-b":"est","alpha3-t":null},{English:"Ewe",French:"éwé",alpha2:"ee","alpha3-b":"ewe","alpha3-t":null},{English:"Ewondo",French:"éwondo",alpha2:null,"alpha3-b":"ewo","alpha3-t":null},{English:"Fang",French:"fang",alpha2:null,"alpha3-b":"fan","alpha3-t":null},{English:"Faroese",French:"féroïen",alpha2:"fo","alpha3-b":"fao","alpha3-t":null},{English:"Fanti",French:"fanti",alpha2:null,"alpha3-b":"fat","alpha3-t":null},{English:"Fijian",French:"fidjien",alpha2:"fj","alpha3-b":"fij","alpha3-t":null},{English:"Filipino; Pilipino",French:"filipino; pilipino",alpha2:null,"alpha3-b":"fil","alpha3-t":null},{English:"Finnish",French:"finnois",alpha2:"fi","alpha3-b":"fin","alpha3-t":null},{English:"Finno-Ugrian languages",French:"finno-ougriennes, langues",alpha2:null,"alpha3-b":"fiu","alpha3-t":null},{English:"Fon",French:"fon",alpha2:null,"alpha3-b":"fon","alpha3-t":null},{English:"French",French:"français",alpha2:"fr","alpha3-b":"fre","alpha3-t":"fra"},{English:"French, Middle (ca.1400-1600)",French:"français moyen (1400-1600)",alpha2:null,"alpha3-b":"frm","alpha3-t":null},{English:"French, Old (842-ca.1400)",French:"français ancien (842-ca.1400)",alpha2:null,"alpha3-b":"fro","alpha3-t":null},{English:"Northern Frisian",French:"frison septentrional",alpha2:null,"alpha3-b":"frr","alpha3-t":null},{English:"Eastern Frisian",French:"frison oriental",alpha2:null,"alpha3-b":"frs","alpha3-t":null},{English:"Western Frisian",French:"frison occidental",alpha2:"fy","alpha3-b":"fry","alpha3-t":null},{English:"Fulah",French:"peul",alpha2:"ff","alpha3-b":"ful","alpha3-t":null},{English:"Friulian",French:"frioulan",alpha2:null,"alpha3-b":"fur","alpha3-t":null},{English:"Ga",French:"ga",alpha2:null,"alpha3-b":"gaa","alpha3-t":null},{English:"Gayo",French:"gayo",alpha2:null,"alpha3-b":"gay","alpha3-t":null},{English:"Gbaya",French:"gbaya",alpha2:null,"alpha3-b":"gba","alpha3-t":null},{English:"Germanic languages",French:"germaniques, langues",alpha2:null,"alpha3-b":"gem","alpha3-t":null},{English:"Georgian",French:"géorgien",alpha2:"ka","alpha3-b":"geo","alpha3-t":"kat"},{English:"German",French:"allemand",alpha2:"de","alpha3-b":"ger","alpha3-t":"deu"},{English:"Geez",French:"guèze",alpha2:null,"alpha3-b":"gez","alpha3-t":null},{English:"Gilbertese",French:"kiribati",alpha2:null,"alpha3-b":"gil","alpha3-t":null},{English:"Gaelic; Scottish Gaelic",French:"gaélique; gaélique écossais",alpha2:"gd","alpha3-b":"gla","alpha3-t":null},{English:"Irish",French:"irlandais",alpha2:"ga","alpha3-b":"gle","alpha3-t":null},{English:"Galician",French:"galicien",alpha2:"gl","alpha3-b":"glg","alpha3-t":null},{English:"Manx",French:"manx; mannois",alpha2:"gv","alpha3-b":"glv","alpha3-t":null},{English:"German, Middle High (ca.1050-1500)",French:"allemand, moyen haut (ca. 1050-1500)",alpha2:null,"alpha3-b":"gmh","alpha3-t":null},{English:"German, Old High (ca.750-1050)",French:"allemand, vieux haut (ca. 750-1050)",alpha2:null,"alpha3-b":"goh","alpha3-t":null},{English:"Gondi",French:"gond",alpha2:null,"alpha3-b":"gon","alpha3-t":null},{English:"Gorontalo",French:"gorontalo",alpha2:null,"alpha3-b":"gor","alpha3-t":null},{English:"Gothic",French:"gothique",alpha2:null,"alpha3-b":"got","alpha3-t":null},{English:"Grebo",French:"grebo",alpha2:null,"alpha3-b":"grb","alpha3-t":null},{English:"Greek, Ancient (to 1453)",French:"grec ancien (jusqu'à 1453)",alpha2:null,"alpha3-b":"grc","alpha3-t":null},{English:"Greek, Modern (1453-)",French:"grec moderne (après 1453)",alpha2:"el","alpha3-b":"gre","alpha3-t":"ell"},{English:"Guarani",French:"guarani",alpha2:"gn","alpha3-b":"grn","alpha3-t":null},{English:"Swiss German; Alemannic; Alsatian",French:"suisse alémanique; alémanique; alsacien",alpha2:null,"alpha3-b":"gsw","alpha3-t":null},{English:"Gujarati",French:"goudjrati",alpha2:"gu","alpha3-b":"guj","alpha3-t":null},{English:"Gwich'in",French:"gwich'in",alpha2:null,"alpha3-b":"gwi","alpha3-t":null},{English:"Haida",French:"haida",alpha2:null,"alpha3-b":"hai","alpha3-t":null},{English:"Haitian; Haitian Creole",French:"haïtien; créole haïtien",alpha2:"ht","alpha3-b":"hat","alpha3-t":null},{English:"Hausa",French:"haoussa",alpha2:"ha","alpha3-b":"hau","alpha3-t":null},{English:"Hawaiian",French:"hawaïen",alpha2:null,"alpha3-b":"haw","alpha3-t":null},{English:"Hebrew",French:"hébreu",alpha2:"he","alpha3-b":"heb","alpha3-t":null},{English:"Herero",French:"herero",alpha2:"hz","alpha3-b":"her","alpha3-t":null},{English:"Hiligaynon",French:"hiligaynon",alpha2:null,"alpha3-b":"hil","alpha3-t":null},{English:"Himachali languages; Western Pahari languages",French:"langues himachalis; langues paharis occidentales",alpha2:null,"alpha3-b":"him","alpha3-t":null},{English:"Hindi",French:"hindi",alpha2:"hi","alpha3-b":"hin","alpha3-t":null},{English:"Hittite",French:"hittite",alpha2:null,"alpha3-b":"hit","alpha3-t":null},{English:"Hmong; Mong",French:"hmong",alpha2:null,"alpha3-b":"hmn","alpha3-t":null},{English:"Hiri Motu",French:"hiri motu",alpha2:"ho","alpha3-b":"hmo","alpha3-t":null},{English:"Croatian",French:"croate",alpha2:"hr","alpha3-b":"hrv","alpha3-t":null},{English:"Upper Sorbian",French:"haut-sorabe",alpha2:null,"alpha3-b":"hsb","alpha3-t":null},{English:"Hungarian",French:"hongrois",alpha2:"hu","alpha3-b":"hun","alpha3-t":null},{English:"Hupa",French:"hupa",alpha2:null,"alpha3-b":"hup","alpha3-t":null},{English:"Iban",French:"iban",alpha2:null,"alpha3-b":"iba","alpha3-t":null},{English:"Igbo",French:"igbo",alpha2:"ig","alpha3-b":"ibo","alpha3-t":null},{English:"Icelandic",French:"islandais",alpha2:"is","alpha3-b":"ice","alpha3-t":"isl"},{English:"Ido",French:"ido",alpha2:"io","alpha3-b":"ido","alpha3-t":null},{English:"Sichuan Yi; Nuosu",French:"yi de Sichuan",alpha2:"ii","alpha3-b":"iii","alpha3-t":null},{English:"Ijo languages",French:"ijo, langues",alpha2:null,"alpha3-b":"ijo","alpha3-t":null},{English:"Inuktitut",French:"inuktitut",alpha2:"iu","alpha3-b":"iku","alpha3-t":null},{English:"Interlingue; Occidental",French:"interlingue",alpha2:"ie","alpha3-b":"ile","alpha3-t":null},{English:"Iloko",French:"ilocano",alpha2:null,"alpha3-b":"ilo","alpha3-t":null},{English:"Interlingua (International Auxiliary Language Association)",French:"interlingua (langue auxiliaire internationale)",alpha2:"ia","alpha3-b":"ina","alpha3-t":null},{English:"Indic languages",French:"indo-aryennes, langues",alpha2:null,"alpha3-b":"inc","alpha3-t":null},{English:"Indonesian",French:"indonésien",alpha2:"id","alpha3-b":"ind","alpha3-t":null},{English:"Indo-European languages",French:"indo-européennes, langues",alpha2:null,"alpha3-b":"ine","alpha3-t":null},{English:"Ingush",French:"ingouche",alpha2:null,"alpha3-b":"inh","alpha3-t":null},{English:"Inupiaq",French:"inupiaq",alpha2:"ik","alpha3-b":"ipk","alpha3-t":null},{English:"Iranian languages",French:"iraniennes, langues",alpha2:null,"alpha3-b":"ira","alpha3-t":null},{English:"Iroquoian languages",French:"iroquoises, langues",alpha2:null,"alpha3-b":"iro","alpha3-t":null},{English:"Italian",French:"italien",alpha2:"it","alpha3-b":"ita","alpha3-t":null},{English:"Javanese",French:"javanais",alpha2:"jv","alpha3-b":"jav","alpha3-t":null},{English:"Lojban",French:"lojban",alpha2:null,"alpha3-b":"jbo","alpha3-t":null},{English:"Japanese",French:"japonais",alpha2:"ja","alpha3-b":"jpn","alpha3-t":null},{English:"Judeo-Persian",French:"judéo-persan",alpha2:null,"alpha3-b":"jpr","alpha3-t":null},{English:"Judeo-Arabic",French:"judéo-arabe",alpha2:null,"alpha3-b":"jrb","alpha3-t":null},{English:"Kara-Kalpak",French:"karakalpak",alpha2:null,"alpha3-b":"kaa","alpha3-t":null},{English:"Kabyle",French:"kabyle",alpha2:null,"alpha3-b":"kab","alpha3-t":null},{English:"Kachin; Jingpho",French:"kachin; jingpho",alpha2:null,"alpha3-b":"kac","alpha3-t":null},{English:"Kalaallisut; Greenlandic",French:"groenlandais",alpha2:"kl","alpha3-b":"kal","alpha3-t":null},{English:"Kamba",French:"kamba",alpha2:null,"alpha3-b":"kam","alpha3-t":null},{English:"Kannada",French:"kannada",alpha2:"kn","alpha3-b":"kan","alpha3-t":null},{English:"Karen languages",French:"karen, langues",alpha2:null,"alpha3-b":"kar","alpha3-t":null},{English:"Kashmiri",French:"kashmiri",alpha2:"ks","alpha3-b":"kas","alpha3-t":null},{English:"Kanuri",French:"kanouri",alpha2:"kr","alpha3-b":"kau","alpha3-t":null},{English:"Kawi",French:"kawi",alpha2:null,"alpha3-b":"kaw","alpha3-t":null},{English:"Kazakh",French:"kazakh",alpha2:"kk","alpha3-b":"kaz","alpha3-t":null},{English:"Kabardian",French:"kabardien",alpha2:null,"alpha3-b":"kbd","alpha3-t":null},{English:"Khasi",French:"khasi",alpha2:null,"alpha3-b":"kha","alpha3-t":null},{English:"Khoisan languages",French:"khoïsan, langues",alpha2:null,"alpha3-b":"khi","alpha3-t":null},{English:"Central Khmer",French:"khmer central",alpha2:"km","alpha3-b":"khm","alpha3-t":null},{English:"Khotanese; Sakan",French:"khotanais; sakan",alpha2:null,"alpha3-b":"kho","alpha3-t":null},{English:"Kikuyu; Gikuyu",French:"kikuyu",alpha2:"ki","alpha3-b":"kik","alpha3-t":null},{English:"Kinyarwanda",French:"rwanda",alpha2:"rw","alpha3-b":"kin","alpha3-t":null},{English:"Kirghiz; Kyrgyz",French:"kirghiz",alpha2:"ky","alpha3-b":"kir","alpha3-t":null},{English:"Kimbundu",French:"kimbundu",alpha2:null,"alpha3-b":"kmb","alpha3-t":null},{English:"Konkani",French:"konkani",alpha2:null,"alpha3-b":"kok","alpha3-t":null},{English:"Komi",French:"kom",alpha2:"kv","alpha3-b":"kom","alpha3-t":null},{English:"Kongo",French:"kongo",alpha2:"kg","alpha3-b":"kon","alpha3-t":null},{English:"Korean",French:"coréen",alpha2:"ko","alpha3-b":"kor","alpha3-t":null},{English:"Kosraean",French:"kosrae",alpha2:null,"alpha3-b":"kos","alpha3-t":null},{English:"Kpelle",French:"kpellé",alpha2:null,"alpha3-b":"kpe","alpha3-t":null},{English:"Karachay-Balkar",French:"karatchai balkar",alpha2:null,"alpha3-b":"krc","alpha3-t":null},{English:"Karelian",French:"carélien",alpha2:null,"alpha3-b":"krl","alpha3-t":null},{English:"Kru languages",French:"krou, langues",alpha2:null,"alpha3-b":"kro","alpha3-t":null},{English:"Kurukh",French:"kurukh",alpha2:null,"alpha3-b":"kru","alpha3-t":null},{English:"Kuanyama; Kwanyama",French:"kuanyama; kwanyama",alpha2:"kj","alpha3-b":"kua","alpha3-t":null},{English:"Kumyk",French:"koumyk",alpha2:null,"alpha3-b":"kum","alpha3-t":null},{English:"Kurdish",French:"kurde",alpha2:"ku","alpha3-b":"kur","alpha3-t":null},{English:"Kutenai",French:"kutenai",alpha2:null,"alpha3-b":"kut","alpha3-t":null},{English:"Ladino",French:"judéo-espagnol",alpha2:null,"alpha3-b":"lad","alpha3-t":null},{English:"Lahnda",French:"lahnda",alpha2:null,"alpha3-b":"lah","alpha3-t":null},{English:"Lamba",French:"lamba",alpha2:null,"alpha3-b":"lam","alpha3-t":null},{English:"Lao",French:"lao",alpha2:"lo","alpha3-b":"lao","alpha3-t":null},{English:"Latin",French:"latin",alpha2:"la","alpha3-b":"lat","alpha3-t":null},{English:"Latvian",French:"letton",alpha2:"lv","alpha3-b":"lav","alpha3-t":null},{English:"Lezghian",French:"lezghien",alpha2:null,"alpha3-b":"lez","alpha3-t":null},{English:"Limburgan; Limburger; Limburgish",French:"limbourgeois",alpha2:"li","alpha3-b":"lim","alpha3-t":null},{English:"Lingala",French:"lingala",alpha2:"ln","alpha3-b":"lin","alpha3-t":null},{English:"Lithuanian",French:"lituanien",alpha2:"lt","alpha3-b":"lit","alpha3-t":null},{English:"Mongo",French:"mongo",alpha2:null,"alpha3-b":"lol","alpha3-t":null},{English:"Lozi",French:"lozi",alpha2:null,"alpha3-b":"loz","alpha3-t":null},{English:"Luxembourgish; Letzeburgesch",French:"luxembourgeois",alpha2:"lb","alpha3-b":"ltz","alpha3-t":null},{English:"Luba-Lulua",French:"luba-lulua",alpha2:null,"alpha3-b":"lua","alpha3-t":null},{English:"Luba-Katanga",French:"luba-katanga",alpha2:"lu","alpha3-b":"lub","alpha3-t":null},{English:"Ganda",French:"ganda",alpha2:"lg","alpha3-b":"lug","alpha3-t":null},{English:"Luiseno",French:"luiseno",alpha2:null,"alpha3-b":"lui","alpha3-t":null},{English:"Lunda",French:"lunda",alpha2:null,"alpha3-b":"lun","alpha3-t":null},{English:"Luo (Kenya and Tanzania)",French:"luo (Kenya et Tanzanie)",alpha2:null,"alpha3-b":"luo","alpha3-t":null},{English:"Lushai",French:"lushai",alpha2:null,"alpha3-b":"lus","alpha3-t":null},{English:"Macedonian",French:"macédonien",alpha2:"mk","alpha3-b":"mac","alpha3-t":"mkd"},{English:"Madurese",French:"madourais",alpha2:null,"alpha3-b":"mad","alpha3-t":null},{English:"Magahi",French:"magahi",alpha2:null,"alpha3-b":"mag","alpha3-t":null},{English:"Marshallese",French:"marshall",alpha2:"mh","alpha3-b":"mah","alpha3-t":null},{English:"Maithili",French:"maithili",alpha2:null,"alpha3-b":"mai","alpha3-t":null},{English:"Makasar",French:"makassar",alpha2:null,"alpha3-b":"mak","alpha3-t":null},{English:"Malayalam",French:"malayalam",alpha2:"ml","alpha3-b":"mal","alpha3-t":null},{English:"Mandingo",French:"mandingue",alpha2:null,"alpha3-b":"man","alpha3-t":null},{English:"Maori",French:"maori",alpha2:"mi","alpha3-b":"mao","alpha3-t":"mri"},{English:"Austronesian languages",French:"austronésiennes, langues",alpha2:null,"alpha3-b":"map","alpha3-t":null},{English:"Marathi",French:"marathe",alpha2:"mr","alpha3-b":"mar","alpha3-t":null},{English:"Masai",French:"massaï",alpha2:null,"alpha3-b":"mas","alpha3-t":null},{English:"Malay",French:"malais",alpha2:"ms","alpha3-b":"may","alpha3-t":"msa"},{English:"Moksha",French:"moksa",alpha2:null,"alpha3-b":"mdf","alpha3-t":null},{English:"Mandar",French:"mandar",alpha2:null,"alpha3-b":"mdr","alpha3-t":null},{English:"Mende",French:"mendé",alpha2:null,"alpha3-b":"men","alpha3-t":null},{English:"Irish, Middle (900-1200)",French:"irlandais moyen (900-1200)",alpha2:null,"alpha3-b":"mga","alpha3-t":null},{English:"Mi'kmaq; Micmac",French:"mi'kmaq; micmac",alpha2:null,"alpha3-b":"mic","alpha3-t":null},{English:"Minangkabau",French:"minangkabau",alpha2:null,"alpha3-b":"min","alpha3-t":null},{English:"Uncoded languages",French:"langues non codées",alpha2:null,"alpha3-b":"mis","alpha3-t":null},{English:"Mon-Khmer languages",French:"môn-khmer, langues",alpha2:null,"alpha3-b":"mkh","alpha3-t":null},{English:"Malagasy",French:"malgache",alpha2:"mg","alpha3-b":"mlg","alpha3-t":null},{English:"Maltese",French:"maltais",alpha2:"mt","alpha3-b":"mlt","alpha3-t":null},{English:"Manchu",French:"mandchou",alpha2:null,"alpha3-b":"mnc","alpha3-t":null},{English:"Manipuri",French:"manipuri",alpha2:null,"alpha3-b":"mni","alpha3-t":null},{English:"Manobo languages",French:"manobo, langues",alpha2:null,"alpha3-b":"mno","alpha3-t":null},{English:"Mohawk",French:"mohawk",alpha2:null,"alpha3-b":"moh","alpha3-t":null},{English:"Mongolian",French:"mongol",alpha2:"mn","alpha3-b":"mon","alpha3-t":null},{English:"Mossi",French:"moré",alpha2:null,"alpha3-b":"mos","alpha3-t":null},{English:"Multiple languages",French:"multilingue",alpha2:null,"alpha3-b":"mul","alpha3-t":null},{English:"Munda languages",French:"mounda, langues",alpha2:null,"alpha3-b":"mun","alpha3-t":null},{English:"Creek",French:"muskogee",alpha2:null,"alpha3-b":"mus","alpha3-t":null},{English:"Mirandese",French:"mirandais",alpha2:null,"alpha3-b":"mwl","alpha3-t":null},{English:"Marwari",French:"marvari",alpha2:null,"alpha3-b":"mwr","alpha3-t":null},{English:"Mayan languages",French:"maya, langues",alpha2:null,"alpha3-b":"myn","alpha3-t":null},{English:"Erzya",French:"erza",alpha2:null,"alpha3-b":"myv","alpha3-t":null},{English:"Nahuatl languages",French:"nahuatl, langues",alpha2:null,"alpha3-b":"nah","alpha3-t":null},{English:"North American Indian languages",French:"nord-amérindiennes, langues",alpha2:null,"alpha3-b":"nai","alpha3-t":null},{English:"Neapolitan",French:"napolitain",alpha2:null,"alpha3-b":"nap","alpha3-t":null},{English:"Nauru",French:"nauruan",alpha2:"na","alpha3-b":"nau","alpha3-t":null},{English:"Navajo; Navaho",French:"navaho",alpha2:"nv","alpha3-b":"nav","alpha3-t":null},{English:"Ndebele, South; South Ndebele",French:"ndébélé du Sud",alpha2:"nr","alpha3-b":"nbl","alpha3-t":null},{English:"Ndebele, North; North Ndebele",French:"ndébélé du Nord",alpha2:"nd","alpha3-b":"nde","alpha3-t":null},{English:"Ndonga",French:"ndonga",alpha2:"ng","alpha3-b":"ndo","alpha3-t":null},{English:"Low German; Low Saxon; German, Low; Saxon, Low",French:"bas allemand; bas saxon; allemand, bas; saxon, bas",alpha2:null,"alpha3-b":"nds","alpha3-t":null},{English:"Nepali",French:"népalais",alpha2:"ne","alpha3-b":"nep","alpha3-t":null},{English:"Nepal Bhasa; Newari",French:"nepal bhasa; newari",alpha2:null,"alpha3-b":"new","alpha3-t":null},{English:"Nias",French:"nias",alpha2:null,"alpha3-b":"nia","alpha3-t":null},{English:"Niger-Kordofanian languages",French:"nigéro-kordofaniennes, langues",alpha2:null,"alpha3-b":"nic","alpha3-t":null},{English:"Niuean",French:"niué",alpha2:null,"alpha3-b":"niu","alpha3-t":null},{English:"Norwegian Nynorsk; Nynorsk, Norwegian",French:"norvégien nynorsk; nynorsk, norvégien",alpha2:"nn","alpha3-b":"nno","alpha3-t":null},{English:"Bokmål, Norwegian; Norwegian Bokmål",French:"norvégien bokmål",alpha2:"nb","alpha3-b":"nob","alpha3-t":null},{English:"Nogai",French:"nogaï; nogay",alpha2:null,"alpha3-b":"nog","alpha3-t":null},{English:"Norse, Old",French:"norrois, vieux",alpha2:null,"alpha3-b":"non","alpha3-t":null},{English:"Norwegian",French:"norvégien",alpha2:"no","alpha3-b":"nor","alpha3-t":null},{English:"N'Ko",French:"n'ko",alpha2:null,"alpha3-b":"nqo","alpha3-t":null},{English:"Pedi; Sepedi; Northern Sotho",French:"pedi; sepedi; sotho du Nord",alpha2:null,"alpha3-b":"nso","alpha3-t":null},{English:"Nubian languages",French:"nubiennes, langues",alpha2:null,"alpha3-b":"nub","alpha3-t":null},{English:"Classical Newari; Old Newari; Classical Nepal Bhasa",French:"newari classique",alpha2:null,"alpha3-b":"nwc","alpha3-t":null},{English:"Chichewa; Chewa; Nyanja",French:"chichewa; chewa; nyanja",alpha2:"ny","alpha3-b":"nya","alpha3-t":null},{English:"Nyamwezi",French:"nyamwezi",alpha2:null,"alpha3-b":"nym","alpha3-t":null},{English:"Nyankole",French:"nyankolé",alpha2:null,"alpha3-b":"nyn","alpha3-t":null},{English:"Nyoro",French:"nyoro",alpha2:null,"alpha3-b":"nyo","alpha3-t":null},{English:"Nzima",French:"nzema",alpha2:null,"alpha3-b":"nzi","alpha3-t":null},{English:"Occitan (post 1500)",French:"occitan (après 1500)",alpha2:"oc","alpha3-b":"oci","alpha3-t":null},{English:"Ojibwa",French:"ojibwa",alpha2:"oj","alpha3-b":"oji","alpha3-t":null},{English:"Oriya",French:"oriya",alpha2:"or","alpha3-b":"ori","alpha3-t":null},{English:"Oromo",French:"galla",alpha2:"om","alpha3-b":"orm","alpha3-t":null},{English:"Osage",French:"osage",alpha2:null,"alpha3-b":"osa","alpha3-t":null},{English:"Ossetian; Ossetic",French:"ossète",alpha2:"os","alpha3-b":"oss","alpha3-t":null},{English:"Turkish, Ottoman (1500-1928)",French:"turc ottoman (1500-1928)",alpha2:null,"alpha3-b":"ota","alpha3-t":null},{English:"Otomian languages",French:"otomi, langues",alpha2:null,"alpha3-b":"oto","alpha3-t":null},{English:"Papuan languages",French:"papoues, langues",alpha2:null,"alpha3-b":"paa","alpha3-t":null},{English:"Pangasinan",French:"pangasinan",alpha2:null,"alpha3-b":"pag","alpha3-t":null},{English:"Pahlavi",French:"pahlavi",alpha2:null,"alpha3-b":"pal","alpha3-t":null},{English:"Pampanga; Kapampangan",French:"pampangan",alpha2:null,"alpha3-b":"pam","alpha3-t":null},{English:"Panjabi; Punjabi",French:"pendjabi",alpha2:"pa","alpha3-b":"pan","alpha3-t":null},{English:"Papiamento",French:"papiamento",alpha2:null,"alpha3-b":"pap","alpha3-t":null},{English:"Palauan",French:"palau",alpha2:null,"alpha3-b":"pau","alpha3-t":null},{English:"Persian, Old (ca.600-400 B.C.)",French:"perse, vieux (ca. 600-400 av. J.-C.)",alpha2:null,"alpha3-b":"peo","alpha3-t":null},{English:"Persian",French:"persan",alpha2:"fa","alpha3-b":"per","alpha3-t":"fas"},{English:"Philippine languages",French:"philippines, langues",alpha2:null,"alpha3-b":"phi","alpha3-t":null},{English:"Phoenician",French:"phénicien",alpha2:null,"alpha3-b":"phn","alpha3-t":null},{English:"Pali",French:"pali",alpha2:"pi","alpha3-b":"pli","alpha3-t":null},{English:"Polish",French:"polonais",alpha2:"pl","alpha3-b":"pol","alpha3-t":null},{English:"Pohnpeian",French:"pohnpei",alpha2:null,"alpha3-b":"pon","alpha3-t":null},{English:"Portuguese",French:"portugais",alpha2:"pt","alpha3-b":"por","alpha3-t":null},{English:"Prakrit languages",French:"prâkrit, langues",alpha2:null,"alpha3-b":"pra","alpha3-t":null},{English:"Provençal, Old (to 1500); Occitan, Old (to 1500)",French:"provençal ancien (jusqu'à 1500); occitan ancien (jusqu'à 1500)",alpha2:null,"alpha3-b":"pro","alpha3-t":null},{English:"Pushto; Pashto",French:"pachto",alpha2:"ps","alpha3-b":"pus","alpha3-t":null},{English:"Reserved for local use",French:"réservée à l'usage local",alpha2:null,"alpha3-b":"qaa-qtz","alpha3-t":null},{English:"Quechua",French:"quechua",alpha2:"qu","alpha3-b":"que","alpha3-t":null},{English:"Rajasthani",French:"rajasthani",alpha2:null,"alpha3-b":"raj","alpha3-t":null},{English:"Rapanui",French:"rapanui",alpha2:null,"alpha3-b":"rap","alpha3-t":null},{English:"Rarotongan; Cook Islands Maori",French:"rarotonga; maori des îles Cook",alpha2:null,"alpha3-b":"rar","alpha3-t":null},{English:"Romance languages",French:"romanes, langues",alpha2:null,"alpha3-b":"roa","alpha3-t":null},{English:"Romansh",French:"romanche",alpha2:"rm","alpha3-b":"roh","alpha3-t":null},{English:"Romany",French:"tsigane",alpha2:null,"alpha3-b":"rom","alpha3-t":null},{English:"Romanian; Moldavian; Moldovan",French:"roumain; moldave",alpha2:"ro","alpha3-b":"rum","alpha3-t":"ron"},{English:"Rundi",French:"rundi",alpha2:"rn","alpha3-b":"run","alpha3-t":null},{English:"Aromanian; Arumanian; Macedo-Romanian",French:"aroumain; macédo-roumain",alpha2:null,"alpha3-b":"rup","alpha3-t":null},{English:"Russian",French:"russe",alpha2:"ru","alpha3-b":"rus","alpha3-t":null},{English:"Sandawe",French:"sandawe",alpha2:null,"alpha3-b":"sad","alpha3-t":null},{English:"Sango",French:"sango",alpha2:"sg","alpha3-b":"sag","alpha3-t":null},{English:"Yakut",French:"iakoute",alpha2:null,"alpha3-b":"sah","alpha3-t":null},{English:"South American Indian languages",French:"sud-amérindiennes, langues",alpha2:null,"alpha3-b":"sai","alpha3-t":null},{English:"Salishan languages",French:"salishennes, langues",alpha2:null,"alpha3-b":"sal","alpha3-t":null},{English:"Samaritan Aramaic",French:"samaritain",alpha2:null,"alpha3-b":"sam","alpha3-t":null},{English:"Sanskrit",French:"sanskrit",alpha2:"sa","alpha3-b":"san","alpha3-t":null},{English:"Sasak",French:"sasak",alpha2:null,"alpha3-b":"sas","alpha3-t":null},{English:"Santali",French:"santal",alpha2:null,"alpha3-b":"sat","alpha3-t":null},{English:"Sicilian",French:"sicilien",alpha2:null,"alpha3-b":"scn","alpha3-t":null},{English:"Scots",French:"écossais",alpha2:null,"alpha3-b":"sco","alpha3-t":null},{English:"Selkup",French:"selkoupe",alpha2:null,"alpha3-b":"sel","alpha3-t":null},{English:"Semitic languages",French:"sémitiques, langues",alpha2:null,"alpha3-b":"sem","alpha3-t":null},{English:"Irish, Old (to 900)",French:"irlandais ancien (jusqu'à 900)",alpha2:null,"alpha3-b":"sga","alpha3-t":null},{English:"Sign Languages",French:"langues des signes",alpha2:null,"alpha3-b":"sgn","alpha3-t":null},{English:"Shan",French:"chan",alpha2:null,"alpha3-b":"shn","alpha3-t":null},{English:"Sidamo",French:"sidamo",alpha2:null,"alpha3-b":"sid","alpha3-t":null},{English:"Sinhala; Sinhalese",French:"singhalais",alpha2:"si","alpha3-b":"sin","alpha3-t":null},{English:"Siouan languages",French:"sioux, langues",alpha2:null,"alpha3-b":"sio","alpha3-t":null},{English:"Sino-Tibetan languages",French:"sino-tibétaines, langues",alpha2:null,"alpha3-b":"sit","alpha3-t":null},{English:"Slavic languages",French:"slaves, langues",alpha2:null,"alpha3-b":"sla","alpha3-t":null},{English:"Slovak",French:"slovaque",alpha2:"sk","alpha3-b":"slo","alpha3-t":"slk"},{English:"Slovenian",French:"slovène",alpha2:"sl","alpha3-b":"slv","alpha3-t":null},{English:"Southern Sami",French:"sami du Sud",alpha2:null,"alpha3-b":"sma","alpha3-t":null},{English:"Northern Sami",French:"sami du Nord",alpha2:"se","alpha3-b":"sme","alpha3-t":null},{English:"Sami languages",French:"sames, langues",alpha2:null,"alpha3-b":"smi","alpha3-t":null},{English:"Lule Sami",French:"sami de Lule",alpha2:null,"alpha3-b":"smj","alpha3-t":null},{English:"Inari Sami",French:"sami d'Inari",alpha2:null,"alpha3-b":"smn","alpha3-t":null},{English:"Samoan",French:"samoan",alpha2:"sm","alpha3-b":"smo","alpha3-t":null},{English:"Skolt Sami",French:"sami skolt",alpha2:null,"alpha3-b":"sms","alpha3-t":null},{English:"Shona",French:"shona",alpha2:"sn","alpha3-b":"sna","alpha3-t":null},{English:"Sindhi",French:"sindhi",alpha2:"sd","alpha3-b":"snd","alpha3-t":null},{English:"Soninke",French:"soninké",alpha2:null,"alpha3-b":"snk","alpha3-t":null},{English:"Sogdian",French:"sogdien",alpha2:null,"alpha3-b":"sog","alpha3-t":null},{English:"Somali",French:"somali",alpha2:"so","alpha3-b":"som","alpha3-t":null},{English:"Songhai languages",French:"songhai, langues",alpha2:null,"alpha3-b":"son","alpha3-t":null},{English:"Sotho, Southern",French:"sotho du Sud",alpha2:"st","alpha3-b":"sot","alpha3-t":null},{English:"Spanish; Castilian",French:"espagnol; castillan",alpha2:"es","alpha3-b":"spa","alpha3-t":null},{English:"Sardinian",French:"sarde",alpha2:"sc","alpha3-b":"srd","alpha3-t":null},{English:"Sranan Tongo",French:"sranan tongo",alpha2:null,"alpha3-b":"srn","alpha3-t":null},{English:"Serbian",French:"serbe",alpha2:"sr","alpha3-b":"srp","alpha3-t":null},{English:"Serer",French:"sérère",alpha2:null,"alpha3-b":"srr","alpha3-t":null},{English:"Nilo-Saharan languages",French:"nilo-sahariennes, langues",alpha2:null,"alpha3-b":"ssa","alpha3-t":null},{English:"Swati",French:"swati",alpha2:"ss","alpha3-b":"ssw","alpha3-t":null},{English:"Sukuma",French:"sukuma",alpha2:null,"alpha3-b":"suk","alpha3-t":null},{English:"Sundanese",French:"soundanais",alpha2:"su","alpha3-b":"sun","alpha3-t":null},{English:"Susu",French:"soussou",alpha2:null,"alpha3-b":"sus","alpha3-t":null},{English:"Sumerian",French:"sumérien",alpha2:null,"alpha3-b":"sux","alpha3-t":null},{English:"Swahili",French:"swahili",alpha2:"sw","alpha3-b":"swa","alpha3-t":null},{English:"Swedish",French:"suédois",alpha2:"sv","alpha3-b":"swe","alpha3-t":null},{English:"Classical Syriac",French:"syriaque classique",alpha2:null,"alpha3-b":"syc","alpha3-t":null},{English:"Syriac",French:"syriaque",alpha2:null,"alpha3-b":"syr","alpha3-t":null},{English:"Tahitian",French:"tahitien",alpha2:"ty","alpha3-b":"tah","alpha3-t":null},{English:"Tai languages",French:"tai, langues",alpha2:null,"alpha3-b":"tai","alpha3-t":null},{English:"Tamil",French:"tamoul",alpha2:"ta","alpha3-b":"tam","alpha3-t":null},{English:"Tatar",French:"tatar",alpha2:"tt","alpha3-b":"tat","alpha3-t":null},{English:"Telugu",French:"télougou",alpha2:"te","alpha3-b":"tel","alpha3-t":null},{English:"Timne",French:"temne",alpha2:null,"alpha3-b":"tem","alpha3-t":null},{English:"Tereno",French:"tereno",alpha2:null,"alpha3-b":"ter","alpha3-t":null},{English:"Tetum",French:"tetum",alpha2:null,"alpha3-b":"tet","alpha3-t":null},{English:"Tajik",French:"tadjik",alpha2:"tg","alpha3-b":"tgk","alpha3-t":null},{English:"Tagalog",French:"tagalog",alpha2:"tl","alpha3-b":"tgl","alpha3-t":null},{English:"Thai",French:"thaï",alpha2:"th","alpha3-b":"tha","alpha3-t":null},{English:"Tibetan",French:"tibétain",alpha2:"bo","alpha3-b":"tib","alpha3-t":"bod"},{English:"Tigre",French:"tigré",alpha2:null,"alpha3-b":"tig","alpha3-t":null},{English:"Tigrinya",French:"tigrigna",alpha2:"ti","alpha3-b":"tir","alpha3-t":null},{English:"Tiv",French:"tiv",alpha2:null,"alpha3-b":"tiv","alpha3-t":null},{English:"Tokelau",French:"tokelau",alpha2:null,"alpha3-b":"tkl","alpha3-t":null},{English:"Klingon; tlhIngan-Hol",French:"klingon",alpha2:null,"alpha3-b":"tlh","alpha3-t":null},{English:"Tlingit",French:"tlingit",alpha2:null,"alpha3-b":"tli","alpha3-t":null},{English:"Tamashek",French:"tamacheq",alpha2:null,"alpha3-b":"tmh","alpha3-t":null},{English:"Tonga (Nyasa)",French:"tonga (Nyasa)",alpha2:null,"alpha3-b":"tog","alpha3-t":null},{English:"Tonga (Tonga Islands)",French:"tongan (Îles Tonga)",alpha2:"to","alpha3-b":"ton","alpha3-t":null},{English:"Tok Pisin",French:"tok pisin",alpha2:null,"alpha3-b":"tpi","alpha3-t":null},{English:"Tsimshian",French:"tsimshian",alpha2:null,"alpha3-b":"tsi","alpha3-t":null},{English:"Tswana",French:"tswana",alpha2:"tn","alpha3-b":"tsn","alpha3-t":null},{English:"Tsonga",French:"tsonga",alpha2:"ts","alpha3-b":"tso","alpha3-t":null},{English:"Turkmen",French:"turkmène",alpha2:"tk","alpha3-b":"tuk","alpha3-t":null},{English:"Tumbuka",French:"tumbuka",alpha2:null,"alpha3-b":"tum","alpha3-t":null},{English:"Tupi languages",French:"tupi, langues",alpha2:null,"alpha3-b":"tup","alpha3-t":null},{English:"Turkish",French:"turc",alpha2:"tr","alpha3-b":"tur","alpha3-t":null},{English:"Altaic languages",French:"altaïques, langues",alpha2:null,"alpha3-b":"tut","alpha3-t":null},{English:"Tuvalu",French:"tuvalu",alpha2:null,"alpha3-b":"tvl","alpha3-t":null},{English:"Twi",French:"twi",alpha2:"tw","alpha3-b":"twi","alpha3-t":null},{English:"Tuvinian",French:"touva",alpha2:null,"alpha3-b":"tyv","alpha3-t":null},{English:"Udmurt",French:"oudmourte",alpha2:null,"alpha3-b":"udm","alpha3-t":null},{English:"Ugaritic",French:"ougaritique",alpha2:null,"alpha3-b":"uga","alpha3-t":null},{English:"Uighur; Uyghur",French:"ouïgour",alpha2:"ug","alpha3-b":"uig","alpha3-t":null},{English:"Ukrainian",French:"ukrainien",alpha2:"uk","alpha3-b":"ukr","alpha3-t":null},{English:"Umbundu",French:"umbundu",alpha2:null,"alpha3-b":"umb","alpha3-t":null},{English:"Undetermined",French:"indéterminée",alpha2:null,"alpha3-b":"und","alpha3-t":null},{English:"Urdu",French:"ourdou",alpha2:"ur","alpha3-b":"urd","alpha3-t":null},{English:"Uzbek",French:"ouszbek",alpha2:"uz","alpha3-b":"uzb","alpha3-t":null},{English:"Vai",French:"vaï",alpha2:null,"alpha3-b":"vai","alpha3-t":null},{English:"Venda",French:"venda",alpha2:"ve","alpha3-b":"ven","alpha3-t":null},{English:"Vietnamese",French:"vietnamien",alpha2:"vi","alpha3-b":"vie","alpha3-t":null},{English:"Volapük",French:"volapük",alpha2:"vo","alpha3-b":"vol","alpha3-t":null},{English:"Votic",French:"vote",alpha2:null,"alpha3-b":"vot","alpha3-t":null},{English:"Wakashan languages",French:"wakashanes, langues",alpha2:null,"alpha3-b":"wak","alpha3-t":null},{English:"Wolaitta; Wolaytta",French:"wolaitta; wolaytta",alpha2:null,"alpha3-b":"wal","alpha3-t":null},{English:"Waray",French:"waray",alpha2:null,"alpha3-b":"war","alpha3-t":null},{English:"Washo",French:"washo",alpha2:null,"alpha3-b":"was","alpha3-t":null},{English:"Welsh",French:"gallois",alpha2:"cy","alpha3-b":"wel","alpha3-t":"cym"},{English:"Sorbian languages",French:"sorabes, langues",alpha2:null,"alpha3-b":"wen","alpha3-t":null},{English:"Walloon",French:"wallon",alpha2:"wa","alpha3-b":"wln","alpha3-t":null},{English:"Wolof",French:"wolof",alpha2:"wo","alpha3-b":"wol","alpha3-t":null},{English:"Kalmyk; Oirat",French:"kalmouk; oïrat",alpha2:null,"alpha3-b":"xal","alpha3-t":null},{English:"Xhosa",French:"xhosa",alpha2:"xh","alpha3-b":"xho","alpha3-t":null},{English:"Yao",French:"yao",alpha2:null,"alpha3-b":"yao","alpha3-t":null},{English:"Yapese",French:"yapois",alpha2:null,"alpha3-b":"yap","alpha3-t":null},{English:"Yiddish",French:"yiddish",alpha2:"yi","alpha3-b":"yid","alpha3-t":null},{English:"Yoruba",French:"yoruba",alpha2:"yo","alpha3-b":"yor","alpha3-t":null},{English:"Yupik languages",French:"yupik, langues",alpha2:null,"alpha3-b":"ypk","alpha3-t":null},{English:"Zapotec",French:"zapotèque",alpha2:null,"alpha3-b":"zap","alpha3-t":null},{English:"Blissymbols; Blissymbolics; Bliss",French:"symboles Bliss; Bliss",alpha2:null,"alpha3-b":"zbl","alpha3-t":null},{English:"Zenaga",French:"zenaga",alpha2:null,"alpha3-b":"zen","alpha3-t":null},{English:"Standard Moroccan Tamazight",French:"amazighe standard marocain",alpha2:null,"alpha3-b":"zgh","alpha3-t":null},{English:"Zhuang; Chuang",French:"zhuang; chuang",alpha2:"za","alpha3-b":"zha","alpha3-t":null},{English:"Zande languages",French:"zandé, langues",alpha2:null,"alpha3-b":"znd","alpha3-t":null},{English:"Zulu",French:"zoulou",alpha2:"zu","alpha3-b":"zul","alpha3-t":null},{English:"Zuni",French:"zuni",alpha2:null,"alpha3-b":"zun","alpha3-t":null},{English:"No linguistic content; Not applicable",French:"pas de contenu linguistique; non applicable",alpha2:null,"alpha3-b":"zxx","alpha3-t":null},{English:"Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki",French:"zaza; dimili; dimli; kirdki; kirmanjki; zazaki",alpha2:null,"alpha3-b":"zza","alpha3-t":null}];
+ */class Bn extends k{constructor(n="Language Error"){super(n)}}var Mn=[{English:"Afar",French:"afar",alpha2:"aa","alpha3-b":"aar","alpha3-t":null},{English:"Abkhazian",French:"abkhaze",alpha2:"ab","alpha3-b":"abk","alpha3-t":null},{English:"Achinese",French:"aceh",alpha2:null,"alpha3-b":"ace","alpha3-t":null},{English:"Acoli",French:"acoli",alpha2:null,"alpha3-b":"ach","alpha3-t":null},{English:"Adangme",French:"adangme",alpha2:null,"alpha3-b":"ada","alpha3-t":null},{English:"Adyghe; Adygei",French:"adyghé",alpha2:null,"alpha3-b":"ady","alpha3-t":null},{English:"Afro-Asiatic languages",French:"afro-asiatiques, langues",alpha2:null,"alpha3-b":"afa","alpha3-t":null},{English:"Afrihili",French:"afrihili",alpha2:null,"alpha3-b":"afh","alpha3-t":null},{English:"Afrikaans",French:"afrikaans",alpha2:"af","alpha3-b":"afr","alpha3-t":null},{English:"Ainu",French:"aïnou",alpha2:null,"alpha3-b":"ain","alpha3-t":null},{English:"Akan",French:"akan",alpha2:"ak","alpha3-b":"aka","alpha3-t":null},{English:"Akkadian",French:"akkadien",alpha2:null,"alpha3-b":"akk","alpha3-t":null},{English:"Albanian",French:"albanais",alpha2:"sq","alpha3-b":"alb","alpha3-t":"sqi"},{English:"Aleut",French:"aléoute",alpha2:null,"alpha3-b":"ale","alpha3-t":null},{English:"Algonquian languages",French:"algonquines, langues",alpha2:null,"alpha3-b":"alg","alpha3-t":null},{English:"Southern Altai",French:"altai du Sud",alpha2:null,"alpha3-b":"alt","alpha3-t":null},{English:"Amharic",French:"amharique",alpha2:"am","alpha3-b":"amh","alpha3-t":null},{English:"English, Old (ca.450-1100)",French:"anglo-saxon (ca.450-1100)",alpha2:null,"alpha3-b":"ang","alpha3-t":null},{English:"Angika",French:"angika",alpha2:null,"alpha3-b":"anp","alpha3-t":null},{English:"Apache languages",French:"apaches, langues",alpha2:null,"alpha3-b":"apa","alpha3-t":null},{English:"Arabic",French:"arabe",alpha2:"ar","alpha3-b":"ara","alpha3-t":null},{English:"Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)",French:"araméen d'empire (700-300 BCE)",alpha2:null,"alpha3-b":"arc","alpha3-t":null},{English:"Aragonese",French:"aragonais",alpha2:"an","alpha3-b":"arg","alpha3-t":null},{English:"Armenian",French:"arménien",alpha2:"hy","alpha3-b":"arm","alpha3-t":"hye"},{English:"Mapudungun; Mapuche",French:"mapudungun; mapuche; mapuce",alpha2:null,"alpha3-b":"arn","alpha3-t":null},{English:"Arapaho",French:"arapaho",alpha2:null,"alpha3-b":"arp","alpha3-t":null},{English:"Artificial languages",French:"artificielles, langues",alpha2:null,"alpha3-b":"art","alpha3-t":null},{English:"Arawak",French:"arawak",alpha2:null,"alpha3-b":"arw","alpha3-t":null},{English:"Assamese",French:"assamais",alpha2:"as","alpha3-b":"asm","alpha3-t":null},{English:"Asturian; Bable; Leonese; Asturleonese",French:"asturien; bable; léonais; asturoléonais",alpha2:null,"alpha3-b":"ast","alpha3-t":null},{English:"Athapascan languages",French:"athapascanes, langues",alpha2:null,"alpha3-b":"ath","alpha3-t":null},{English:"Australian languages",French:"australiennes, langues",alpha2:null,"alpha3-b":"aus","alpha3-t":null},{English:"Avaric",French:"avar",alpha2:"av","alpha3-b":"ava","alpha3-t":null},{English:"Avestan",French:"avestique",alpha2:"ae","alpha3-b":"ave","alpha3-t":null},{English:"Awadhi",French:"awadhi",alpha2:null,"alpha3-b":"awa","alpha3-t":null},{English:"Aymara",French:"aymara",alpha2:"ay","alpha3-b":"aym","alpha3-t":null},{English:"Azerbaijani",French:"azéri",alpha2:"az","alpha3-b":"aze","alpha3-t":null},{English:"Banda languages",French:"banda, langues",alpha2:null,"alpha3-b":"bad","alpha3-t":null},{English:"Bamileke languages",French:"bamiléké, langues",alpha2:null,"alpha3-b":"bai","alpha3-t":null},{English:"Bashkir",French:"bachkir",alpha2:"ba","alpha3-b":"bak","alpha3-t":null},{English:"Baluchi",French:"baloutchi",alpha2:null,"alpha3-b":"bal","alpha3-t":null},{English:"Bambara",French:"bambara",alpha2:"bm","alpha3-b":"bam","alpha3-t":null},{English:"Balinese",French:"balinais",alpha2:null,"alpha3-b":"ban","alpha3-t":null},{English:"Basque",French:"basque",alpha2:"eu","alpha3-b":"baq","alpha3-t":"eus"},{English:"Basa",French:"basa",alpha2:null,"alpha3-b":"bas","alpha3-t":null},{English:"Baltic languages",French:"baltes, langues",alpha2:null,"alpha3-b":"bat","alpha3-t":null},{English:"Beja; Bedawiyet",French:"bedja",alpha2:null,"alpha3-b":"bej","alpha3-t":null},{English:"Belarusian",French:"biélorusse",alpha2:"be","alpha3-b":"bel","alpha3-t":null},{English:"Bemba",French:"bemba",alpha2:null,"alpha3-b":"bem","alpha3-t":null},{English:"Bengali",French:"bengali",alpha2:"bn","alpha3-b":"ben","alpha3-t":null},{English:"Berber languages",French:"berbères, langues",alpha2:null,"alpha3-b":"ber","alpha3-t":null},{English:"Bhojpuri",French:"bhojpuri",alpha2:null,"alpha3-b":"bho","alpha3-t":null},{English:"Bihari languages",French:"langues biharis",alpha2:"bh","alpha3-b":"bih","alpha3-t":null},{English:"Bikol",French:"bikol",alpha2:null,"alpha3-b":"bik","alpha3-t":null},{English:"Bini; Edo",French:"bini; edo",alpha2:null,"alpha3-b":"bin","alpha3-t":null},{English:"Bislama",French:"bichlamar",alpha2:"bi","alpha3-b":"bis","alpha3-t":null},{English:"Siksika",French:"blackfoot",alpha2:null,"alpha3-b":"bla","alpha3-t":null},{English:"Bantu languages",French:"bantou, langues",alpha2:null,"alpha3-b":"bnt","alpha3-t":null},{English:"Bosnian",French:"bosniaque",alpha2:"bs","alpha3-b":"bos","alpha3-t":null},{English:"Braj",French:"braj",alpha2:null,"alpha3-b":"bra","alpha3-t":null},{English:"Breton",French:"breton",alpha2:"br","alpha3-b":"bre","alpha3-t":null},{English:"Batak languages",French:"batak, langues",alpha2:null,"alpha3-b":"btk","alpha3-t":null},{English:"Buriat",French:"bouriate",alpha2:null,"alpha3-b":"bua","alpha3-t":null},{English:"Buginese",French:"bugi",alpha2:null,"alpha3-b":"bug","alpha3-t":null},{English:"Bulgarian",French:"bulgare",alpha2:"bg","alpha3-b":"bul","alpha3-t":null},{English:"Burmese",French:"birman",alpha2:"my","alpha3-b":"bur","alpha3-t":"mya"},{English:"Blin; Bilin",French:"blin; bilen",alpha2:null,"alpha3-b":"byn","alpha3-t":null},{English:"Caddo",French:"caddo",alpha2:null,"alpha3-b":"cad","alpha3-t":null},{English:"Central American Indian languages",French:"amérindiennes de L'Amérique centrale, langues",alpha2:null,"alpha3-b":"cai","alpha3-t":null},{English:"Galibi Carib",French:"karib; galibi; carib",alpha2:null,"alpha3-b":"car","alpha3-t":null},{English:"Catalan; Valencian",French:"catalan; valencien",alpha2:"ca","alpha3-b":"cat","alpha3-t":null},{English:"Caucasian languages",French:"caucasiennes, langues",alpha2:null,"alpha3-b":"cau","alpha3-t":null},{English:"Cebuano",French:"cebuano",alpha2:null,"alpha3-b":"ceb","alpha3-t":null},{English:"Celtic languages",French:"celtiques, langues; celtes, langues",alpha2:null,"alpha3-b":"cel","alpha3-t":null},{English:"Chamorro",French:"chamorro",alpha2:"ch","alpha3-b":"cha","alpha3-t":null},{English:"Chibcha",French:"chibcha",alpha2:null,"alpha3-b":"chb","alpha3-t":null},{English:"Chechen",French:"tchétchène",alpha2:"ce","alpha3-b":"che","alpha3-t":null},{English:"Chagatai",French:"djaghataï",alpha2:null,"alpha3-b":"chg","alpha3-t":null},{English:"Chinese",French:"chinois",alpha2:"zh","alpha3-b":"chi","alpha3-t":"zho"},{English:"Chuukese",French:"chuuk",alpha2:null,"alpha3-b":"chk","alpha3-t":null},{English:"Mari",French:"mari",alpha2:null,"alpha3-b":"chm","alpha3-t":null},{English:"Chinook jargon",French:"chinook, jargon",alpha2:null,"alpha3-b":"chn","alpha3-t":null},{English:"Choctaw",French:"choctaw",alpha2:null,"alpha3-b":"cho","alpha3-t":null},{English:"Chipewyan; Dene Suline",French:"chipewyan",alpha2:null,"alpha3-b":"chp","alpha3-t":null},{English:"Cherokee",French:"cherokee",alpha2:null,"alpha3-b":"chr","alpha3-t":null},{English:"Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",French:"slavon d'église; vieux slave; slavon liturgique; vieux bulgare",alpha2:"cu","alpha3-b":"chu","alpha3-t":null},{English:"Chuvash",French:"tchouvache",alpha2:"cv","alpha3-b":"chv","alpha3-t":null},{English:"Cheyenne",French:"cheyenne",alpha2:null,"alpha3-b":"chy","alpha3-t":null},{English:"Chamic languages",French:"chames, langues",alpha2:null,"alpha3-b":"cmc","alpha3-t":null},{English:"Montenegrin",French:"monténégrin",alpha2:null,"alpha3-b":"cnr","alpha3-t":null},{English:"Coptic",French:"copte",alpha2:null,"alpha3-b":"cop","alpha3-t":null},{English:"Cornish",French:"cornique",alpha2:"kw","alpha3-b":"cor","alpha3-t":null},{English:"Corsican",French:"corse",alpha2:"co","alpha3-b":"cos","alpha3-t":null},{English:"Creoles and pidgins, English based",French:"créoles et pidgins basés sur l'anglais",alpha2:null,"alpha3-b":"cpe","alpha3-t":null},{English:"Creoles and pidgins, French-based",French:"créoles et pidgins basés sur le français",alpha2:null,"alpha3-b":"cpf","alpha3-t":null},{English:"Creoles and pidgins, Portuguese-based",French:"créoles et pidgins basés sur le portugais",alpha2:null,"alpha3-b":"cpp","alpha3-t":null},{English:"Cree",French:"cree",alpha2:"cr","alpha3-b":"cre","alpha3-t":null},{English:"Crimean Tatar; Crimean Turkish",French:"tatar de Crimé",alpha2:null,"alpha3-b":"crh","alpha3-t":null},{English:"Creoles and pidgins",French:"créoles et pidgins",alpha2:null,"alpha3-b":"crp","alpha3-t":null},{English:"Kashubian",French:"kachoube",alpha2:null,"alpha3-b":"csb","alpha3-t":null},{English:"Cushitic languages",French:"couchitiques, langues",alpha2:null,"alpha3-b":"cus","alpha3-t":null},{English:"Czech",French:"tchèque",alpha2:"cs","alpha3-b":"cze","alpha3-t":"ces"},{English:"Dakota",French:"dakota",alpha2:null,"alpha3-b":"dak","alpha3-t":null},{English:"Danish",French:"danois",alpha2:"da","alpha3-b":"dan","alpha3-t":null},{English:"Dargwa",French:"dargwa",alpha2:null,"alpha3-b":"dar","alpha3-t":null},{English:"Land Dayak languages",French:"dayak, langues",alpha2:null,"alpha3-b":"day","alpha3-t":null},{English:"Delaware",French:"delaware",alpha2:null,"alpha3-b":"del","alpha3-t":null},{English:"Slave (Athapascan)",French:"esclave (athapascan)",alpha2:null,"alpha3-b":"den","alpha3-t":null},{English:"Dogrib",French:"dogrib",alpha2:null,"alpha3-b":"dgr","alpha3-t":null},{English:"Dinka",French:"dinka",alpha2:null,"alpha3-b":"din","alpha3-t":null},{English:"Divehi; Dhivehi; Maldivian",French:"maldivien",alpha2:"dv","alpha3-b":"div","alpha3-t":null},{English:"Dogri",French:"dogri",alpha2:null,"alpha3-b":"doi","alpha3-t":null},{English:"Dravidian languages",French:"dravidiennes, langues",alpha2:null,"alpha3-b":"dra","alpha3-t":null},{English:"Lower Sorbian",French:"bas-sorabe",alpha2:null,"alpha3-b":"dsb","alpha3-t":null},{English:"Duala",French:"douala",alpha2:null,"alpha3-b":"dua","alpha3-t":null},{English:"Dutch, Middle (ca.1050-1350)",French:"néerlandais moyen (ca. 1050-1350)",alpha2:null,"alpha3-b":"dum","alpha3-t":null},{English:"Dutch; Flemish",French:"néerlandais; flamand",alpha2:"nl","alpha3-b":"dut","alpha3-t":"nld"},{English:"Dyula",French:"dioula",alpha2:null,"alpha3-b":"dyu","alpha3-t":null},{English:"Dzongkha",French:"dzongkha",alpha2:"dz","alpha3-b":"dzo","alpha3-t":null},{English:"Efik",French:"efik",alpha2:null,"alpha3-b":"efi","alpha3-t":null},{English:"Egyptian (Ancient)",French:"égyptien",alpha2:null,"alpha3-b":"egy","alpha3-t":null},{English:"Ekajuk",French:"ekajuk",alpha2:null,"alpha3-b":"eka","alpha3-t":null},{English:"Elamite",French:"élamite",alpha2:null,"alpha3-b":"elx","alpha3-t":null},{English:"English",French:"anglais",alpha2:"en","alpha3-b":"eng","alpha3-t":null},{English:"English, Middle (1100-1500)",French:"anglais moyen (1100-1500)",alpha2:null,"alpha3-b":"enm","alpha3-t":null},{English:"Esperanto",French:"espéranto",alpha2:"eo","alpha3-b":"epo","alpha3-t":null},{English:"Estonian",French:"estonien",alpha2:"et","alpha3-b":"est","alpha3-t":null},{English:"Ewe",French:"éwé",alpha2:"ee","alpha3-b":"ewe","alpha3-t":null},{English:"Ewondo",French:"éwondo",alpha2:null,"alpha3-b":"ewo","alpha3-t":null},{English:"Fang",French:"fang",alpha2:null,"alpha3-b":"fan","alpha3-t":null},{English:"Faroese",French:"féroïen",alpha2:"fo","alpha3-b":"fao","alpha3-t":null},{English:"Fanti",French:"fanti",alpha2:null,"alpha3-b":"fat","alpha3-t":null},{English:"Fijian",French:"fidjien",alpha2:"fj","alpha3-b":"fij","alpha3-t":null},{English:"Filipino; Pilipino",French:"filipino; pilipino",alpha2:null,"alpha3-b":"fil","alpha3-t":null},{English:"Finnish",French:"finnois",alpha2:"fi","alpha3-b":"fin","alpha3-t":null},{English:"Finno-Ugrian languages",French:"finno-ougriennes, langues",alpha2:null,"alpha3-b":"fiu","alpha3-t":null},{English:"Fon",French:"fon",alpha2:null,"alpha3-b":"fon","alpha3-t":null},{English:"French",French:"français",alpha2:"fr","alpha3-b":"fre","alpha3-t":"fra"},{English:"French, Middle (ca.1400-1600)",French:"français moyen (1400-1600)",alpha2:null,"alpha3-b":"frm","alpha3-t":null},{English:"French, Old (842-ca.1400)",French:"français ancien (842-ca.1400)",alpha2:null,"alpha3-b":"fro","alpha3-t":null},{English:"Northern Frisian",French:"frison septentrional",alpha2:null,"alpha3-b":"frr","alpha3-t":null},{English:"Eastern Frisian",French:"frison oriental",alpha2:null,"alpha3-b":"frs","alpha3-t":null},{English:"Western Frisian",French:"frison occidental",alpha2:"fy","alpha3-b":"fry","alpha3-t":null},{English:"Fulah",French:"peul",alpha2:"ff","alpha3-b":"ful","alpha3-t":null},{English:"Friulian",French:"frioulan",alpha2:null,"alpha3-b":"fur","alpha3-t":null},{English:"Ga",French:"ga",alpha2:null,"alpha3-b":"gaa","alpha3-t":null},{English:"Gayo",French:"gayo",alpha2:null,"alpha3-b":"gay","alpha3-t":null},{English:"Gbaya",French:"gbaya",alpha2:null,"alpha3-b":"gba","alpha3-t":null},{English:"Germanic languages",French:"germaniques, langues",alpha2:null,"alpha3-b":"gem","alpha3-t":null},{English:"Georgian",French:"géorgien",alpha2:"ka","alpha3-b":"geo","alpha3-t":"kat"},{English:"German",French:"allemand",alpha2:"de","alpha3-b":"ger","alpha3-t":"deu"},{English:"Geez",French:"guèze",alpha2:null,"alpha3-b":"gez","alpha3-t":null},{English:"Gilbertese",French:"kiribati",alpha2:null,"alpha3-b":"gil","alpha3-t":null},{English:"Gaelic; Scottish Gaelic",French:"gaélique; gaélique écossais",alpha2:"gd","alpha3-b":"gla","alpha3-t":null},{English:"Irish",French:"irlandais",alpha2:"ga","alpha3-b":"gle","alpha3-t":null},{English:"Galician",French:"galicien",alpha2:"gl","alpha3-b":"glg","alpha3-t":null},{English:"Manx",French:"manx; mannois",alpha2:"gv","alpha3-b":"glv","alpha3-t":null},{English:"German, Middle High (ca.1050-1500)",French:"allemand, moyen haut (ca. 1050-1500)",alpha2:null,"alpha3-b":"gmh","alpha3-t":null},{English:"German, Old High (ca.750-1050)",French:"allemand, vieux haut (ca. 750-1050)",alpha2:null,"alpha3-b":"goh","alpha3-t":null},{English:"Gondi",French:"gond",alpha2:null,"alpha3-b":"gon","alpha3-t":null},{English:"Gorontalo",French:"gorontalo",alpha2:null,"alpha3-b":"gor","alpha3-t":null},{English:"Gothic",French:"gothique",alpha2:null,"alpha3-b":"got","alpha3-t":null},{English:"Grebo",French:"grebo",alpha2:null,"alpha3-b":"grb","alpha3-t":null},{English:"Greek, Ancient (to 1453)",French:"grec ancien (jusqu'à 1453)",alpha2:null,"alpha3-b":"grc","alpha3-t":null},{English:"Greek, Modern (1453-)",French:"grec moderne (après 1453)",alpha2:"el","alpha3-b":"gre","alpha3-t":"ell"},{English:"Guarani",French:"guarani",alpha2:"gn","alpha3-b":"grn","alpha3-t":null},{English:"Swiss German; Alemannic; Alsatian",French:"suisse alémanique; alémanique; alsacien",alpha2:null,"alpha3-b":"gsw","alpha3-t":null},{English:"Gujarati",French:"goudjrati",alpha2:"gu","alpha3-b":"guj","alpha3-t":null},{English:"Gwich'in",French:"gwich'in",alpha2:null,"alpha3-b":"gwi","alpha3-t":null},{English:"Haida",French:"haida",alpha2:null,"alpha3-b":"hai","alpha3-t":null},{English:"Haitian; Haitian Creole",French:"haïtien; créole haïtien",alpha2:"ht","alpha3-b":"hat","alpha3-t":null},{English:"Hausa",French:"haoussa",alpha2:"ha","alpha3-b":"hau","alpha3-t":null},{English:"Hawaiian",French:"hawaïen",alpha2:null,"alpha3-b":"haw","alpha3-t":null},{English:"Hebrew",French:"hébreu",alpha2:"he","alpha3-b":"heb","alpha3-t":null},{English:"Herero",French:"herero",alpha2:"hz","alpha3-b":"her","alpha3-t":null},{English:"Hiligaynon",French:"hiligaynon",alpha2:null,"alpha3-b":"hil","alpha3-t":null},{English:"Himachali languages; Western Pahari languages",French:"langues himachalis; langues paharis occidentales",alpha2:null,"alpha3-b":"him","alpha3-t":null},{English:"Hindi",French:"hindi",alpha2:"hi","alpha3-b":"hin","alpha3-t":null},{English:"Hittite",French:"hittite",alpha2:null,"alpha3-b":"hit","alpha3-t":null},{English:"Hmong; Mong",French:"hmong",alpha2:null,"alpha3-b":"hmn","alpha3-t":null},{English:"Hiri Motu",French:"hiri motu",alpha2:"ho","alpha3-b":"hmo","alpha3-t":null},{English:"Croatian",French:"croate",alpha2:"hr","alpha3-b":"hrv","alpha3-t":null},{English:"Upper Sorbian",French:"haut-sorabe",alpha2:null,"alpha3-b":"hsb","alpha3-t":null},{English:"Hungarian",French:"hongrois",alpha2:"hu","alpha3-b":"hun","alpha3-t":null},{English:"Hupa",French:"hupa",alpha2:null,"alpha3-b":"hup","alpha3-t":null},{English:"Iban",French:"iban",alpha2:null,"alpha3-b":"iba","alpha3-t":null},{English:"Igbo",French:"igbo",alpha2:"ig","alpha3-b":"ibo","alpha3-t":null},{English:"Icelandic",French:"islandais",alpha2:"is","alpha3-b":"ice","alpha3-t":"isl"},{English:"Ido",French:"ido",alpha2:"io","alpha3-b":"ido","alpha3-t":null},{English:"Sichuan Yi; Nuosu",French:"yi de Sichuan",alpha2:"ii","alpha3-b":"iii","alpha3-t":null},{English:"Ijo languages",French:"ijo, langues",alpha2:null,"alpha3-b":"ijo","alpha3-t":null},{English:"Inuktitut",French:"inuktitut",alpha2:"iu","alpha3-b":"iku","alpha3-t":null},{English:"Interlingue; Occidental",French:"interlingue",alpha2:"ie","alpha3-b":"ile","alpha3-t":null},{English:"Iloko",French:"ilocano",alpha2:null,"alpha3-b":"ilo","alpha3-t":null},{English:"Interlingua (International Auxiliary Language Association)",French:"interlingua (langue auxiliaire internationale)",alpha2:"ia","alpha3-b":"ina","alpha3-t":null},{English:"Indic languages",French:"indo-aryennes, langues",alpha2:null,"alpha3-b":"inc","alpha3-t":null},{English:"Indonesian",French:"indonésien",alpha2:"id","alpha3-b":"ind","alpha3-t":null},{English:"Indo-European languages",French:"indo-européennes, langues",alpha2:null,"alpha3-b":"ine","alpha3-t":null},{English:"Ingush",French:"ingouche",alpha2:null,"alpha3-b":"inh","alpha3-t":null},{English:"Inupiaq",French:"inupiaq",alpha2:"ik","alpha3-b":"ipk","alpha3-t":null},{English:"Iranian languages",French:"iraniennes, langues",alpha2:null,"alpha3-b":"ira","alpha3-t":null},{English:"Iroquoian languages",French:"iroquoises, langues",alpha2:null,"alpha3-b":"iro","alpha3-t":null},{English:"Italian",French:"italien",alpha2:"it","alpha3-b":"ita","alpha3-t":null},{English:"Javanese",French:"javanais",alpha2:"jv","alpha3-b":"jav","alpha3-t":null},{English:"Lojban",French:"lojban",alpha2:null,"alpha3-b":"jbo","alpha3-t":null},{English:"Japanese",French:"japonais",alpha2:"ja","alpha3-b":"jpn","alpha3-t":null},{English:"Judeo-Persian",French:"judéo-persan",alpha2:null,"alpha3-b":"jpr","alpha3-t":null},{English:"Judeo-Arabic",French:"judéo-arabe",alpha2:null,"alpha3-b":"jrb","alpha3-t":null},{English:"Kara-Kalpak",French:"karakalpak",alpha2:null,"alpha3-b":"kaa","alpha3-t":null},{English:"Kabyle",French:"kabyle",alpha2:null,"alpha3-b":"kab","alpha3-t":null},{English:"Kachin; Jingpho",French:"kachin; jingpho",alpha2:null,"alpha3-b":"kac","alpha3-t":null},{English:"Kalaallisut; Greenlandic",French:"groenlandais",alpha2:"kl","alpha3-b":"kal","alpha3-t":null},{English:"Kamba",French:"kamba",alpha2:null,"alpha3-b":"kam","alpha3-t":null},{English:"Kannada",French:"kannada",alpha2:"kn","alpha3-b":"kan","alpha3-t":null},{English:"Karen languages",French:"karen, langues",alpha2:null,"alpha3-b":"kar","alpha3-t":null},{English:"Kashmiri",French:"kashmiri",alpha2:"ks","alpha3-b":"kas","alpha3-t":null},{English:"Kanuri",French:"kanouri",alpha2:"kr","alpha3-b":"kau","alpha3-t":null},{English:"Kawi",French:"kawi",alpha2:null,"alpha3-b":"kaw","alpha3-t":null},{English:"Kazakh",French:"kazakh",alpha2:"kk","alpha3-b":"kaz","alpha3-t":null},{English:"Kabardian",French:"kabardien",alpha2:null,"alpha3-b":"kbd","alpha3-t":null},{English:"Khasi",French:"khasi",alpha2:null,"alpha3-b":"kha","alpha3-t":null},{English:"Khoisan languages",French:"khoïsan, langues",alpha2:null,"alpha3-b":"khi","alpha3-t":null},{English:"Central Khmer",French:"khmer central",alpha2:"km","alpha3-b":"khm","alpha3-t":null},{English:"Khotanese; Sakan",French:"khotanais; sakan",alpha2:null,"alpha3-b":"kho","alpha3-t":null},{English:"Kikuyu; Gikuyu",French:"kikuyu",alpha2:"ki","alpha3-b":"kik","alpha3-t":null},{English:"Kinyarwanda",French:"rwanda",alpha2:"rw","alpha3-b":"kin","alpha3-t":null},{English:"Kirghiz; Kyrgyz",French:"kirghiz",alpha2:"ky","alpha3-b":"kir","alpha3-t":null},{English:"Kimbundu",French:"kimbundu",alpha2:null,"alpha3-b":"kmb","alpha3-t":null},{English:"Konkani",French:"konkani",alpha2:null,"alpha3-b":"kok","alpha3-t":null},{English:"Komi",French:"kom",alpha2:"kv","alpha3-b":"kom","alpha3-t":null},{English:"Kongo",French:"kongo",alpha2:"kg","alpha3-b":"kon","alpha3-t":null},{English:"Korean",French:"coréen",alpha2:"ko","alpha3-b":"kor","alpha3-t":null},{English:"Kosraean",French:"kosrae",alpha2:null,"alpha3-b":"kos","alpha3-t":null},{English:"Kpelle",French:"kpellé",alpha2:null,"alpha3-b":"kpe","alpha3-t":null},{English:"Karachay-Balkar",French:"karatchai balkar",alpha2:null,"alpha3-b":"krc","alpha3-t":null},{English:"Karelian",French:"carélien",alpha2:null,"alpha3-b":"krl","alpha3-t":null},{English:"Kru languages",French:"krou, langues",alpha2:null,"alpha3-b":"kro","alpha3-t":null},{English:"Kurukh",French:"kurukh",alpha2:null,"alpha3-b":"kru","alpha3-t":null},{English:"Kuanyama; Kwanyama",French:"kuanyama; kwanyama",alpha2:"kj","alpha3-b":"kua","alpha3-t":null},{English:"Kumyk",French:"koumyk",alpha2:null,"alpha3-b":"kum","alpha3-t":null},{English:"Kurdish",French:"kurde",alpha2:"ku","alpha3-b":"kur","alpha3-t":null},{English:"Kutenai",French:"kutenai",alpha2:null,"alpha3-b":"kut","alpha3-t":null},{English:"Ladino",French:"judéo-espagnol",alpha2:null,"alpha3-b":"lad","alpha3-t":null},{English:"Lahnda",French:"lahnda",alpha2:null,"alpha3-b":"lah","alpha3-t":null},{English:"Lamba",French:"lamba",alpha2:null,"alpha3-b":"lam","alpha3-t":null},{English:"Lao",French:"lao",alpha2:"lo","alpha3-b":"lao","alpha3-t":null},{English:"Latin",French:"latin",alpha2:"la","alpha3-b":"lat","alpha3-t":null},{English:"Latvian",French:"letton",alpha2:"lv","alpha3-b":"lav","alpha3-t":null},{English:"Lezghian",French:"lezghien",alpha2:null,"alpha3-b":"lez","alpha3-t":null},{English:"Limburgan; Limburger; Limburgish",French:"limbourgeois",alpha2:"li","alpha3-b":"lim","alpha3-t":null},{English:"Lingala",French:"lingala",alpha2:"ln","alpha3-b":"lin","alpha3-t":null},{English:"Lithuanian",French:"lituanien",alpha2:"lt","alpha3-b":"lit","alpha3-t":null},{English:"Mongo",French:"mongo",alpha2:null,"alpha3-b":"lol","alpha3-t":null},{English:"Lozi",French:"lozi",alpha2:null,"alpha3-b":"loz","alpha3-t":null},{English:"Luxembourgish; Letzeburgesch",French:"luxembourgeois",alpha2:"lb","alpha3-b":"ltz","alpha3-t":null},{English:"Luba-Lulua",French:"luba-lulua",alpha2:null,"alpha3-b":"lua","alpha3-t":null},{English:"Luba-Katanga",French:"luba-katanga",alpha2:"lu","alpha3-b":"lub","alpha3-t":null},{English:"Ganda",French:"ganda",alpha2:"lg","alpha3-b":"lug","alpha3-t":null},{English:"Luiseno",French:"luiseno",alpha2:null,"alpha3-b":"lui","alpha3-t":null},{English:"Lunda",French:"lunda",alpha2:null,"alpha3-b":"lun","alpha3-t":null},{English:"Luo (Kenya and Tanzania)",French:"luo (Kenya et Tanzanie)",alpha2:null,"alpha3-b":"luo","alpha3-t":null},{English:"Lushai",French:"lushai",alpha2:null,"alpha3-b":"lus","alpha3-t":null},{English:"Macedonian",French:"macédonien",alpha2:"mk","alpha3-b":"mac","alpha3-t":"mkd"},{English:"Madurese",French:"madourais",alpha2:null,"alpha3-b":"mad","alpha3-t":null},{English:"Magahi",French:"magahi",alpha2:null,"alpha3-b":"mag","alpha3-t":null},{English:"Marshallese",French:"marshall",alpha2:"mh","alpha3-b":"mah","alpha3-t":null},{English:"Maithili",French:"maithili",alpha2:null,"alpha3-b":"mai","alpha3-t":null},{English:"Makasar",French:"makassar",alpha2:null,"alpha3-b":"mak","alpha3-t":null},{English:"Malayalam",French:"malayalam",alpha2:"ml","alpha3-b":"mal","alpha3-t":null},{English:"Mandingo",French:"mandingue",alpha2:null,"alpha3-b":"man","alpha3-t":null},{English:"Maori",French:"maori",alpha2:"mi","alpha3-b":"mao","alpha3-t":"mri"},{English:"Austronesian languages",French:"austronésiennes, langues",alpha2:null,"alpha3-b":"map","alpha3-t":null},{English:"Marathi",French:"marathe",alpha2:"mr","alpha3-b":"mar","alpha3-t":null},{English:"Masai",French:"massaï",alpha2:null,"alpha3-b":"mas","alpha3-t":null},{English:"Malay",French:"malais",alpha2:"ms","alpha3-b":"may","alpha3-t":"msa"},{English:"Moksha",French:"moksa",alpha2:null,"alpha3-b":"mdf","alpha3-t":null},{English:"Mandar",French:"mandar",alpha2:null,"alpha3-b":"mdr","alpha3-t":null},{English:"Mende",French:"mendé",alpha2:null,"alpha3-b":"men","alpha3-t":null},{English:"Irish, Middle (900-1200)",French:"irlandais moyen (900-1200)",alpha2:null,"alpha3-b":"mga","alpha3-t":null},{English:"Mi'kmaq; Micmac",French:"mi'kmaq; micmac",alpha2:null,"alpha3-b":"mic","alpha3-t":null},{English:"Minangkabau",French:"minangkabau",alpha2:null,"alpha3-b":"min","alpha3-t":null},{English:"Uncoded languages",French:"langues non codées",alpha2:null,"alpha3-b":"mis","alpha3-t":null},{English:"Mon-Khmer languages",French:"môn-khmer, langues",alpha2:null,"alpha3-b":"mkh","alpha3-t":null},{English:"Malagasy",French:"malgache",alpha2:"mg","alpha3-b":"mlg","alpha3-t":null},{English:"Maltese",French:"maltais",alpha2:"mt","alpha3-b":"mlt","alpha3-t":null},{English:"Manchu",French:"mandchou",alpha2:null,"alpha3-b":"mnc","alpha3-t":null},{English:"Manipuri",French:"manipuri",alpha2:null,"alpha3-b":"mni","alpha3-t":null},{English:"Manobo languages",French:"manobo, langues",alpha2:null,"alpha3-b":"mno","alpha3-t":null},{English:"Mohawk",French:"mohawk",alpha2:null,"alpha3-b":"moh","alpha3-t":null},{English:"Mongolian",French:"mongol",alpha2:"mn","alpha3-b":"mon","alpha3-t":null},{English:"Mossi",French:"moré",alpha2:null,"alpha3-b":"mos","alpha3-t":null},{English:"Multiple languages",French:"multilingue",alpha2:null,"alpha3-b":"mul","alpha3-t":null},{English:"Munda languages",French:"mounda, langues",alpha2:null,"alpha3-b":"mun","alpha3-t":null},{English:"Creek",French:"muskogee",alpha2:null,"alpha3-b":"mus","alpha3-t":null},{English:"Mirandese",French:"mirandais",alpha2:null,"alpha3-b":"mwl","alpha3-t":null},{English:"Marwari",French:"marvari",alpha2:null,"alpha3-b":"mwr","alpha3-t":null},{English:"Mayan languages",French:"maya, langues",alpha2:null,"alpha3-b":"myn","alpha3-t":null},{English:"Erzya",French:"erza",alpha2:null,"alpha3-b":"myv","alpha3-t":null},{English:"Nahuatl languages",French:"nahuatl, langues",alpha2:null,"alpha3-b":"nah","alpha3-t":null},{English:"North American Indian languages",French:"nord-amérindiennes, langues",alpha2:null,"alpha3-b":"nai","alpha3-t":null},{English:"Neapolitan",French:"napolitain",alpha2:null,"alpha3-b":"nap","alpha3-t":null},{English:"Nauru",French:"nauruan",alpha2:"na","alpha3-b":"nau","alpha3-t":null},{English:"Navajo; Navaho",French:"navaho",alpha2:"nv","alpha3-b":"nav","alpha3-t":null},{English:"Ndebele, South; South Ndebele",French:"ndébélé du Sud",alpha2:"nr","alpha3-b":"nbl","alpha3-t":null},{English:"Ndebele, North; North Ndebele",French:"ndébélé du Nord",alpha2:"nd","alpha3-b":"nde","alpha3-t":null},{English:"Ndonga",French:"ndonga",alpha2:"ng","alpha3-b":"ndo","alpha3-t":null},{English:"Low German; Low Saxon; German, Low; Saxon, Low",French:"bas allemand; bas saxon; allemand, bas; saxon, bas",alpha2:null,"alpha3-b":"nds","alpha3-t":null},{English:"Nepali",French:"népalais",alpha2:"ne","alpha3-b":"nep","alpha3-t":null},{English:"Nepal Bhasa; Newari",French:"nepal bhasa; newari",alpha2:null,"alpha3-b":"new","alpha3-t":null},{English:"Nias",French:"nias",alpha2:null,"alpha3-b":"nia","alpha3-t":null},{English:"Niger-Kordofanian languages",French:"nigéro-kordofaniennes, langues",alpha2:null,"alpha3-b":"nic","alpha3-t":null},{English:"Niuean",French:"niué",alpha2:null,"alpha3-b":"niu","alpha3-t":null},{English:"Norwegian Nynorsk; Nynorsk, Norwegian",French:"norvégien nynorsk; nynorsk, norvégien",alpha2:"nn","alpha3-b":"nno","alpha3-t":null},{English:"Bokmål, Norwegian; Norwegian Bokmål",French:"norvégien bokmål",alpha2:"nb","alpha3-b":"nob","alpha3-t":null},{English:"Nogai",French:"nogaï; nogay",alpha2:null,"alpha3-b":"nog","alpha3-t":null},{English:"Norse, Old",French:"norrois, vieux",alpha2:null,"alpha3-b":"non","alpha3-t":null},{English:"Norwegian",French:"norvégien",alpha2:"no","alpha3-b":"nor","alpha3-t":null},{English:"N'Ko",French:"n'ko",alpha2:null,"alpha3-b":"nqo","alpha3-t":null},{English:"Pedi; Sepedi; Northern Sotho",French:"pedi; sepedi; sotho du Nord",alpha2:null,"alpha3-b":"nso","alpha3-t":null},{English:"Nubian languages",French:"nubiennes, langues",alpha2:null,"alpha3-b":"nub","alpha3-t":null},{English:"Classical Newari; Old Newari; Classical Nepal Bhasa",French:"newari classique",alpha2:null,"alpha3-b":"nwc","alpha3-t":null},{English:"Chichewa; Chewa; Nyanja",French:"chichewa; chewa; nyanja",alpha2:"ny","alpha3-b":"nya","alpha3-t":null},{English:"Nyamwezi",French:"nyamwezi",alpha2:null,"alpha3-b":"nym","alpha3-t":null},{English:"Nyankole",French:"nyankolé",alpha2:null,"alpha3-b":"nyn","alpha3-t":null},{English:"Nyoro",French:"nyoro",alpha2:null,"alpha3-b":"nyo","alpha3-t":null},{English:"Nzima",French:"nzema",alpha2:null,"alpha3-b":"nzi","alpha3-t":null},{English:"Occitan (post 1500)",French:"occitan (après 1500)",alpha2:"oc","alpha3-b":"oci","alpha3-t":null},{English:"Ojibwa",French:"ojibwa",alpha2:"oj","alpha3-b":"oji","alpha3-t":null},{English:"Oriya",French:"oriya",alpha2:"or","alpha3-b":"ori","alpha3-t":null},{English:"Oromo",French:"galla",alpha2:"om","alpha3-b":"orm","alpha3-t":null},{English:"Osage",French:"osage",alpha2:null,"alpha3-b":"osa","alpha3-t":null},{English:"Ossetian; Ossetic",French:"ossète",alpha2:"os","alpha3-b":"oss","alpha3-t":null},{English:"Turkish, Ottoman (1500-1928)",French:"turc ottoman (1500-1928)",alpha2:null,"alpha3-b":"ota","alpha3-t":null},{English:"Otomian languages",French:"otomi, langues",alpha2:null,"alpha3-b":"oto","alpha3-t":null},{English:"Papuan languages",French:"papoues, langues",alpha2:null,"alpha3-b":"paa","alpha3-t":null},{English:"Pangasinan",French:"pangasinan",alpha2:null,"alpha3-b":"pag","alpha3-t":null},{English:"Pahlavi",French:"pahlavi",alpha2:null,"alpha3-b":"pal","alpha3-t":null},{English:"Pampanga; Kapampangan",French:"pampangan",alpha2:null,"alpha3-b":"pam","alpha3-t":null},{English:"Panjabi; Punjabi",French:"pendjabi",alpha2:"pa","alpha3-b":"pan","alpha3-t":null},{English:"Papiamento",French:"papiamento",alpha2:null,"alpha3-b":"pap","alpha3-t":null},{English:"Palauan",French:"palau",alpha2:null,"alpha3-b":"pau","alpha3-t":null},{English:"Persian, Old (ca.600-400 B.C.)",French:"perse, vieux (ca. 600-400 av. J.-C.)",alpha2:null,"alpha3-b":"peo","alpha3-t":null},{English:"Persian",French:"persan",alpha2:"fa","alpha3-b":"per","alpha3-t":"fas"},{English:"Philippine languages",French:"philippines, langues",alpha2:null,"alpha3-b":"phi","alpha3-t":null},{English:"Phoenician",French:"phénicien",alpha2:null,"alpha3-b":"phn","alpha3-t":null},{English:"Pali",French:"pali",alpha2:"pi","alpha3-b":"pli","alpha3-t":null},{English:"Polish",French:"polonais",alpha2:"pl","alpha3-b":"pol","alpha3-t":null},{English:"Pohnpeian",French:"pohnpei",alpha2:null,"alpha3-b":"pon","alpha3-t":null},{English:"Portuguese",French:"portugais",alpha2:"pt","alpha3-b":"por","alpha3-t":null},{English:"Prakrit languages",French:"prâkrit, langues",alpha2:null,"alpha3-b":"pra","alpha3-t":null},{English:"Provençal, Old (to 1500); Occitan, Old (to 1500)",French:"provençal ancien (jusqu'à 1500); occitan ancien (jusqu'à 1500)",alpha2:null,"alpha3-b":"pro","alpha3-t":null},{English:"Pushto; Pashto",French:"pachto",alpha2:"ps","alpha3-b":"pus","alpha3-t":null},{English:"Reserved for local use",French:"réservée à l'usage local",alpha2:null,"alpha3-b":"qaa-qtz","alpha3-t":null},{English:"Quechua",French:"quechua",alpha2:"qu","alpha3-b":"que","alpha3-t":null},{English:"Rajasthani",French:"rajasthani",alpha2:null,"alpha3-b":"raj","alpha3-t":null},{English:"Rapanui",French:"rapanui",alpha2:null,"alpha3-b":"rap","alpha3-t":null},{English:"Rarotongan; Cook Islands Maori",French:"rarotonga; maori des îles Cook",alpha2:null,"alpha3-b":"rar","alpha3-t":null},{English:"Romance languages",French:"romanes, langues",alpha2:null,"alpha3-b":"roa","alpha3-t":null},{English:"Romansh",French:"romanche",alpha2:"rm","alpha3-b":"roh","alpha3-t":null},{English:"Romany",French:"tsigane",alpha2:null,"alpha3-b":"rom","alpha3-t":null},{English:"Romanian; Moldavian; Moldovan",French:"roumain; moldave",alpha2:"ro","alpha3-b":"rum","alpha3-t":"ron"},{English:"Rundi",French:"rundi",alpha2:"rn","alpha3-b":"run","alpha3-t":null},{English:"Aromanian; Arumanian; Macedo-Romanian",French:"aroumain; macédo-roumain",alpha2:null,"alpha3-b":"rup","alpha3-t":null},{English:"Russian",French:"russe",alpha2:"ru","alpha3-b":"rus","alpha3-t":null},{English:"Sandawe",French:"sandawe",alpha2:null,"alpha3-b":"sad","alpha3-t":null},{English:"Sango",French:"sango",alpha2:"sg","alpha3-b":"sag","alpha3-t":null},{English:"Yakut",French:"iakoute",alpha2:null,"alpha3-b":"sah","alpha3-t":null},{English:"South American Indian languages",French:"sud-amérindiennes, langues",alpha2:null,"alpha3-b":"sai","alpha3-t":null},{English:"Salishan languages",French:"salishennes, langues",alpha2:null,"alpha3-b":"sal","alpha3-t":null},{English:"Samaritan Aramaic",French:"samaritain",alpha2:null,"alpha3-b":"sam","alpha3-t":null},{English:"Sanskrit",French:"sanskrit",alpha2:"sa","alpha3-b":"san","alpha3-t":null},{English:"Sasak",French:"sasak",alpha2:null,"alpha3-b":"sas","alpha3-t":null},{English:"Santali",French:"santal",alpha2:null,"alpha3-b":"sat","alpha3-t":null},{English:"Sicilian",French:"sicilien",alpha2:null,"alpha3-b":"scn","alpha3-t":null},{English:"Scots",French:"écossais",alpha2:null,"alpha3-b":"sco","alpha3-t":null},{English:"Selkup",French:"selkoupe",alpha2:null,"alpha3-b":"sel","alpha3-t":null},{English:"Semitic languages",French:"sémitiques, langues",alpha2:null,"alpha3-b":"sem","alpha3-t":null},{English:"Irish, Old (to 900)",French:"irlandais ancien (jusqu'à 900)",alpha2:null,"alpha3-b":"sga","alpha3-t":null},{English:"Sign Languages",French:"langues des signes",alpha2:null,"alpha3-b":"sgn","alpha3-t":null},{English:"Shan",French:"chan",alpha2:null,"alpha3-b":"shn","alpha3-t":null},{English:"Sidamo",French:"sidamo",alpha2:null,"alpha3-b":"sid","alpha3-t":null},{English:"Sinhala; Sinhalese",French:"singhalais",alpha2:"si","alpha3-b":"sin","alpha3-t":null},{English:"Siouan languages",French:"sioux, langues",alpha2:null,"alpha3-b":"sio","alpha3-t":null},{English:"Sino-Tibetan languages",French:"sino-tibétaines, langues",alpha2:null,"alpha3-b":"sit","alpha3-t":null},{English:"Slavic languages",French:"slaves, langues",alpha2:null,"alpha3-b":"sla","alpha3-t":null},{English:"Slovak",French:"slovaque",alpha2:"sk","alpha3-b":"slo","alpha3-t":"slk"},{English:"Slovenian",French:"slovène",alpha2:"sl","alpha3-b":"slv","alpha3-t":null},{English:"Southern Sami",French:"sami du Sud",alpha2:null,"alpha3-b":"sma","alpha3-t":null},{English:"Northern Sami",French:"sami du Nord",alpha2:"se","alpha3-b":"sme","alpha3-t":null},{English:"Sami languages",French:"sames, langues",alpha2:null,"alpha3-b":"smi","alpha3-t":null},{English:"Lule Sami",French:"sami de Lule",alpha2:null,"alpha3-b":"smj","alpha3-t":null},{English:"Inari Sami",French:"sami d'Inari",alpha2:null,"alpha3-b":"smn","alpha3-t":null},{English:"Samoan",French:"samoan",alpha2:"sm","alpha3-b":"smo","alpha3-t":null},{English:"Skolt Sami",French:"sami skolt",alpha2:null,"alpha3-b":"sms","alpha3-t":null},{English:"Shona",French:"shona",alpha2:"sn","alpha3-b":"sna","alpha3-t":null},{English:"Sindhi",French:"sindhi",alpha2:"sd","alpha3-b":"snd","alpha3-t":null},{English:"Soninke",French:"soninké",alpha2:null,"alpha3-b":"snk","alpha3-t":null},{English:"Sogdian",French:"sogdien",alpha2:null,"alpha3-b":"sog","alpha3-t":null},{English:"Somali",French:"somali",alpha2:"so","alpha3-b":"som","alpha3-t":null},{English:"Songhai languages",French:"songhai, langues",alpha2:null,"alpha3-b":"son","alpha3-t":null},{English:"Sotho, Southern",French:"sotho du Sud",alpha2:"st","alpha3-b":"sot","alpha3-t":null},{English:"Spanish; Castilian",French:"espagnol; castillan",alpha2:"es","alpha3-b":"spa","alpha3-t":null},{English:"Sardinian",French:"sarde",alpha2:"sc","alpha3-b":"srd","alpha3-t":null},{English:"Sranan Tongo",French:"sranan tongo",alpha2:null,"alpha3-b":"srn","alpha3-t":null},{English:"Serbian",French:"serbe",alpha2:"sr","alpha3-b":"srp","alpha3-t":null},{English:"Serer",French:"sérère",alpha2:null,"alpha3-b":"srr","alpha3-t":null},{English:"Nilo-Saharan languages",French:"nilo-sahariennes, langues",alpha2:null,"alpha3-b":"ssa","alpha3-t":null},{English:"Swati",French:"swati",alpha2:"ss","alpha3-b":"ssw","alpha3-t":null},{English:"Sukuma",French:"sukuma",alpha2:null,"alpha3-b":"suk","alpha3-t":null},{English:"Sundanese",French:"soundanais",alpha2:"su","alpha3-b":"sun","alpha3-t":null},{English:"Susu",French:"soussou",alpha2:null,"alpha3-b":"sus","alpha3-t":null},{English:"Sumerian",French:"sumérien",alpha2:null,"alpha3-b":"sux","alpha3-t":null},{English:"Swahili",French:"swahili",alpha2:"sw","alpha3-b":"swa","alpha3-t":null},{English:"Swedish",French:"suédois",alpha2:"sv","alpha3-b":"swe","alpha3-t":null},{English:"Classical Syriac",French:"syriaque classique",alpha2:null,"alpha3-b":"syc","alpha3-t":null},{English:"Syriac",French:"syriaque",alpha2:null,"alpha3-b":"syr","alpha3-t":null},{English:"Tahitian",French:"tahitien",alpha2:"ty","alpha3-b":"tah","alpha3-t":null},{English:"Tai languages",French:"tai, langues",alpha2:null,"alpha3-b":"tai","alpha3-t":null},{English:"Tamil",French:"tamoul",alpha2:"ta","alpha3-b":"tam","alpha3-t":null},{English:"Tatar",French:"tatar",alpha2:"tt","alpha3-b":"tat","alpha3-t":null},{English:"Telugu",French:"télougou",alpha2:"te","alpha3-b":"tel","alpha3-t":null},{English:"Timne",French:"temne",alpha2:null,"alpha3-b":"tem","alpha3-t":null},{English:"Tereno",French:"tereno",alpha2:null,"alpha3-b":"ter","alpha3-t":null},{English:"Tetum",French:"tetum",alpha2:null,"alpha3-b":"tet","alpha3-t":null},{English:"Tajik",French:"tadjik",alpha2:"tg","alpha3-b":"tgk","alpha3-t":null},{English:"Tagalog",French:"tagalog",alpha2:"tl","alpha3-b":"tgl","alpha3-t":null},{English:"Thai",French:"thaï",alpha2:"th","alpha3-b":"tha","alpha3-t":null},{English:"Tibetan",French:"tibétain",alpha2:"bo","alpha3-b":"tib","alpha3-t":"bod"},{English:"Tigre",French:"tigré",alpha2:null,"alpha3-b":"tig","alpha3-t":null},{English:"Tigrinya",French:"tigrigna",alpha2:"ti","alpha3-b":"tir","alpha3-t":null},{English:"Tiv",French:"tiv",alpha2:null,"alpha3-b":"tiv","alpha3-t":null},{English:"Tokelau",French:"tokelau",alpha2:null,"alpha3-b":"tkl","alpha3-t":null},{English:"Klingon; tlhIngan-Hol",French:"klingon",alpha2:null,"alpha3-b":"tlh","alpha3-t":null},{English:"Tlingit",French:"tlingit",alpha2:null,"alpha3-b":"tli","alpha3-t":null},{English:"Tamashek",French:"tamacheq",alpha2:null,"alpha3-b":"tmh","alpha3-t":null},{English:"Tonga (Nyasa)",French:"tonga (Nyasa)",alpha2:null,"alpha3-b":"tog","alpha3-t":null},{English:"Tonga (Tonga Islands)",French:"tongan (Îles Tonga)",alpha2:"to","alpha3-b":"ton","alpha3-t":null},{English:"Tok Pisin",French:"tok pisin",alpha2:null,"alpha3-b":"tpi","alpha3-t":null},{English:"Tsimshian",French:"tsimshian",alpha2:null,"alpha3-b":"tsi","alpha3-t":null},{English:"Tswana",French:"tswana",alpha2:"tn","alpha3-b":"tsn","alpha3-t":null},{English:"Tsonga",French:"tsonga",alpha2:"ts","alpha3-b":"tso","alpha3-t":null},{English:"Turkmen",French:"turkmène",alpha2:"tk","alpha3-b":"tuk","alpha3-t":null},{English:"Tumbuka",French:"tumbuka",alpha2:null,"alpha3-b":"tum","alpha3-t":null},{English:"Tupi languages",French:"tupi, langues",alpha2:null,"alpha3-b":"tup","alpha3-t":null},{English:"Turkish",French:"turc",alpha2:"tr","alpha3-b":"tur","alpha3-t":null},{English:"Altaic languages",French:"altaïques, langues",alpha2:null,"alpha3-b":"tut","alpha3-t":null},{English:"Tuvalu",French:"tuvalu",alpha2:null,"alpha3-b":"tvl","alpha3-t":null},{English:"Twi",French:"twi",alpha2:"tw","alpha3-b":"twi","alpha3-t":null},{English:"Tuvinian",French:"touva",alpha2:null,"alpha3-b":"tyv","alpha3-t":null},{English:"Udmurt",French:"oudmourte",alpha2:null,"alpha3-b":"udm","alpha3-t":null},{English:"Ugaritic",French:"ougaritique",alpha2:null,"alpha3-b":"uga","alpha3-t":null},{English:"Uighur; Uyghur",French:"ouïgour",alpha2:"ug","alpha3-b":"uig","alpha3-t":null},{English:"Ukrainian",French:"ukrainien",alpha2:"uk","alpha3-b":"ukr","alpha3-t":null},{English:"Umbundu",French:"umbundu",alpha2:null,"alpha3-b":"umb","alpha3-t":null},{English:"Undetermined",French:"indéterminée",alpha2:null,"alpha3-b":"und","alpha3-t":null},{English:"Urdu",French:"ourdou",alpha2:"ur","alpha3-b":"urd","alpha3-t":null},{English:"Uzbek",French:"ouszbek",alpha2:"uz","alpha3-b":"uzb","alpha3-t":null},{English:"Vai",French:"vaï",alpha2:null,"alpha3-b":"vai","alpha3-t":null},{English:"Venda",French:"venda",alpha2:"ve","alpha3-b":"ven","alpha3-t":null},{English:"Vietnamese",French:"vietnamien",alpha2:"vi","alpha3-b":"vie","alpha3-t":null},{English:"Volapük",French:"volapük",alpha2:"vo","alpha3-b":"vol","alpha3-t":null},{English:"Votic",French:"vote",alpha2:null,"alpha3-b":"vot","alpha3-t":null},{English:"Wakashan languages",French:"wakashanes, langues",alpha2:null,"alpha3-b":"wak","alpha3-t":null},{English:"Wolaitta; Wolaytta",French:"wolaitta; wolaytta",alpha2:null,"alpha3-b":"wal","alpha3-t":null},{English:"Waray",French:"waray",alpha2:null,"alpha3-b":"war","alpha3-t":null},{English:"Washo",French:"washo",alpha2:null,"alpha3-b":"was","alpha3-t":null},{English:"Welsh",French:"gallois",alpha2:"cy","alpha3-b":"wel","alpha3-t":"cym"},{English:"Sorbian languages",French:"sorabes, langues",alpha2:null,"alpha3-b":"wen","alpha3-t":null},{English:"Walloon",French:"wallon",alpha2:"wa","alpha3-b":"wln","alpha3-t":null},{English:"Wolof",French:"wolof",alpha2:"wo","alpha3-b":"wol","alpha3-t":null},{English:"Kalmyk; Oirat",French:"kalmouk; oïrat",alpha2:null,"alpha3-b":"xal","alpha3-t":null},{English:"Xhosa",French:"xhosa",alpha2:"xh","alpha3-b":"xho","alpha3-t":null},{English:"Yao",French:"yao",alpha2:null,"alpha3-b":"yao","alpha3-t":null},{English:"Yapese",French:"yapois",alpha2:null,"alpha3-b":"yap","alpha3-t":null},{English:"Yiddish",French:"yiddish",alpha2:"yi","alpha3-b":"yid","alpha3-t":null},{English:"Yoruba",French:"yoruba",alpha2:"yo","alpha3-b":"yor","alpha3-t":null},{English:"Yupik languages",French:"yupik, langues",alpha2:null,"alpha3-b":"ypk","alpha3-t":null},{English:"Zapotec",French:"zapotèque",alpha2:null,"alpha3-b":"zap","alpha3-t":null},{English:"Blissymbols; Blissymbolics; Bliss",French:"symboles Bliss; Bliss",alpha2:null,"alpha3-b":"zbl","alpha3-t":null},{English:"Zenaga",French:"zenaga",alpha2:null,"alpha3-b":"zen","alpha3-t":null},{English:"Standard Moroccan Tamazight",French:"amazighe standard marocain",alpha2:null,"alpha3-b":"zgh","alpha3-t":null},{English:"Zhuang; Chuang",French:"zhuang; chuang",alpha2:"za","alpha3-b":"zha","alpha3-t":null},{English:"Zande languages",French:"zandé, langues",alpha2:null,"alpha3-b":"znd","alpha3-t":null},{English:"Zulu",French:"zoulou",alpha2:"zu","alpha3-b":"zul","alpha3-t":null},{English:"Zuni",French:"zuni",alpha2:null,"alpha3-b":"zun","alpha3-t":null},{English:"No linguistic content; Not applicable",French:"pas de contenu linguistique; non applicable",alpha2:null,"alpha3-b":"zxx","alpha3-t":null},{English:"Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki",French:"zaza; dimili; dimli; kirdki; kirmanjki; zazaki",alpha2:null,"alpha3-b":"zza","alpha3-t":null}];
 /**
  * IsoLanguage
  *
  * A utility class representing ISO Language data.
- */class Mn{
+ */class Ln{
 /**
      * Creates a new instance of IsoLanguage.
      * @param nameOrCode The language name or ISO code.
      */
-constructor(n){const a=n.toLocaleLowerCase().trim(),l=Bn.find((n=>{var l,t;return n.English.toLocaleLowerCase()===a||(null===(l=n.alpha2)||void 0===l?void 0:l.toLocaleLowerCase())===a||n["alpha3-b"].toLowerCase()===a||(null===(t=n["alpha3-t"])||void 0===t?void 0:t.toLocaleLowerCase())===a}));if(!l)
+constructor(n){const a=n.toLocaleLowerCase().trim(),l=Mn.find((n=>{var l,t;return n.English.toLocaleLowerCase()===a||(null===(l=n.alpha2)||void 0===l?void 0:l.toLocaleLowerCase())===a||n["alpha3-b"].toLowerCase()===a||(null===(t=n["alpha3-t"])||void 0===t?void 0:t.toLocaleLowerCase())===a}));if(!l)
 // no data found.
-throw new Dn;
+throw new Bn;
 // data is found.
 this._name=l.English,this._alpha2=l.alpha2,this._alpha3b=l["alpha3-b"],this._alpha3t=l["alpha3-t"]}
 /**
@@ -11024,9 +11024,17 @@ this._name=l.English,this._alpha2=l.alpha2,this._alpha3b=l["alpha3-b"],this._alp
      *
      * compares the instance to the subject to determine if they are equal.
      * @param suspect the suspect to compare.
-     */equals(n){let a=!1;if(n instanceof Mn){const l=n;a=this.name()===l.name()&&this.alpha2()===l.alpha2()&&this.alpha3b()===l.alpha3b()&&this.alpha3t()===l.alpha3t()}return a}
+     */equals(n){let a=!1;if(n instanceof Ln){const l=n;a=this.name()===l.name()&&this.alpha2()===l.alpha2()&&this.alpha3b()===l.alpha3b()&&this.alpha3t()===l.alpha3t()}return a}
 /**
      * name()
      *
      * gets the language name.
-     */name(){return this._name}toString(){return this.name()}}export{w as BaseException,$ as BaseFormatter,en as CharacterSet,Tn as Color,un as ColorException,C as Coordinates,q as Country,I as CountryException,K as DateException,W as DateTime,Z as Duration,G as DurationException,nn as EmailAddress,X as EmailAddressException,rn as Hash,In as Hex,hn as HexException,V as Id,J as IdException,k as InvalidArgumentException,Mn as IsoLanguage,Dn as IsoLanguageException,M as Locality,B as LocalityException,x as MethodUndefinedException,z as NetworkException,S as OutOfBoundsException,ln as PhoneNumber,an as PhoneNumberException,P as PostalCode,R as PostalCodeException,On as RGBA,qn as RGBAException,N as Region,L as RegionException,tn as Salt,D as Street,U as StreetAddress,T as StreetException,H as StringFormatter,j as Timezone,A as TimezoneException,Q as UUID,Y as UUIDException};
+     */name(){return this._name}toString(){return this.name()}}class Nn{constructor(){
+
+}
+/**
+     * sanitize()
+     *
+     * strips the HTML from a string.
+     * @param dirty the string to sanitize.
+     */sanitize(n){return w(n)}toString(){return`Instance of ${Nn.name}`}}export{k as BaseException,H as BaseFormatter,un as CharacterSet,Dn as Color,hn as ColorException,I as Coordinates,O as Country,q as CountryException,W as DateException,G as DateTime,$ as Duration,Z as DurationException,an as EmailAddress,nn as EmailAddressException,Nn as HTMLSanitizer,en as Hash,qn as Hex,on as HexException,Y as Id,V as IdException,x as InvalidArgumentException,Ln as IsoLanguage,Bn as IsoLanguageException,L as Locality,M as LocalityException,S as MethodUndefinedException,A as NetworkException,z as OutOfBoundsException,tn as PhoneNumber,ln as PhoneNumberException,U as PostalCode,P as PostalCodeException,Tn as RGBA,On as RGBAException,R as Region,N as RegionException,rn as Salt,B as Street,K as StreetAddress,D as StreetException,J as StringFormatter,C as Timezone,j as TimezoneException,X as UUID,Q as UUIDException};

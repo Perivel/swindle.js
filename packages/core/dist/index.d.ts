@@ -21,6 +21,101 @@ interface Serializable {
     serialize(): string;
 }
 /**
+ * TraverseFn
+ *
+ * A function to be invoked on each traversible value.
+ */
+type TraverseFn<T> = (current: T, next: T | null, previous: T | null) => void;
+/**
+ * The Traversable Interface.
+ *
+ * The Traversable interface indicates an object can be traversed.
+ */
+interface Traversable<T> {
+    /**
+     * traverse()
+     *
+     * traverses every value in the object, invoking the predicate on each.
+     * @param predicate a predicate function to be invoked on every value.
+     */
+    traverse(predicate: TraverseFn<T>): void;
+}
+/**
+ * BaseException
+ *
+ * DomainException represents a generic domain exception.
+ */
+declare class BaseException extends Error {
+    constructor(message?: string);
+}
+/**
+ * InvlaidArguentException
+ *
+ * InvalidArgumentException indicates an argument is invalid.
+ */
+declare class InvalidArgumentException extends BaseException {
+    constructor(message?: string);
+}
+/**
+ * MethodUndefinedException
+ *
+ * MethodUndefinedException is an error indicating that a method
+ * that was called is undefined.
+ */
+declare class MethodUndefinedException extends BaseException {
+    constructor(message?: string);
+}
+declare class OutOfBoundsException extends InvalidArgumentException {
+    constructor(message?: string);
+}
+/**
+ * NetworkException
+ *
+ * NetworkException indicates a network exception has occured.
+ */
+declare class NetworkException extends BaseException {
+    constructor(message?: string);
+}
+/**
+ * Comparator
+ *
+ * A type indicating a comparator function. The comparator function takes two arguments, a and b.
+ * The comparator function returns a negative number if a < b, 0 if a = b, and a positive number if a > b.
+ */
+type Comparator<T> = (a: T, b: T) => number;
+/**
+ * Type
+ *
+ * A utility for designating a type. Types are just Constructor Signitures.
+ */
+type Type<T> = {
+    new (...args: any[]): T;
+};
+/**
+ * AsyncFn
+ *
+ * An asynchronous function type.
+ */
+type AsyncFn<T> = (...args: any) => Promise<T>;
+/**
+ * SyncFn
+ *
+ * A synchronous function type.
+ */
+type SyncFn<T> = (...args: any) => T;
+/**
+ * VlidAsyncFn
+ *
+ * An asynchonous Void Function.
+ */
+type VoidAsyncFn = () => Promise<void>;
+/**
+ * VoidSyncFn
+ *
+ * A synchonus void function type.
+ */
+type VoidSyncFn = () => void;
+/**
  * DurationInterface
  *
  * DurationInterface
@@ -209,14 +304,6 @@ declare class Timezone implements TimezoneInterface, Equatable {
      */
     utcOffset(): number;
     toString(): string;
-}
-/**
- * BaseException
- *
- * DomainException represents a generic domain exception.
- */
-declare class BaseException extends Error {
-    constructor(message?: string);
 }
 /**
  * TimezoneException
@@ -787,7 +874,7 @@ declare class Duration implements DurationInterface, Equatable {
      * @param b the second date time
      * @returns a duration containing the difference between DateTimes a and b.
      */
-    static FromDateTimeDifference(a: DateTime, b: DateTime): Duration;
+    static FromDateTimeDifference(a: DateTimeInterface, b: DateTimeInterface): Duration;
     /**
      * days()
      *
@@ -1075,118 +1162,6 @@ declare class DateException extends BaseException {
 declare class DurationException extends BaseException {
     constructor(message?: string);
 }
-/**
- * TimestampedResource
- *
- * TimestampedResource interface defines functionality for timestamped resources.
- */
-interface TimestampedResource {
-    /**
-     * createdOn()
-     *
-     * createdOn() gets the timestamp when the recource was created.
-     */
-    createdOn(): DateTime;
-    /**
-     * deletedOn()
-     *
-     * deletedOn() gets the timestamp when the rescource was deleted.
-     */
-    deletedOn(): DateTime | null;
-    /**
-     * updatedOn()
-     *
-     * updatedOn() gets the timestamp when the resource was last updated.
-     */
-    updatedOn(): DateTime;
-}
-/**
- * TraverseFn
- *
- * A function to be invoked on each traversible value.
- */
-type TraverseFn<T> = (current: T, next: T | null, previous: T | null) => void;
-/**
- * The Traversable Interface.
- *
- * The Traversable interface indicates an object can be traversed.
- */
-interface Traversable<T> {
-    /**
-     * traverse()
-     *
-     * traverses every value in the object, invoking the predicate on each.
-     * @param predicate a predicate function to be invoked on every value.
-     */
-    traverse(predicate: TraverseFn<T>): void;
-}
-/**
- * InvlaidArguentException
- *
- * InvalidArgumentException indicates an argument is invalid.
- */
-declare class InvalidArgumentException extends BaseException {
-    constructor(message?: string);
-}
-/**
- * MethodUndefinedException
- *
- * MethodUndefinedException is an error indicating that a method
- * that was called is undefined.
- */
-declare class MethodUndefinedException extends BaseException {
-    constructor(message?: string);
-}
-declare class OutOfBoundsException extends InvalidArgumentException {
-    constructor(message?: string);
-}
-/**
- * NetworkException
- *
- * NetworkException indicates a network exception has occured.
- */
-declare class NetworkException extends BaseException {
-    constructor(message?: string);
-}
-/**
- * Comparator
- *
- * A type indicating a comparator function. The comparator function takes two arguments, a and b.
- * The comparator function returns a negative number if a < b, 0 if a = b, and a positive number if a > b.
- */
-type Comparator<T> = (a: T, b: T) => number;
-/**
- * Type
- *
- * A utility for designating a type. Types are just Constructor Signitures.
- */
-type Type<T> = {
-    new (...args: any[]): T;
-};
-/**
- * AsyncFn
- *
- * An asynchronous function type.
- */
-type AsyncFn<T> = (...args: any) => Promise<T>;
-/**
- * SyncFn
- *
- * A synchronous function type.
- */
-type SyncFn<T> = (...args: any) => T;
-/**
- * VlidAsyncFn
- *
- * An asynchonous Void Function.
- */
-type VoidAsyncFn = () => Promise<void>;
-/**
- * VoidSyncFn
- *
- * A synchonus void function type.
- */
-type VoidSyncFn = () => void;
 /**
  * BaseFormatterInterface
  *
@@ -2297,5 +2272,55 @@ declare class IsoLanguage implements IsoLanguageInterface, Equatable {
 declare class IsoLanguageException extends BaseException {
     constructor(message?: string);
 }
-export { Equatable, Serializable, TimestampedResource, TraverseFn, Traversable, BaseException, InvalidArgumentException, MethodUndefinedException, OutOfBoundsException, NetworkException, Comparator, Type, AsyncFn, SyncFn, VoidAsyncFn, VoidSyncFn, DateTime, Duration, DurationPeriod, DateException, DurationException, Timezone, TimezoneException, Coordinates, CountryException, Country, Street, StreetException, Locality, LocalityException, Region, RegionException, PostalCode, PostalCodeException, StreetAddress, BaseFormatter, StringFormatter, Id, UUID, IdException, UUIDException, EmailAddress, EmailAddressException, PhoneNumber, PhoneNumberException, Salt, Hash, CharacterSet, CharacterSetValue, ColorInterface, Color, ColorException, HexException, HexInterface, Hex, RGBAException, RGBAInterface, RGBA, IsoLanguage, IsoLanguageException };
+/**
+ * HTMLSanitizerInterface
+ *
+ * The HTMLSantitizer interface specifies the API of a String Sanitizer.
+ */
+interface HTMLSanitizerInterface {
+    /**
+     * sanitize()
+     *
+     * strips the HTML from a string.
+     * @param dirty the string to sanitize.
+     */
+    sanitize(dirty: string): string;
+}
+declare class HTMLSanitizer implements HTMLSanitizerInterface {
+    constructor();
+    /**
+     * sanitize()
+     *
+     * strips the HTML from a string.
+     * @param dirty the string to sanitize.
+     */
+    sanitize(dirty: string): string;
+    toString(): string;
+}
+/**
+ * TimestampedResource
+ *
+ * TimestampedResource interface defines functionality for timestamped resources.
+ */
+interface TimestampedResource {
+    /**
+     * createdOn()
+     *
+     * createdOn() gets the timestamp when the recource was created.
+     */
+    createdOn(): DateTime;
+    /**
+     * deletedOn()
+     *
+     * deletedOn() gets the timestamp when the rescource was deleted.
+     */
+    deletedOn(): DateTime | null;
+    /**
+     * updatedOn()
+     *
+     * updatedOn() gets the timestamp when the resource was last updated.
+     */
+    updatedOn(): DateTime;
+}
+export { Equatable, Serializable, TraverseFn, Traversable, BaseException, InvalidArgumentException, MethodUndefinedException, OutOfBoundsException, NetworkException, Comparator, Type, AsyncFn, SyncFn, VoidAsyncFn, VoidSyncFn, DateTime, Duration, DurationPeriod, DateException, DurationException, Timezone, TimezoneException, Coordinates, CountryException, Country, Street, StreetException, Locality, LocalityException, Region, RegionException, PostalCode, PostalCodeException, StreetAddress, BaseFormatter, StringFormatter, Id, UUID, IdException, UUIDException, EmailAddress, EmailAddressException, PhoneNumber, PhoneNumberException, Salt, Hash, CharacterSet, CharacterSetValue, ColorInterface, Color, ColorException, HexException, HexInterface, Hex, RGBAException, RGBAInterface, RGBA, IsoLanguage, IsoLanguageException, HTMLSanitizer, TimestampedResource };
 //# sourceMappingURL=index.d.ts.map

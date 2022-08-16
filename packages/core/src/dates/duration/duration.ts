@@ -1,9 +1,9 @@
 import { DateTime as LuxonDateTime, Duration as LuxonDuration } from "luxon";
-import { DateTime } from './../datetime/datetime';
 import { Equatable } from "../../common/common.module";
 import { DurationException } from "../exceptions/duration.exception";
 import { DurationInterface } from "./duration.interface";
 import { DurationPeriod } from './duration-period.interface';
+import { DateTimeInterface } from "../datetime/datetime.interface";
 
 /**
  * Duration
@@ -51,7 +51,7 @@ export class Duration implements DurationInterface, Equatable {
      * @returns a duration containing the difference between DateTimes a and b.
      */
 
-    public static FromDateTimeDifference(a: DateTime, b: DateTime): Duration {
+    public static FromDateTimeDifference(a: DateTimeInterface, b: DateTimeInterface): Duration {
         const luxA = LuxonDateTime.fromISO(a.toString());
         const luxB = LuxonDateTime.fromISO(b.toString());
         const duration = a.isAfter(b) ? luxA.diff(luxB) : luxB.diff(luxA);

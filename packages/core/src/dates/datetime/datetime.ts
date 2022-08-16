@@ -4,7 +4,6 @@ import { Equatable } from "./../../common/common.module";
 import { Timezone } from "./../../geography/geography.module";
 import { DateException } from '../exceptions/date.exception';
 import { Duration } from './../duration/duration';
-import { HighlightSpanKind } from 'typescript';
 
 /**
  * DateTime
