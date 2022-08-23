@@ -2742,6 +2742,11 @@ deprecation@^2.0.0, deprecation@^2.3.1:
   resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-2.3.1.tgz#6368cbdb40abf3373b525ac87e4a260c3a700919"
   integrity sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==
 
+detect-file-encoding-and-language@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/detect-file-encoding-and-language/-/detect-file-encoding-and-language-2.2.2.tgz#f5a60f7864f357a0dee12db0f534a5bdeca5a946"
+  integrity sha512-c+5ALStTqKi8BSN7GWFnOdhHUYXd+yKYLWNV2LPE66UAL8XfYZMqE9DdfrD9f8JHedJ3ZIlROYoUqcomVn92MQ==
+
 detect-indent@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-5.0.0.tgz#3871cc0a6a002e8c3e5b3cf7f336264675f06b9d"

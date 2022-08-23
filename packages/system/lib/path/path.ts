@@ -1,6 +1,6 @@
 import * as NodePath from 'path';
-import { InvalidArgumentException } from "@swindle/core";
 import { PathInterface } from './path.interface';
+import { PathException } from './exceptions';
 
 /**
  * Path
@@ -19,7 +19,7 @@ export class Path implements PathInterface {
     /**
      * Creates a Path instance.
      * @param value the value of the path.
-     * @throws InvalidArgumentException when the path is invalid.
+     * @throws PathException when the path is invalid.
      */
     
     constructor(value: string) {
@@ -28,7 +28,7 @@ export class Path implements PathInterface {
             this._value = pathVal.replace(/\\|\//g, NodePath.sep);
         }
         else {
-            throw new InvalidArgumentException("Invalid Path: " + pathVal);
+            throw new PathException("Invalid Path: " + pathVal);
         }
     }
 
@@ -38,13 +38,9 @@ export class Path implements PathInterface {
      * Provides the platform-specific path delimiter.
      * - Windows: ";"
      * - POSIX: ":"
-     *
-     * @returns the platform speciic path delimiter.
      */
 
-    public static Delimiter(): string {
-        return NodePath.delimiter;
-    }
+    public static Delimiter = NodePath.delimiter;
 
     /**
      * FromSegments()
@@ -52,7 +48,7 @@ export class Path implements PathInterface {
      * Creates a Path from one or more segments.
      * @param segments the segnents of the path to create.
      * @returns the generated Path
-     * @throws InvalidArgumentException when the segments are invalid.
+     * @throws PathException when the segments are invalid.
      */
 
     public static FromSegments(...segments: Array<string|Path>): Path {
@@ -61,22 +57,20 @@ export class Path implements PathInterface {
             return new Path(NodePath.resolve(...sanitizedSegments));
         }
         else {
-            throw new InvalidArgumentException("Invalid Path segments.");
+            throw new PathException("Invalid Path segments.");
         }
     }
 
     /**
-     * Separator()
+     * Separator
      *
      * gets he platform-specific path segment separator.
      * - Windows: \
      * - POSIX: /
-     * @returns
      */
 
-    public static Separator(): string {
-        return NodePath.sep;
-    }
+    public static Separator = NodePath.sep;
+
 
     /**
      * basename()
@@ -146,7 +140,7 @@ export class Path implements PathInterface {
      */
 
     public segments(): string[] {
-        return this.toString().split(Path.Separator());
+        return this.toString().split(Path.Separator);
     }
 
     /**
