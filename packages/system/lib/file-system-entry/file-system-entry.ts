@@ -128,7 +128,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
     }
 
     /**
-     * exists()
+     * pathExists()
      * 
      * determines if the path exists.
      * @returns TRUE if the file exists. False it it does not.
