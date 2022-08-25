@@ -1,9 +1,11 @@
 import { copyFile, writeFile, rm, rename } from 'fs/promises';
 import { Path } from '../path';
 import { FileSystemEntry, FileSystemEntryOptions } from './../file-system-entry';
+import { CopyFileOptions } from './copy-file-options.interface';
 import { DeleteFileOptions } from './dlete-file-options.interface';
 import { FileAlreadyExistsException, FileException, FileNotFoundException } from './exceptions';
 import { FileInterface } from './file.interface';
+import { MoveFileOptions } from './move-file-options.interface';
 
 /**
  * File
@@ -39,7 +41,7 @@ export class File extends FileSystemEntry implements FileInterface {
     public static async Create(path: Path | string, options: FileSystemEntryOptions): Promise<File> {
         // make sure the file does not already exists.
         try {
-            const existingFile = new File(path);
+            new File(path);
             throw new FileAlreadyExistsException();
         }
         catch(e) {
@@ -68,14 +70,32 @@ export class File extends FileSystemEntry implements FileInterface {
      * @param options copy options.
      */
 
-    public async copy(to: Path | string, options: FileSystemEntryOptions): Promise<void> {
+    public async copy(to: Path | string, options: CopyFileOptions): Promise<void> {
         // resolve the arguments.
         const resolvedDestination = to instanceof Path ? to : new Path(to);
-        const resolvedOptions = {};
+        const resolvedOptions: CopyFileOptions = {
+            mode: options.mode ? options.mode : null,
+            override: options.override ? options.override : false
+        };
+
+        // make sure the destination file does not already exist.
+        let destinationInUse = false;
+        try {
+            // this line should fail if the file does not exist.
+            new File(resolvedDestination);
+            destinationInUse = true;
+        }
+        catch(e) {
+            destinationInUse = false;
+        }
+
+        if (destinationInUse && !resolvedOptions.override) {
+            throw new FileAlreadyExistsException();
+        }
 
         // copy the file.
         try {
-            await copyFile(this.path().toString(), resolvedDestination.toString(), resolvedOptions.mode);
+            await copyFile(this.path().toString(), resolvedDestination.toString(), resolvedOptions.mode!);
         }
         catch(e) {
             throw new FileException((e as Error).message);
@@ -122,8 +142,25 @@ export class File extends FileSystemEntry implements FileInterface {
      * @returns the copied FilSystem Entry.
      */
 
-    public async move(to: Path | string, options: FileSystemEntryOptions): Promise<File> {
+    public async move(to: Path | string, options: MoveFileOptions): Promise<File> {
         const resolvedDestination = to instanceof Path ? to : new Path(to);
+        const resolvedOptions: MoveFileOptions = {
+            override: options.override ? options.override : false
+        }
+
+        // make sure the destination is available.
+        let destinationInUse = false;
+        try {
+            new File(resolvedDestination);
+            destinationInUse = true;
+        }
+        catch(e) {
+            destinationInUse = false;
+        }
+
+        if (destinationInUse && !resolvedOptions.override) {
+            throw new FileAlreadyExistsException();
+        }
 
         // move the file.
         try {
