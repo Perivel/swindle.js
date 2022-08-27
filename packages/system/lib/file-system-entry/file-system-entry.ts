@@ -31,7 +31,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
      * Creates an instance of FileSystemEnty.
      * @param path the path of the entry.
      * @throws PathException when the path is invalid.
-     * @throws FileSystemEntryNotFound
+     * @throws FileSystemEntryNotFoundException when the entry does not exist.
      */
 
     constructor(
@@ -61,19 +61,9 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
      * @returns the created FileSystem Entry.
      */
 
-    public static async Create(path: Path | string, options: FileSystemEntryOptions): Promise<FileSystemEntry> {
+    public static async Create(path: Path | string, options?: FileSystemEntryOptions): Promise<FileSystemEntry> {
         throw new MethodUndefinedException();
     }
-
-    /**
-     * copy()
-     * 
-     * copies the directory to the specified path.
-     * @param to the destination to copy the file to.
-     * @param options copy options.
-     */
-
-    public abstract copy(to: Path | string, options: FileSystemEntryOptions): Promise<void>;
 
     public createdOn(): DateTime {
         let date: DateTime|null = null;
@@ -97,7 +87,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
      * @param options delete options.
      */
 
-    public abstract delete(options: FileSystemEntryOptions): Promise<void>;
+    public abstract delete(options?: FileSystemEntryOptions): Promise<void>;
 
     public deletedOn(): DateTime | null {
         return this._deleted;
@@ -106,15 +96,14 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
     public abstract equals(suspect: any): boolean;
 
     /**
-     * move()
+     * isDeleted()
      * 
-     * moves the filesystem entry to the specified path.
-     * @param to the destination to move the filesystem entry to.
-     * @param options move options.
-     * @returns the copied FilSystem Entry.
+     * determines if the entry is deleted.
      */
-
-    public abstract move(to: Path | string, options: FileSystemEntryOptions): Promise<FileSystemEntry>;
+    
+    public isDeleted(): boolean {
+        return this.deletedOn() !== null;
+    }
 
     /**
      * path()
@@ -143,16 +132,6 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
             return false;
         }
     }
-
-
-    /**
-     * rename()
-     * 
-     * renames the filesystem entry.
-     * @param newName the new name of the directory.
-     */
-
-    public abstract rename(newName: string): Promise<FileSystemEntry>;
 
     /**
      * stats()
@@ -207,6 +186,15 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
     }
 
     public abstract serialize(): string;
+
+    /**
+     * setDeleted()
+     * 
+     * marks the entry as deleted.
+     */
+    public setDeleted(): void {
+        this._deleted = DateTime.Now();
+    }
 
     public updatedOn(): DateTime {
         let date: DateTime|null = null;

@@ -1,3 +1,4 @@
+import { MoveOptions } from '../interfaces';
 import { FileSystemEntryOptions } from './../file-system-entry';
 
 /**
@@ -6,6 +7,6 @@ import { FileSystemEntryOptions } from './../file-system-entry';
  * Options for moving a file.
  */
 
-export interface MoveFileOptions extends FileSystemEntryOptions {
+export interface MoveFileOptions extends MoveOptions {
     override: boolean;
 }

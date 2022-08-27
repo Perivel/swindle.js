@@ -1,6 +1,7 @@
 import { copyFile, writeFile, rm, rename } from 'fs/promises';
+import { Copiable, Movable, Renamable } from '../interfaces';
 import { Path } from '../path';
-import { FileSystemEntry, FileSystemEntryOptions } from './../file-system-entry';
+import { FileSystemEntry, FileSystemEntryNotFoundException, FileSystemEntryOptions } from './../file-system-entry';
 import { CopyFileOptions } from './copy-file-options.interface';
 import { DeleteFileOptions } from './dlete-file-options.interface';
 import { FileAlreadyExistsException, FileException, FileNotFoundException } from './exceptions';
@@ -13,16 +14,28 @@ import { MoveFileOptions } from './move-file-options.interface';
  * A File
  */
 
-export class File extends FileSystemEntry implements FileInterface {
+export class File extends FileSystemEntry implements FileInterface, Movable, Copiable, Renamable {
 
     /**
      * Creates a file instance.
      * @param path the path to the file.
      * @throws FileNotFoundException when the file is not found.
+     * @throws PathException when the path is invalid.
      */
 
-    constructor(path: Path|string) {
-        super(path);
+    constructor(path: Path | string) {
+        try {
+            super(path);
+        }
+        catch (e) {
+            if (e instanceof FileSystemEntryNotFoundException) {
+                throw new FileNotFoundException();
+            }
+            else {
+                throw e;
+            }
+        }
+
         super.stats().then(stats => {
             if (!stats.isFile) {
                 throw new FileNotFoundException();
@@ -38,13 +51,13 @@ export class File extends FileSystemEntry implements FileInterface {
      * @returns the created FileSystem Entry.
      */
 
-    public static async Create(path: Path | string, options: FileSystemEntryOptions): Promise<File> {
+    public static async Create(path: Path | string, options?: FileSystemEntryOptions): Promise<File> {
         // make sure the file does not already exists.
         try {
             new File(path);
             throw new FileAlreadyExistsException();
         }
-        catch(e) {
+        catch (e) {
             if (e instanceof FileAlreadyExistsException) {
                 throw e;
             }
@@ -55,7 +68,7 @@ export class File extends FileSystemEntry implements FileInterface {
         try {
             await writeFile(filePath.toString(), "");
         }
-        catch(e) {
+        catch (e) {
             throw new FileException((e as Error).message);
         }
 
@@ -68,15 +81,26 @@ export class File extends FileSystemEntry implements FileInterface {
      * copies the directory to the specified path.
      * @param to the destination to copy the file to.
      * @param options copy options.
+     * @throws FileException when the file is deleted.
      */
 
-    public async copy(to: Path | string, options: CopyFileOptions): Promise<void> {
+    public async copy(to: Path | string, options?: CopyFileOptions): Promise<void> {
         // resolve the arguments.
         const resolvedDestination = to instanceof Path ? to : new Path(to);
-        const resolvedOptions: CopyFileOptions = {
-            mode: options.mode ? options.mode : null,
-            override: options.override ? options.override : false
-        };
+        let resolvedOptions: CopyFileOptions;
+
+        if (options) {
+            resolvedOptions = {
+                mode: options.mode ? options.mode : null,
+                override: options.override ? options.override : false
+            };
+        }
+        else {
+            resolvedOptions = {
+                mode: null,
+                override: false
+            }
+        }
 
         // make sure the destination file does not already exist.
         let destinationInUse = false;
@@ -85,7 +109,7 @@ export class File extends FileSystemEntry implements FileInterface {
             new File(resolvedDestination);
             destinationInUse = true;
         }
-        catch(e) {
+        catch (e) {
             destinationInUse = false;
         }
 
@@ -93,11 +117,16 @@ export class File extends FileSystemEntry implements FileInterface {
             throw new FileAlreadyExistsException();
         }
 
+        // make sure the file has not been deleted.
+        if (this.isDeleted()) {
+            throw new FileException();
+        }
+
         // copy the file.
         try {
             await copyFile(this.path().toString(), resolvedDestination.toString(), resolvedOptions.mode!);
         }
-        catch(e) {
+        catch (e) {
             throw new FileException((e as Error).message);
         }
     }
@@ -110,12 +139,22 @@ export class File extends FileSystemEntry implements FileInterface {
      * @param options delete options.
      */
 
-    public async delete(options: DeleteFileOptions): Promise<void> {
+    public async delete(options?: DeleteFileOptions): Promise<void> {
         // resolve options
-        const resolvedOptions: DeleteFileOptions = {
-            recursive: options.recursive ? options.recursive : false,
-            force: options.force ? options.force : false
-        };
+        let resolvedOptions: DeleteFileOptions;
+
+        if (options) {
+            resolvedOptions = {
+                recursive: options.recursive ? options.recursive : false,
+                force: options.force ? options.force : false
+            };
+        }
+        else {
+            resolvedOptions = {
+                recursive: false,
+                force: false
+            };
+        }
 
         // delete the file.
         try {
@@ -123,8 +162,9 @@ export class File extends FileSystemEntry implements FileInterface {
                 force: resolvedOptions.force,
                 recursive: resolvedOptions.recursive
             });
+            this.setDeleted();
         }
-        catch(e) {
+        catch (e) {
             throw new FileException((e as Error).message);
         }
     }
@@ -142,10 +182,19 @@ export class File extends FileSystemEntry implements FileInterface {
      * @returns the copied FilSystem Entry.
      */
 
-    public async move(to: Path | string, options: MoveFileOptions): Promise<File> {
+    public async move(to: Path | string, options?: MoveFileOptions): Promise<File> {
         const resolvedDestination = to instanceof Path ? to : new Path(to);
-        const resolvedOptions: MoveFileOptions = {
-            override: options.override ? options.override : false
+        let resolvedOptions: MoveFileOptions;
+
+        if (options) {
+            resolvedOptions = {
+                override: options.override ? options.override : false
+            }
+        }
+        else {
+            resolvedOptions = {
+                override: false
+            }
         }
 
         // make sure the destination is available.
@@ -154,7 +203,7 @@ export class File extends FileSystemEntry implements FileInterface {
             new File(resolvedDestination);
             destinationInUse = true;
         }
-        catch(e) {
+        catch (e) {
             destinationInUse = false;
         }
 
@@ -167,7 +216,7 @@ export class File extends FileSystemEntry implements FileInterface {
             await rename(this.path().toString(), resolvedDestination.toString());
             return new File(resolvedDestination);
         }
-        catch(e) {
+        catch (e) {
             throw new FileException((e as Error).message);
         }
     }
@@ -190,7 +239,7 @@ export class File extends FileSystemEntry implements FileInterface {
             await rename(this.path().toString(), resolvedFileName.toString());
             return new File(resolvedFileName);
         }
-        catch(e) {
+        catch (e) {
             throw new FileException((e as Error).message);
         }
     }
