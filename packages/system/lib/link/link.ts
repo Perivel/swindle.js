@@ -113,7 +113,12 @@ export class Link extends FileSystemEntry implements LinkInterface {
     }
 
     public equals(suspect: any): boolean {
-        return false;
+        if (suspect instanceof Link) {
+            return super.equals(suspect);
+        }
+        else {
+            return false;
+        }
     }
 
     /**

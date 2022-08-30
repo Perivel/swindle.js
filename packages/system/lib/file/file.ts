@@ -170,7 +170,12 @@ export class File extends FileSystemEntry implements FileInterface, Movable, Cop
     }
 
     public equals(suspect: any): boolean {
-        return false;
+        if (suspect instanceof File) {
+            return super.equals(suspect);
+        }
+        else {
+            return false;
+        }
     }
 
     /**

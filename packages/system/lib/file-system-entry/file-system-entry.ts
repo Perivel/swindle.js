@@ -93,7 +93,18 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
         return this._deleted;
     }
 
-    public abstract equals(suspect: any): boolean;
+    public equals(suspect: any): boolean {
+        let isEqual = false;
+
+        if (suspect instanceof FileSystemEntry) {
+            const other = suspect as FileSystemEntry;
+            isEqual = this.path().equals(other.path()) &&
+                this.createdOn().equals(other.createdOn()) &&
+                this.updatedOn().equals(other.updatedOn());
+        }
+
+        return isEqual;
+    }
 
     /**
      * isDeleted()
@@ -123,7 +134,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
      * @returns TRUE if the file exists. False it it does not.
      */
 
-    private async pathExists(path: Path | string): Promise<boolean> {
+    protected async pathExists(path: Path | string): Promise<boolean> {
         try {
             await access(path.toString(), FSConstants.F_OK);
             return true;
