@@ -1,7 +1,13 @@
-import { mkdir, rmdir, rename } from 'fs/promises';
+import { 
+    mkdir,
+    rmdir,
+    rename,
+    readdir
+} from 'fs/promises';
 import { copy, move } from 'fs-extra';
 import { Copiable, Movable, MoveOptions, Renamable } from '../interfaces';
-import { Link } from '../link';
+import { File } from './../file';
+import { Link } from './../Link';
 import { Path, PathInterface } from '../path';
 import { FileSystemEntry, FileSystemEntryNotFoundException, FileSystemEntryOptions } from './../file-system-entry';
 import { DirectoryInterface } from './directory.interface';
@@ -24,7 +30,7 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
      * @param path the directory path.
      * @throws DirectoryNotFoundExeption when the directory is not found.
      */
-    
+
     constructor(path: Path | string) {
         try {
             super(path);
@@ -87,7 +93,43 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
      */
 
     public async contents(): Promise<Array<Link | Directory | File>> {
-        return [];
+        try {
+            const contents = await readdir(this.path().toString());
+            return await this.convertToObjects(contents);
+            
+        }
+        catch(e) {
+            throw new DirectoryException();
+        }
+    }
+
+    /**
+     * convertToObjects()
+     * 
+     * converts a list of paths into the corresponding objects.
+     * @param paths a list of file paths to convert.
+     * @returns a list of objects.
+     */
+
+    private async convertToObjects(paths: string[]): Promise<Array<Directory|File|Link>> {
+        const results = new Array<Directory|File|Link>();
+        let obj: File|Directory|Link;
+        await Promise.all(paths.map(async path => {
+            const entry = new FileSystemEntry(path);
+
+            if (await entry.isDirectory()) {
+                obj = new Directory(entry.path());
+            }
+            else if (await entry.isFile()) {
+                obj = new File(entry.path());
+            }
+            else {
+                obj = new Link(entry.path());
+            }
+            results.push(obj);
+        }));
+
+        return results;
     }
 
     /**

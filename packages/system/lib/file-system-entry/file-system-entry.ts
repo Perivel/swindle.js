@@ -19,13 +19,13 @@ import { Path } from '../path';
  * A generic object or entry in the file system.
  */
 
-export abstract class FileSystemEntry implements TimestampedResource, Equatable, Serializable {
+export class FileSystemEntry implements TimestampedResource, Equatable, Serializable {
 
-    private _created: DateTime|null;
-    private _updated: DateTime|null;
+    private _created: DateTime | null;
+    private _updated: DateTime | null;
     private _deleted: DateTime | null;
     private readonly _path: Path;
-    private _stats: FileSystemEntryStats|null;
+    private _stats: FileSystemEntryStats | null;
 
     /**
      * Creates an instance of FileSystemEnty.
@@ -46,7 +46,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
                 throw new FileSystemEntryNotFoundException();
             }
         });
-        
+
         this._created = null;
         this._updated = null;
         this._deleted = null;
@@ -66,7 +66,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
     }
 
     public createdOn(): DateTime {
-        let date: DateTime|null = null;
+        let date: DateTime | null = null;
         if (!this._stats) {
             this.stats().then(data => {
                 this._created = data.birthtime;
@@ -87,7 +87,9 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
      * @param options delete options.
      */
 
-    public abstract delete(options?: FileSystemEntryOptions): Promise<void>;
+    public async delete(options?: FileSystemEntryOptions): Promise<void> {
+        //
+    }
 
     public deletedOn(): DateTime | null {
         return this._deleted;
@@ -111,9 +113,48 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
      * 
      * determines if the entry is deleted.
      */
-    
+
     public isDeleted(): boolean {
         return this.deletedOn() !== null;
+    }
+
+    /**
+     * isDirectory()
+     * 
+     * determines if the entry is a directory.
+     * @returns TRUE if the entry is a directory. FALSE otherwise.
+     * @throws FileSystemEntryException when the operation fails.
+     */
+
+    public async isDirectory(): Promise<boolean> {
+        const stats = await this.stats();
+        return stats.isDirectory;
+    }
+
+    /**
+     * isFile()
+     * 
+     * determines if the entry is a file.
+     * @returns TRUE if the entry is a file. FALSE otherwise.
+     * @throws FileSystemEntryException when the operation fails.
+     */
+
+    public async isFile(): Promise<boolean> {
+        const stats = await this.stats();
+        return stats.isFile;
+    }
+
+    /**
+     * isLink()
+     * 
+     * determines if the entry is a link.
+     * @returns TRUE if the entry is a link. FALSE otherwise.
+     * @throws FileSystemEntryException when the operation fails.
+     */
+
+    public async isLink(): Promise<boolean> {
+        const stats = await this.stats();
+        return stats.isSymbolicLink;
     }
 
     /**
@@ -196,7 +237,9 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
         }
     }
 
-    public abstract serialize(): string;
+    public serialize(): string {
+        return JSON.stringify({});
+    }
 
     /**
      * setDeleted()
@@ -208,7 +251,7 @@ export abstract class FileSystemEntry implements TimestampedResource, Equatable,
     }
 
     public updatedOn(): DateTime {
-        let date: DateTime|null = null;
+        let date: DateTime | null = null;
         if (!this._stats) {
             this.stats().then(data => {
                 this._created = data.ctime;
