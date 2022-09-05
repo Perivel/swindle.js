@@ -1,3 +1,4 @@
+import { FileInterface } from "../file";
 
 /**
  * FileStreamInterface
@@ -14,6 +15,14 @@ export interface FileStreamInterface {
      */
 
     close(): Promise<void>;
+
+    /**
+     * file()
+     * 
+     * the source file of the stream.
+     */
+    
+    file(): FileInterface;
 
     /**
      * encoding()
