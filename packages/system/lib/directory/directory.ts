@@ -87,6 +87,17 @@ export class Directory extends FileSystemEntry implements DirectoryInterface, Co
     }
 
     /**
+     * Current()
+     * 
+     * Gets the current working directory.
+     * @returns The current working directory.
+     */
+
+    public static Current(): Directory {
+        return new Directory(process.cwd());
+    }
+
+    /**
      * contents()
      * 
      * gets the contents of the directory.

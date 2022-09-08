@@ -47,7 +47,7 @@ export class FileWriter extends FileStream implements FileWriterInterface {
         this._batchWrites = options.batch && (options.batch.size > 0.0) ? true : false;
         if (this._batchWrites) {
             this._stream.cork();
-            this._batchSize = options.batch!.size!;
+            this._batchSize = Math.abs(options.batch!.size!);
             this._streamIsCorked = true;
         }
         else {
