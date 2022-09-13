@@ -1,6 +1,8 @@
-import * as NodePath from 'path';
+import path, * as NodePath from 'path';
+import { Stack } from '@swindle/structs';
 import { PathInterface } from './path.interface';
 import { PathException } from './exceptions';
+import { PathInstruction } from './path-instruction.enum';
 
 /**
  * Path
@@ -21,7 +23,7 @@ export class Path implements PathInterface {
      * @param value the value of the path.
      * @throws PathException when the path is invalid.
      */
-    
+
     constructor(value: string) {
         const pathVal = value.trim();
         if (this.isValidPath(pathVal)) {
@@ -51,14 +53,10 @@ export class Path implements PathInterface {
      * @throws PathException when the segments are invalid.
      */
 
-    public static FromSegments(...segments: Array<string|Path>): Path {
-        if (segments.length !== 0) {
-            const sanitizedSegments = segments.map(seg => seg instanceof Path ? seg.toString() : seg);
-            return new Path(NodePath.resolve(...sanitizedSegments));
-        }
-        else {
-            throw new PathException("Invalid Path segments.");
-        }
+    public static FromSegments(...segments: Array<string | Path>): Path {
+        const parsedSegments = new Stack<string>();
+        Path._BuildPath(segments, parsedSegments);
+        return new Path(parsedSegments.toArray().join(Path.Separator));
     }
 
     /**
@@ -111,13 +109,13 @@ export class Path implements PathInterface {
 
     public extension(): string {
         return NodePath.extname(this.toString());
-     }
+    }
 
-     /**
-     * isAbsolute()
-     *
-     * determines if path is an absolute path
-     */
+    /**
+    * isAbsolute()
+    *
+    * determines if path is an absolute path
+    */
 
     public isAbsolute(): boolean {
         return NodePath.isAbsolute(this.toString());
@@ -174,14 +172,95 @@ export class Path implements PathInterface {
      * Current solution produces incorrect responses. For now, we will just make this function always return
      * TRUE when the path is not empty.. And then modify it at a later version.
      */
+    
     private isValidPath(suspect: string): boolean {
-        // const containsRestrictedCharacters = Path.RESTRICTED.test(suspect) || process.platform == "win32" ? Path.WINDOWS_RESTRICTED.test(suspect) : Path.POSIX_RESTRICTED.test(suspect);
-        // const absoluteBeginning = /^([a-zA-Z]:\\|\/|\~\/)/;
-        // const relativeBeginning = /^(?:\.\\|\.\/|\.\.\\|\.\.\/)/;
-        // const validBeginning = NodePath.isAbsolute(suspect) ? absoluteBeginning.test(suspect) : relativeBeginning.test(suspect);
-        // return !containsRestrictedCharacters && validBeginning;
-        //return true;
+        // make sure the path is not an empty string.
+        if (suspect.length === 0) {
+            return false;
+        }
 
-        return suspect.trim().length > 0;
+        // check for restricted characters
+        const isWindows = process.platform === 'win32';
+
+        if (Path.RESTRICTED.test(suspect)) {
+            return false;
+        }
+
+        if (isWindows && Path.WINDOWS_RESTRICTED.test(suspect)) {
+            return false;
+        }
+        else if (Path.POSIX_RESTRICTED.test(suspect)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * _BuildPathString()
+     * 
+     * Creates a valid path string from the provided segments.
+     * @param segments the segments of a 
+     * @returns 
+     */
+
+    private static _BuildPath(segments: Array<string | Path>, stack: Stack<string>): void {
+        if (segments.length > 0) {
+            const isHead = stack.isEmpty();
+            const results = Path._NormalizeSegment(segments[0]);
+            results.forEach(res => {
+                if (typeof res === 'string') {
+                    stack.push(res);
+                }
+                else {
+                    switch (res) {
+                        case PathInstruction.BackStep:
+                            if (!isHead) {
+                                stack.pop();
+                            }
+                            else {
+                                throw new PathException('Invalid Path Segment');
+                            }
+                            break;
+                        case PathInstruction.HomeDirectory:
+                            if (isHead) {
+                                stack.push('~');
+                            }
+                            else {
+                                throw new PathException('Invalid Path Segment');
+                            }
+                            break;
+                        default:
+                            // here we know it is a Current Directory instruction
+                            if (isHead) {
+                                stack.push(process.cwd());
+                            }
+                    }
+                }
+            });
+
+            segments.shift();
+            Path._BuildPath(segments, stack);
+        }
+    }
+
+    /**
+     * _Norma.izeSegment()
+     * 
+     * Attempts to normalize a path segment.
+     * @param dirty the dirty segment to normalize.
+     */
+
+    private static _NormalizeSegment(dirty: string | Path): Array<string | PathInstruction> {
+        const isWindows = process.platform === 'win32';
+        let candidate = dirty.toString();
+        const normalized: Array<string | PathInstruction> = [];
+
+        // A segment can fall into the following forms:
+        // 1. '~'m '\', '\\', etc... : These usually symbolize the home directory, and should be converted to the platform-specific formats.
+        // 2. './': the current directory. In this case, it is sufficient to return an empty string.
+
+
+        return normalized;
     }
 }

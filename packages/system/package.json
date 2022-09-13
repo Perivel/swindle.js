@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@swindle/core": "^2.2.0",
+    "@swindle/structs": "^2.2.0",
     "detect-file-encoding-and-language": "^2.2.2",
     "fs-extra": "^10.1.0"
   }

@@ -167,7 +167,7 @@ export class Process implements ProcessInterface, Equatable {
      */
 
     public canBeMessaged(): boolean {
-        return this.isForked();
+        return this.childProcess.connected;
     }
 
     public equals(suspect: any): boolean {
@@ -242,6 +242,7 @@ export class Process implements ProcessInterface, Equatable {
      * sendMessage()
      * 
      * sends a message to the child process.
+     * @throws ProcessException when the message cannot be sent, like if there is no connection to the child/parent process.
      */
 
     public sendMessage(message: Serializable): Promise<void> {
@@ -265,4 +266,4 @@ export class Process implements ProcessInterface, Equatable {
     public toString(): string {
         return this.id().toString();
     }
-} 
+}
