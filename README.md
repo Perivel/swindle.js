@@ -18,6 +18,7 @@ Below are the available Modules you can install and use. We are continuing to bu
 - [OS](packages/os/README.md): Utilities for interfacing with the current process.
 - [Specification](packages/specification/README.md): An implementation of the specification pattern.
 - [Structs](packages/structs/README.md): Implementations of common data structures.
+- [CQRS](packages/cqrs/README.md): An implementation of the CQRS pattern.
 
 # Contributing
 See the [Contribution Guidelines](.github/CONTRIBUTING.md) for information about contributing to SwindleJS.
