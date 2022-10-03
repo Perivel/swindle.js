@@ -10,7 +10,7 @@
   "homepage": "https://github.com/Perivel/swindle.js#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "browser": {
