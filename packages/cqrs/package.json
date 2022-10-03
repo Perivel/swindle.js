@@ -1,6 +1,6 @@
 {
   "name": "@swindle/cqrs",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "An implementation of the CQRS pattern.",
   "keywords": [
     "swindle",
@@ -33,7 +33,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "repository": {
     "type": "git",
