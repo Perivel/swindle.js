@@ -1,6 +1,6 @@
 {
   "name": "@swindle/core",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Utilitiy classes for data manipulation.",
   "main": "dist/index.js",
   "type": "module",
@@ -12,11 +12,11 @@
         "require": "./dist/index.js"
       },
       "node": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.js"
+        "import": "./dist/server.js",
+        "require": "./dist/server.js"
       },
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/server.js"
     }
   },
   "publishConfig": {
