@@ -1,10 +1,10 @@
-import { VerdicException } from "./verdic.exception";
+import { ContainerException } from "./container.exception";
 
 /**
  * DuplicateModuleException
  */
 
-export class DuplicateModuleException extends VerdicException {
+export class DuplicateModuleException extends ContainerException {
     constructor(message: string = "Duplicate Module") {
         super(message);
     }

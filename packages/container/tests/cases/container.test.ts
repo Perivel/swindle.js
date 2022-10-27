@@ -1,13 +1,12 @@
-
-import { CircularDependencyException } from '../../src/exceptions/circular-dependency.exception';
-import { DuplicateModuleException } from '../../src/exceptions/duplicate-module.exception';
-import { InvalidModuleException } from '../../src/exceptions/invalid-module.exception';
-import { ModuleNotFoundException } from '../../src/exceptions/module-not-found.exception';
-import { ModuleParser } from '../../src/module-parser/module-parser';
 import { 
     Container, 
     DependencyNotFoundException, 
-    DuplicateDependencyException 
+    DuplicateDependencyException,
+    CircularDependencyException,
+    DuplicateModuleException,
+    InvalidModuleException,
+    ModuleNotFoundException,
+    ModuleParser
 } from './../../index';
 
 // create some dummy classes

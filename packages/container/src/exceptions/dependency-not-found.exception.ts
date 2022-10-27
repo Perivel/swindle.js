@@ -1,4 +1,4 @@
-import { VerdicException } from "./verdic.exception";
+import { ContainerException } from "./container.exception";
 
 /**
  * DependencyNotFoundException
@@ -6,7 +6,7 @@ import { VerdicException } from "./verdic.exception";
  * DependencyNotFoundException indicates that a dependency was not found.
  */
 
-export class DependencyNotFoundException extends VerdicException {
+export class DependencyNotFoundException extends ContainerException {
     constructor(message: string = "Dependency not found.") {
         super(message);
     }

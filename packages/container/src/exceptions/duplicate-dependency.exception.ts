@@ -1,4 +1,4 @@
-import { VerdicException } from "./verdic.exception";
+import { ContainerException } from "./container.exception";
 
 /**
  * DuplicateDependencyException
@@ -6,7 +6,7 @@ import { VerdicException } from "./verdic.exception";
  * DuplicateDependencyException indicates that there is a duplicate dependency in the container.
  */
 
-export class DuplicateDependencyException extends VerdicException {
+export class DuplicateDependencyException extends ContainerException {
     constructor(message: string = "Duplicate Dependency") {
         super(message);
     }

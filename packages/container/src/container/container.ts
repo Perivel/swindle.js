@@ -1,14 +1,21 @@
 
-import { CircularDependencyException } from '../exceptions/circular-dependency.exception';
-import { DependencyNotFoundException } from "../exceptions/dependency-not-found.exception";
-import { DuplicateBindingException } from "../exceptions/duplicate-binding.exception";
-import { DuplicateDependencyException } from "../exceptions/duplicate-dependency.exception";
-import { DuplicateModuleException } from '../exceptions/duplicate-module.exception';
-import { ModuleNotFoundException } from '../exceptions/module-not-found.exception';
-import { DefaultModuleParser } from '../module-parser/default-module-parser';
-import { ModuleParser } from '../module-parser/module-parser';
-import { BindingFactory } from "../types/binding-factory.type";
-import { DependencyToken, ConcreteDependencyToken } from "../types/dependency-token.type";
+import {
+    CircularDependencyException,
+    DependencyNotFoundException,
+    DuplicateBindingException,
+    DuplicateDependencyException,
+    DuplicateModuleException,
+    ModuleNotFoundException
+} from './../exceptions';
+import {
+    DefaultModuleParser,
+    ModuleParser
+} from './../module-parser';
+import { 
+    BindingFactory, 
+    DependencyToken, 
+    ConcreteDependencyToken
+} from './../types';
 import { ContainerInterface } from "./container.interface";
 
 

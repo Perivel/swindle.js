@@ -1,5 +1,4 @@
-import { getConstantValue } from "typescript";
-import { InvalidModuleException } from "../exceptions/invalid-module.exception";
+import { InvalidModuleException } from "../exceptions";
 import { ModuleParserInterface } from "./module-parser.interface";
 
 

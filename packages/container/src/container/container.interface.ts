@@ -2,9 +2,12 @@
  * VerdicDependencyInjectionContainerInterface
  */
 
-import { ModuleParserInterface } from "../module-parser/module-parser.interface";
-import { BindingFactory } from "../types/binding-factory.type";
-import { ConcreteDependencyToken, DependencyToken } from "../types/dependency-token.type";
+import { ModuleParserInterface } from "../module-parser";
+import { 
+    BindingFactory, 
+    ConcreteDependencyToken, 
+    DependencyToken
+} from "../types";
 
 export interface ContainerInterface {
 

@@ -1,5 +1,4 @@
-import { InvalidModuleException } from '../../src/exceptions/invalid-module.exception';
-import { DefaultModuleParser } from './../../src/module-parser/default-module-parser';
+import { InvalidModuleException, DefaultModuleParser } from '../../index';
 
 const parser = new DefaultModuleParser();
 

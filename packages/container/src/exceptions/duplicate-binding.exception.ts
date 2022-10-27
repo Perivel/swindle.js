@@ -1,4 +1,4 @@
-import { VerdicException } from "./verdic.exception";
+import { ContainerException } from "./container.exception";
 
 /**
  * DuplicateBindingException
@@ -8,7 +8,7 @@ import { VerdicException } from "./verdic.exception";
 
 
 
-export class DuplicateBindingException extends VerdicException {
+export class DuplicateBindingException extends ContainerException {
     constructor(message: string = "Duplicate Binding") {
         super(message);
     }

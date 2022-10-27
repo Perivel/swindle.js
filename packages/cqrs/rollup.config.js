@@ -15,10 +15,16 @@ export default {
     treeshake: true,
     preserveEntrySignatures: true,
     external: deps,
-    output: [{
-        format: 'esm',
-        file: resolve('dist/index.js'),
-    }],
+    output: [
+        {
+            format: 'esm',
+            file: resolve('dist/index.js'),
+        },
+        {
+            format: 'cjs',
+            file: resolve('dist/server.js')
+        }
+    ],
     plugins: [
         del({
             targets: ['./dist']
