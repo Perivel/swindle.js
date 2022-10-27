@@ -1,6 +1,6 @@
 {
   "name": "@swindle/cqrs",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "An implementation of the CQRS pattern.",
   "keywords": [
     "swindle",
@@ -18,11 +18,11 @@
         "require": "./dist/index.js"
       },
       "node": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.js"
+        "import": "./dist/server.js",
+        "require": "./dist/server.js"
       },
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/server.js"
     }
   },
   "publishConfig": {
@@ -53,7 +53,7 @@
     "url": "https://github.com/Perivel/swindle.js/issues"
   },
   "dependencies": {
-    "@swindle/core": "^2.2.0"
+    "@swindle/core": "^2.2.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.2",
